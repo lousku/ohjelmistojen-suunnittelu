@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>Vihollinen.qml</file>
+        <file>Kyborgi.qml</file>
+        <file>Laura.qml</file>
     </qresource>
 </RCC>
