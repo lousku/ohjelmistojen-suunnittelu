@@ -11,7 +11,7 @@ Logiikka::Logiikka()
 }
 
 Logiikka::Logiikka(QQuickView* view):
-    näkymä_(view)
+    nakyma_(view)
 {
     alustaParkkihalli();
 }
@@ -27,9 +27,9 @@ bool Logiikka::alustaParkkihalli()
     for (int i = 0; i < 3; i++){
         Kyborgi *kyborgi = new Kyborgi;
 
-        QQmlComponent component(näkymä_->engine(), QUrl(QStringLiteral("qrc:/kyborgi.qml")));
+        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/kyborgi.qml")));
         QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(näkymä_->rootObject()));
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
         kyborgi->asetaQMLosa(object);
 
         kyborgit_.append(kyborgi);

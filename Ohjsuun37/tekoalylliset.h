@@ -9,7 +9,7 @@ class Tekoalylliset : public Toimija
 public:
     Tekoalylliset();
 private:
-    int iskuetäisyys;
+    int iskuetaisyys;
 };
 
 #endif // TEKOLYLLISET_H
