@@ -7,6 +7,7 @@
 class Tekoalylliset : public Toimija
 {
 public:
+    virtual ~Tekoalylliset();
     Tekoalylliset();
 private:
     int iskuetäisyys;

@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 
+#include "logiikka.h"
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -10,7 +12,7 @@ int main(int argc, char *argv[])
     view->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
     view->show();
 
+    Logiikka parkkihalli(view);
+
     return app.exec();
-
-
 }

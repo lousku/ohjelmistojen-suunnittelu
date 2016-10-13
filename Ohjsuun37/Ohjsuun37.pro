@@ -4,7 +4,14 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    toimija.cpp
+    toimija.cpp \
+    laura.cpp \
+    ammus.cpp \
+    kyborgi.cpp \
+    vihollinen.cpp \
+    sijainti.cpp \
+    logiikka.cpp \
+    tekoalylliset.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +26,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 HEADERS += \
-    toimija.h
+    toimija.h \
+    laura.h \
+    ammus.h \
+    tekoalylliset.h \
+    kyborgi.h \
+    vihollinen.h \
+    sijainti.h \
+    logiikka.h

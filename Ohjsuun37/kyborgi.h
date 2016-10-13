@@ -6,6 +6,7 @@
 class Kyborgi : public Tekoalylliset
 {
 public:
+    virtual ~Kyborgi();
     Kyborgi();
     bool onkoLiikkeessa();
     bool asetaPaamaara(Sijainti sijainti);

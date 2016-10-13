@@ -5,4 +5,8 @@ Rectangle {
     width: 20
     height: 20
     color: "orange"
+    Text {
+        id: teksti
+        text: qsTr("100")
+    }
 }

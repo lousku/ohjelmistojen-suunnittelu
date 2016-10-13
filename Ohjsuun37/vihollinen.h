@@ -6,6 +6,7 @@
 class Vihollinen : public Tekoalylliset
 {
 public:
+    virtual ~Vihollinen();
     Vihollinen();
     Sijainti laskePaamaara();
 };

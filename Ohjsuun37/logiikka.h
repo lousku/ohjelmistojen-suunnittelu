@@ -16,16 +16,17 @@ public:
     Logiikka();
     Logiikka(QQuickView* view);
     bool alustaParkkihalli();
+    bool lisaaViholliset(int maara);
     bool liikutaToimijaa(Toimija* toimija);
     bool vahingoitaToimijaa(Toimija* toimija, int teho);
     bool luoToimija(); //kuka tätä kutsuu ja miten tiedetään mikä toimija
     void liikutaToimijaaRandomisti(Toimija* toimija);
-    bool iskuetäisyydellä(Toimija* &toimija);
+    Toimija* iskuetäisyydellä(Toimija* tarkasteltava);
 
 private:
-    Laura laura_;
-    QList<Kyborgi*> kyborgit_;
-    QList<Vihollinen*> viholliset_;
+    Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
+    QList<Kyborgi*> kyborgit_;    //Shared_ptr:iä pitää olla huolellinen
+    QList<Vihollinen*> viholliset_;    //Että olioiden poistaminen toimii fiksusti
     QTimer* pelikello_;
     QQuickView* näkymä_;
 

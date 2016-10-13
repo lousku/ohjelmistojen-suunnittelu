@@ -6,6 +6,7 @@
 class Ammus : public Tekoalylliset
 {
 public:
+    virtual ~Ammus();
     Ammus();
     bool etene();
 };
