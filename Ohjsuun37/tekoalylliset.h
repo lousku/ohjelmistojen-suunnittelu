@@ -10,7 +10,7 @@ public:
     virtual ~Tekoalylliset();
     Tekoalylliset();
 private:
-    int iskuetäisyys;
+    int iskuetaisyys;
 };
 
 #endif // TEKOLYLLISET_H

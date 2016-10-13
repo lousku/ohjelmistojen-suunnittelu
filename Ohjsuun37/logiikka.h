@@ -23,12 +23,13 @@ public:
     void liikutaToimijaaRandomisti(Toimija* toimija);
     Toimija* iskuetäisyydellä(Toimija* tarkasteltava);
 
+
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
     QList<Kyborgi*> kyborgit_;    //Shared_ptr:iä pitää olla huolellinen
     QList<Vihollinen*> viholliset_;    //Että olioiden poistaminen toimii fiksusti
     QTimer* pelikello_;
-    QQuickView* näkymä_;
+    QQuickView* nakyma_;
 
 public slots:
     void suoritaTekoaly();

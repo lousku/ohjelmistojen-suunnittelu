@@ -11,7 +11,7 @@ Logiikka::Logiikka()
 }
 
 Logiikka::Logiikka(QQuickView* view):
-    näkymä_(view)
+    nakyma_(view)
 {
     alustaParkkihalli();
     lisaaViholliset(2);
@@ -26,18 +26,18 @@ bool Logiikka::alustaParkkihalli()
 
     //alustetaan Laura
     laura_ = new Laura;
-    QQmlComponent component(näkymä_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
+    QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
-    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(näkymä_->rootObject()));
+    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
     laura_->asetaQMLosa(object);
 
     //alustetaan Kyborgit
     for (int i = 0; i < 3; i++){
         Kyborgi *kyborgi = new Kyborgi;
 
-        QQmlComponent component(näkymä_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
+        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(näkymä_->rootObject()));
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
         kyborgi->asetaQMLosa(object);
 
         kyborgit_.append(kyborgi);
@@ -51,9 +51,9 @@ bool Logiikka::lisaaViholliset(int maara)
     for (int i = 0; i < 3; i++){
         Vihollinen *vihollinen = new  Vihollinen;
 
-        QQmlComponent component(näkymä_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
+        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
         QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(näkymä_->rootObject()));
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
         vihollinen->asetaQMLosa(object);
 
         viholliset_.append(vihollinen);

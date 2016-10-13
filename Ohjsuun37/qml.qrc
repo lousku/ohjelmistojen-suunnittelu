@@ -4,5 +4,8 @@
         <file>Vihollinen.qml</file>
         <file>Kyborgi.qml</file>
         <file>Laura.qml</file>
+        <file>GameWindow.qml</file>
+        <file>LeftBanner.qml</file>
+        <file>TopBanner.qml</file>
     </qresource>
 </RCC>
