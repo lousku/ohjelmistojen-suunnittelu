@@ -5,16 +5,25 @@
 #include <QtQuick>
 #include <QDebug>
 
+void Logiikka::liikutaLauraa()
+{
+    qDebug() << "HYVÄ ILE!!;
+
+}
+
 Logiikka::Logiikka()
 {
 
 }
 
 Logiikka::Logiikka(QQuickView* view):
+
     nakyma_(view)
+
 {
     alustaParkkihalli();
     lisaaViholliset(2);
+
 }
 
 bool Logiikka::alustaParkkihalli()
@@ -24,11 +33,18 @@ bool Logiikka::alustaParkkihalli()
     pelikello_->setInterval(50);
     pelikello_->start();
 
+
+
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+
     //alustetaan Laura
-    laura_ = new Laura;
+    laura_ = new Laura(10,10);
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
-    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
+    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+
+
+
     laura_->asetaQMLosa(object);
 
     //alustetaan Kyborgit
@@ -37,7 +53,7 @@ bool Logiikka::alustaParkkihalli()
 
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
         kyborgi->asetaQMLosa(object);
 
         kyborgit_.append(kyborgi);
@@ -48,12 +64,14 @@ bool Logiikka::alustaParkkihalli()
 
 bool Logiikka::lisaaViholliset(int maara)
 {
-    for (int i = 0; i < 3; i++){
-        Vihollinen *vihollinen = new  Vihollinen;
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+
+    for (int i = 0; i < maara; i++){
+        Vihollinen *vihollinen = new  Vihollinen(200,200);
 
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
         QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(nakyma_->rootObject()));
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
         vihollinen->asetaQMLosa(object);
 
         viholliset_.append(vihollinen);
@@ -61,7 +79,29 @@ bool Logiikka::lisaaViholliset(int maara)
     return true;
 }
 
-Toimija* Logiikka::iskuetäisyydellä(Toimija *toimija)
+bool Logiikka::liikutaToimijaa(Toimija *toimija)
+{
+
+}
+
+bool Logiikka::vahingoitaToimijaa(Toimija *toimija, int teho)
+{
+    toimija->muutaElamatasoa(-teho);
+
+    return true;
+}
+
+bool Logiikka::luoToimija()
+{
+
+}
+
+void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
+{
+
+}
+
+Toimija* Logiikka::iskuetaisyydella(Toimija *toimija)
 {
     Sijainti sijainti = toimija->annaSijainti();
     //jos toimija on muotoa vihollinen, tarkastellaan kyborgit ja laura
@@ -91,6 +131,8 @@ Toimija* Logiikka::iskuetäisyydellä(Toimija *toimija)
                 return *it;
             }
         }
+    }else{
+        qDebug() << "kutsuttu vaaralle?";
     }
     return nullptr;
 }
@@ -101,8 +143,12 @@ void Logiikka::suoritaTekoaly()
     int i = 1;
     for (it = kyborgit_.begin(); it != kyborgit_.end(); it++){
         (*it)->liikuta(i, 2);
-        //vasta debug, pitää toki ottaa iskettävä kiinni.
-        iskuetäisyydellä(*it);
+        Toimija* kohde = iskuetaisyydella(*it);
+        if (kohde != nullptr){
+            vahingoitaToimijaa(kohde, (*it)->annaTeho());
+        }else{
+
+        }
         i++;
     }
 
@@ -110,7 +156,12 @@ void Logiikka::suoritaTekoaly()
     i = 1;
     for (iter = viholliset_.begin(); iter != viholliset_.end(); iter++){
         (*iter)->liikuta(i, -1);
-        iskuetäisyydellä(*iter);
+        Toimija* kohde = iskuetaisyydella(*iter);
+        if (kohde != nullptr){
+            vahingoitaToimijaa(kohde, (*iter)->annaTeho());
+        }else{
+
+        }
         i *= -1;
     }
 

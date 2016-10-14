@@ -2,12 +2,21 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 
 Item {
+    objectName: "jee"
     width: 600
     height: 600
+    focus: true  //Ratkaiseva, jotta painallus huomataan IH
+
+    Keys.onLeftPressed: {
+        logiikka.liikutaLauraa();
+    }
+    Keys.onRightPressed: {
+    }
+
     //omat tiedostot reunabannerille, sisältää toistaiseksi sekä id että objName -MS
     LeftBanner{
         id:leftBanner
-        //laitoin hipsuihin, koska tuli herjaa, muuten siis koittaa sijoittaa Rectanglea objectNameen
+        //laitoin hipsuihin, koska tuli herjaa, muuten siis koittaa sijoittaa Rectanglea objectNameen -IH
         objectName: "leftBanner"
 
         anchors.left: parent.left;anchors.top: parent.top

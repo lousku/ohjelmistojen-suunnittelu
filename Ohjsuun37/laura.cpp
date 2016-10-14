@@ -1,7 +1,27 @@
 #include "laura.h"
 
+Laura::~Laura()
+{
+
+}
+
 Laura::Laura()
 {
-    sijainti_.asetaX(20);
-    sijainti_.asetaY(20);
+
+}
+
+Laura::Laura(double x, double y):
+    Toimija(x,y)
+{
+
+}
+
+bool Laura::ammu()
+{
+
+}
+
+bool Laura::liikuSuuntaan()
+{
+
 }

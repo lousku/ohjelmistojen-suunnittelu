@@ -9,3 +9,8 @@ Ammus::Ammus()
 {
 
 }
+
+bool Ammus::etene()
+{
+
+}

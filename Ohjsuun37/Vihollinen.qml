@@ -5,8 +5,11 @@ Rectangle {
     width: 20
     height: 20
     color: "orange"
+
+    property alias text: teksti.text
+
     Text {
         id: teksti
-        text: qsTr("100")
+        text: qsTr("")
     }
 }

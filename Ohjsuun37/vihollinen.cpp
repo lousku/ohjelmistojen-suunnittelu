@@ -7,6 +7,16 @@ Vihollinen::~Vihollinen()
 
 Vihollinen::Vihollinen()
 {
-    sijainti_.asetaX(200);
-    sijainti_.asetaY(200);
+
+}
+
+Vihollinen::Vihollinen(double x, double y):
+    Tekoalylliset(x, y)
+{
+
+}
+
+Sijainti Vihollinen::laskePaamaara()
+{
+
 }

@@ -1,5 +1,5 @@
-#ifndef TEKOLYLLISET_H
-#define TEKOLYLLISET_H
+#ifndef TEKOALYLLISET_H
+#define TEKOALYLLISET_H
 
 #include "toimija.h"
 
@@ -9,8 +9,9 @@ class Tekoalylliset : public Toimija
 public:
     virtual ~Tekoalylliset();
     Tekoalylliset();
+    Tekoalylliset(double x, double y);
 private:
-    int iskuetaisyys;
+    int iskuetaisyys_;
 };
 
-#endif // TEKOLYLLISET_H
+#endif // TEKOALYLLISET_H

@@ -8,6 +8,7 @@ class Vihollinen : public Tekoalylliset
 public:
     virtual ~Vihollinen();
     Vihollinen();
+    Vihollinen(double x, double y);
     Sijainti laskePaamaara();
 };
 

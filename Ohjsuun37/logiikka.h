@@ -13,6 +13,8 @@ class Logiikka : public QObject
 {
     Q_OBJECT
 public:
+    Q_INVOKABLE void liikutaLauraa();
+
     Logiikka();
     Logiikka(QQuickView* view);
     bool alustaParkkihalli();
@@ -21,7 +23,7 @@ public:
     bool vahingoitaToimijaa(Toimija* toimija, int teho);
     bool luoToimija(); //kuka tätä kutsuu ja miten tiedetään mikä toimija
     void liikutaToimijaaRandomisti(Toimija* toimija);
-    Toimija* iskuetäisyydellä(Toimija* tarkasteltava);
+    Toimija *iskuetaisyydella(Toimija* tarkasteltava);
 
 
 private:

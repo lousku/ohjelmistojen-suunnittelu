@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQuickView>
+#include <QQmlContext>  //tarvitaa, jotta ContextPropertyn linkitys onnistuu IH
 
 #include "logiikka.h"
 
@@ -13,6 +13,8 @@ int main(int argc, char *argv[])
     view->show();
 
     Logiikka parkkihalli(view);
+
+    view->engine()->rootContext()->setContextProperty("logiikka", &(parkkihalli));
 
     return app.exec();
 }
