@@ -32,6 +32,14 @@ Item {
         objectName: "gameWindow"
         anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
         anchors.right: parent.right; anchors.bottom: parent.bottom
+
+        MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    logiikka.liikutaKyborgeja(mouseX, mouseY);
+                    //console.log(mouseX, "  " , mouseY);    //debug esimerkki IH
+                }
+            }
     }
 
 

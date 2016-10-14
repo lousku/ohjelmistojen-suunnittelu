@@ -7,8 +7,13 @@
 
 void Logiikka::liikutaLauraa()
 {
-    qDebug() << "HYVÄ ILE!!;
+    qDebug() << "HYVÄ ILE!!";
 
+}
+
+void Logiikka::liikutaKyborgeja(double x, double y)
+{
+    qDebug() << x+y;
 }
 
 Logiikka::Logiikka()

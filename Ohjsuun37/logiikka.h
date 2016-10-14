@@ -14,6 +14,7 @@ class Logiikka : public QObject
     Q_OBJECT
 public:
     Q_INVOKABLE void liikutaLauraa();
+    Q_INVOKABLE void liikutaKyborgeja(double x, double y);
 
     Logiikka();
     Logiikka(QQuickView* view);
