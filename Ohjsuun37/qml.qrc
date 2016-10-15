@@ -7,5 +7,6 @@
         <file>GameWindow.qml</file>
         <file>LeftBanner.qml</file>
         <file>TopBanner.qml</file>
+        <file>Este.qml</file>
     </qresource>
 </RCC>

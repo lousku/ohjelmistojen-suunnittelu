@@ -19,6 +19,7 @@ public:
     Logiikka();
     Logiikka(QQuickView* view);
     bool alustaParkkihalli();
+    void alustaEsteet();
     bool lisaaViholliset(int maara);
     bool liikutaToimijaa(Toimija* toimija);
     bool vahingoitaToimijaa(Toimija* toimija, int teho);
@@ -33,6 +34,8 @@ private:
     QList<Vihollinen*> viholliset_;    //Että olioiden poistaminen toimii fiksusti
     QTimer* pelikello_;
     QQuickView* nakyma_;
+
+    QList<QList<int>> esteet_;
 
 public slots:
     void suoritaTekoaly();
