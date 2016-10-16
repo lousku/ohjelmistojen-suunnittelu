@@ -11,7 +11,7 @@ public:
     Kyborgi(double x, double y);
     bool onkoLiikkeessa();
     bool asetaPaamaara(Sijainti sijainti);
-
+    Sijainti annaPaamaara();
 
 private:
     Sijainti paamaara;

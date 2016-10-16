@@ -49,7 +49,7 @@ void Toimija::paivitaTiedot()
 {
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
-    QMLosa_->setProperty("text", elamataso_);
+    QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
 }
 
 

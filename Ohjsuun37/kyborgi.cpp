@@ -23,5 +23,10 @@ bool Kyborgi::onkoLiikkeessa()
 
 bool Kyborgi::asetaPaamaara(Sijainti sijainti)
 {
+    paamaara= sijainti; //asetetaan paamaara -MS
+}
 
+Sijainti Kyborgi::annaPaamaara()
+{
+    return paamaara;
 }

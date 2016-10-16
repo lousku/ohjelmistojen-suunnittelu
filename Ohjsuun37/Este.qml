@@ -5,13 +5,17 @@ Rectangle {
     width: 20
     height: 20
     color: "white"
+    //sijainnit klikkauksen tietojen valittamiseen
+    property int sijaintiY: 0
+    property int sijaintiX: 0
 
     MouseArea {
         anchors.fill: parent
         onClicked: {
             //koordinaatti, jonka tama valittaa ei viela toimi?
-            logiikka.liikutaKyborgeja(mouseX+ x, mouseY+ y);
-            console.log(mouseX, "  " , mouseY);    //debug esimerkki IH
+            logiikka.liikutaKyborgeja(sijaintiX, sijaintiY);
+            console.log(sijaintiX, "  " , sijaintiY);    //debug esimerkki IH
+
         }
     }
 }

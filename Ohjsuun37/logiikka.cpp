@@ -4,16 +4,25 @@
 #include <QQmlProperty>
 #include <QtQuick>
 #include <QDebug>
+#include <iostream>
 
 void Logiikka::liikutaLauraa()
 {
-    qDebug() << "HYVÄ ILE!!";
+    qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
 
 }
-
+//tässä hieman harhaanjohtava nimeäminen, en tiedä oliko
+//alkuperäinen tarkoitus tämä, nyt tässä asetetaan päämäärä
+//ja liikkuminen toteutetaan -toteuta tekoaly-funktiossa -MS
 void Logiikka::liikutaKyborgeja(double x, double y)
 {
-    qDebug() << x+y;
+
+    QList<Kyborgi*>::iterator it;
+    for (it = kyborgit_.begin(); it != kyborgit_.end(); it++){
+        Sijainti kohdesijainti(x,y);
+        (*it)->asetaPaamaara(kohdesijainti);
+
+    }
 }
 
 Logiikka::Logiikka()
@@ -55,7 +64,7 @@ bool Logiikka::alustaParkkihalli()
 
     //alustetaan Kyborgit
     for (int i = 0; i < 3; i++){
-        Kyborgi *kyborgi = new Kyborgi;
+        Kyborgi *kyborgi = new Kyborgi(0,0); //lisasin alkusijainnin -MS
 
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
@@ -71,20 +80,20 @@ bool Logiikka::alustaParkkihalli()
 void Logiikka::alustaEsteet()
 {
     //tahan esteet alustus tyhjaksi, jos tata haluaa kayttaa muutenkin kun kerran -IH
-    esteet_.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet_.append(QList<int> ({0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+    esteet_.append(QList<int> ({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
+    esteet_.append(QList<int> ({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
     esteet_.append(QList<int> ({0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0}));
     esteet_.append(QList<int> ({0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}));
-    esteet_.append(QList<int> ({0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0}));
-    esteet_.append(QList<int> ({0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}));
-    esteet_.append(QList<int> ({0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0}));
-    esteet_.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}));
+    esteet_.append(QList<int> ({0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0}));
+    esteet_.append(QList<int> ({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}));
+    esteet_.append(QList<int> ({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0}));
+    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0}));
     esteet_.append(QList<int> ({0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0}));
     esteet_.append(QList<int> ({0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0}));
     esteet_.append(QList<int> ({0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0}));
     esteet_.append(QList<int> ({0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0}));
     esteet_.append(QList<int> ({0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0}));
-    esteet_.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0}));
+  /*  esteet_.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0}));
     esteet_.append(QList<int> ({0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0}));
     esteet_.append(QList<int> ({0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0}));
     esteet_.append(QList<int> ({0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0}));
@@ -96,7 +105,7 @@ void Logiikka::alustaEsteet()
     esteet_.append(QList<int> ({0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0}));
     esteet_.append(QList<int> ({0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0}));
     esteet_.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-
+*/
 
     for( int i=0; i<esteet_.count(); ++i )
     {
@@ -110,6 +119,9 @@ void Logiikka::alustaEsteet()
                 QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
                 object->setProperty("x", i*20);
                 object->setProperty("y", j*20);
+                object->setProperty("sijaintiX",i*20);
+                object->setProperty("sijaintiY",j*20);
+                qDebug() << i <<j;
             }
         }
     }
@@ -192,10 +204,39 @@ Toimija* Logiikka::iskuetaisyydella(Toimija *toimija)
 
 void Logiikka::suoritaTekoaly()
 {
+
     QList<Kyborgi*>::iterator it;
     int i = 1;
+    //muuttujat kyborgin liikuttamiseksi -MS
+    double nykyinenX;
+    double nykyinenY;
+    double kohdeX;
+    double kohdeY;
+
+    // kay toistaiseksi lapi jokaisen kyvorgin->jokainen liikkuu samaan
+    //pisteeseen TODO yksittaisen liikkuminen -MS
+    //TODO suoraviivaisen liikkumisen algoritmi -MS
     for (it = kyborgit_.begin(); it != kyborgit_.end(); it++){
-        (*it)->liikuta(i, 2);
+
+        nykyinenX = (*it)->annaSijainti().annaX();
+        nykyinenY = (*it)->annaSijainti().annaY();
+        kohdeX = (*it)->annaPaamaara().annaX();
+        kohdeY = (*it)->annaPaamaara().annaY();
+
+        if(kohdeX-nykyinenX > 0.5){
+            (*it)->liikuta(1 ,0);
+        }
+        if(kohdeX-nykyinenX <-0.5){
+            (*it)->liikuta(-1,0);
+        }
+        if(kohdeY-nykyinenY > 0.5){
+            (*it)->liikuta(0,1);
+        }
+        if(kohdeY-nykyinenY < -0.5){
+            (*it)->liikuta(0,-1);
+
+        }
+        
         Toimija* kohde = iskuetaisyydella(*it);
         if (kohde != nullptr){
             vahingoitaToimijaa(kohde, (*it)->annaTeho());
