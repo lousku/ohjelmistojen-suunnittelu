@@ -35,9 +35,10 @@ Logiikka::Logiikka(QQuickView* view):
     nakyma_(view)
 
 {
+    alustaEsteet();
     alustaParkkihalli();
     lisaaViholliset(2);
-    alustaEsteet();
+
 
 }
 
@@ -64,7 +65,8 @@ bool Logiikka::alustaParkkihalli()
 
     //alustetaan Kyborgit
     for (int i = 0; i < 3; i++){
-        Kyborgi *kyborgi = new Kyborgi(0,0); //lisasin alkusijainnin -MS
+        //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
+        Kyborgi *kyborgi = new Kyborgi(i*100,i*40); //lisasin alkusijainnin -MS
 
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
@@ -249,7 +251,7 @@ void Logiikka::suoritaTekoaly()
     QList<Vihollinen*>::iterator iter;
     i = 1;
     for (iter = viholliset_.begin(); iter != viholliset_.end(); iter++){
-        (*iter)->liikuta(i, -1);
+        (*iter)->liikuta(i, 1);
         Toimija* kohde = iskuetaisyydella(*iter);
         if (kohde != nullptr){
             vahingoitaToimijaa(kohde, (*iter)->annaTeho());

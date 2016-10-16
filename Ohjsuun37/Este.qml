@@ -12,7 +12,7 @@ Rectangle {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            //koordinaatti, jonka tama valittaa ei viela toimi?
+            //koordinaatti, jonka tama valittaa on aina 20 kerrroin, +mouseX peraan ja tarkentuu? -IH
             logiikka.liikutaKyborgeja(sijaintiX, sijaintiY);
             console.log(sijaintiX, "  " , sijaintiY);    //debug esimerkki IH
 

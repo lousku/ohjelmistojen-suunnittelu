@@ -24,13 +24,28 @@ void Sijainti::asetaY(double uusi)
 }
 
 void Sijainti::liikutaX(double siirtyma)
-{
-    paikkaX_ += siirtyma;
+{   //pelilaudan sisällä siirtymisen tarkastelu. TODO yleisemmin vakioilla -IH
+    //TODO huolehtiminen sisällä pysymisesta, eli laudalla koordinaatit 1-500, mutta
+    //reunimmaiset on kohdissa 480. Kannattaaako siis koordinaatisto siirtää keskelle kappaleita vai
+    //aina huomioida kappaleen koko -IH
+    if (paikkaX_ + siirtyma < 0){
+        paikkaX_ = 0;
+    }else if (paikkaX_ + siirtyma > 480){
+        paikkaX_ = 480;
+    }else{
+        paikkaX_ += siirtyma;
+    }
 }
 
 void Sijainti::liikutaY(double siirtyma)
 {
-    paikkaY_ += siirtyma;
+    if (paikkaY_ + siirtyma < 0){
+        paikkaY_ = 0;
+    }else if (paikkaY_ + siirtyma > 480){
+        paikkaY_ = 480;
+    }else{
+        paikkaY_ += siirtyma;
+    }
 }
 
 double Sijainti::annaX()
