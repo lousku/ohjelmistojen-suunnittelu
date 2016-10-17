@@ -207,15 +207,14 @@ Toimija* Logiikka::iskuetaisyydella(Toimija *toimija)
     return nullptr;
 }
 
-bool Logiikka::onkoEstetta(Sijainti tarkasteltava)
+bool Logiikka::onkoEstetta(double x, double y)
 {
-    int moneskoX = tarkasteltava.annaX()/20;
-    int moneskoY = tarkasteltava.annaY()/20;
-
+    int moneskoX = x/20;
+    int moneskoY = y/20;
     if (esteet_[moneskoY][moneskoX] == 1){
-        return false;
+        return true;
     }
-    return true;
+    return false;
 
 }
 
@@ -229,14 +228,28 @@ void Logiikka::suoritaTekoaly()
         double etaisyys = (*it)->annaSijainti().laskeEtaisyys(paamaara);
         if (etaisyys < (*it)->annaNopeus()){
             //vähän alkua tarkastelussa, että onko menossa estettä päin.
-            if (not onkoEstetta(paamaara)){
+            if (not onkoEstetta(paamaara.annaX(), paamaara.annaY())){
                 (*it)->liikuta(paamaara);
             }
         }else{
-            double siirtymaX = paamaara.annaX() - (*it)->annaSijainti().annaX();
-            double siirtymaY = paamaara.annaY() - (*it)->annaSijainti().annaY();
+            double nykyinenX = (*it)->annaSijainti().annaX();
+            double nykyinenY = (*it)->annaSijainti().annaY();
             double suhde = (*it)->annaNopeus()/etaisyys;
-            (*it)->liikuta(siirtymaX*suhde, siirtymaY*suhde);
+
+            double siirtymaX = (paamaara.annaX() - nykyinenX)*suhde;
+            double siirtymaY = (paamaara.annaY() - nykyinenY)*suhde;
+
+            //se tapaus, jossa este ei tule tielle -IH
+            if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY + siirtymaY)){
+                (*it)->liikuta(siirtymaX, siirtymaY);
+            }
+            //ne tapaukset, joissa vielä toiseen suuntaan voisi liikkua -IH
+            //pitäisikö silloin toisen suunnan liikkuma olla koko nopeuden verran? nyt melko hidas
+            else if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY)){
+                (*it)->liikuta(siirtymaX, 0);
+            }else if (not onkoEstetta(nykyinenX, nykyinenY + siirtymaY)){
+                (*it)->liikuta(0, siirtymaY);
+            }
         }
 
         Toimija* kohde = iskuetaisyydella(*it);

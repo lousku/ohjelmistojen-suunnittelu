@@ -26,7 +26,7 @@ public:
     bool luoToimija(); //kuka tätä kutsuu ja miten tiedetään mikä toimija
     void liikutaToimijaaRandomisti(Toimija* toimija);
     Toimija *iskuetaisyydella(Toimija* tarkasteltava);
-    bool onkoEstetta(Sijainti tarkasteltava);
+    bool onkoEstetta(double x, double y);
 
 
 private:

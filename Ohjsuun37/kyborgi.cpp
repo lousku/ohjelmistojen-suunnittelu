@@ -20,7 +20,7 @@ Kyborgi::Kyborgi(double x, double y, int nopeus):
     Tekoalylliset(x,y,nopeus)
 {
     //alustaa tällähetkellä sijainnin, jossa on este -IH
-    paamaara_ = Sijainti(20,60);
+    paamaara_ = Sijainti(25,70);
 }
 
 bool Kyborgi::onkoLiikkeessa()
