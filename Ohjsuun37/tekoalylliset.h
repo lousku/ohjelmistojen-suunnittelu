@@ -10,6 +10,7 @@ public:
     virtual ~Tekoalylliset();
     Tekoalylliset();
     Tekoalylliset(double x, double y);
+    Tekoalylliset(double x, double y, int nopeus);
 private:
     int iskuetaisyys_;
 };

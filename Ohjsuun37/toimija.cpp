@@ -13,8 +13,19 @@ Toimija::Toimija():
 }
 
 Toimija::Toimija(double x, double y):
-    sijainti_(x,y), elamataso_(100), teho_(1)
+    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1)
 {
+}
+
+Toimija::Toimija(double x, double y, int nopeus):
+    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus)
+{
+
+}
+
+void Toimija::liikuta(Sijainti sijainti)
+{
+    sijainti_ = sijainti;
 }
 
 void Toimija::liikuta(double x, double y)
@@ -43,6 +54,11 @@ Sijainti Toimija::annaSijainti()
 int Toimija::annaTeho()
 {
     return teho_;
+}
+
+int Toimija::annaNopeus()
+{
+    return nopeus_;
 }
 
 void Toimija::paivitaTiedot()

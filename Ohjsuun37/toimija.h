@@ -12,11 +12,14 @@ public:
     virtual ~Toimija();
     Toimija();
     Toimija(double x, double y);
+    Toimija(double x, double y, int nopeus);
+    void liikuta(Sijainti sijainti);
     void liikuta(double x, double y);
     void muutaElamatasoa(int arvo);
     void asetaQMLosa(QObject *objekti);
     Sijainti annaSijainti();
     int annaTeho();
+    int annaNopeus();
     void paivitaTiedot();
 
 private:

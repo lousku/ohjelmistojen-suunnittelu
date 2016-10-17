@@ -9,12 +9,13 @@ public:
     virtual ~Kyborgi();
     Kyborgi();
     Kyborgi(double x, double y);
+    Kyborgi(double x, double y, int nopeus);
     bool onkoLiikkeessa();
     bool asetaPaamaara(Sijainti sijainti);
     Sijainti annaPaamaara();
 
 private:
-    Sijainti paamaara;
+    Sijainti paamaara_;
 };
 
 #endif // KYBORGI_H
