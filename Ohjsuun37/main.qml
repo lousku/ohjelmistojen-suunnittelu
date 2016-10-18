@@ -2,15 +2,23 @@ import QtQuick 2.5
 import QtQuick.Window 2.2
 
 Item {
-    objectName: "jee"
+    objectName: "parkkihalli"
     width: 600
     height: 600
-    focus: true  //Ratkaiseva, jotta painallus huomataan IH
+    focus: true  //Ratkaiseva, jotta painallus huomataan -IH
 
+    //TODO valittaa jotain mika kertoo painalluksen -IH
     Keys.onLeftPressed: {
         logiikka.liikutaLauraa();
     }
     Keys.onRightPressed: {
+        logiikka.liikutaLauraa();
+    }
+    Keys.onUpPressed: {
+        logiikka.liikutaLauraa();
+    }
+    Keys.onDownPressed: {
+        logiikka.liikutaLauraa();
     }
 
     //omat tiedostot reunabannerille, sisältää toistaiseksi sekä id että objName -MS

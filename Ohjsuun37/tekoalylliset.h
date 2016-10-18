@@ -11,6 +11,7 @@ public:
     Tekoalylliset();
     Tekoalylliset(double x, double y);
     Tekoalylliset(double x, double y, int nopeus);
+    int annaIskuetaisyys();
 private:
     int iskuetaisyys_;
 };

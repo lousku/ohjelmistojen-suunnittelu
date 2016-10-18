@@ -9,23 +9,23 @@ Kyborgi::Kyborgi()
 {
 
 }
-//tänne päämäärän alustus, mutta mihin se alustetaan? - Ilkka
+
+//alustaa nyt saman paamaaran, kuin sijainti on -IH
 Kyborgi::Kyborgi(double x, double y):
-    Tekoalylliset(x,y)
+    Tekoalylliset(x,y), paamaara_(x,y)
 {
 
 }
 
 Kyborgi::Kyborgi(double x, double y, int nopeus):
-    Tekoalylliset(x,y,nopeus)
+    Tekoalylliset(x,y,nopeus), paamaara_(x,y)
 {
-    //alustaa tällähetkellä sijainnin, jossa on este -IH
-    paamaara_ = Sijainti(25,70);
+
 }
 
 bool Kyborgi::onkoLiikkeessa()
 {
-
+    return paamaara_ != annaSijainti();
 }
 
 bool Kyborgi::asetaPaamaara(Sijainti sijainti)

@@ -6,6 +6,7 @@ Rectangle {
     height: 20
     color: "orange"
 
+
     property alias text: teksti.text
 
     Text {

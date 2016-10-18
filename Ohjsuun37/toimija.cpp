@@ -3,7 +3,8 @@
 
 Toimija::~Toimija()
 {
-
+    //tama poistaa toimijan myos kartalta -IH
+    delete QMLosa_;
 }
 
 Toimija::Toimija():
@@ -59,6 +60,11 @@ int Toimija::annaTeho()
 int Toimija::annaNopeus()
 {
     return nopeus_;
+}
+
+int Toimija::annaElamataso()
+{
+    return elamataso_;
 }
 
 void Toimija::paivitaTiedot()

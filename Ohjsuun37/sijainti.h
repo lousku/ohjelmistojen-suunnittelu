@@ -12,9 +12,11 @@ public:
     void asetaY(double uusi);
     void liikutaX(double siirtyma);
     void liikutaY(double siirtyma);
-    double annaX();
-    double annaY();
-    double laskeEtaisyys(Sijainti paamaara);
+    double annaX() const;
+    double annaY() const;
+    double laskeEtaisyys(Sijainti paamaara) const;
+    bool operator ==(const Sijainti &sijainti);
+    bool operator !=(const Sijainti &sijainti);
 
 private:
     double paikkaY_;

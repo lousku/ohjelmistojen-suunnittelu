@@ -3,8 +3,6 @@
 
 #include "toimija.h"
 
-            //määritteleekö tämä minkäosan luokkaperii
-            //pitäisikö siis olla private?
 class Laura : public Toimija
 {
 

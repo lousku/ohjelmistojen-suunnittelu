@@ -48,19 +48,29 @@ void Sijainti::liikutaY(double siirtyma)
     }
 }
 
-double Sijainti::annaX()
+double Sijainti::annaX() const
 {
     return paikkaX_;
 }
 
-double Sijainti::annaY()
+double Sijainti::annaY() const
 {
     return paikkaY_;
 }
 
-double Sijainti::laskeEtaisyys(Sijainti paamaara)
+double Sijainti::laskeEtaisyys(Sijainti paamaara) const
 {
     double uusiX = paamaara.annaX();
     double uusiY = paamaara.annaY();
     return sqrt(pow((uusiX-paikkaX_),2) + pow((uusiY-paikkaY_),2));
+}
+
+bool Sijainti::operator==(const Sijainti &sijainti)
+{
+    return (this->paikkaX_==sijainti.annaX() && this->paikkaY_ == sijainti.annaY());
+}
+
+bool Sijainti::operator !=(const Sijainti &sijainti)
+{
+    return !operator ==(sijainti);
 }

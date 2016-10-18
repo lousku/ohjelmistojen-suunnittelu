@@ -5,6 +5,7 @@ Rectangle {
     width: 20
     height: 20
     color: "purple"
+    radius: width*0.5  //muutin lauran lapalla palloksi -IH
 
     property alias text: teksti.text
 

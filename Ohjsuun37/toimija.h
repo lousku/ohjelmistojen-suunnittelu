@@ -20,6 +20,7 @@ public:
     Sijainti annaSijainti();
     int annaTeho();
     int annaNopeus();
+    int annaElamataso();
     void paivitaTiedot();
 
 private:

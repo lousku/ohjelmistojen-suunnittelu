@@ -9,6 +9,7 @@ public:
     virtual ~Ammus();
     Ammus();
     bool etene();
+
 };
 
 #endif // AMMUS_H
