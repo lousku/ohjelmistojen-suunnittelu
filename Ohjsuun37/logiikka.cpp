@@ -18,9 +18,10 @@ void Logiikka::asetaKyborginPaamaara(double x, double y)
 
     QList<Kyborgi*>::iterator it;
     for (it = kyborgit_.begin(); it != kyborgit_.end(); it++){
-        Sijainti kohdesijainti(x,y);
-        (*it)->asetaPaamaara(kohdesijainti);
-
+        if (*it == kaskettava_){
+            Sijainti kohdesijainti(x,y);
+            (*it)->asetaPaamaara(kohdesijainti);
+        }
     }
 }
 
@@ -167,11 +168,24 @@ int Logiikka::vahingoitaToimijaa(Toimija *toimija, int teho)
 
 void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
 {
-    //TODO tarkastelu, etta voiko ruutuun liikkua, ehka while sisaan, jotta jossain vaiheessa voi?
-    //TODO parempi toteutus muutenkin -IH
-    int x = -1 + rand() % 3;
-    int y = -1 + rand() % 3;
-    toimija->liikuta(x,y);
+    //TODO parempi toteutus  -IH
+    int i = 0;
+    double sijaintiX = toimija->annaSijainti().annaX();
+    double sijaintiY = toimija->annaSijainti().annaY();
+    while (true){
+        int x = -1 + rand() % 3;
+        int y = -1 + rand() % 3;
+        if (not onkoEstetta(sijaintiX + x, sijaintiY + y)){
+            toimija->liikuta(x,y);
+            break;
+        }else if (i > 10){
+            //debuq mielessä, kuinka usein näin käy
+            qDebug() << "ei meinaa löytyä, minne menis";
+            break;
+        }
+        i++;
+    }
+
 }
 
 Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
@@ -262,6 +276,17 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
         }
     }
     return onkoLinjallaEstetta;
+}
+
+void Logiikka::asetaKaskettava(int tunniste)
+{
+    for (auto kyborgi: kyborgit_){
+        if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
+            kaskettava_ = kyborgi;
+            qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
+            return;
+        }
+    }
 }
 
 

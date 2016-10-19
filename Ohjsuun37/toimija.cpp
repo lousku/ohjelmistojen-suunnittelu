@@ -67,11 +67,17 @@ int Toimija::annaElamataso()
     return elamataso_;
 }
 
+QObject *Toimija::annaQMLosa()
+{
+    return QMLosa_;
+}
+
 void Toimija::paivitaTiedot()
 {
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
+
 }
 
 

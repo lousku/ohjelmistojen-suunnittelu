@@ -21,6 +21,7 @@ public:
     int annaTeho();
     int annaNopeus();
     int annaElamataso();
+    QObject* annaQMLosa();
     void paivitaTiedot();
 
 private:

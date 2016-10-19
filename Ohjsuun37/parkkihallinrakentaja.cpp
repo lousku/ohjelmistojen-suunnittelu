@@ -48,11 +48,12 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     QList<Kyborgi*> kyborgit;
     for (int i = 1; i < 4; i++){
         //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
-        Kyborgi *kyborgi = new Kyborgi(i*100,i*40,i); //lisasin alkusijainnin -MS
+        Kyborgi *kyborgi = new Kyborgi(i*100,i*40, 4); //lisasin alkusijainnin -MS
 
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
         QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+        object->setProperty("tunniste", i);
         kyborgi->asetaQMLosa(object);
 
         kyborgit.append(kyborgi);
