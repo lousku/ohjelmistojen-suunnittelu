@@ -121,9 +121,7 @@ bool Logiikka::liikutaKyborgia(Kyborgi *kyborgi)
             //koska halutaan tarkastelun, etta onko kyborgi liikkeessa onnistuvan
             kyborgi->asetaPaamaara(kyborgi->annaSijainti());
         }
-
     }
-
 }
 
 bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
@@ -131,8 +129,24 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
     //TODO tahan lahimman kyborgin/lauran loytaminen suunnakseen ja liikkuminen
     //ja jopa mahdollinen esteiden tarkastus algoritmi -> kasky randomiin liikkumiseen -IH
 
+    /* 1. tarkista onko kyborgia tai lauraa "näkyvissä"
+     * 2. jos vain yksi näkyvissa, liiku kohti
+     * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
+     */
 
-    liikutaToimijaaRandomisti(vihollinen);
+    QList<Kyborgi*> nakyvatKyborgit;
+
+    //kaydaan lapi jokainen kyborgi
+    for(int i = 0;i < kyborgit_.size();i++){
+
+        //jos kyborgi nakyy, liikutaan kohti, muuten, käyskennellaan
+        if (onkoValillaEstetta(vihollinen,kyborgit_.at(i))){
+            vihollinen->liikuta(0,0);
+        }
+        else{
+            vihollinen->liikuta(-0.1,0);
+        }
+    }
 }
 
 bool Logiikka::alustaParkkihalli()
@@ -305,6 +319,40 @@ bool Logiikka::onkoEstetta(double x, double y)
     }
     return false;
 }
+
+bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
+{
+    //TODO tahan lahimman kyborgin/lauran loytaminen suunnakseen ja liikkuminen
+    //ja jopa mahdollinen esteiden tarkastus algoritmi -> kasky randomiin liikkumiseen -IH
+
+    /* 1. tarkista onko kyborgia tai lauraa "näkyvissä"
+     * 2. jos vain yksi näkyvissa, liiku kohti
+     * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
+     */
+    Sijainti lahtoSijainti = toimija1->annaSijainti();
+    Sijainti kohdesijainti = toimija2->annaSijainti();
+
+    double xSiirtyma;
+    double ySiirtyma;
+    double tutkittavaX;
+    double tutkittavaY;
+    bool onkoLinjallaEstetta = false;
+
+    xSiirtyma = kohdesijainti.annaX()-lahtoSijainti.annaX();
+    ySiirtyma = kohdesijainti.annaY()-lahtoSijainti.annaY();
+
+    //pilkotaan "siirtymajana" kymmeneen otantapisteeseen
+    //ja tutkitaan nakyyko kyborgi aka onko linjalla esteita
+    for(int j = 1; j < 11; j++){
+        tutkittavaX = lahtoSijainti.annaX()+(xSiirtyma/10*j);
+        tutkittavaY = lahtoSijainti.annaY()+(ySiirtyma/10*j);
+        if(onkoEstetta(tutkittavaX,tutkittavaY)){
+            onkoLinjallaEstetta = true;
+        }
+    }
+    return onkoLinjallaEstetta;
+}
+
 
 void Logiikka::suoritaTekoaly()
 {
