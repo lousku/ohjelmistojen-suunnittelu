@@ -52,7 +52,7 @@ Logiikka::Logiikka(QQuickView* view)
 bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
 {
     if (kyborgi->onkoLiikkeessa()){
-        liikutaKyborgia(kyborgi);
+        liikutaToimijaa(kyborgi);
     }else{
         Toimija* kohde = iskuetaisyydella(kyborgi);
         if (kohde != nullptr){
@@ -91,23 +91,23 @@ bool Logiikka::kaskytaVihollista(Vihollinen *vihollinen)
     }
 }
 
-bool Logiikka::liikutaKyborgia(Kyborgi *kyborgi)
+bool Logiikka::liikutaToimijaa(Toimija* toimija)
 {
-    Sijainti paamaara = kyborgi->annaPaamaara();
+    Sijainti paamaara = toimija->annaPaamaara();
 
-    double etaisyys = kyborgi->annaSijainti().laskeEtaisyys(paamaara);
-    if (etaisyys < kyborgi->annaNopeus()){
+    double etaisyys = toimija->annaSijainti().laskeEtaisyys(paamaara);
+    if (etaisyys < toimija->annaNopeus()){
 
         //huomiona sellainen, että voiko tänne edes joutua, miten paamaara asetettaisiin esteen paalle -IH
         if (not onkoEstetta(paamaara.annaX(), paamaara.annaY())){
-            kyborgi->liikuta(paamaara);
+            toimija->liikuta(paamaara);
         }else{
             qDebug() << "yrittaa paasta esteen paalle?" ;
         }
     }else{
-        double nykyinenX = kyborgi->annaSijainti().annaX();
-        double nykyinenY = kyborgi->annaSijainti().annaY();
-        double suhde = kyborgi->annaNopeus()/etaisyys;
+        double nykyinenX = toimija->annaSijainti().annaX();
+        double nykyinenY = toimija->annaSijainti().annaY();
+        double suhde = toimija->annaNopeus()/etaisyys;
 
         double siirtymaX = (paamaara.annaX() - nykyinenX)*suhde;
         double siirtymaY = (paamaara.annaY() - nykyinenY)*suhde;
@@ -115,18 +115,18 @@ bool Logiikka::liikutaKyborgia(Kyborgi *kyborgi)
 
         //se tapaus, jossa este ei tule tielle -IH
         if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY + siirtymaY)){
-            kyborgi->liikuta(siirtymaX, siirtymaY);
+            toimija->liikuta(siirtymaX, siirtymaY);
         }
         //ne tapaukset, joissa vielä toiseen suuntaan voisi liikkua -IH
         //pitäisikö silloin toisen suunnan liikkuma olla koko nopeuden verran? nyt melko hidas
         else if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY)){
-            kyborgi->liikuta(siirtymaX, 0);
+            toimija->liikuta(siirtymaX, 0);
         }else if (not onkoEstetta(nykyinenX, nykyinenY + siirtymaY)){
-            kyborgi->liikuta(0, siirtymaY);
+            toimija->liikuta(0, siirtymaY);
         }else{
             //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
             //koska halutaan tarkastelun, etta onko kyborgi liikkeessa onnistuvan
-            kyborgi->asetaPaamaara(kyborgi->annaSijainti());
+            toimija->asetaPaamaara(toimija->annaSijainti());
         }
     }
 }

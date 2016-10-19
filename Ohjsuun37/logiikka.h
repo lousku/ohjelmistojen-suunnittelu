@@ -24,7 +24,7 @@ public:
 
     bool kaskytaKyborgia(Kyborgi* kyborgi);
     bool kaskytaVihollista(Vihollinen* vihollinen);
-    bool liikutaKyborgia(Kyborgi* kyborgi);
+    bool liikutaToimijaa(Toimija* toimija);
     bool liikutaVihollista(Vihollinen* vihollinen);
     int vahingoitaToimijaa(Toimija* toimija, int teho);
     void liikutaToimijaaRandomisti(Toimija* toimija);
