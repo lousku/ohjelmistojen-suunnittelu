@@ -28,6 +28,7 @@ public:
     void liikutaToimijaaRandomisti(Toimija* toimija);
     Toimija *iskuetaisyydella(Tekoalylliset* tarkasteltava);
     bool onkoEstetta(double x, double y);
+    bool onkoValillaEstetta(Toimija* toimija1, Toimija* toimija2);
 
     //siirtyy
     bool alustaParkkihalli();
