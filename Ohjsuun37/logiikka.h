@@ -17,19 +17,21 @@ class Logiikka : public QObject
 public:
     Q_INVOKABLE void liikutaLauraa();
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
+    Q_INVOKABLE void asetaKaskettava(int tunniste);
 
     Logiikka();
     Logiikka(QQuickView* view);
 
     bool kaskytaKyborgia(Kyborgi* kyborgi);
     bool kaskytaVihollista(Vihollinen* vihollinen);
-    bool liikutaKyborgia(Kyborgi* kyborgi);
+    bool liikutaToimijaa(Toimija* toimija);
     bool liikutaVihollista(Vihollinen* vihollinen);
     int vahingoitaToimijaa(Toimija* toimija, int teho);
     void liikutaToimijaaRandomisti(Toimija* toimija);
     Toimija *iskuetaisyydella(Tekoalylliset* tarkasteltava);
     bool onkoEstetta(double x, double y);
     bool onkoValillaEstetta(Toimija* toimija1, Toimija* toimija2);
+
 
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
@@ -38,6 +40,7 @@ private:
     QList<Ammus*> ammukset_;  //lisasin tanne myos ammukset -IH
     QTimer* pelikello_;
     QQuickView* nakyma_;
+    Kyborgi* kaskettava_;
 
     QList<QList<int>> esteet_;
 

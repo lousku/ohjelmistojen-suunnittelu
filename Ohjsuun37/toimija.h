@@ -21,7 +21,10 @@ public:
     int annaTeho();
     int annaNopeus();
     int annaElamataso();
+    QObject* annaQMLosa();
     void paivitaTiedot();
+    bool asetaPaamaara(Sijainti sijainti);
+    Sijainti annaPaamaara();
 
 private:
     int teho_;
@@ -30,6 +33,7 @@ private:
     int elamataso_;
     Sijainti sijainti_;
     QObject* QMLosa_;
+    Sijainti paamaara_;
 
 };
 
