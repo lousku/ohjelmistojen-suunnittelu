@@ -3,6 +3,7 @@
 #include <QQmlContext>  //tarvitaa, jotta ContextPropertyn linkitys onnistuu IH
 
 #include "logiikka.h"
+#include "parkkihallinrakentaja.h"
 
 int main(int argc, char *argv[])
 {

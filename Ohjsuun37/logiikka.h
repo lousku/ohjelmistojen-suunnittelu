@@ -5,6 +5,7 @@
 #include "kyborgi.h"
 #include "vihollinen.h"
 #include "ammus.h"
+#include "parkkihallinrakentaja.h"
 
 #include <QTimer>
 #include <QObject>
@@ -29,12 +30,6 @@ public:
     Toimija *iskuetaisyydella(Tekoalylliset* tarkasteltava);
     bool onkoEstetta(double x, double y);
     bool onkoValillaEstetta(Toimija* toimija1, Toimija* toimija2);
-
-    //siirtyy
-    bool alustaParkkihalli();
-    void alustaEsteet();
-    bool lisaaViholliset(int maara);
-
 
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim

@@ -29,18 +29,24 @@ Logiikka::Logiikka()
 
 }
 
-Logiikka::Logiikka(QQuickView* view):
-
-    nakyma_(view)
-
+Logiikka::Logiikka(QQuickView* view)
 {
-    alustaEsteet();
-    alustaParkkihalli();
-    lisaaViholliset(2);
+    nakyma_ = view;
+    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
+    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
+    ParkkihallinRakentaja alustus(view);
+    pelikello_ = alustus.alustaPelikello();
+    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
+    esteet_ = alustus.alustaEsteet();
 
-    //TODO taalla kutsuu ulkoisen luokan funktioita, jotka tuottavat parkkihallipelin oliot -IH
+    laura_ = alustus.alustaLaura();
+    kyborgit_ = alustus.alustaKyborgit();
+
+    //mista saadan tieto, etta kuinka monta vihollista luodaan?
+    viholliset_ = alustus.lisaaViholliset(2);
 
 }
+
 
 bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
 {
@@ -134,118 +140,20 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
      * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
      */
 
-    QList<Kyborgi*> nakyvatKyborgit;
-
-    //kaydaan lapi jokainen kyborgi
+    QList<Kyborgi*> nakyvatKyborgit; //mita talla tehdaan? -IH
+    //kaydaan lapi jokainen kyborgi -> eli siis liikutaan 3kertaa yhden vuoron aikana
+    //koska kolme kyborgia, ratkaisu tähän -IH
     for(int i = 0;i < kyborgit_.size();i++){
+
 
         //jos kyborgi nakyy, liikutaan kohti, muuten, käyskennellaan
         if (onkoValillaEstetta(vihollinen,kyborgit_.at(i))){
-            vihollinen->liikuta(0,0);
+            liikutaToimijaaRandomisti(vihollinen);
         }
         else{
             vihollinen->liikuta(-0.1,0);
         }
     }
-}
-
-bool Logiikka::alustaParkkihalli()
-{
-    pelikello_ = new QTimer(this);
-    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
-    pelikello_->setInterval(50);
-    pelikello_->start();
-
-
-
-    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-
-    //alustetaan Laura
-    laura_ = new Laura(20,20);
-    QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
-    QObject *object = component.create();
-    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
-
-
-
-    laura_->asetaQMLosa(object);
-
-    //alustetaan Kyborgit
-    for (int i = 1; i < 4; i++){
-        //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
-        Kyborgi *kyborgi = new Kyborgi(i*100,i*40,i); //lisasin alkusijainnin -MS
-
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
-        QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
-        kyborgi->asetaQMLosa(object);
-
-        kyborgit_.append(kyborgi);
-    }
-    return true;
-
-}
-
-void Logiikka::alustaEsteet()
-{
-    esteet_.append(QList<int> ({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}));
-    esteet_.append(QList<int> ({1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}));
-
-    for( int i=0; i<esteet_.count(); ++i )
-    {
-        for( int j=0; j<esteet_[i].count(); ++j )
-        {
-            if (esteet_[i][j] == 0){
-                QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Este.qml")));
-                QObject *object = component.create();
-                QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-                QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
-                object->setProperty("x", j*20);
-                object->setProperty("y", i*20);
-            }
-        }
-    }
-}
-
-bool Logiikka::lisaaViholliset(int maara)
-{
-    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-
-    for (int i = 0; i < maara; i++){
-        Vihollinen *vihollinen = new  Vihollinen(150,200);
-
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
-        QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
-        vihollinen->asetaQMLosa(object);
-
-        viholliset_.append(vihollinen);
-    }
-    return true;
 }
 
 //vaihdoin palauttamaan jaljelle jaaneen elamatason -IH
@@ -329,7 +237,7 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
      * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
      */
     Sijainti lahtoSijainti = toimija1->annaSijainti();
-    Sijainti kohdesijainti = toimija2->annaSijainti();
+    Sijainti kohdeSijainti = toimija2->annaSijainti();
 
     double xSiirtyma;
     double ySiirtyma;
@@ -337,12 +245,16 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
     double tutkittavaY;
     bool onkoLinjallaEstetta = false;
 
-    xSiirtyma = kohdesijainti.annaX()-lahtoSijainti.annaX();
-    ySiirtyma = kohdesijainti.annaY()-lahtoSijainti.annaY();
+    xSiirtyma = kohdeSijainti.annaX()-lahtoSijainti.annaX();
+    ySiirtyma = kohdeSijainti.annaY()-lahtoSijainti.annaY();
 
     //pilkotaan "siirtymajana" kymmeneen otantapisteeseen
     //ja tutkitaan nakyyko kyborgi aka onko linjalla esteita
-    for(int j = 1; j < 11; j++){
+
+    //vaihdoin taman niin, etta pilkkoon x maaraan, mika lasketaan palikan
+    //koolla jakamalla, eli yksikaan este ei voi jaada huomaamatta -IH
+    int maara = (lahtoSijainti.laskeEtaisyys(kohdeSijainti))/20;
+    for(int j = 1; j < maara; j++){
         tutkittavaX = lahtoSijainti.annaX()+(xSiirtyma/10*j);
         tutkittavaY = lahtoSijainti.annaY()+(ySiirtyma/10*j);
         if(onkoEstetta(tutkittavaX,tutkittavaY)){

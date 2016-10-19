@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     vihollinen.cpp \
     sijainti.cpp \
     logiikka.cpp \
-    tekoalylliset.cpp
+    tekoalylliset.cpp \
+    parkkihallinrakentaja.cpp
 
 RESOURCES += qml.qrc
 
@@ -33,4 +34,5 @@ HEADERS += \
     kyborgi.h \
     vihollinen.h \
     sijainti.h \
-    logiikka.h
+    logiikka.h \
+    parkkihallinrakentaja.h
