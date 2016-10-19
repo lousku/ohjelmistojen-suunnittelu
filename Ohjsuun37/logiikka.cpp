@@ -141,28 +141,62 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
      * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
      */
 
-    Toimija* lahinHyvis = nullptr;
+    QList<Toimija*> nakyvatToimijat;
+    Toimija* lahinNakyva;
     double etaisyysLahimpaan = 1000;
-    Sijainti omaSijainti = vihollinen->annaSijainti();
 
-    //etsitaan lahin kyborgi/laura
-    //koska kolme kyborgia, ratkaisu tähän -IH
+    Sijainti omaSijainti = vihollinen->annaSijainti();
+    Sijainti hyviksenSijainti;
+    //etsitaan nakyvat kyborgit
     for(int i = 0;i < kyborgit_.size();i++){
-        if(etaisyysLahimpaan > kyborgit_.at(i)->annaSijainti().laskeEtaisyys(omaSijainti) ){
-            lahinHyvis = kyborgit_.at(i);
-            etaisyysLahimpaan = kyborgit_.at(i)->annaSijainti().laskeEtaisyys(omaSijainti);
+        if(!onkoValillaEstetta(vihollinen,kyborgit_.at(i)) ){
+            nakyvatToimijat.append(kyborgit_.at(i) );
         }
     }
+    //tutkitaan nakyyko laura
+    if(!onkoValillaEstetta(vihollinen,laura_)){
+        nakyvatToimijat.append(laura_);
+    }
+    //jos ketaan ei nakyviissa ja jaljella ei liikuttavaa edelliseen nahtyyn
 
-        //jos kyborgi nakyy, liikutaan kohti, muuten, käyskennellaan
-        if (onkoValillaEstetta(vihollinen,lahinHyvis)){
-            liikutaToimijaaRandomisti(vihollinen);
+    //jos vain yksi nakyvissa, asetetaan ainoa kohteeksi
+    if(nakyvatToimijat.size() == 1 ){
+        lahinNakyva = nakyvatToimijat.at(0);
+    }
+    //jos useampi nakyvissa, etsitaan lahin
+    else if(nakyvatToimijat.size() > 1){
+        for(int i = 0;i < nakyvatToimijat.size();i++){
+            hyviksenSijainti = nakyvatToimijat.at(i)->annaSijainti();
+            if(etaisyysLahimpaan > omaSijainti.laskeEtaisyys(hyviksenSijainti)){
+                etaisyysLahimpaan = omaSijainti.laskeEtaisyys(hyviksenSijainti);
+                lahinNakyva = nakyvatToimijat.at(i);
+            }
         }
-        else{
-            //TODO paamara toteutus toimijasta TODO
+    }
+    //jos ei liikkeita kohteeseen jaljella eika ketaan nykvissa->random liike
+     if((omaSijainti.annaX() != vihollinen->annaPaamaara().annaX() or
+        omaSijainti.annaY() != vihollinen->annaPaamaara().annaY()) and
+         nakyvatToimijat.size() == 0){
 
-            vihollinen->liikuta(-0.1,0);
+         liikutaToimijaa(vihollinen);
+    }
+
+    else if(nakyvatToimijat.size() == 0 and vihollinen->liikkeidenMaara_ == 0){
+        liikutaToimijaaRandomisti(vihollinen);
+    }
+
+    else{
+        if(vihollinen->liikkeidenMaara_ == 0){
+            vihollinen->liikkeidenMaara_ = 5;
+            vihollinen->asetaPaamaara(lahinNakyva->annaSijainti());
+            qDebug() << "Vihu näkee siut!";
         }
+
+        liikutaToimijaa(vihollinen);
+        vihollinen->liikkeidenMaara_--;
+    }
+
+
 
 }
 

@@ -30,6 +30,7 @@ private:
     int teho_;
     int nopeus_;
     int suunta_;
+
     int elamataso_;
     Sijainti sijainti_;
     QObject* QMLosa_;
