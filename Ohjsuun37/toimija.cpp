@@ -14,12 +14,12 @@ Toimija::Toimija():
 }
 
 Toimija::Toimija(double x, double y):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1), paamaara_(x,y)
+    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1), paamaara_(x,y), suunta_(0)
 {
 }
 
 Toimija::Toimija(double x, double y, int nopeus):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus), paamaara_(x,y)
+    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus), paamaara_(x,y), suunta_(0)
 {
 
 }
@@ -77,6 +77,7 @@ void Toimija::paivitaTiedot()
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
+    QMLosa_->setProperty("rotation", suunta_);
 
 }
 

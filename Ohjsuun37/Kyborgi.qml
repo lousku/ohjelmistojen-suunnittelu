@@ -5,9 +5,9 @@ Rectangle {
     width: 20
     height: 20
     color: "yellow"
-    property int tunniste: -1
 
     property alias text: teksti.text
+    property int tunniste: -1
 
     Text {
         id: teksti

@@ -229,11 +229,11 @@ bool Logiikka::onkoEstetta(double x, double y)
 {
     //ylakulman ripustuksella +19 oikein, jos vaihdetaan keskelle, niin nama muuttuu.
     //siina tapauksessa +-9 variaatiot -IH
-    if (esteet_[int(y/20)][int(x/20)] == 1){
+    if (esteet_[int((y)/20)][int((x)/20)] == 1){
         return true;
-    }else if (esteet_[int(y/20)][int((x+19)/20)] == 1){
+    }else if (esteet_[int((y)/20)][int((x+19)/20)] == 1){
         return true;
-    }else if (esteet_[int((y+19)/20)][int(x/20)] == 1){
+    }else if (esteet_[int((y+19)/20)][int((x)/20)] == 1){
         return true;
     }else if (esteet_[int((y+19)/20)][int((x+19)/20)] == 1){
         return true;
