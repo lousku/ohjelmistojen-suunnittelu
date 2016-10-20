@@ -13,7 +13,7 @@ public:
     Toimija();
     Toimija(double x, double y);
     Toimija(double x, double y, int nopeus);
-    void liikuta(Sijainti sijainti);
+    bool liikuta(Sijainti sijainti);
     bool liikuta(double x, double y);
     void muutaElamatasoa(int arvo);
     void asetaQMLosa(QObject *objekti);
