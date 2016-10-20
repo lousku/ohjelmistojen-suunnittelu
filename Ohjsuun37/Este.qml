@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Rectangle {
+Rectangle{
     id: este
     width: 20
     height: 20

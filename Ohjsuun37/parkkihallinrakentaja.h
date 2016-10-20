@@ -22,8 +22,6 @@ public:
     QList<Kyborgi*> alustaKyborgit();
     QList<Vihollinen*> lisaaViholliset(int maara);
 
-
-
 private:
     QQuickView* nakyma_;
 

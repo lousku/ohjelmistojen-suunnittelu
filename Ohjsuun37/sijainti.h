@@ -10,8 +10,8 @@ public:
 
     void asetaX(double uusi);
     void asetaY(double uusi);
-    void liikutaX(double siirtyma);
-    void liikutaY(double siirtyma);
+    bool liikutaX(double siirtyma);
+    bool liikutaY(double siirtyma);
     double annaX() const;
     double annaY() const;
     double laskeEtaisyys(Sijainti paamaara) const;

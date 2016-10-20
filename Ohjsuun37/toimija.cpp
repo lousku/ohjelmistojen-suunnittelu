@@ -12,30 +12,32 @@ Toimija::~Toimija()
 Toimija::Toimija():
     sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0)
 {
-    //paivitaTiedot();  //miksi kaatuu jos haluaa paivittaa jo tassa?
 }
 
 Toimija::Toimija(double x, double y):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1), suunta_(0)
+    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1), paamaara_(x,y), suunta_(0)
 {
 }
 
 Toimija::Toimija(double x, double y, int nopeus):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus)
+    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus), paamaara_(x,y), suunta_(0)
 {
 
 }
 
+//voi ilmeisesti liikkua yli alueelta?!
 void Toimija::liikuta(Sijainti sijainti)
 {
     sijainti_ = sijainti;
 }
 
-void Toimija::liikuta(double x, double y)
+bool Toimija::liikuta(double x, double y)
 {
-    sijainti_.liikutaX(x);
-    sijainti_.liikutaY(y);
+    bool liikuttuX = sijainti_.liikutaX(x);
+    bool liikuttuY = sijainti_.liikutaY(y);
     paivitaTiedot();
+
+    return (liikuttuX or liikuttuY);
 }
 
 void Toimija::muutaSuuntaa(int suuntamuutos)
@@ -82,12 +84,29 @@ int Toimija::annaElamataso()
     return elamataso_;
 }
 
+QObject *Toimija::annaQMLosa()
+{
+    return QMLosa_;
+}
+
 void Toimija::paivitaTiedot()
 {
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
     QMLosa_->setProperty("angle", suunta_);
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
+    QMLosa_->setProperty("rotation", suunta_);
+
+}
+
+bool Toimija::asetaPaamaara(Sijainti sijainti)
+{
+    paamaara_ = sijainti;
+}
+
+Sijainti Toimija::annaPaamaara()
+{
+    return paamaara_;
 }
 
 

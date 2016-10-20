@@ -7,9 +7,18 @@ Rectangle {
     color: "yellow"
 
     property alias text: teksti.text
+    property int tunniste: -1
 
     Text {
         id: teksti
         text: qsTr("")
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            logiikka.asetaKaskettava(tunniste);
+            console.log("este.x+ mouseX, ");
+        }
     }
 }
