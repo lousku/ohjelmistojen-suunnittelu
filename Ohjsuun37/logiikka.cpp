@@ -141,20 +141,29 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
      * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
      */
 
-    QList<Kyborgi*> nakyvatKyborgit; //mita talla tehdaan? -IH
-    //kaydaan lapi jokainen kyborgi -> eli siis liikutaan 3kertaa yhden vuoron aikana
+    Toimija* lahinHyvis = nullptr;
+    double etaisyysLahimpaan = 1000;
+    Sijainti omaSijainti = vihollinen->annaSijainti();
+
+    //etsitaan lahin kyborgi/laura
     //koska kolme kyborgia, ratkaisu tähän -IH
     for(int i = 0;i < kyborgit_.size();i++){
-
+        if(etaisyysLahimpaan > kyborgit_.at(i)->annaSijainti().laskeEtaisyys(omaSijainti) ){
+            lahinHyvis = kyborgit_.at(i);
+            etaisyysLahimpaan = kyborgit_.at(i)->annaSijainti().laskeEtaisyys(omaSijainti);
+        }
+    }
 
         //jos kyborgi nakyy, liikutaan kohti, muuten, käyskennellaan
-        if (onkoValillaEstetta(vihollinen,kyborgit_.at(i))){
+        if (onkoValillaEstetta(vihollinen,lahinHyvis)){
             liikutaToimijaaRandomisti(vihollinen);
         }
         else{
+            //TODO paamara toteutus toimijasta TODO
+
             vihollinen->liikuta(-0.1,0);
         }
-    }
+
 }
 
 //vaihdoin palauttamaan jaljelle jaaneen elamatason -IH
@@ -262,15 +271,15 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
     xSiirtyma = kohdeSijainti.annaX()-lahtoSijainti.annaX();
     ySiirtyma = kohdeSijainti.annaY()-lahtoSijainti.annaY();
 
-    //pilkotaan "siirtymajana" kymmeneen otantapisteeseen
+    //pilkotaan "siirtymajana" 20 pituisiin otantapisteisiin
     //ja tutkitaan nakyyko kyborgi aka onko linjalla esteita
 
     //vaihdoin taman niin, etta pilkkoon x maaraan, mika lasketaan palikan
     //koolla jakamalla, eli yksikaan este ei voi jaada huomaamatta -IH
     int maara = (lahtoSijainti.laskeEtaisyys(kohdeSijainti))/20;
     for(int j = 1; j < maara; j++){
-        tutkittavaX = lahtoSijainti.annaX()+(xSiirtyma/10*j);
-        tutkittavaY = lahtoSijainti.annaY()+(ySiirtyma/10*j);
+        tutkittavaX = lahtoSijainti.annaX()+(xSiirtyma/maara*j);
+        tutkittavaY = lahtoSijainti.annaY()+(ySiirtyma/maara*j);
         if(onkoEstetta(tutkittavaX,tutkittavaY)){
             onkoLinjallaEstetta = true;
         }
