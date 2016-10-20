@@ -1,5 +1,5 @@
 #include "laura.h"
-
+#include <QDebug>
 Laura::~Laura()
 {
 
@@ -23,7 +23,8 @@ bool Laura::ammu()
 
 bool Laura::liikuSuuntaan()
 {
-
+    liikuta(20,20);
+    //TODO: Laskenta suunta_ mukaisesti mihin Laura liikkuu
 }
 
 bool Laura::onkoHengissa()
