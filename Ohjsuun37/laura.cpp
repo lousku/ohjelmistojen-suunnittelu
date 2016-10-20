@@ -1,5 +1,5 @@
 #include "laura.h"
-
+#include <QDebug>
 Laura::~Laura()
 {
 
@@ -21,7 +21,13 @@ bool Laura::ammu()
 
 }
 
-bool Laura::liikuSuuntaan()
+bool Laura::liikuSuuntaan(QString suunta)
 {
-
+    qDebug() << suunta;
+    if ( suunta == "oikea" ){
+        muutaSuuntaa(20);
+    }
+    else if ( suunta == "vasen"){
+        muutaSuuntaa(-20);
+    }
 }

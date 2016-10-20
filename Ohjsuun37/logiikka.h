@@ -10,12 +10,13 @@
 #include <QTimer>
 #include <QObject>
 #include <QQuickView>
+#include <iostream>
 
 class Logiikka : public QObject
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE void liikutaLauraa();
+    Q_INVOKABLE void liikutaLauraa(QString suunta);
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
 
     Logiikka();

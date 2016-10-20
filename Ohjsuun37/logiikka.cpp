@@ -8,8 +8,9 @@
 
 
 //TODO tanne jotain fiksua! -IH
-void Logiikka::liikutaLauraa()
+void Logiikka::liikutaLauraa(QString suunta)
 {
+    laura_->liikuSuuntaan(suunta);
     qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
 }
 

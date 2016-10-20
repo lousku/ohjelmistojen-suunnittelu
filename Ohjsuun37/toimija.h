@@ -15,6 +15,8 @@ public:
     Toimija(double x, double y, int nopeus);
     void liikuta(Sijainti sijainti);
     void liikuta(double x, double y);
+    void muutaSuuntaa(int suunta);
+    int annaSuunta();
     void muutaElamatasoa(int arvo);
     void asetaQMLosa(QObject *objekti);
     Sijainti annaSijainti();
