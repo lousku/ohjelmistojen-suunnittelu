@@ -24,16 +24,19 @@ Toimija::Toimija(double x, double y, int nopeus):
 
 }
 
+//voi ilmeisesti liikkua yli alueelta?!
 void Toimija::liikuta(Sijainti sijainti)
 {
     sijainti_ = sijainti;
 }
 
-void Toimija::liikuta(double x, double y)
+bool Toimija::liikuta(double x, double y)
 {
-    sijainti_.liikutaX(x);
-    sijainti_.liikutaY(y);
+    bool liikuttuX = sijainti_.liikutaX(x);
+    bool liikuttuY = sijainti_.liikutaY(y);
     paivitaTiedot();
+
+    return (liikuttuX or liikuttuY);
 }
 
 void Toimija::muutaElamatasoa(int arvo)

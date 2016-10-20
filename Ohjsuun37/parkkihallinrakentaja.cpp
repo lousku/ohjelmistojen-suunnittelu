@@ -32,7 +32,7 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
     //alustetaan Laura
-    Laura* laura = new Laura(20,20);
+    Laura* laura = new Laura(60,20);
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
     QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));

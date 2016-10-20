@@ -11,7 +11,7 @@ Vihollinen::Vihollinen()
 }
 
 Vihollinen::Vihollinen(double x, double y):
-    Tekoalylliset(x, y)
+    Tekoalylliset(x, y),liikkeidenMaara_(0)
 {
 
 }

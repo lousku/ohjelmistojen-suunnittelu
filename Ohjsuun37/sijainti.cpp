@@ -1,5 +1,6 @@
 #include "sijainti.h"
 #include <cmath>
+#include <QDebug>
 
 Sijainti::Sijainti():
     paikkaX_(0), paikkaY_(0)
@@ -23,28 +24,39 @@ void Sijainti::asetaY(double uusi)
     paikkaY_ = uusi;
 }
 
-void Sijainti::liikutaX(double siirtyma)
+//vaihdettu totuusarvon palautus, mutta ei viela kayteta -IH
+bool Sijainti::liikutaX(double siirtyma)
 {   //pelilaudan sisällä siirtymisen tarkastelu. TODO yleisemmin vakioilla -IH
     //TODO huolehtiminen sisällä pysymisesta, eli laudalla koordinaatit 1-500, mutta
     //reunimmaiset on kohdissa 480. Kannattaaako siis koordinaatisto siirtää keskelle kappaleita vai
     //aina huomioida kappaleen koko -IH
     if (paikkaX_ + siirtyma < 0){
         paikkaX_ = 0;
+        qDebug() << "koittaa liikkua yli, x 0";
+        return false;
     }else if (paikkaX_ + siirtyma > 480){
         paikkaX_ = 480;
+        qDebug() << "koittaa liikkua yli, x 480";
+        return false;
     }else{
         paikkaX_ += siirtyma;
+        return true;
     }
 }
 
-void Sijainti::liikutaY(double siirtyma)
+bool Sijainti::liikutaY(double siirtyma)
 {
     if (paikkaY_ + siirtyma < 0){
         paikkaY_ = 0;
+        qDebug() << "koittaa liikkua yli, y 0";
+        return false;
     }else if (paikkaY_ + siirtyma > 480){
         paikkaY_ = 480;
+        qDebug() << "koittaa liikkua yli, y 480";
+        return false;
     }else{
         paikkaY_ += siirtyma;
+        return true;
     }
 }
 

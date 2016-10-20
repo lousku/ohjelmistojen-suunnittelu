@@ -15,7 +15,17 @@ void Logiikka::liikutaLauraa()
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
 {
-
+    //rajoitetaan klikkaus kentan sisalle - IH
+    if (x > 480){
+        x = 480;
+    }else if (x < 0){
+        x = 0;
+    }
+    if (y > 480){
+        y = 480;
+    }else if (y < 0){
+        y = 0;
+    }
     QList<Kyborgi*>::iterator it;
     for (it = kyborgit_.begin(); it != kyborgit_.end(); it++){
         if (*it == kaskettava_){
@@ -67,7 +77,9 @@ bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
                 }
             }
         }else{
-            liikutaToimijaaRandomisti(kyborgi);
+            //kommentoin pois koska pelattavuus karsii sikana, kokeilkaa vaikka -IH
+
+            //liikutaToimijaaRandomisti(kyborgi);
         }
     }
 }
@@ -141,28 +153,62 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
      * 3.jos useampi näkyvissä, liiku lähintä kohti -MS
      */
 
-    Toimija* lahinHyvis = nullptr;
+    QList<Toimija*> nakyvatToimijat;
+    Toimija* lahinNakyva;
     double etaisyysLahimpaan = 1000;
-    Sijainti omaSijainti = vihollinen->annaSijainti();
 
-    //etsitaan lahin kyborgi/laura
-    //koska kolme kyborgia, ratkaisu tähän -IH
+    Sijainti omaSijainti = vihollinen->annaSijainti();
+    Sijainti hyviksenSijainti;
+    //etsitaan nakyvat kyborgit
     for(int i = 0;i < kyborgit_.size();i++){
-        if(etaisyysLahimpaan > kyborgit_.at(i)->annaSijainti().laskeEtaisyys(omaSijainti) ){
-            lahinHyvis = kyborgit_.at(i);
-            etaisyysLahimpaan = kyborgit_.at(i)->annaSijainti().laskeEtaisyys(omaSijainti);
+        if(!onkoValillaEstetta(vihollinen,kyborgit_.at(i)) ){
+            nakyvatToimijat.append(kyborgit_.at(i) );
         }
     }
+    //tutkitaan nakyyko laura
+    if(!onkoValillaEstetta(vihollinen,laura_)){
+        nakyvatToimijat.append(laura_);
+    }
+    //jos ketaan ei nakyviissa ja jaljella ei liikuttavaa edelliseen nahtyyn
 
-        //jos kyborgi nakyy, liikutaan kohti, muuten, käyskennellaan
-        if (onkoValillaEstetta(vihollinen,lahinHyvis)){
-            liikutaToimijaaRandomisti(vihollinen);
+    //jos vain yksi nakyvissa, asetetaan ainoa kohteeksi
+    if(nakyvatToimijat.size() == 1 ){
+        lahinNakyva = nakyvatToimijat.at(0);
+    }
+    //jos useampi nakyvissa, etsitaan lahin
+    else if(nakyvatToimijat.size() > 1){
+        for(int i = 0;i < nakyvatToimijat.size();i++){
+            hyviksenSijainti = nakyvatToimijat.at(i)->annaSijainti();
+            if(etaisyysLahimpaan > omaSijainti.laskeEtaisyys(hyviksenSijainti)){
+                etaisyysLahimpaan = omaSijainti.laskeEtaisyys(hyviksenSijainti);
+                lahinNakyva = nakyvatToimijat.at(i);
+            }
         }
-        else{
-            //TODO paamara toteutus toimijasta TODO
+    }
+    //jos ei liikkeita kohteeseen jaljella eika ketaan nykvissa->random liike
+     if((omaSijainti.annaX() != vihollinen->annaPaamaara().annaX() or
+        omaSijainti.annaY() != vihollinen->annaPaamaara().annaY()) and
+         nakyvatToimijat.size() == 0){
 
-            vihollinen->liikuta(-0.1,0);
+         liikutaToimijaa(vihollinen);
+    }
+
+    else if(nakyvatToimijat.size() == 0 and vihollinen->liikkeidenMaara_ == 0){
+        liikutaToimijaaRandomisti(vihollinen);
+    }
+
+    else{
+        if(vihollinen->liikkeidenMaara_ == 0){
+            vihollinen->liikkeidenMaara_ = 5;
+            vihollinen->asetaPaamaara(lahinNakyva->annaSijainti());
+            qDebug() << "Vihu näkee siut!";
         }
+
+        liikutaToimijaa(vihollinen);
+        vihollinen->liikkeidenMaara_--;
+    }
+
+
 
 }
 
@@ -177,15 +223,29 @@ int Logiikka::vahingoitaToimijaa(Toimija *toimija, int teho)
 
 void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
 {
-    //TODO parempi toteutus  -IH
+    //toteutin hieman jarkevamman, mutta voisi miettia viela fiksumpaa?
     int i = 0;
     double sijaintiX = toimija->annaSijainti().annaX();
     double sijaintiY = toimija->annaSijainti().annaY();
     while (true){
-        int x = -1 + rand() % 3;
-        int y = -1 + rand() % 3;
-        if (not onkoEstetta(sijaintiX + x, sijaintiY + y)){
-            toimija->liikuta(x,y);
+        int x = -50 + rand() % 100;
+        int y = -50 + rand() % 100;
+        int uusiX = sijaintiX + x;
+        if (uusiX > 480){
+            uusiX = 480;
+        }else if (uusiX < 0){
+            uusiX = 0;
+        }
+        int uusiY = sijaintiY + y;
+        if (uusiY > 480){
+            uusiY = 480;
+        }else if (uusiY < 0){
+            uusiY = 0;
+        }
+
+        Sijainti uusi = Sijainti(uusiX, uusiY);
+        if (not onkoValillaEstetta(toimija->annaSijainti(), uusi)){
+            toimija->asetaPaamaara(uusi);
             break;
         }else if (i > 10){
             //debuq mielessä, kuinka usein näin käy
@@ -236,6 +296,9 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
 
 bool Logiikka::onkoEstetta(double x, double y)
 {
+    /*if(x > 0 or x > 480 or y < 0 or y > 480){
+        return true;
+    }*/
     //ylakulman ripustuksella +19 oikein, jos vaihdetaan keskelle, niin nama muuttuu.
     //siina tapauksessa +-9 variaatiot -IH
     if (esteet_[int((y)/20)][int((x)/20)] == 1){
@@ -262,14 +325,19 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
     Sijainti lahtoSijainti = toimija1->annaSijainti();
     Sijainti kohdeSijainti = toimija2->annaSijainti();
 
+    return onkoValillaEstetta(lahtoSijainti, kohdeSijainti);
+}
+
+bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti)
+{
     double xSiirtyma;
     double ySiirtyma;
     double tutkittavaX;
     double tutkittavaY;
-    bool onkoLinjallaEstetta = false;
+    //bool onkoLinjallaEstetta = false;
 
-    xSiirtyma = kohdeSijainti.annaX()-lahtoSijainti.annaX();
-    ySiirtyma = kohdeSijainti.annaY()-lahtoSijainti.annaY();
+    xSiirtyma = kohdeSijainti.annaX() - lahtoSijainti.annaX();
+    ySiirtyma = kohdeSijainti.annaY() - lahtoSijainti.annaY();
 
     //pilkotaan "siirtymajana" 20 pituisiin otantapisteisiin
     //ja tutkitaan nakyyko kyborgi aka onko linjalla esteita
@@ -281,10 +349,10 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
         tutkittavaX = lahtoSijainti.annaX()+(xSiirtyma/maara*j);
         tutkittavaY = lahtoSijainti.annaY()+(ySiirtyma/maara*j);
         if(onkoEstetta(tutkittavaX,tutkittavaY)){
-            onkoLinjallaEstetta = true;
+            return true; //turha katella loppuja - IH
         }
     }
-    return onkoLinjallaEstetta;
+    return false; //onkoLinjallaEstetta;
 }
 
 void Logiikka::asetaKaskettava(int tunniste)
