@@ -12,7 +12,7 @@ public:
     Laura();
     Laura(double x, double y);
     bool ammu();
-    bool liikuSuuntaan(QString suunta);
+    bool liikuSuuntaan();
 };
 
 #endif // LAURA_H

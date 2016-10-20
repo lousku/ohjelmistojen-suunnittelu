@@ -21,13 +21,8 @@ bool Laura::ammu()
 
 }
 
-bool Laura::liikuSuuntaan(QString suunta)
+bool Laura::liikuSuuntaan()
 {
-    qDebug() << suunta;
-    if ( suunta == "oikea" ){
-        muutaSuuntaa(20);
-    }
-    else if ( suunta == "vasen"){
-        muutaSuuntaa(-20);
-    }
+    liikuta(20,20);
+    //TODO: Laskenta suunta_ mukaisesti mihin Laura liikkuu
 }

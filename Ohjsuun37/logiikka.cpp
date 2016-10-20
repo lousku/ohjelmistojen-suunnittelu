@@ -8,10 +8,20 @@
 
 
 //TODO tanne jotain fiksua! -IH
-void Logiikka::liikutaLauraa(QString suunta)
+void Logiikka::kaannaLauraa(QString suunta)
 {
-    laura_->liikuSuuntaan(suunta);
+    if ( suunta == "oikea" ){
+        laura_->muutaSuuntaa(20);
+    }
+    else if ( suunta == "vasen"){
+        laura_->muutaSuuntaa(-20);
+    }
     qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
+}
+
+void Logiikka::liikutaLauraa()
+{
+    laura_->liikuSuuntaan();
 }
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)

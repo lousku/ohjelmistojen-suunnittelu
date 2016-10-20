@@ -9,16 +9,13 @@ Item {
 
     //TODO valittaa jotain mika kertoo painalluksen -IH
     Keys.onLeftPressed: {
-        logiikka.liikutaLauraa("vasen");
+        logiikka.kaannaLauraa("vasen");
     }
     Keys.onRightPressed: {
-        logiikka.liikutaLauraa("oikea");
+        logiikka.kaannaLauraa("oikea");
     }
     Keys.onUpPressed: {
-        logiikka.liikutaLauraa("ylos");
-    }
-    Keys.onDownPressed: {
-        logiikka.liikutaLauraa("alas");
+        logiikka.liikutaLauraa();
     }
 
     //omat tiedostot reunabannerille, sisältää toistaiseksi sekä id että objName -MS
