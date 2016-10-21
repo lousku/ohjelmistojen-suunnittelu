@@ -23,6 +23,7 @@ public:
     bool asetaSijainti(Sijainti sijainti);
     int annaTeho();
     int annaNopeus();
+    void asetaNopeus(int nopeus);
     int annaElamataso();
     QObject* annaQMLosa();
     void paivitaTiedot();

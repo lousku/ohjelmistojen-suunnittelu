@@ -6,7 +6,7 @@ Ammus::~Ammus()
 }
 
 Ammus::Ammus():
-    kantama_(100),ammusTiheys_(1)
+    kantama_(200),ammusTiheys_(1)
 {
 
 }

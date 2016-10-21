@@ -146,8 +146,13 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
         double siirtymaX = (paamaara.annaX() - nykyinenX)*suhde;
         double siirtymaY = (paamaara.annaY() - nykyinenY)*suhde;
 
+        //
+
+
+
 
         //se tapaus, jossa este ei tule tielle -IH
+
         if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY + siirtymaY)){
             return toimija->liikuta(siirtymaX, siirtymaY);
         }
@@ -393,7 +398,6 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
                 return laura_;
             }
         }
-
     }
     //jos taas kyborgi tutkitaan viholliset
     else if (dynamic_cast<Kyborgi*> (toimija) != 0){
@@ -405,7 +409,15 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
             }
         }
     }else if (dynamic_cast<Ammus*> (toimija) != 0){
-        qDebug() << "ammus osumaetaisyydella";
+        //kopa suoraan "kybori kohtaa vihollisen"-tapauksesta -MS
+        //qDebug() << "ammus osumaetaisyydella";
+        for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
+            double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
+            if (etaisyys < toimija->annaIskuetaisyys()){
+                //qDebug() << "lähistöllä" << etaisyys;
+                return *it;
+            }
+        }
     }
     else{
         qDebug() << "kutsuttu vaaralle?";
@@ -473,12 +485,13 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
     return false; //onkoLinjallaEstetta;
 }
 
-bool Logiikka::kaskytaAmmusta(Ammus *ammus)
+void Logiikka::kaskytaAmmusta(Ammus *ammus)
 {
     Toimija* kohde = iskuetaisyydella(ammus);
     if (kohde != nullptr){
         //tarkastelee, jaako toimijalle enaan elamatasoa -IH
-        if (vahingoitaToimijaa(kohde, (ammus)->annaTeho()) <= 0){
+        //jostain syysta ensimmainen osuma ei vahingoita vihollista -MS
+        if (vahingoitaToimijaa(kohde, 100) <= 0){
 
             for (int i = 0 ; i < viholliset_.size(); i ++){
                 if (viholliset_.at(i) == kohde){
@@ -488,11 +501,30 @@ bool Logiikka::kaskytaAmmusta(Ammus *ammus)
                 }
             }
         }
-    }else{
-        liikutaToimijaa(ammus);
+        //TODO fiksumpi ammuksien poisto(alla toinen vastaava listan lapikaynti)
+        for (int i = 0 ; i < ammukset_.size(); i ++){
+            if (ammukset_.at(i) == ammus){
+                ammukset_.removeAt(i);
+                delete ammus;
+                break;
+            }
+        }
     }
+    else{
 
-
+        if(liikutaToimijaa(ammus) == false or
+           ammus->annaSijainti() == ammus->annaPaamaara()){
+            qDebug() <<"Ammus TUHOTTIIN";
+            for (int i = 0 ; i < ammukset_.size(); i ++){
+                if (ammukset_.at(i) == ammus){
+                    qDebug() << "POISTETTIIN LISTASTA";
+                    ammukset_.removeAt(i);
+                    delete ammus;
+                    break;
+                }
+            }
+        }
+    }
 }
 
 void Logiikka::luoAmmus()
@@ -505,29 +537,30 @@ void Logiikka::luoAmmus()
         QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
         ammus->asetaQMLosa(object);
+        //ammus lähtee lauran sijainnista lauran suuntaan
         ammus->asetaSijainti(laura_->annaSijainti());
         ammus->asetaSuunta(laura_->annaSuunta());
+        ammus->asetaNopeus(5);
 
         double omaX = laura_->annaSijainti().annaX();
         double omaY = laura_->annaSijainti().annaY();
         double kohdeX;
         double kohdeY;
-        //TODO asetetaan ammuksen paamara suunnan ja kantaman avulla
-        //TODO suunta mahdollinen muuntaa doubleksi? -MS
-        double suuntaD = (double) laura_->annaSuunta();
+        //lasketaan ammuksen x/y suunta cos/sin avulla
+        double suuntaD = (double) ammus->annaSuunta();
         double kulmaRad = qDegreesToRadians(suuntaD);
         double cos = qCos(kulmaRad);
         double sin = qSin(kulmaRad);
 
-        //kantama oletuksena ammuksilla 50
+        //asetetaan ammuksen paamara suunnan ja kantaman avulla
         kohdeX = omaX+sin*ammus->annaKantama();
         kohdeY = omaY+(-cos*ammus->annaKantama());
 
         //asetetaan paamaara ammukselle
         Sijainti paamaara(kohdeX,kohdeY);
-        qDebug() << "AMMUS LUOTIIN" << " nykyinen sij: " << omaX << ", " << omaY ;
-        qDebug() << "suunta: "<< suuntaD;
-        qDebug() << "paamaara: " << kohdeX <<", " << kohdeY;
+        qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+        qDebug() << "Ammuksen suunta: "<< suuntaD;
+        qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
         ammus->asetaPaamaara(paamaara);
 
         ammukset_.append(ammus);
@@ -557,10 +590,10 @@ void Logiikka::suoritaTekoaly()
     for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
         kaskytaVihollista(*it);
     }
-    //DEBUG tarpeeseen ammuksen luonti, pitää poistaa -MS
 
     for(auto it = ammukset_.begin(); it != ammukset_.end(); it++){
         kaskytaAmmusta(*it);
-        qDebug() <<"liikutuksen jalkeen sij: " << (*it)->annaSijainti().annaX() << ", " << (*it)->annaSijainti().annaY();
+
     }
+
 }

@@ -49,6 +49,7 @@ bool Toimija::liikuta(double x, double y)
     if ((liikuttuX or liikuttuY) == false){
         qDebug() << "Liikkuminen epaonnistui";
     }
+
     return (liikuttuX or liikuttuY);
 }
 
@@ -92,6 +93,11 @@ int Toimija::annaTeho()
 int Toimija::annaNopeus()
 {
     return nopeus_;
+}
+
+void Toimija::asetaNopeus(int nopeus)
+{
+    nopeus_ = nopeus;
 }
 
 int Toimija::annaElamataso()

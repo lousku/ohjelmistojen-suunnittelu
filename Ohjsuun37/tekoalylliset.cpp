@@ -5,7 +5,8 @@ Tekoalylliset::~Tekoalylliset()
 
 }
 
-Tekoalylliset::Tekoalylliset()
+Tekoalylliset::Tekoalylliset():
+iskuetaisyys_(10)
 {
 
 }

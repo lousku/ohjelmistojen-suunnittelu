@@ -39,7 +39,7 @@ bool Laura::liikuSuuntaan()
     suunnattu_x = suunnattu_x*annaNopeus();
     suunnattu_y = suunnattu_y*annaNopeus();
 
-    qDebug() << "Lauran suunta" << annaSuunta();
+    //qDebug() << "Lauran suunta" << annaSuunta();
 
     liikuta(suunnattu_x, suunnattu_y);
 }

@@ -35,7 +35,7 @@ public:
     bool onkoEstetta(double x, double y);
     bool onkoValillaEstetta(Toimija* toimija1, Toimija* toimija2);
     bool onkoValillaEstetta(Sijainti sijainti1, Sijainti sijainti2);
-    bool kaskytaAmmusta(Ammus *ammus);
+    void kaskytaAmmusta(Ammus *ammus);
 
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
