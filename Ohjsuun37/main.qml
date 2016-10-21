@@ -9,15 +9,12 @@ Item {
 
     //TODO valittaa jotain mika kertoo painalluksen -IH
     Keys.onLeftPressed: {
-        logiikka.liikutaLauraa();
+        logiikka.kaannaLauraa("vasen");
     }
     Keys.onRightPressed: {
-        logiikka.liikutaLauraa();
+        logiikka.kaannaLauraa("oikea");
     }
     Keys.onUpPressed: {
-        logiikka.liikutaLauraa();
-    }
-    Keys.onDownPressed: {
         logiikka.liikutaLauraa();
     }
 

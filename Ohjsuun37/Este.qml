@@ -10,8 +10,6 @@ Rectangle{
         anchors.fill: parent
         onClicked: {
             logiikka.asetaKyborginPaamaara(este.x+ mouseX, este.y + mouseY);
-            //console.log(sijaintiX, "  " , sijaintiY);    //debug esimerkki IH
-            console.log(este.x+ mouseX, "  " , este.y+ mouseY);
         }
     }
 }

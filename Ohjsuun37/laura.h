@@ -14,6 +14,13 @@ public:
     Laura(double x, double y);
     Ammus ammu();
     bool liikuSuuntaan();
+    bool onkoHengissa();
+
+    //myohemmin tahan lopetetaan peli!
+    void tuhoa();
+
+private:
+    bool tuhottu_;
 };
 
 #endif // LAURA_H

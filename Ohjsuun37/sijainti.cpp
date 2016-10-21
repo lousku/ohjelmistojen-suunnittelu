@@ -24,12 +24,8 @@ void Sijainti::asetaY(double uusi)
     paikkaY_ = uusi;
 }
 
-//vaihdettu totuusarvon palautus, mutta ei viela kayteta -IH
 bool Sijainti::liikutaX(double siirtyma)
-{   //pelilaudan sisällä siirtymisen tarkastelu. TODO yleisemmin vakioilla -IH
-    //TODO huolehtiminen sisällä pysymisesta, eli laudalla koordinaatit 1-500, mutta
-    //reunimmaiset on kohdissa 480. Kannattaaako siis koordinaatisto siirtää keskelle kappaleita vai
-    //aina huomioida kappaleen koko -IH
+{   //tarkastellaa, etta liikutaan valilla 0-480 -OH
     if (paikkaX_ + siirtyma < 0){
         paikkaX_ = 0;
         qDebug() << "koittaa liikkua yli, x 0";

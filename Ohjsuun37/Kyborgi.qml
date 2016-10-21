@@ -18,7 +18,6 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             logiikka.asetaKaskettava(tunniste);
-            console.log("este.x+ mouseX, ");
         }
     }
 }
