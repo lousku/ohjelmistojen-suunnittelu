@@ -14,8 +14,8 @@ public:
     Toimija(double x, double y);
     Toimija(double x, double y, int nopeus);
     bool liikuta(Sijainti sijainti);
-    void muutaSuuntaa(int suunta);
-    int annaSuunta();
+    void muutaSuuntaa(double suunta);
+    double annaSuunta();
     bool liikuta(double x, double y);
     void muutaElamatasoa(int arvo);
     void asetaQMLosa(QObject *objekti);
@@ -33,7 +33,7 @@ public:
 private:
     int teho_;
     int nopeus_;
-    int suunta_;
+    double suunta_;
 
     int elamataso_;
     Sijainti sijainti_;

@@ -52,17 +52,15 @@ bool Toimija::liikuta(double x, double y)
     return (liikuttuX or liikuttuY);
 }
 
-void Toimija::muutaSuuntaa(int suuntamuutos)
+void Toimija::muutaSuuntaa(double suuntamuutos)
 {
-    qDebug() << suunta_ << "suunta ensin";
-    suunta_ = suunta_+suuntamuutos;
+    suunta_ = suunta_ + suuntamuutos;
     paivitaTiedot();
-    qDebug() << suunta_ << "suunta jalkeen";
 }
 
-int Toimija::annaSuunta()
+double Toimija::annaSuunta()
 {
-
+    return suunta_;
 }
 
 void Toimija::muutaElamatasoa(int arvo)
