@@ -1,5 +1,5 @@
 #include "laura.h"
-
+#include "ammus.h"
 Laura::~Laura()
 {
 
@@ -16,7 +16,7 @@ Laura::Laura(double x, double y):
 
 }
 
-bool Laura::ammu()
+Ammus Laura::ammu()
 {
 
 }

@@ -55,6 +55,11 @@ Sijainti Toimija::annaSijainti()
     return sijainti_;
 }
 
+bool Toimija::asetaSijainti(Sijainti sijainti)
+{
+    sijainti_ = sijainti;
+}
+
 int Toimija::annaTeho()
 {
     return teho_;
@@ -92,6 +97,16 @@ bool Toimija::asetaPaamaara(Sijainti sijainti)
 Sijainti Toimija::annaPaamaara()
 {
     return paamaara_;
+}
+
+bool Toimija::asetaSuunta(int suunta)
+{
+    suunta_ = suunta;
+}
+
+int Toimija::annaSuunta()
+{
+    return suunta_;
 }
 
 

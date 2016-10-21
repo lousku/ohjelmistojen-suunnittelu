@@ -18,6 +18,7 @@ public:
     void muutaElamatasoa(int arvo);
     void asetaQMLosa(QObject *objekti);
     Sijainti annaSijainti();
+    bool asetaSijainti(Sijainti sijainti);
     int annaTeho();
     int annaNopeus();
     int annaElamataso();
@@ -25,6 +26,8 @@ public:
     void paivitaTiedot();
     bool asetaPaamaara(Sijainti sijainti);
     Sijainti annaPaamaara();
+    bool asetaSuunta(int suunta);
+    int annaSuunta();
 
 private:
     int teho_;

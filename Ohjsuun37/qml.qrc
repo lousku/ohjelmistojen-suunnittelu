@@ -8,5 +8,6 @@
         <file>LeftBanner.qml</file>
         <file>TopBanner.qml</file>
         <file>Este.qml</file>
+        <file>Ammus.qml</file>
     </qresource>
 </RCC>

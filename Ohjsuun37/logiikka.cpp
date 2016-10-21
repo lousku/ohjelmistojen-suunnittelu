@@ -5,6 +5,7 @@
 #include <QtQuick>
 #include <QDebug>
 #include <iostream>
+#include <QtMath>
 
 
 //TODO tanne jotain fiksua! -IH
@@ -355,6 +356,51 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
     return false; //onkoLinjallaEstetta;
 }
 
+bool Logiikka::kaskytaAmmusta(Ammus *ammus)
+{
+
+
+}
+
+void Logiikka::luoAmmus(Sijainti sijainti, int suunta)
+{
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+    //luodaan ammus, asetetaan sijainti lauran sijainniksi
+        Ammus* ammus = new Ammus(sijainti,suunta);
+        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
+        QObject *object = component.create();
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+
+        ammus->asetaQMLosa(object);
+        double omaX = sijainti.annaX();
+        double omaY = sijainti.annaY();
+        double kohdeX;
+        double kohdeY;
+        //TODO asetetaan ammuksen paamara suunnan ja kantaman avulla
+        //TODO suunta mahdollinen muuntaa doubleksi? -MS
+        double suuntaD = (double) suunta;
+        double kulmaRad = qDegreesToRadians(suuntaD);
+        double cos = qCos(kulmaRad);
+        double sin = qSin(kulmaRad);
+
+        //kantama oletuksena ammuksilla 50
+        kohdeX = omaX+sin*ammus->annaKantama();
+        kohdeY = omaY+(-cos*ammus->annaKantama());
+
+        //asetetaan paamaara ammukselle
+        Sijainti paamaara(kohdeX,kohdeY);
+        qDebug() << "ammuksen paamaara" <<kohdeX <<"," << kohdeY;
+        ammus->asetaPaamaara(paamaara);
+
+        ammukset_.append(ammus);
+
+        for(int i = 0; i < ammukset_.size();i++){
+            liikutaToimijaa(ammukset_.at(i) );
+        }
+
+        return;
+}
+
 void Logiikka::asetaKaskettava(int tunniste)
 {
     for (auto kyborgi: kyborgit_){
@@ -376,5 +422,11 @@ void Logiikka::suoritaTekoaly()
     for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
         kaskytaVihollista(*it);
     }
-
+    //DEBUG tarpeeseen ammuksen luonti, pitää poistaa -MS
+    if(ammukset_.size()<1){
+        luoAmmus(laura_->annaSijainti(),90);
+    }
+    for(auto it = ammukset_.begin(); it != ammukset_.end(); it++){
+        // kaskyttaan ammuksia
+    }
 }

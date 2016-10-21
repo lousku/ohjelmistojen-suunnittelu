@@ -7,8 +7,18 @@ class Ammus : public Tekoalylliset
 {
 public:
     virtual ~Ammus();
-    Ammus();
+    Ammus(Sijainti sijainti, int suunta);
     bool etene();
+    double annaKantama();
+    void asetaKantama(double kantama);
+    double annaNopeus();
+    void asetaNopeus(double nopeus);
+
+
+private:
+    double kantama_;
+    double nopeus_;
+    double ammusTiheys_;
 
 };
 
