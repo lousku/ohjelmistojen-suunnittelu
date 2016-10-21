@@ -157,7 +157,32 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
                 return toimija->liikuta(siirtymaX, 0);
             }else if (not onkoEstetta(nykyinenX, nykyinenY + siirtymaY) and fabs(siirtymaY) > 0.01){
                 return toimija->liikuta(0, siirtymaY);
-            }else{
+            }
+            else
+            {   //ne tapaukset, joissa liikkumavaraa vielä olisi, mutta este on liian lahelle
+                //liikutakseen nopeuden verran -H
+                if (onkoEstetta(nykyinenX + siirtymaX, nykyinenY)){
+
+                    //lasketaan etaisyys seuraavaan esteeseen
+                    double matkaEsteeseenX = 20-(fmod(nykyinenX ,20));
+                    double matkaEsteeseenY = 20-(fmod(nykyinenY, 20));
+
+                    //jos eteisee on pienempi matka kuin nopeus
+                    //liikutaan atkan verran, silloin ei estetta voi olla edessa -> liikutaan -IH
+                    if (matkaEsteeseenX < nopeus){
+                        //if (not onkoEstetta(nykyinenX + matkaEsteeseenX, nykyinenY)){
+                            qDebug() << "jepari";
+                            return toimija->liikuta(matkaEsteeseenX, 0);
+
+                        //}
+                    }else if (matkaEsteeseenY < nopeus){
+                        //if (not onkoEstetta(nykyinenX, nykyinenY+ matkaEsteeseenY)){
+                            qDebug() << "jepari";
+                            return toimija->liikuta(matkaEsteeseenY, 0);
+
+                        //}
+                    }
+                }
                 //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
                 //koska halutaan tarkastelun, etta onko kyborgi liikkeessa onnistuvan
                 toimija->asetaPaamaara(toimija->annaSijainti());
@@ -227,7 +252,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
             }
 
             vihollinen->asetaPaamaara(lahinNakyva->annaSijainti());
-            qDebug() << "Vihu näkee siut!";
+            //qDebug() << "Vihu näkee siut!";
 
             liikutaToimijaa(vihollinen);
 
@@ -353,7 +378,7 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
         for (auto it = kyborgit_.begin(); it != kyborgit_.end(); it++){
             double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
-                qDebug() << "lähistöllä" << etaisyys;
+                //qDebug() << "lähistöllä" << etaisyys;
                 return *it;
             }
         }
@@ -372,7 +397,7 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
         for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
             double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
-                qDebug() << "lähistöllä" << etaisyys;
+                //qDebug() << "lähistöllä" << etaisyys;
                 return *it;
             }
         }
@@ -450,7 +475,7 @@ void Logiikka::asetaKaskettava(int tunniste)
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
-            qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
+            //qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
             return;
         }
     }

@@ -18,7 +18,7 @@ Kyborgi::Kyborgi(double x, double y):
 }
 
 Kyborgi::Kyborgi(double x, double y, int nopeus):
-    Tekoalylliset(x,y,nopeus)
+    Tekoalylliset(x,y, nopeus)
 {
 
 }
