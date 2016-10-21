@@ -13,10 +13,10 @@
 void Logiikka::kaannaLauraa(QString suunta)
 {
     if ( suunta == "oikea" ){
-        laura_->muutaSuuntaa(20);
+        laura_->muutaSuuntaa(45);
     }
     else if ( suunta == "vasen"){
-        laura_->muutaSuuntaa(-20);
+        laura_->muutaSuuntaa(-45);
     }
     qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
 }
