@@ -195,23 +195,25 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
 
 bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
 {
-    //TODO vaihda liikkeidenMaara privateen? -IH
-    if (vihollinen->liikkeidenMaara_ > 0){
+    //TODO vaihda liikkeidenMaara privateen? -IH Done -MS
+   int liikkeet = vihollinen->annaLiikkeidenMaara();
+
+    if (liikkeet > 0){
 
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
-            vihollinen->liikkeidenMaara_ = 0;
+            vihollinen->asetaLiikkeidenMaara(0);
             qDebug() << "vapautettu    1.0";
         }
         else
         {
-         vihollinen->liikkeidenMaara_--;
+         vihollinen->asetaLiikkeidenMaara(liikkeet-1);
         }
     }
     else
     {
-        vihollinen->liikkeidenMaara_ = 5;
+        vihollinen->asetaLiikkeidenMaara(5);
         QList<Toimija*> nakyvatToimijat;
 
         //etsitaan nakyvat kyborgit
@@ -473,27 +475,46 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
 
 bool Logiikka::kaskytaAmmusta(Ammus *ammus)
 {
+    Toimija* kohde = iskuetaisyydella(ammus);
+    if (kohde != nullptr){
+        //tarkastelee, jaako toimijalle enaan elamatasoa -IH
+        if (vahingoitaToimijaa(kohde, (ammus)->annaTeho()) <= 0){
+
+            for (int i = 0 ; i < viholliset_.size(); i ++){
+                if (viholliset_.at(i) == kohde){
+                    viholliset_.removeAt(i);
+                    delete kohde;
+                    break;
+                }
+            }
+        }
+    }else{
+        liikutaToimijaa(ammus);
+    }
 
 
 }
 
-void Logiikka::luoAmmus(Sijainti sijainti, int suunta)
+void Logiikka::luoAmmus()
 {
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
     //luodaan ammus, asetetaan sijainti lauran sijainniksi
-        Ammus* ammus = new Ammus(sijainti,suunta);
+        Ammus* ammus = new Ammus();
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
         QObject *object = component.create();
         QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
         ammus->asetaQMLosa(object);
-        double omaX = sijainti.annaX();
-        double omaY = sijainti.annaY();
+        ammus->asetaSijainti(laura_->annaSijainti());
+        ammus->asetaSuunta(laura_->annaSuunta());
+
+        double omaX = laura_->annaSijainti().annaX();
+        double omaY = laura_->annaSijainti().annaY();
         double kohdeX;
         double kohdeY;
         //TODO asetetaan ammuksen paamara suunnan ja kantaman avulla
         //TODO suunta mahdollinen muuntaa doubleksi? -MS
-        double suuntaD = (double) suunta;
+        double suuntaD = (double) laura_->annaSuunta();
         double kulmaRad = qDegreesToRadians(suuntaD);
         double cos = qCos(kulmaRad);
         double sin = qSin(kulmaRad);
@@ -504,14 +525,13 @@ void Logiikka::luoAmmus(Sijainti sijainti, int suunta)
 
         //asetetaan paamaara ammukselle
         Sijainti paamaara(kohdeX,kohdeY);
-        qDebug() << "ammuksen paamaara" <<kohdeX <<"," << kohdeY;
+        qDebug() << "AMMUS LUOTIIN" << " nykyinen sij: " << omaX << ", " << omaY ;
+        qDebug() << "suunta: "<< suuntaD;
+        qDebug() << "paamaara: " << kohdeX <<", " << kohdeY;
         ammus->asetaPaamaara(paamaara);
 
         ammukset_.append(ammus);
 
-        for(int i = 0; i < ammukset_.size();i++){
-            liikutaToimijaa(ammukset_.at(i) );
-        }
 
         return;
 }
@@ -538,10 +558,9 @@ void Logiikka::suoritaTekoaly()
         kaskytaVihollista(*it);
     }
     //DEBUG tarpeeseen ammuksen luonti, pitää poistaa -MS
-    if(ammukset_.size()<1){
-        luoAmmus(laura_->annaSijainti(),90);
-    }
+
     for(auto it = ammukset_.begin(); it != ammukset_.end(); it++){
-        // kaskyttaan ammuksia
+        kaskytaAmmusta(*it);
+        qDebug() <<"liikutuksen jalkeen sij: " << (*it)->annaSijainti().annaX() << ", " << (*it)->annaSijainti().annaY();
     }
 }

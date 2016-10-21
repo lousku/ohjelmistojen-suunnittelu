@@ -17,6 +17,9 @@ Item {
     Keys.onUpPressed: {
         logiikka.liikutaLauraa();
     }
+    Keys.onSpacePressed: {
+        logiikka.luoAmmus();
+    }
 
     //omat tiedostot reunabannerille, sisältää toistaiseksi sekä id että objName -MS
     LeftBanner{

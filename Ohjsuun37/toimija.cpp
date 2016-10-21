@@ -11,7 +11,7 @@ Toimija::~Toimija()
 }
 
 Toimija::Toimija():
-    sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0)
+    sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0), nopeus_(1)
 {
 }
 

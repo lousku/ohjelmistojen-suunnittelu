@@ -5,11 +5,10 @@ Ammus::~Ammus()
 
 }
 
-Ammus::Ammus(Sijainti sijainti, int suunta):
-    kantama_(200),nopeus_(1),ammusTiheys_(1)
+Ammus::Ammus():
+    kantama_(100),ammusTiheys_(1)
 {
-    this->asetaSijainti(sijainti);
-    this->asetaSuunta(suunta);
+
 }
 
 //TODO etenee suuntaan ja menettaa kantoaikaa alias elamatasoaan -IH
@@ -28,12 +27,3 @@ void Ammus::asetaKantama(double kantama)
     kantama_ = kantama;
 }
 
-double Ammus::annaNopeus()
-{
-    return nopeus_;
-}
-
-void Ammus::asetaNopeus(double nopeus)
-{
-    nopeus_ = nopeus;
-}
