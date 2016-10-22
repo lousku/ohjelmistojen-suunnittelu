@@ -34,7 +34,7 @@ public:
 private:
     int teho_;
     int nopeus_;
-    double suunta_;
+    double suunta_; //radiaaneissa AH
 
     int elamataso_;
     Sijainti sijainti_;

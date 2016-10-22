@@ -24,12 +24,11 @@ Ammus Laura::ammu()
 {
 
 }
-
 bool Laura::liikuSuuntaan()
 {
     //TODO: Laskenta suunta_ mukaisesti mihin Laura liikkuu
 
-    double suunta = qDegreesToRadians(annaSuunta());
+    double suunta = annaSuunta();
 
     double suunnattu_x = sin(suunta);
     double suunnattu_y = - cos(suunta);
@@ -41,7 +40,9 @@ bool Laura::liikuSuuntaan()
 
     //qDebug() << "Lauran suunta" << annaSuunta();
 
-    liikuta(suunnattu_x, suunnattu_y);
+    asetaPaamaara(Sijainti(suunnattu_x, suunnattu_y));
+
+    //liikuta(suunnattu_x, suunnattu_y);
 }
 
 bool Laura::onkoHengissa()

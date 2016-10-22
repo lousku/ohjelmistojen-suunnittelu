@@ -23,7 +23,24 @@ void Logiikka::kaannaLauraa(QString suunta)
 
 void Logiikka::liikutaLauraa()
 {
+    // Asettaa suunnan ja nopeuden mukaisen paamaaran Lauralle AH
     laura_->liikuSuuntaan();
+
+    //Esteiden tarkastelu puuttuu:
+
+    // liikutaToimijaa(laura_) olis siisti ratkasu mutta jostain syysta
+    // laura liikkuu silla vaan vasemmalle..? AH
+
+    // onkoEstetta ei myoskaan toimi Lauralle, tunnistaa olematttomia
+    // esteita mutta ei tunnista oikeita esteita. Mielellaan
+    // silti kayttaisi samaa funktiota ettei logiikka paisu?
+
+    double suunnattu_x = laura_->annaPaamaara().annaX();
+    double suunnattu_y = laura_->annaPaamaara().annaY();
+
+    laura_->liikuta(suunnattu_x, suunnattu_y);
+
+
 }
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
@@ -539,7 +556,8 @@ void Logiikka::luoAmmus()
         ammus->asetaQMLosa(object);
         //ammus lähtee lauran sijainnista lauran suuntaan
         ammus->asetaSijainti(laura_->annaSijainti());
-        ammus->asetaSuunta(laura_->annaSuunta());
+        // QML kayttaa astelukuja mutta c++ tarvitsee laskentaan radiaanit AH
+        ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
         ammus->asetaNopeus(5);
 
         double omaX = laura_->annaSijainti().annaX();
