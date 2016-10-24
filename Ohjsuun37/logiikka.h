@@ -21,6 +21,7 @@ public:
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
     Q_INVOKABLE void asetaKaskettava(int tunniste);
     Q_INVOKABLE void luoAmmus();
+    Q_INVOKABLE void luoPeli();
 
     Logiikka();
     Logiikka(QQuickView* view);

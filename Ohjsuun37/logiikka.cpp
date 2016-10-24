@@ -56,19 +56,7 @@ Logiikka::Logiikka()
 Logiikka::Logiikka(QQuickView* view)
 {
     nakyma_ = view;
-    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
-    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
-    ParkkihallinRakentaja alustus(view);
-    pelikello_ = alustus.alustaPelikello();
-    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
-    esteet_ = alustus.alustaEsteet();
-
-    laura_ = alustus.alustaLaura();
-    kyborgit_ = alustus.alustaKyborgit();
-
-    //mista saadan tieto, etta kuinka monta vihollista luodaan?
-    viholliset_ = alustus.lisaaViholliset(2);
-
+    //luoPeli();
 }
 
 
@@ -525,6 +513,22 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
             }
         }
     }
+}
+
+void Logiikka::luoPeli()
+{
+    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
+    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
+    ParkkihallinRakentaja alustus(nakyma_);
+    pelikello_ = alustus.alustaPelikello();
+    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
+    esteet_ = alustus.alustaEsteet();
+
+    laura_ = alustus.alustaLaura();
+    kyborgit_ = alustus.alustaKyborgit();
+
+    //mista saadan tieto, etta kuinka monta vihollista luodaan?
+    viholliset_ = alustus.lisaaViholliset(2);
 }
 
 void Logiikka::luoAmmus()
