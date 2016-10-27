@@ -24,6 +24,7 @@ void Sijainti::asetaY(double uusi)
     paikkaY_ = uusi;
 }
 
+//oletus, ettei tata kutsuta mikali siirtyma on 0!
 bool Sijainti::liikutaX(double siirtyma)
 {   //tarkastellaa, etta liikutaan valilla 0-480 -OH
     if (paikkaX_ + siirtyma < 0){

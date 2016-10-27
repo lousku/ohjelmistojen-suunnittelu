@@ -5,8 +5,12 @@
 #include <QtQuick>
 #include <QDebug>
 #include <iostream>
+<<<<<<< HEAD
+#include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
+=======
 #include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin
 #include <math.h>    //fabs aka itseisarvo doublesta
+>>>>>>> ff89b047f7a3db42020cabe5c67f18e699d4fc3a
 
 
 //TODO tanne jotain fiksua! -IH
@@ -63,7 +67,10 @@ Logiikka::Logiikka(QQuickView* view)
 bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
 {
     if (kyborgi->onkoLiikkeessa()){
-        liikutaToimijaa(kyborgi);
+        if (not liikutaToimijaa(kyborgi)){
+            kyborgi->asetaPaamaara(kyborgi->annaSijainti());
+            qDebug() << "jee";
+        }
     }else{
         Toimija* kohde = iskuetaisyydella(kyborgi);
         if (kohde != nullptr){
@@ -145,7 +152,7 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
             return toimija->liikuta(siirtymaX, siirtymaY);
         }
         //ne tapaukset, joissa vielä toiseen suuntaan voisi liikkua -IH
-        else {
+        else  if (dynamic_cast<Ammus*> (toimija) != 0){
             //lisatty raja itseisarvosta, etta voidaan hylata olemattomat siirtymat.
             if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY) and fabs(siirtymaX) > 0.01){
                 return toimija->liikuta(siirtymaX, 0);
@@ -153,37 +160,47 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
                 return toimija->liikuta(0, siirtymaY);
             }
             else
-            {   //ne tapaukset, joissa liikkumavaraa vielä olisi, mutta este on liian lahelle
+            {   //ne tapaukset, joissa liikkumavaraa vielä olisi, mutta este on liian lahella
                 //liikutakseen nopeuden verran -H
                 if (onkoEstetta(nykyinenX + siirtymaX, nykyinenY)){
 
+                    double matkaEsteeseenX;
+                    double matkaEsteeseenY;
                     //lasketaan etaisyys seuraavaan esteeseen
-                    double matkaEsteeseenX = 20-(fmod(nykyinenX ,20));
-                    double matkaEsteeseenY = 20-(fmod(nykyinenY, 20));
+                    if (siirtymaX > 0){
+                        matkaEsteeseenX = 20-(fmod(nykyinenX ,20));
+                    }else{
+                        matkaEsteeseenX = int(nykyinenX/20)*20 - nykyinenX;
+                    }
+                    if (siirtymaY > 0){
+                        matkaEsteeseenY = 20-(fmod(nykyinenY, 20));
+                    }else{
+                        matkaEsteeseenY = int(nykyinenX/20)*20 - nykyinenY;
+                    }
 
-                    //jos eteisee on pienempi matka kuin nopeus
+
+
+                    //jos esteeseen on pienempi matka kuin nopeus
                     //liikutaan atkan verran, silloin ei estetta voi olla edessa -> liikutaan -IH
-                    if (matkaEsteeseenX < nopeus){
-                        //if (not onkoEstetta(nykyinenX + matkaEsteeseenX, nykyinenY)){
-                            qDebug() << "jepari";
+                    if (fabs(matkaEsteeseenX) < nopeus and fabs(matkaEsteeseenX) > 1){
+                        if (not onkoEstetta(nykyinenX + matkaEsteeseenX, nykyinenY)){
                             return toimija->liikuta(matkaEsteeseenX, 0);
 
-                        //}
-                    }else if (matkaEsteeseenY < nopeus){
-                        //if (not onkoEstetta(nykyinenX, nykyinenY+ matkaEsteeseenY)){
-                            qDebug() << "jepari";
-                            return toimija->liikuta(matkaEsteeseenY, 0);
+                        }
+                    }else if (fabs(matkaEsteeseenY) < nopeus and fabs(matkaEsteeseenY) > 1){
+                        if (not onkoEstetta(nykyinenX, nykyinenY+ matkaEsteeseenY)){
+                            return toimija->liikuta(0, matkaEsteeseenY);
 
-                        //}
+                        }
                     }
                 }
-                //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
-                //koska halutaan tarkastelun, etta onko kyborgi liikkeessa onnistuvan
-                toimija->asetaPaamaara(toimija->annaSijainti());
-                return false;   //liikkuminen ei onnistunut -IH
             }
         }
     }
+    //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
+    //TODO SELVITYS, ETTA HAITTAAKO TAMA AMMUKSEN TOTEUTUSTA -IH
+    toimija->asetaPaamaara(toimija->annaSijainti());
+    return false;   //liikkuminen ei onnistunut -IH
 }
 
 bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
@@ -196,8 +213,12 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
+<<<<<<< HEAD
+            vihollinen->liikkeidenMaara_ = 0;
+=======
             vihollinen->asetaLiikkeidenMaara(0);
             qDebug() << "vapautettu    1.0";
+>>>>>>> ff89b047f7a3db42020cabe5c67f18e699d4fc3a
         }
         else
         {
@@ -261,7 +282,6 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
             if (!liikutaToimijaa(vihollinen))
             {
                 liikutaToimijaaRandomisti(vihollinen);
-                qDebug() << "vapautettu";
             }
         }
         //ei olla nahty alusta asti ketaan
@@ -291,44 +311,7 @@ void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
     double sijaintiX = toimija->annaSijainti().annaX();
     double sijaintiY = toimija->annaSijainti().annaY();
 
-    //rakenne, jonka avulla ei ota suuntaa sinne, missa on esteita.
-
-    /*bool oikealle = !onkoEstetta(sijaintiX+20, sijaintiY-20) and !onkoEstetta(sijaintiX+20, sijaintiY)
-            and !onkoEstetta(sijaintiX+20, sijaintiY+20);
-
-    bool vasemmalle = !onkoEstetta(sijaintiX-20, sijaintiY-20) and !onkoEstetta(sijaintiX-20, sijaintiY)
-            and !onkoEstetta(sijaintiX-20, sijaintiY)+20;
-
-    bool ylos = !onkoEstetta(sijaintiX-20, sijaintiY+20) and !onkoEstetta(sijaintiX, sijaintiY+20)
-            and !onkoEstetta(sijaintiX+20, sijaintiY+20);
-
-    bool alas = !onkoEstetta(sijaintiX-20, sijaintiY-20) and !onkoEstetta(sijaintiX, sijaintiY-20)
-            and !onkoEstetta(sijaintiX+20, sijaintiY-20);
-
-
-    int x = 0;
-    int y = 0;*/
     while (true){
-
-        /*if (oikealle and !vasemmalle){
-            x = rand() % 51;  //arvoja 0...49
-        }
-        else if (oikealle and vasemmalle){
-            x = -50 + rand() % 101;  //arvoja -50...50
-        }
-        else if (!oikealle and vasemmalle){
-            x = -50 + rand() % 51;   //arvoja -50...0
-        }
-
-        if (ylos and !alas){
-            y = rand() % 51; // arvoja 0...50
-        }
-        else if (ylos and alas){
-            y = -50 + rand() % 101; //arvoja -50...50
-        }
-        else if (!ylos == 0 and alas){
-            y = -50 + rand() % 51;   //arvoja -50..0
-        }*/
 
         int x = -50 + rand() % 101;
         int y = -50 + rand() % 101;
@@ -347,17 +330,17 @@ void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
             uusiY = 0;
         }
 
-        //tehdaan uudesta sijainnista sijainti olio ja tarkastellaan, onko sinne mennessa esteita.
         if (onkoEstetta(uusiX, uusiY)){
-            break; //TODO vaihto continue?
+            continue; //TODO vaihto continue?
         }
+        //tehdaan uudesta sijainnista sijainti olio ja tarkastellaan, onko sinne mennessa esteita.
         Sijainti uusi = Sijainti(uusiX, uusiY);
         if (not onkoValillaEstetta(toimija->annaSijainti(), uusi) ){
             toimija->asetaPaamaara(uusi);
             break; //TODO vaihto continue?
         }
         else if (i > 10){
-            //debuq mielessä, kuinka usein nain kay
+            //debuq mielessä, kuinka usein nain kay, ei kuitenkaan pideta kauempaa tassa loopissa!
             qDebug() << "ei meinaa loytya, minne menis";
             break;
         }
