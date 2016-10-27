@@ -92,7 +92,6 @@ QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
     esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
     esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
-
     for( int i=0; i<esteet.count(); ++i )
     {
         for( int j=0; j<esteet[i].count(); ++j )

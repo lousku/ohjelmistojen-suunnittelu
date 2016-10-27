@@ -9,6 +9,7 @@
 #include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
 
 
+
 //TODO tanne jotain fiksua! -IH
 void Logiikka::kaannaLauraa(QString suunta)
 {
@@ -209,6 +210,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
+
             vihollinen->asetaLiikkeidenMaara(0);
             qDebug() << "vapautettu    1.0";
         }
