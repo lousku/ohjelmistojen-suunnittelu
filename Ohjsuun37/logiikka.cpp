@@ -5,12 +5,8 @@
 #include <QtQuick>
 #include <QDebug>
 #include <iostream>
-<<<<<<< HEAD
 #include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
-=======
-#include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin
-#include <math.h>    //fabs aka itseisarvo doublesta
->>>>>>> ff89b047f7a3db42020cabe5c67f18e699d4fc3a
+#include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
 
 
 //TODO tanne jotain fiksua! -IH
@@ -213,12 +209,8 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
-<<<<<<< HEAD
-            vihollinen->liikkeidenMaara_ = 0;
-=======
             vihollinen->asetaLiikkeidenMaara(0);
             qDebug() << "vapautettu    1.0";
->>>>>>> ff89b047f7a3db42020cabe5c67f18e699d4fc3a
         }
         else
         {
