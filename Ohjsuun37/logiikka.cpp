@@ -149,8 +149,8 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
             return toimija->liikuta(siirtymaX, siirtymaY);
         }
         //ne tapaukset, joissa vielä toiseen suuntaan voisi liikkua -IH
+        //eli siis kun kyseessä EI ole ammus.
         else if (dynamic_cast<Ammus*> (toimija) == 0){
-            qDebug() <<"moi" ;
             //lisatty raja itseisarvosta, etta voidaan hylata olemattomat siirtymat.
             if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY) and fabs(siirtymaX) > 0.01){
                 return toimija->liikuta(siirtymaX, 0);
@@ -394,7 +394,7 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
 bool Logiikka::onkoEstetta(double x, double y)
 {
     //lisatty oikaisu, ettei tehda kyselyja alueen ulkopuolelle ja kaadeta -IH
-    if (x > 480){
+    /*if (x > 480){
         x = 480;
     }else if (x < 0){
         x = 0;
@@ -402,8 +402,14 @@ bool Logiikka::onkoEstetta(double x, double y)
         y = 480;
     }else if (y < 0){
         y = 0;
-    }
+    }*/
 
+    //oikaisu muutettu niin, etta reunoille yrittaessa todetaan edessa olevan este
+    //nain ammukset, jotka yrittavat reunan saadaan fiksusti poistettua -IH
+    if (0 > x or x > 480 or 0 > y or y > 480){
+        return true;
+    }
+    //TODO mitka ehdot tahan kuuluu, onko rajat eri kuin 0-480 -IH
     if (esteet_[int((y+1)/20)][int((x+1)/20)] == 1){
         return true;
     }else if (esteet_[int((y+1)/20)][int((x+19)/20)] == 1){
@@ -453,11 +459,12 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
 
 void Logiikka::kaskytaAmmusta(Ammus *ammus)
 {
+
     Toimija* kohde = iskuetaisyydella(ammus);
     if (kohde != nullptr){
         //tarkastelee, jaako toimijalle enaan elamatasoa -IH
         //jostain syysta ensimmainen osuma ei vahingoita vihollista -MS
-        if (vahingoitaToimijaa(kohde, 100) <= 0){
+        if (vahingoitaToimijaa(kohde, 10) <= 0){
 
             for (int i = 0 ; i < viholliset_.size(); i ++){
                 if (viholliset_.at(i) == kohde){
@@ -495,7 +502,7 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 
 void Logiikka::luoPeli()
 {
-    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
+    //kun taman luo taalla, niin eikos se unohdeta funktion loputtua?
     //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
     ParkkihallinRakentaja alustus(nakyma_);
     pelikello_ = alustus.alustaPelikello();
@@ -551,15 +558,21 @@ void Logiikka::luoAmmus()
         return;
 }
 
+
+//TODO tanne esim kyseessa olevan kyborgin varinvaihto
 void Logiikka::asetaKaskettava(int tunniste)
 {
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
+            kyborgi->annaQMLosa()->setProperty("color", "black");
             //qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
-            return;
+            //return;
+        }else{
+            kyborgi->annaQMLosa()->setProperty("color", "yellow");
         }
     }
+
 }
 
 
@@ -573,9 +586,17 @@ void Logiikka::suoritaTekoaly()
         kaskytaVihollista(*it);
     }
 
-    for(auto it = ammukset_.begin(); it != ammukset_.end(); it++){
-        kaskytaAmmusta(*it);
-
+    //luultavasti oleellinen korjaus -IH
+    for (int i = ammukset_.size()-1; i >= 0; i--){
+        kaskytaAmmusta(ammukset_.at(i));
     }
 
+    //ongelmana, etta kysyy mahdollisia esteita paikasta mita ei ole maaritelty
+    //saa siirtymakseen Nan, mutta miksi... -IH
+
+    //talla saattaa kaatua jos ampuu useita ammuksia -IH
+    //ongelmaa ei kuitenkaan viela varmistettu ^ ylla mahdollinen ratkaisu
+    /*for (auto it = ammukset_.begin(); it != ammukset_.end(); it++){
+        kaskytaAmmusta(*it);
+    }*/
 }

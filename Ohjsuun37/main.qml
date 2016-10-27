@@ -3,7 +3,7 @@ import QtQuick.Window 2.2
 
 Item {
     objectName: "parkkihalli"
-    id:"parkkihalliId"
+    id:parkkihalliId
     width: 600
     height: 600
     focus: true  //Ratkaiseva, jotta painallus huomataan -IH
@@ -27,12 +27,14 @@ Item {
                 name: "NORMAL"
                 PropertyChanges { target: mapWindow; visible:true}
                 PropertyChanges { target: gameWindow; visible:false}
-
+                //lisatty, jottei karttanakymassa nappaimilla voi viela kaataa! -IH
+                PropertyChanges { target: parkkihalliId; focus: false}
             },
             State {
                 name: "PELI"
                 PropertyChanges { target: mapWindow; visible:false}
                 PropertyChanges { target: gameWindow; visible:true}
+                PropertyChanges { target: parkkihalliId; focus: true}
         }
     ]
 

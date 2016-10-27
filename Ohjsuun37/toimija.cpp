@@ -64,7 +64,7 @@ bool Toimija::liikuta(double x, double y)
 
 void Toimija::muutaSuuntaa(double suuntamuutos)
 {
-    suunta_ = suunta_ + suuntamuutos;
+    suunta_ += suuntamuutos;
     paivitaTiedot();
 }
 
@@ -125,7 +125,7 @@ void Toimija::paivitaTiedot()
     QMLosa_->setProperty("y", sijainti_.annaY());
     QMLosa_->setProperty("angle", suunta_);
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
-    QMLosa_->setProperty("rotation", suunta_);
+    //QMLosa_->setProperty("rotation", suunta_);
 
 }
 
