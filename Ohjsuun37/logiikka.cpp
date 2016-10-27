@@ -149,7 +149,8 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
             return toimija->liikuta(siirtymaX, siirtymaY);
         }
         //ne tapaukset, joissa vielä toiseen suuntaan voisi liikkua -IH
-        else  if (dynamic_cast<Ammus*> (toimija) != 0){
+        else if (dynamic_cast<Ammus*> (toimija) == 0){
+            qDebug() <<"moi" ;
             //lisatty raja itseisarvosta, etta voidaan hylata olemattomat siirtymat.
             if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY) and fabs(siirtymaX) > 0.01){
                 return toimija->liikuta(siirtymaX, 0);
