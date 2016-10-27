@@ -2,7 +2,6 @@
 #include "QQmlEngine"
 #include <QDebug>
 
-#include <Qdebug>
 
 Toimija::~Toimija()
 {
@@ -36,16 +35,26 @@ bool Toimija::liikuta(Sijainti sijainti)
         sijainti_ = sijainti;
         return true;
     }
+    qDebug() << "yritetaan liikkua laudalta pois";
     return false;
 
 }
 
 bool Toimija::liikuta(double x, double y)
 {
-    bool liikuttuX = sijainti_.liikutaX(x);
-    bool liikuttuY = sijainti_.liikutaY(y);
+    //jos toinen arvo on nolla, sen liikutusta ei edes kutsuta.
+    bool liikuttuX = false;
+    if (x != 0){
+        liikuttuX = sijainti_.liikutaX(x);
+    }
+
+    bool liikuttuY = false;
+    if (y !=  0){
+        liikuttuY = sijainti_.liikutaY(y);
+    }
     paivitaTiedot();
 
+    //Note to self, ehot siis, etta molemmat on false aka kumpikaan ei ole totta -IH
     if ((liikuttuX or liikuttuY) == false){
         qDebug() << "Liikkuminen epaonnistui";
     }
