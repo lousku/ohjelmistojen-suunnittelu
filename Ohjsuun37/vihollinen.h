@@ -10,7 +10,9 @@ public:
     Vihollinen();
     Vihollinen(double x, double y);
     Sijainti laskePaamaara();
-
+    int annaLiikkeidenMaara();
+    void asetaLiikkeidenMaara(int maara);
+private:
     int liikkeidenMaara_;    //kaytetaan sijainnin paamaaran paivityksessa
 };
 

@@ -10,7 +10,7 @@ Toimija::~Toimija()
 }
 
 Toimija::Toimija():
-    sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0)
+    sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0), nopeus_(1)
 {
 }
 
@@ -58,20 +58,19 @@ bool Toimija::liikuta(double x, double y)
     if ((liikuttuX or liikuttuY) == false){
         qDebug() << "Liikkuminen epaonnistui";
     }
+
     return (liikuttuX or liikuttuY);
 }
 
-void Toimija::muutaSuuntaa(int suuntamuutos)
+void Toimija::muutaSuuntaa(double suuntamuutos)
 {
-    qDebug() << suunta_ << "suunta ensin";
-    suunta_ = suunta_+suuntamuutos;
+    suunta_ = suunta_ + suuntamuutos;
     paivitaTiedot();
-    qDebug() << suunta_ << "suunta jalkeen";
 }
 
-int Toimija::annaSuunta()
+double Toimija::annaSuunta()
 {
-
+    return suunta_;
 }
 
 void Toimija::muutaElamatasoa(int arvo)
@@ -90,6 +89,11 @@ Sijainti Toimija::annaSijainti()
     return sijainti_;
 }
 
+bool Toimija::asetaSijainti(Sijainti sijainti)
+{
+    sijainti_ = sijainti;
+}
+
 int Toimija::annaTeho()
 {
     return teho_;
@@ -98,6 +102,11 @@ int Toimija::annaTeho()
 int Toimija::annaNopeus()
 {
     return nopeus_;
+}
+
+void Toimija::asetaNopeus(int nopeus)
+{
+    nopeus_ = nopeus;
 }
 
 int Toimija::annaElamataso()
@@ -129,5 +138,11 @@ Sijainti Toimija::annaPaamaara()
 {
     return paamaara_;
 }
+
+bool Toimija::asetaSuunta(int suunta)
+{
+    suunta_ = suunta;
+}
+
 
 

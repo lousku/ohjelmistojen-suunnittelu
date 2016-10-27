@@ -9,4 +9,5 @@ Rectangle {
         text: qsTr("LeftBanner")
         anchors.centerIn: parent
     }
+
 }

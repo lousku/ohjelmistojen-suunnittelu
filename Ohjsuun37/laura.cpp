@@ -1,5 +1,8 @@
 #include "laura.h"
+#include "ammus.h"
 #include <QDebug>
+#include <QtMath>
+
 Laura::~Laura()
 {
 
@@ -11,20 +14,34 @@ Laura::Laura()
 }
 
 Laura::Laura(double x, double y):
-    Toimija(x,y), tuhottu_(false)
+    // Lauralle nopeus kolme
+    Toimija(x,y,3), tuhottu_(false)
 {
 
 }
 
-bool Laura::ammu()
+Ammus Laura::ammu()
 {
 
 }
 
 bool Laura::liikuSuuntaan()
 {
-    liikuta(20,20);
     //TODO: Laskenta suunta_ mukaisesti mihin Laura liikkuu
+
+    double suunta = qDegreesToRadians(annaSuunta());
+
+    double suunnattu_x = sin(suunta);
+    double suunnattu_y = - cos(suunta);
+
+    // Lauralle alustettu nopeus 3
+
+    suunnattu_x = suunnattu_x*annaNopeus();
+    suunnattu_y = suunnattu_y*annaNopeus();
+
+    //qDebug() << "Lauran suunta" << annaSuunta();
+
+    liikuta(suunnattu_x, suunnattu_y);
 }
 
 bool Laura::onkoHengissa()

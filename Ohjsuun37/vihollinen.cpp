@@ -20,3 +20,13 @@ Sijainti Vihollinen::laskePaamaara()
 {
 
 }
+
+int Vihollinen::annaLiikkeidenMaara()
+{
+    return liikkeidenMaara_;
+}
+
+void Vihollinen::asetaLiikkeidenMaara(int maara)
+{
+    liikkeidenMaara_ = maara;
+}

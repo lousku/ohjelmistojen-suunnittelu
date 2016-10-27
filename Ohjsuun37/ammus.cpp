@@ -5,7 +5,8 @@ Ammus::~Ammus()
 
 }
 
-Ammus::Ammus()
+Ammus::Ammus():
+    kantama_(200),ammusTiheys_(1)
 {
 
 }
@@ -15,3 +16,14 @@ bool Ammus::etene()
 {
 
 }
+
+double Ammus::annaKantama()
+{
+    return kantama_;
+}
+
+void Ammus::asetaKantama(double kantama)
+{
+    kantama_ = kantama;
+}
+

@@ -20,6 +20,8 @@ public:
     Q_INVOKABLE void liikutaLauraa();
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
     Q_INVOKABLE void asetaKaskettava(int tunniste);
+    Q_INVOKABLE void luoAmmus();
+    Q_INVOKABLE void luoPeli();
 
     Logiikka();
     Logiikka(QQuickView* view);
@@ -34,7 +36,7 @@ public:
     bool onkoEstetta(double x, double y);
     bool onkoValillaEstetta(Toimija* toimija1, Toimija* toimija2);
     bool onkoValillaEstetta(Sijainti sijainti1, Sijainti sijainti2);
-
+    void kaskytaAmmusta(Ammus *ammus);
 
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim

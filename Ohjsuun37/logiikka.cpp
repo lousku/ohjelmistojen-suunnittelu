@@ -5,17 +5,22 @@
 #include <QtQuick>
 #include <QDebug>
 #include <iostream>
+<<<<<<< HEAD
 #include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
+=======
+#include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin
+#include <math.h>    //fabs aka itseisarvo doublesta
+>>>>>>> ff89b047f7a3db42020cabe5c67f18e699d4fc3a
 
 
 //TODO tanne jotain fiksua! -IH
 void Logiikka::kaannaLauraa(QString suunta)
 {
     if ( suunta == "oikea" ){
-        laura_->muutaSuuntaa(20);
+        laura_->muutaSuuntaa(45);
     }
     else if ( suunta == "vasen"){
-        laura_->muutaSuuntaa(-20);
+        laura_->muutaSuuntaa(-45);
     }
     qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
 }
@@ -55,19 +60,7 @@ Logiikka::Logiikka()
 Logiikka::Logiikka(QQuickView* view)
 {
     nakyma_ = view;
-    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
-    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
-    ParkkihallinRakentaja alustus(view);
-    pelikello_ = alustus.alustaPelikello();
-    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
-    esteet_ = alustus.alustaEsteet();
-
-    laura_ = alustus.alustaLaura();
-    kyborgit_ = alustus.alustaKyborgit();
-
-    //mista saadan tieto, etta kuinka monta vihollista luodaan?
-    viholliset_ = alustus.lisaaViholliset(2);
-
+    //luoPeli();
 }
 
 
@@ -148,8 +141,13 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
         double siirtymaX = (paamaara.annaX() - nykyinenX)*suhde;
         double siirtymaY = (paamaara.annaY() - nykyinenY)*suhde;
 
+        //
+
+
+
 
         //se tapaus, jossa este ei tule tielle -IH
+
         if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY + siirtymaY)){
             return toimija->liikuta(siirtymaX, siirtymaY);
         }
@@ -207,22 +205,29 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
 
 bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
 {
-    //TODO vaihda liikkeidenMaara privateen? -IH
-    if (vihollinen->liikkeidenMaara_ > 0){
+    //TODO vaihda liikkeidenMaara privateen? -IH Done -MS
+   int liikkeet = vihollinen->annaLiikkeidenMaara();
+
+    if (liikkeet > 0){
 
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
+<<<<<<< HEAD
             vihollinen->liikkeidenMaara_ = 0;
+=======
+            vihollinen->asetaLiikkeidenMaara(0);
+            qDebug() << "vapautettu    1.0";
+>>>>>>> ff89b047f7a3db42020cabe5c67f18e699d4fc3a
         }
         else
         {
-         vihollinen->liikkeidenMaara_--;
+         vihollinen->asetaLiikkeidenMaara(liikkeet-1);
         }
     }
     else
     {
-        vihollinen->liikkeidenMaara_ = 5;
+        vihollinen->asetaLiikkeidenMaara(5);
         QList<Toimija*> nakyvatToimijat;
 
         //etsitaan nakyvat kyborgit
@@ -364,7 +369,6 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
                 return laura_;
             }
         }
-
     }
     //jos taas kyborgi tutkitaan viholliset
     else if (dynamic_cast<Kyborgi*> (toimija) != 0){
@@ -376,7 +380,15 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
             }
         }
     }else if (dynamic_cast<Ammus*> (toimija) != 0){
-        qDebug() << "ammus osumaetaisyydella";
+        //kopa suoraan "kybori kohtaa vihollisen"-tapauksesta -MS
+        //qDebug() << "ammus osumaetaisyydella";
+        for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
+            double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
+            if (etaisyys < toimija->annaIskuetaisyys()){
+                //qDebug() << "lähistöllä" << etaisyys;
+                return *it;
+            }
+        }
     }
     else{
         qDebug() << "kutsuttu vaaralle?";
@@ -444,6 +456,106 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
     return false; //onkoLinjallaEstetta;
 }
 
+void Logiikka::kaskytaAmmusta(Ammus *ammus)
+{
+    Toimija* kohde = iskuetaisyydella(ammus);
+    if (kohde != nullptr){
+        //tarkastelee, jaako toimijalle enaan elamatasoa -IH
+        //jostain syysta ensimmainen osuma ei vahingoita vihollista -MS
+        if (vahingoitaToimijaa(kohde, 100) <= 0){
+
+            for (int i = 0 ; i < viholliset_.size(); i ++){
+                if (viholliset_.at(i) == kohde){
+                    viholliset_.removeAt(i);
+                    delete kohde;
+                    break;
+                }
+            }
+        }
+        //TODO fiksumpi ammuksien poisto(alla toinen vastaava listan lapikaynti)
+        for (int i = 0 ; i < ammukset_.size(); i ++){
+            if (ammukset_.at(i) == ammus){
+                ammukset_.removeAt(i);
+                delete ammus;
+                break;
+            }
+        }
+    }
+    else{
+
+        if(liikutaToimijaa(ammus) == false or
+           ammus->annaSijainti() == ammus->annaPaamaara()){
+            qDebug() <<"Ammus TUHOTTIIN";
+            for (int i = 0 ; i < ammukset_.size(); i ++){
+                if (ammukset_.at(i) == ammus){
+                    qDebug() << "POISTETTIIN LISTASTA";
+                    ammukset_.removeAt(i);
+                    delete ammus;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+void Logiikka::luoPeli()
+{
+    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
+    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
+    ParkkihallinRakentaja alustus(nakyma_);
+    pelikello_ = alustus.alustaPelikello();
+    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
+    esteet_ = alustus.alustaEsteet();
+
+    laura_ = alustus.alustaLaura();
+    kyborgit_ = alustus.alustaKyborgit();
+
+    //mista saadan tieto, etta kuinka monta vihollista luodaan?
+    viholliset_ = alustus.lisaaViholliset(2);
+}
+
+void Logiikka::luoAmmus()
+{
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+    //luodaan ammus, asetetaan sijainti lauran sijainniksi
+        Ammus* ammus = new Ammus();
+        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
+        QObject *object = component.create();
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+
+        ammus->asetaQMLosa(object);
+        //ammus lähtee lauran sijainnista lauran suuntaan
+        ammus->asetaSijainti(laura_->annaSijainti());
+        ammus->asetaSuunta(laura_->annaSuunta());
+        ammus->asetaNopeus(5);
+
+        double omaX = laura_->annaSijainti().annaX();
+        double omaY = laura_->annaSijainti().annaY();
+        double kohdeX;
+        double kohdeY;
+        //lasketaan ammuksen x/y suunta cos/sin avulla
+        double suuntaD = (double) ammus->annaSuunta();
+        double kulmaRad = qDegreesToRadians(suuntaD);
+        double cos = qCos(kulmaRad);
+        double sin = qSin(kulmaRad);
+
+        //asetetaan ammuksen paamara suunnan ja kantaman avulla
+        kohdeX = omaX+sin*ammus->annaKantama();
+        kohdeY = omaY+(-cos*ammus->annaKantama());
+
+        //asetetaan paamaara ammukselle
+        Sijainti paamaara(kohdeX,kohdeY);
+        qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+        qDebug() << "Ammuksen suunta: "<< suuntaD;
+        qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
+        ammus->asetaPaamaara(paamaara);
+
+        ammukset_.append(ammus);
+
+
+        return;
+}
+
 void Logiikka::asetaKaskettava(int tunniste)
 {
     for (auto kyborgi: kyborgit_){
@@ -464,6 +576,11 @@ void Logiikka::suoritaTekoaly()
 
     for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
         kaskytaVihollista(*it);
+    }
+
+    for(auto it = ammukset_.begin(); it != ammukset_.end(); it++){
+        kaskytaAmmusta(*it);
+
     }
 
 }

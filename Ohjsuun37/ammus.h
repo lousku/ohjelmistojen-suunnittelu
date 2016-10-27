@@ -9,6 +9,12 @@ public:
     virtual ~Ammus();
     Ammus();
     bool etene();
+    double annaKantama();
+    void asetaKantama(double kantama);
+
+private:
+    double kantama_;
+    double ammusTiheys_;
 
 };
 
