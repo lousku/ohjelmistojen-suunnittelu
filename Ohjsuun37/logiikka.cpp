@@ -209,7 +209,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
-            //vihollinen->liikkeidenMaara_ = 0;
+
             vihollinen->asetaLiikkeidenMaara(0);
             qDebug() << "vapautettu    1.0";
         }
