@@ -520,42 +520,42 @@ void Logiikka::luoAmmus()
 {
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
     //luodaan ammus, asetetaan sijainti lauran sijainniksi
-        Ammus* ammus = new Ammus();
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
-        QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+    Ammus* ammus = new Ammus();
+    QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
+    QObject *object = component.create();
+    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
-        ammus->asetaQMLosa(object);
-        //ammus lähtee lauran sijainnista lauran suuntaan
-        ammus->asetaSijainti(laura_->annaSijainti());
-        ammus->asetaSuunta(laura_->annaSuunta());
-        ammus->asetaNopeus(5);
+    ammus->asetaQMLosa(object);
+    //ammus lähtee lauran sijainnista lauran suuntaan
+    ammus->asetaSijainti(laura_->annaSijainti());
+    ammus->asetaSuunta(laura_->annaSuunta());
+    ammus->asetaNopeus(5);
 
-        double omaX = laura_->annaSijainti().annaX();
-        double omaY = laura_->annaSijainti().annaY();
-        double kohdeX;
-        double kohdeY;
-        //lasketaan ammuksen x/y suunta cos/sin avulla
-        double suuntaD = (double) ammus->annaSuunta();
-        double kulmaRad = qDegreesToRadians(suuntaD);
-        double cos = qCos(kulmaRad);
-        double sin = qSin(kulmaRad);
+    double omaX = laura_->annaSijainti().annaX();
+    double omaY = laura_->annaSijainti().annaY();
+    double kohdeX;
+    double kohdeY;
+    //lasketaan ammuksen x/y suunta cos/sin avulla
+    double suuntaD = (double) ammus->annaSuunta();
+    double kulmaRad = qDegreesToRadians(suuntaD);
+    double cos = qCos(kulmaRad);
+    double sin = qSin(kulmaRad);
 
-        //asetetaan ammuksen paamara suunnan ja kantaman avulla
-        kohdeX = omaX+sin*ammus->annaKantama();
-        kohdeY = omaY+(-cos*ammus->annaKantama());
+    //asetetaan ammuksen paamara suunnan ja kantaman avulla
+    kohdeX = omaX+sin*ammus->annaKantama();
+    kohdeY = omaY+(-cos*ammus->annaKantama());
 
-        //asetetaan paamaara ammukselle
-        Sijainti paamaara(kohdeX,kohdeY);
-        qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-        qDebug() << "Ammuksen suunta: "<< suuntaD;
-        qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
-        ammus->asetaPaamaara(paamaara);
+    //asetetaan paamaara ammukselle
+    Sijainti paamaara(kohdeX,kohdeY);
+    qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+    qDebug() << "Ammuksen suunta: "<< suuntaD;
+    qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
+    ammus->asetaPaamaara(paamaara);
 
-        ammukset_.append(ammus);
+    ammukset_.append(ammus);
 
 
-        return;
+    return;
 }
 
 
@@ -565,11 +565,14 @@ void Logiikka::asetaKaskettava(int tunniste)
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
-            kyborgi->annaQMLosa()->setProperty("color", "black");
+
+
+
+            kyborgi->annaQMLosa()->setProperty("border.color", "black");
             //qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
             //return;
         }else{
-            kyborgi->annaQMLosa()->setProperty("color", "yellow");
+            kyborgi->annaQMLosa()->setProperty("border.color", "yellow");
         }
     }
 

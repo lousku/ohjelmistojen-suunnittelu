@@ -11,6 +11,7 @@ public:
     Kyborgi(double x, double y);
     Kyborgi(double x, double y, int nopeus);
     bool onkoLiikkeessa();
+    virtual void paivitaTiedot();
 
 };
 

@@ -53,6 +53,9 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
         QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+
+        //erityisen tarkea jos parenttiin halutaan paasta kasiksi jatkossa! -IH
+        object->setParent(gameWindow);
         object->setProperty("tunniste", i);
         kyborgi->asetaQMLosa(object);
 

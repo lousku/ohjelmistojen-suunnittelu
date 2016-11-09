@@ -8,7 +8,7 @@ Item {
     height: 600
     focus: true  //Ratkaiseva, jotta painallus huomataan -IH
     state: "NORMAL"
-    //TODO valittaa jotain mika kertoo painalluksen -IH
+
     Keys.onLeftPressed: {
         logiikka.kaannaLauraa("vasen");
     }
@@ -27,7 +27,7 @@ Item {
                 name: "NORMAL"
                 PropertyChanges { target: mapWindow; visible:true}
                 PropertyChanges { target: gameWindow; visible:false}
-                //lisatty, jottei karttanakymassa nappaimilla voi viela kaataa! -IH
+                //lisatty, jottei karttanakymassa nappaimilla voi kaataa! -IH
                 PropertyChanges { target: parkkihalliId; focus: false}
             },
             State {
@@ -73,6 +73,8 @@ Item {
                 y:20
                 color: "white"
                 MouseArea{
+                    //jos klikataan uusi peli on syytä alustaa
+                    //kutsutaan jotain ISONLOGIIKAN alustajaa c++ puolella
                     anchors.fill: parent
                     onClicked: {
                         if(parkkihalliId.state == "NORMAL"){
@@ -82,6 +84,7 @@ Item {
                             parkkihalliId.state = "NORMAL";
                         }
 
+                        //KUTSUMINEN TAPAHTUU TÄSSÄ -IH
                         logiikka.luoPeli();
                     }
                 }
