@@ -57,6 +57,17 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
         //erityisen tarkea jos parenttiin halutaan paasta kasiksi jatkossa! -IH
         object->setParent(gameWindow);
         object->setProperty("tunniste", i);
+        if (i == 1){
+            object->setProperty("color", "darkorange");
+
+        }else if (i == 2){
+            object->setProperty("color", "salmon");
+
+        }else{
+            object->setProperty("color", "gold");
+
+        }
+
         kyborgi->asetaQMLosa(object);
 
         kyborgit.append(kyborgi);
@@ -100,7 +111,7 @@ QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
         for( int j=0; j<esteet[i].count(); ++j )
         {
             if (esteet[i][j] == 0){
-                QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Este.qml")));
+                QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:EsteetonAlue.qml")));
                 QObject *object = component.create();
                 QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
                 QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));

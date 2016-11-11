@@ -35,6 +35,7 @@ Item {
                 PropertyChanges { target: mapWindow; visible:false}
                 PropertyChanges { target: gameWindow; visible:true}
                 PropertyChanges { target: parkkihalliId; focus: true}
+                PropertyChanges { target: topBanner; palkkinakyvissa: true}
         }
     ]
 

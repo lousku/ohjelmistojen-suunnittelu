@@ -4,7 +4,6 @@ Rectangle {
     color:"blue"
     Text {
         id: gameWindText
-        text: qsTr("GameWindow")
         anchors.centerIn: parent
     }
 }

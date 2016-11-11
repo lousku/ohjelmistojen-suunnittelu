@@ -38,6 +38,10 @@ public:
     bool onkoValillaEstetta(Sijainti sijainti1, Sijainti sijainti2);
     void kaskytaAmmusta(Ammus *ammus);
 
+
+    //vaihto Q_INVOKABLEKSI, jos tulee tarve kutsua QML puolelta
+    void lopetaPeli(bool voitettu);
+
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
     QList<Kyborgi*> kyborgit_;    //Shared_ptr:iä pitää olla huolellinen
@@ -48,6 +52,7 @@ private:
     Kyborgi* kaskettava_;
 
     QList<QList<int>> esteet_;
+    ParkkihallinRakentaja parkkihalli_;
 
 public slots:
     void suoritaTekoaly();

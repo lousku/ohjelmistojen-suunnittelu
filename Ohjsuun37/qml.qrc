@@ -7,9 +7,10 @@
         <file>GameWindow.qml</file>
         <file>LeftBanner.qml</file>
         <file>TopBanner.qml</file>
-        <file>Este.qml</file>
+        <file>EsteetonAlue.qml</file>
         <file>Ammus.qml</file>
         <file>graphics/TampereMap</file>
         <file>MapView.qml</file>
+        <file>Elamamittari.qml</file>
     </qresource>
 </RCC>

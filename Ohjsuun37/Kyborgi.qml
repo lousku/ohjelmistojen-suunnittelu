@@ -4,10 +4,14 @@ Rectangle {
     id: kyborgi //tarvitseeko edes?
     width: 20
     height: 20
-    color: "yellow"
 
     property alias text: teksti.text
     property int tunniste: -1
+    property int reunanpaksuus: 0
+
+    border.color: "black"
+    border.width: reunanpaksuus
+
 
     Text {
         id: teksti

@@ -38,13 +38,30 @@ void Kyborgi::paivitaTiedot()
     //muutettava jos elamataso muuttuu niin, ettei ala 100:sta - IH
     double arvo = double(annaElamataso())/100;
 
-    QString tunniste = annaQMLosa()->property("tunniste").toString();;
+    QString tunniste = annaQMLosa()->property("tunniste").toString();
+
+    //myohemmin kivempi totetutus? miten copypasten saa valtettya?-IH
     if (tunniste == "1"){
         banneri->setProperty("barValue1", arvo);
+        if (arvo == 0){
+            banneri->setProperty("barBorderWidth1", 0);
+            int kohta = banneri->property("barPosition1").toInt() + 3;
+            banneri->setProperty("barPosition1", kohta);
+        }
     }else if (tunniste == "2"){
         banneri->setProperty("barValue2", arvo);
+        if (arvo == 0){
+            banneri->setProperty("barBorderWidth2", 0);
+            int kohta = banneri->property("barPosition2").toInt() + 3;
+            banneri->setProperty("barPosition2", kohta);
+        }
     }else{
         banneri->setProperty("barValue3", arvo);
+        if (arvo == 0){
+            banneri->setProperty("barBorderWidth3", 0);
+            int kohta = banneri->property("barPosition3").toInt() + 3;
+            banneri->setProperty("barPosition3", kohta);
+        }
     }
 
 

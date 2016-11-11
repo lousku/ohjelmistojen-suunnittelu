@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Rectangle{
-    id: este
+    id: esteeton
     width: 20
     height: 20
     color: "white"
@@ -9,7 +9,7 @@ Rectangle{
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            logiikka.asetaKyborginPaamaara(este.x+ mouseX, este.y + mouseY);
+            logiikka.asetaKyborginPaamaara(esteeton.x+ mouseX, esteeton.y + mouseY);
         }
     }
 }

@@ -505,6 +505,10 @@ void Logiikka::lopetaPeli(bool voitettu)
 {
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
+    
+    viholliset_.clear();
+    kyborgit_.clear();
+    ammukset_.clear();
 }
 
 void Logiikka::luoPeli()
@@ -520,6 +524,16 @@ void Logiikka::luoPeli()
 
     //mista saadan tieto, etta kuinka monta vihollista luodaan?
     viholliset_ = parkkihalli_.lisaaViholliset(2);
+    
+    
+    
+    //elamapalkkien alustus -IH
+    banneri->setProperty("barPosition1", 0);
+    banneri->setProperty("barBorderWidth1", 3);
+    banneri->setProperty("barPosition2", 1);
+    banneri->setProperty("barBorderWidth2", 3);
+    banneri->setProperty("barPosition3", 2);
+    banneri->setProperty("barBorderWidth3", 3);
 }
 
 void Logiikka::luoAmmus()

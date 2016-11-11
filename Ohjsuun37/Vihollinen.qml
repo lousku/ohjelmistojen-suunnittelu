@@ -5,7 +5,7 @@ Rectangle {
     id: vihollinen //tarvitseeko edes?
     width: 20
     height: 20
-    color: "orange"
+    color: "yellow"
     property alias text: teksti.text
 
     Text {
