@@ -24,7 +24,24 @@ void Logiikka::kaannaLauraa(QString suunta)
 
 void Logiikka::liikutaLauraa()
 {
+    // Asettaa suunnan ja nopeuden mukaisen paamaaran Lauralle AH
     laura_->liikuSuuntaan();
+
+    //Esteiden tarkastelu puuttuu:
+
+    // liikutaToimijaa(laura_) olis siisti ratkasu mutta jostain syysta
+    // laura liikkuu silla vaan vasemmalle..? AH
+
+    // onkoEstetta ei myoskaan toimi Lauralle, tunnistaa olematttomia
+    // esteita mutta ei tunnista oikeita esteita. Mielellaan
+    // silti kayttaisi samaa funktiota ettei logiikka paisu?
+
+    double suunnattu_x = laura_->annaPaamaara().annaX();
+    double suunnattu_y = laura_->annaPaamaara().annaY();
+
+    laura_->liikuta(suunnattu_x, suunnattu_y);
+
+
 }
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
@@ -526,42 +543,44 @@ void Logiikka::luoAmmus()
 {
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
     //luodaan ammus, asetetaan sijainti lauran sijainniksi
-    Ammus* ammus = new Ammus();
-    QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
-    QObject *object = component.create();
-    QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+        Ammus* ammus = new Ammus();
+        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
+        QObject *object = component.create();
+        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
-    ammus->asetaQMLosa(object);
-    //ammus lähtee lauran sijainnista lauran suuntaan
-    ammus->asetaSijainti(laura_->annaSijainti());
-    ammus->asetaSuunta(laura_->annaSuunta());
-    ammus->asetaNopeus(5);
+        ammus->asetaQMLosa(object);
+        //ammus lähtee lauran sijainnista lauran suuntaan
+        ammus->asetaSijainti(laura_->annaSijainti());
+        // QML kayttaa astelukuja mutta c++ tarvitsee laskentaan radiaanit AH
+        ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
+        ammus->asetaNopeus(5);
 
-    double omaX = laura_->annaSijainti().annaX();
-    double omaY = laura_->annaSijainti().annaY();
-    double kohdeX;
-    double kohdeY;
-    //lasketaan ammuksen x/y suunta cos/sin avulla
-    double suuntaD = (double) ammus->annaSuunta();
-    double kulmaRad = qDegreesToRadians(suuntaD);
-    double cos = qCos(kulmaRad);
-    double sin = qSin(kulmaRad);
+        double omaX = laura_->annaSijainti().annaX();
+        double omaY = laura_->annaSijainti().annaY();
+        double kohdeX;
+        double kohdeY;
+        //lasketaan ammuksen x/y suunta cos/sin avulla
+        double suuntaD = (double) ammus->annaSuunta();
+        double kulmaRad = qDegreesToRadians(suuntaD);
+        double cos = qCos(kulmaRad);
+        double sin = qSin(kulmaRad);
 
-    //asetetaan ammuksen paamara suunnan ja kantaman avulla
-    kohdeX = omaX+sin*ammus->annaKantama();
-    kohdeY = omaY+(-cos*ammus->annaKantama());
+        //asetetaan ammuksen paamara suunnan ja kantaman avulla
+        kohdeX = omaX+sin*ammus->annaKantama();
+        kohdeY = omaY+(-cos*ammus->annaKantama());
 
-    //asetetaan paamaara ammukselle
-    Sijainti paamaara(kohdeX,kohdeY);
-    qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-    qDebug() << "Ammuksen suunta: "<< suuntaD;
-    qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
-    ammus->asetaPaamaara(paamaara);
+        //asetetaan paamaara ammukselle
+        Sijainti paamaara(kohdeX,kohdeY);
+        qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+        qDebug() << "Ammuksen suunta: "<< suuntaD;
+        qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
+        ammus->asetaPaamaara(paamaara);
 
-    ammukset_.append(ammus);
+        ammukset_.append(ammus);
 
 
-    return;
+        return;
+
 }
 
 
@@ -606,6 +625,10 @@ void Logiikka::suoritaTekoaly()
         kaskytaAmmusta(ammukset_.at(i));
     }
 
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+    qDebug() << "hiiriX: " << gameWindow->property("hiiriX").toDouble();
+    qDebug() << "hiiriY: " << gameWindow->property("hiiriY").toDouble();
+
     //ongelmana, etta kysyy mahdollisia esteita paikasta mita ei ole maaritelty
     //saa siirtymakseen Nan, mutta miksi... -IH
 
@@ -623,3 +646,6 @@ void Logiikka::suoritaTekoaly()
         qDebug() << p.x << " ja " << p.y;
     }*/
 }
+
+
+

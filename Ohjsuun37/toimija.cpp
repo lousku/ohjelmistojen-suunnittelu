@@ -1,6 +1,7 @@
 #include "toimija.h"
 #include "QQmlEngine"
 #include <QDebug>
+#include <QtMath>
 
 
 Toimija::~Toimija()
@@ -64,7 +65,10 @@ bool Toimija::liikuta(double x, double y)
 
 void Toimija::muutaSuuntaa(double suuntamuutos)
 {
-    suunta_ += suuntamuutos;
+
+    suunta_ = suunta_+ qDegreesToRadians( suuntamuutos );
+    //suunta_ += suuntamuutos;
+
     paivitaTiedot();
 }
 
@@ -123,7 +127,8 @@ void Toimija::paivitaTiedot()
 {
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
-    QMLosa_->setProperty("angle", suunta_);
+    //QML kayttaa asteita, c++ radiaaneja AH
+    QMLosa_->setProperty("angle", qRadiansToDegrees( suunta_ ) );
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
     //QMLosa_->setProperty("rotation", suunta_);
 
