@@ -59,7 +59,22 @@ Item {
         anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
         anchors.right: parent.right; anchors.bottom: parent.bottom
         visible: false
+
+        //property valietaan hiiren sijainti c++:lle
+        property double hiiriX: 0
+        property double hiiriY: 0
+
+        MouseArea{
+            anchors.fill: parent
+            hoverEnabled: true
+            onMouseXChanged: {
+                parent.hiiriX = mouseX;
+            }
+            onMouseYChanged: {
+                parent.hiiriY = mouseY;
+            }
         }
+    }
 
     MapView{
         id:mapWindow

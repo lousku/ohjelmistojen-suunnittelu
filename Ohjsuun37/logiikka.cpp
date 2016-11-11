@@ -613,6 +613,10 @@ void Logiikka::suoritaTekoaly()
         kaskytaAmmusta(ammukset_.at(i));
     }
 
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+    qDebug() << "hiiriX: " << gameWindow->property("hiiriX").toDouble();
+    qDebug() << "hiiriY: " << gameWindow->property("hiiriY").toDouble();
+
     //ongelmana, etta kysyy mahdollisia esteita paikasta mita ei ole maaritelty
     //saa siirtymakseen Nan, mutta miksi... -IH
 
@@ -622,3 +626,6 @@ void Logiikka::suoritaTekoaly()
         kaskytaAmmusta(*it);
     }*/
 }
+
+
+

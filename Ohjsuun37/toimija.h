@@ -14,7 +14,7 @@ public:
     Toimija(double x, double y);
     Toimija(double x, double y, int nopeus);
     bool liikuta(Sijainti sijainti);
-    void muutaSuuntaa(double suunta);
+    void muutaSuuntaa(double suuntamuutos);
     double annaSuunta();
     bool liikuta(double x, double y);
     void muutaElamatasoa(int arvo);

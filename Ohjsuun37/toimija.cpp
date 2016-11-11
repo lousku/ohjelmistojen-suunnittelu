@@ -65,6 +65,7 @@ bool Toimija::liikuta(double x, double y)
 
 void Toimija::muutaSuuntaa(double suuntamuutos)
 {
+
     suunta_ = suunta_+ qDegreesToRadians( suuntamuutos );
     //suunta_ += suuntamuutos;
 
