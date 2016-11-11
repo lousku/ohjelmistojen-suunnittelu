@@ -26,7 +26,7 @@ public:
     void asetaNopeus(int nopeus);
     int annaElamataso();
     QObject* annaQMLosa();
-    void paivitaTiedot();
+    virtual void paivitaTiedot();
     bool asetaPaamaara(Sijainti sijainti);
     Sijainti annaPaamaara();
     bool asetaSuunta(int suunta);

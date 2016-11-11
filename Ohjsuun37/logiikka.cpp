@@ -5,8 +5,9 @@
 #include <QtQuick>
 #include <QDebug>
 #include <iostream>
-#include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin
-#include <math.h>    //fabs aka itseisarvo doublesta
+#include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
+#include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
+
 
 
 //TODO tanne jotain fiksua! -IH
@@ -73,26 +74,17 @@ Logiikka::Logiikka()
 Logiikka::Logiikka(QQuickView* view)
 {
     nakyma_ = view;
-    //kun taman luo taalla, niin eikos se tuhota funktion loputtua?
-    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
-    ParkkihallinRakentaja alustus(view);
-    pelikello_ = alustus.alustaPelikello();
-    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
-    esteet_ = alustus.alustaEsteet();
-
-    laura_ = alustus.alustaLaura();
-    kyborgit_ = alustus.alustaKyborgit();
-
-    //mista saadan tieto, etta kuinka monta vihollista luodaan?
-    viholliset_ = alustus.lisaaViholliset(2);
-
+    //luoPeli();
 }
 
 
 bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
 {
     if (kyborgi->onkoLiikkeessa()){
-        liikutaToimijaa(kyborgi);
+        if (not liikutaToimijaa(kyborgi)){
+            kyborgi->asetaPaamaara(kyborgi->annaSijainti());
+            qDebug() << "jee";
+        }
     }else{
         Toimija* kohde = iskuetaisyydella(kyborgi);
         if (kohde != nullptr){
@@ -174,7 +166,8 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
             return toimija->liikuta(siirtymaX, siirtymaY);
         }
         //ne tapaukset, joissa vielä toiseen suuntaan voisi liikkua -IH
-        else {
+        //eli siis kun kyseessä EI ole ammus.
+        else if (dynamic_cast<Ammus*> (toimija) == 0){
             //lisatty raja itseisarvosta, etta voidaan hylata olemattomat siirtymat.
             if (not onkoEstetta(nykyinenX + siirtymaX, nykyinenY) and fabs(siirtymaX) > 0.01){
                 return toimija->liikuta(siirtymaX, 0);
@@ -182,37 +175,47 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
                 return toimija->liikuta(0, siirtymaY);
             }
             else
-            {   //ne tapaukset, joissa liikkumavaraa vielä olisi, mutta este on liian lahelle
+            {   //ne tapaukset, joissa liikkumavaraa vielä olisi, mutta este on liian lahella
                 //liikutakseen nopeuden verran -H
                 if (onkoEstetta(nykyinenX + siirtymaX, nykyinenY)){
 
+                    double matkaEsteeseenX;
+                    double matkaEsteeseenY;
                     //lasketaan etaisyys seuraavaan esteeseen
-                    double matkaEsteeseenX = 20-(fmod(nykyinenX ,20));
-                    double matkaEsteeseenY = 20-(fmod(nykyinenY, 20));
+                    if (siirtymaX > 0){
+                        matkaEsteeseenX = 20-(fmod(nykyinenX ,20));
+                    }else{
+                        matkaEsteeseenX = int(nykyinenX/20)*20 - nykyinenX;
+                    }
+                    if (siirtymaY > 0){
+                        matkaEsteeseenY = 20-(fmod(nykyinenY, 20));
+                    }else{
+                        matkaEsteeseenY = int(nykyinenX/20)*20 - nykyinenY;
+                    }
 
-                    //jos eteisee on pienempi matka kuin nopeus
+
+
+                    //jos esteeseen on pienempi matka kuin nopeus
                     //liikutaan atkan verran, silloin ei estetta voi olla edessa -> liikutaan -IH
-                    if (matkaEsteeseenX < nopeus){
-                        //if (not onkoEstetta(nykyinenX + matkaEsteeseenX, nykyinenY)){
-                            qDebug() << "jepari";
+                    if (fabs(matkaEsteeseenX) < nopeus and fabs(matkaEsteeseenX) > 1){
+                        if (not onkoEstetta(nykyinenX + matkaEsteeseenX, nykyinenY)){
                             return toimija->liikuta(matkaEsteeseenX, 0);
 
-                        //}
-                    }else if (matkaEsteeseenY < nopeus){
-                        //if (not onkoEstetta(nykyinenX, nykyinenY+ matkaEsteeseenY)){
-                            qDebug() << "jepari";
-                            return toimija->liikuta(matkaEsteeseenY, 0);
+                        }
+                    }else if (fabs(matkaEsteeseenY) < nopeus and fabs(matkaEsteeseenY) > 1){
+                        if (not onkoEstetta(nykyinenX, nykyinenY+ matkaEsteeseenY)){
+                            return toimija->liikuta(0, matkaEsteeseenY);
 
-                        //}
+                        }
                     }
                 }
-                //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
-                //koska halutaan tarkastelun, etta onko kyborgi liikkeessa onnistuvan
-                toimija->asetaPaamaara(toimija->annaSijainti());
-                return false;   //liikkuminen ei onnistunut -IH
             }
         }
     }
+    //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
+    //TODO SELVITYS, ETTA HAITTAAKO TAMA AMMUKSEN TOTEUTUSTA -IH
+    toimija->asetaPaamaara(toimija->annaSijainti());
+    return false;   //liikkuminen ei onnistunut -IH
 }
 
 bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
@@ -225,6 +228,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         //jos toimija ei voi liikkua, otetaan se pois jumista
         if (!liikutaToimijaa(vihollinen))
         {
+
             vihollinen->asetaLiikkeidenMaara(0);
             qDebug() << "vapautettu    1.0";
         }
@@ -290,7 +294,6 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
             if (!liikutaToimijaa(vihollinen))
             {
                 liikutaToimijaaRandomisti(vihollinen);
-                qDebug() << "vapautettu";
             }
         }
         //ei olla nahty alusta asti ketaan
@@ -320,44 +323,7 @@ void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
     double sijaintiX = toimija->annaSijainti().annaX();
     double sijaintiY = toimija->annaSijainti().annaY();
 
-    //rakenne, jonka avulla ei ota suuntaa sinne, missa on esteita.
-
-    /*bool oikealle = !onkoEstetta(sijaintiX+20, sijaintiY-20) and !onkoEstetta(sijaintiX+20, sijaintiY)
-            and !onkoEstetta(sijaintiX+20, sijaintiY+20);
-
-    bool vasemmalle = !onkoEstetta(sijaintiX-20, sijaintiY-20) and !onkoEstetta(sijaintiX-20, sijaintiY)
-            and !onkoEstetta(sijaintiX-20, sijaintiY)+20;
-
-    bool ylos = !onkoEstetta(sijaintiX-20, sijaintiY+20) and !onkoEstetta(sijaintiX, sijaintiY+20)
-            and !onkoEstetta(sijaintiX+20, sijaintiY+20);
-
-    bool alas = !onkoEstetta(sijaintiX-20, sijaintiY-20) and !onkoEstetta(sijaintiX, sijaintiY-20)
-            and !onkoEstetta(sijaintiX+20, sijaintiY-20);
-
-
-    int x = 0;
-    int y = 0;*/
     while (true){
-
-        /*if (oikealle and !vasemmalle){
-            x = rand() % 51;  //arvoja 0...49
-        }
-        else if (oikealle and vasemmalle){
-            x = -50 + rand() % 101;  //arvoja -50...50
-        }
-        else if (!oikealle and vasemmalle){
-            x = -50 + rand() % 51;   //arvoja -50...0
-        }
-
-        if (ylos and !alas){
-            y = rand() % 51; // arvoja 0...50
-        }
-        else if (ylos and alas){
-            y = -50 + rand() % 101; //arvoja -50...50
-        }
-        else if (!ylos == 0 and alas){
-            y = -50 + rand() % 51;   //arvoja -50..0
-        }*/
 
         int x = -50 + rand() % 101;
         int y = -50 + rand() % 101;
@@ -376,17 +342,17 @@ void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
             uusiY = 0;
         }
 
-        //tehdaan uudesta sijainnista sijainti olio ja tarkastellaan, onko sinne mennessa esteita.
         if (onkoEstetta(uusiX, uusiY)){
-            break; //TODO vaihto continue?
+            continue; //TODO vaihto continue?
         }
+        //tehdaan uudesta sijainnista sijainti olio ja tarkastellaan, onko sinne mennessa esteita.
         Sijainti uusi = Sijainti(uusiX, uusiY);
         if (not onkoValillaEstetta(toimija->annaSijainti(), uusi) ){
             toimija->asetaPaamaara(uusi);
             break; //TODO vaihto continue?
         }
         else if (i > 10){
-            //debuq mielessä, kuinka usein nain kay
+            //debuq mielessä, kuinka usein nain kay, ei kuitenkaan pideta kauempaa tassa loopissa!
             qDebug() << "ei meinaa loytya, minne menis";
             break;
         }
@@ -445,7 +411,7 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
 bool Logiikka::onkoEstetta(double x, double y)
 {
     //lisatty oikaisu, ettei tehda kyselyja alueen ulkopuolelle ja kaadeta -IH
-    if (x > 480){
+    /*if (x > 480){
         x = 480;
     }else if (x < 0){
         x = 0;
@@ -453,8 +419,14 @@ bool Logiikka::onkoEstetta(double x, double y)
         y = 480;
     }else if (y < 0){
         y = 0;
-    }
+    }*/
 
+    //oikaisu muutettu niin, etta reunoille yrittaessa todetaan edessa olevan este
+    //nain ammukset, jotka yrittavat reunan saadaan fiksusti poistettua -IH
+    if (0 > x or x > 480 or 0 > y or y > 480){
+        return true;
+    }
+    //TODO mitka ehdot tahan kuuluu, onko rajat eri kuin 0-480 -IH
     if (esteet_[int((y+1)/20)][int((x+1)/20)] == 1){
         return true;
     }else if (esteet_[int((y+1)/20)][int((x+19)/20)] == 1){
@@ -504,11 +476,12 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
 
 void Logiikka::kaskytaAmmusta(Ammus *ammus)
 {
+
     Toimija* kohde = iskuetaisyydella(ammus);
     if (kohde != nullptr){
         //tarkastelee, jaako toimijalle enaan elamatasoa -IH
         //jostain syysta ensimmainen osuma ei vahingoita vihollista -MS
-        if (vahingoitaToimijaa(kohde, 100) <= 0){
+        if (vahingoitaToimijaa(kohde, 10) <= 0){
 
             for (int i = 0 ; i < viholliset_.size(); i ++){
                 if (viholliset_.at(i) == kohde){
@@ -542,6 +515,22 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
             }
         }
     }
+}
+
+void Logiikka::luoPeli()
+{
+    //kun taman luo taalla, niin eikos se unohdeta funktion loputtua?
+    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
+    ParkkihallinRakentaja alustus(nakyma_);
+    pelikello_ = alustus.alustaPelikello();
+    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
+    esteet_ = alustus.alustaEsteet();
+
+    laura_ = alustus.alustaLaura();
+    kyborgit_ = alustus.alustaKyborgit();
+
+    //mista saadan tieto, etta kuinka monta vihollista luodaan?
+    viholliset_ = alustus.lisaaViholliset(2);
 }
 
 void Logiikka::luoAmmus()
@@ -585,17 +574,27 @@ void Logiikka::luoAmmus()
 
 
         return;
+
 }
 
+
+//TODO tanne esim kyseessa olevan kyborgin varinvaihto
 void Logiikka::asetaKaskettava(int tunniste)
 {
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
+
+
+
+            kyborgi->annaQMLosa()->setProperty("border.color", "black");
             //qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
-            return;
+            //return;
+        }else{
+            kyborgi->annaQMLosa()->setProperty("border.color", "yellow");
         }
     }
+
 }
 
 
@@ -609,9 +608,17 @@ void Logiikka::suoritaTekoaly()
         kaskytaVihollista(*it);
     }
 
-    for(auto it = ammukset_.begin(); it != ammukset_.end(); it++){
-        kaskytaAmmusta(*it);
-
+    //luultavasti oleellinen korjaus -IH
+    for (int i = ammukset_.size()-1; i >= 0; i--){
+        kaskytaAmmusta(ammukset_.at(i));
     }
 
+    //ongelmana, etta kysyy mahdollisia esteita paikasta mita ei ole maaritelty
+    //saa siirtymakseen Nan, mutta miksi... -IH
+
+    //talla saattaa kaatua jos ampuu useita ammuksia -IH
+    //ongelmaa ei kuitenkaan viela varmistettu ^ ylla mahdollinen ratkaisu
+    /*for (auto it = ammukset_.begin(); it != ammukset_.end(); it++){
+        kaskytaAmmusta(*it);
+    }*/
 }
