@@ -130,7 +130,8 @@ void Toimija::paivitaTiedot()
     //QML kayttaa asteita, c++ radiaaneja AH
     QMLosa_->setProperty("angle", qRadiansToDegrees( suunta_ ) );
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
-    //QMLosa_->setProperty("rotation", suunta_);
+    //QMLosa_->setProperty("rotation", suunta_);  --tama oli turha
+    //ellei halunnut sita tupla kaantoa! -IH
 
 }
 
@@ -147,6 +148,7 @@ Sijainti Toimija::annaPaamaara()
 bool Toimija::asetaSuunta(int suunta)
 {
     suunta_ = suunta;
+    paivitaTiedot();
 }
 
 

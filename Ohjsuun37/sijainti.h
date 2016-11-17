@@ -18,6 +18,11 @@ public:
     bool operator ==(const Sijainti &sijainti);
     bool operator !=(const Sijainti &sijainti);
 
+    //palauttaa kulman mihin suuntaa pitaa kaantya, etta nakee kohteen -IH
+    double missaSuunnassa(double X, double Y);
+
+    static double etaisyys(double uusiX, double vanhaX,double uusiY, double vanhaY);
+
 private:
     double paikkaY_;
     double paikkaX_;

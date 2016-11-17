@@ -72,7 +72,7 @@ double Sijainti::laskeEtaisyys(Sijainti paamaara) const
 {
     double uusiX = paamaara.annaX();
     double uusiY = paamaara.annaY();
-    return sqrt(pow((uusiX-paikkaX_),2) + pow((uusiY-paikkaY_),2));
+    return etaisyys(uusiX, paikkaX_,uusiY,paikkaY_);
 }
 
 bool Sijainti::operator==(const Sijainti &sijainti)
@@ -83,4 +83,20 @@ bool Sijainti::operator==(const Sijainti &sijainti)
 bool Sijainti::operator !=(const Sijainti &sijainti)
 {
     return !operator ==(sijainti);
+}
+
+double Sijainti::missaSuunnassa(double X, double Y)
+{
+    double etaisyysX = X - paikkaX_;
+    double etaisyysY = Y - paikkaY_;
+
+    //TODO oikean kulman palautus
+    double kulma = etaisyysX;
+
+    return kulma;
+}
+
+double Sijainti::etaisyys(double uusiX, double vanhaX,double uusiY, double vanhaY)
+{
+    return sqrt(pow((uusiX-vanhaX),2) + pow((uusiY-vanhaY),2));
 }

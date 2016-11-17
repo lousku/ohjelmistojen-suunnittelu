@@ -33,38 +33,21 @@ void Kyborgi::paivitaTiedot()
 {
     Toimija::paivitaTiedot();
 
-    QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
-
     //muutettava jos elamataso muuttuu niin, ettei ala 100:sta - IH
     double arvo = double(annaElamataso())/100;
 
     QString tunniste = annaQMLosa()->property("tunniste").toString();
+    if (tunniste != ""){
+        QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
+        QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
 
-    //myohemmin kivempi totetutus? miten copypasten saa valtettya?-IH
-    if (tunniste == "1"){
-        banneri->setProperty("barValue1", arvo);
+        palkki->setProperty("value", arvo);
         if (arvo == 0){
-            banneri->setProperty("barBorderWidth1", 0);
-            int kohta = banneri->property("barPosition1").toInt() + 3;
-            banneri->setProperty("barPosition1", kohta);
-        }
-    }else if (tunniste == "2"){
-        banneri->setProperty("barValue2", arvo);
-        if (arvo == 0){
-            banneri->setProperty("barBorderWidth2", 0);
-            int kohta = banneri->property("barPosition2").toInt() + 3;
-            banneri->setProperty("barPosition2", kohta);
-        }
-    }else{
-        banneri->setProperty("barValue3", arvo);
-        if (arvo == 0){
-            banneri->setProperty("barBorderWidth3", 0);
-            int kohta = banneri->property("barPosition3").toInt() + 3;
-            banneri->setProperty("barPosition3", kohta);
+            palkki->setProperty("reunanleveys", 0);
+            int kohta = palkki->property("paikka").toInt() + 3;
+            palkki->setProperty("paikka", kohta);
         }
     }
-
-
 }
 
 

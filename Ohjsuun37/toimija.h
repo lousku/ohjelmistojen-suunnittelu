@@ -13,23 +13,26 @@ public:
     Toimija();
     Toimija(double x, double y);
     Toimija(double x, double y, int nopeus);
-    bool liikuta(Sijainti sijainti);
     void muutaSuuntaa(double suuntamuutos);
-    double annaSuunta();
     bool liikuta(double x, double y);
     void muutaElamatasoa(int arvo);
-    void asetaQMLosa(QObject *objekti);
     Sijainti annaSijainti();
-    bool asetaSijainti(Sijainti sijainti);
+    bool asetaPaamaara(Sijainti sijainti);
+    void asetaNopeus(int nopeus);
+
     int annaTeho();
     int annaNopeus();
-    void asetaNopeus(int nopeus);
     int annaElamataso();
+    double annaSuunta();
     QObject* annaQMLosa();
-    virtual void paivitaTiedot();
-    bool asetaPaamaara(Sijainti sijainti);
     Sijainti annaPaamaara();
+    bool liikuta(Sijainti sijainti);
     bool asetaSuunta(int suunta);
+    void asetaQMLosa(QObject *objekti);
+    bool asetaSijainti(Sijainti sijainti);
+    virtual void paivitaTiedot();
+
+    //vaihto protected?, voiko edes mitään? -IH
 
 private:
     int teho_;

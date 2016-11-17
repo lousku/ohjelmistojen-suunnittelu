@@ -6,37 +6,41 @@ Rectangle {
     color: "green"
 
     property alias palkkinakyvissa: palkkirivi.visible
-    property alias barValue1: bar1.value
-    property alias barValue2: bar2.value
-    property alias barValue3: bar3.value
-
-    property alias barBorderWidth1: bar1.reunanleveys
-    property alias barBorderWidth2: bar2.reunanleveys
-    property alias barBorderWidth3: bar3.reunanleveys
-
-    property int barPosition1: 0
-    property int barPosition2: 1
-    property int barPosition3: 2
+    property alias lauranElama: lauranElamaBar.value
 
     GridLayout {
         id: palkkirivi
+        objectName: "palkkirivi"
         visible: false
-        //spacing: 10
+
         Elamamittari{
-            id: bar1
+            //id: kyborgi1 //tata ei valttamatta tarvita -IH
+            objectName: "kyborgi1"
             vari: "darkorange"
-            Layout.column: barPosition1
+            property int paikka: 0
+            Layout.column: paikka
         }
 
         Elamamittari{
-            id: bar2
+            id: kyborgi2
+            objectName: "kyborgi2"
             vari: "salmon"
-            Layout.column: barPosition2
+            property int paikka: 1
+            Layout.column: paikka
         }
         Elamamittari{
-            id: bar3
+            id: kyborgi3
+            objectName: "kyborgi3"
             vari: "gold"
-            Layout.column: barPosition3
+            property int paikka: 2
+            Layout.column: paikka
+        }
+
+        Elamamittari{
+            id: lauranElamaBar
+            vari: "purple"
+            Layout.row: 1
+            implicitHeight: 25
         }
     }
 }

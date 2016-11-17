@@ -10,7 +10,7 @@
 
 
 
-//TODO tanne jotain fiksua! -IH
+/*TODO tanne jotain fiksua! -IH
 void Logiikka::kaannaLauraa(QString suunta)
 {
     if ( suunta == "oikea" ){
@@ -20,6 +20,8 @@ void Logiikka::kaannaLauraa(QString suunta)
         laura_->muutaSuuntaa(-45);
     }
     qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
+
+    laura_->paivitaTiedot();
 }
 
 void Logiikka::liikutaLauraa()
@@ -42,6 +44,24 @@ void Logiikka::liikutaLauraa()
     laura_->liikuta(suunnattu_x, suunnattu_y);
 
 
+    laura_->paivitaTiedot(); //pitaahan lauranki tiedot paivitella
+
+
+}*/
+
+void Logiikka::liikutaLauraaVaaka(double suunta)
+{
+    double uusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus()*suunta;
+    laura_->asetaPaamaara(Sijainti(uusiX, laura_->annaSijainti().annaY()));
+    liikutaToimijaa(laura_);
+
+}
+
+void Logiikka::liikutaLauraaPysty(double suunta)
+{
+    double uusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus()*suunta;
+    laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(), uusiY));
+    liikutaToimijaa(laura_);
 }
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
@@ -75,6 +95,12 @@ Logiikka::Logiikka(QQuickView* view)
 {
     nakyma_ = view;
     parkkihalli_ = ParkkihallinRakentaja(nakyma_);
+
+    pelikello_ = parkkihalli_.alustaPelikello();
+    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
+
+    hiiriX_ = 0; //ei ehka valttamattomat -IH
+    hiiriY_ = 0;
 }
 
 
@@ -520,16 +546,27 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 //voitettu paremetria, ei viela kayteta -IH
 void Logiikka::lopetaPeli(bool voitettu)
 {
+
+    pelikello_->stop();
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
+
+    //TODO tähän jäin.
+    /*QObject *banneri= nakyma_->rootObject()->findChild<QObject*>("topBanner");
+    for (int i = 1; i < 4; i++){
+
+        QString tunniste = "tunniste" + QString::number(i);
+        QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
+
+        palkki->setProperty("reunanleveys", 3);
+        palkki->setProperty("paikka", i-1);
+
+    }*/
+
 }
 
 void Logiikka::luoPeli()
 {
-    //kun taman luo taalla, niin eikos se unohdeta funktion loputtua?
-    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
-    pelikello_ = parkkihalli_.alustaPelikello();
-    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
     esteet_ = parkkihalli_.alustaEsteet();
 
     laura_ = parkkihalli_.alustaLaura();
@@ -537,6 +574,8 @@ void Logiikka::luoPeli()
 
     //mista saadan tieto, etta kuinka monta vihollista luodaan?
     viholliset_ = parkkihalli_.lisaaViholliset(2);
+
+    pelikello_->start();
 }
 
 void Logiikka::luoAmmus()
@@ -585,20 +624,17 @@ void Logiikka::luoAmmus()
 
 
 //TODO tanne esim kyseessa olevan kyborgin varinvaihto
-void Logiikka::asetaKaskettava(int tunniste)
+void Logiikka::asetaKaskettava(QString tunniste)
 {
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
 
             kyborgi->annaQMLosa()->setProperty("reunanpaksuus", 2);
-            //qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
-            //return;
         }else{
             kyborgi->annaQMLosa()->setProperty("reunanpaksuus", 0);
         }
     }
-
 }
 
 
@@ -626,25 +662,22 @@ void Logiikka::suoritaTekoaly()
     }
 
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-    qDebug() << "hiiriX: " << gameWindow->property("hiiriX").toDouble();
-    qDebug() << "hiiriY: " << gameWindow->property("hiiriY").toDouble();
-
-    //ongelmana, etta kysyy mahdollisia esteita paikasta mita ei ole maaritelty
-    //saa siirtymakseen Nan, mutta miksi... -IH
-
-    //talla saattaa kaatua jos ampuu useita ammuksia -IH
-    //ongelmaa ei kuitenkaan viela varmistettu ^ ylla mahdollinen ratkaisu
-    /*for (auto it = ammukset_.begin(); it != ammukset_.end(); it++){
-        kaskytaAmmusta(*it);
-    }*/
+    double uusiX = gameWindow->property("hiiriX").toDouble();
+    double uusiY = gameWindow->property("hiiriY").toDouble();
 
 
-    /*POINT p;
-    if (GetCursorPos(&p))
-    {
-        //cursor position now in p.x and p.y
-        qDebug() << p.x << " ja " << p.y;
-    }*/
+    //tarkastellaa, ettei kokoajan paiviteta hiirta -IH
+    if (Sijainti::etaisyys(uusiX, hiiriX_, uusiY, hiiriY_) > 20){
+        // kutsu funktiolle, mika palauttaa kulman kahden sijainnin valilta
+        double kulma = laura_->annaSijainti().missaSuunnassa(uusiX, uusiY);
+
+        hiiriX_ = uusiX;
+        hiiriY_ = uusiY;
+
+        laura_->asetaSuunta(kulma); //tahan tietysti oikean kulman vaihto
+    }
+
+
 }
 
 

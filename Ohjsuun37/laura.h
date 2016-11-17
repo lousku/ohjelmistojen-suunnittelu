@@ -15,8 +15,9 @@ public:
     Ammus ammu();
     bool liikuSuuntaan();
     bool onkoHengissa();
+    virtual void paivitaTiedot();
 
-    //myohemmin tahan lopetetaan peli!
+    //myohemmin tahan lopetetaan peli! RATKAISTU -IH
     void tuhoa();
 
 private:

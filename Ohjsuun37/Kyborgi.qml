@@ -6,7 +6,7 @@ Rectangle {
     height: 20
 
     property alias text: teksti.text
-    property int tunniste: -1
+    property string tunniste: ""
     property int reunanpaksuus: 0
 
     border.color: "black"

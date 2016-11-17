@@ -23,7 +23,6 @@ ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* nakyma):
 QTimer* ParkkihallinRakentaja::alustaPelikello(){
     QTimer* pelikello = new QTimer();
     pelikello->setInterval(50);
-    pelikello->start();
 
     return pelikello;
 }
@@ -37,7 +36,9 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     QObject *object = component.create();
     QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
+    object->setParent(gameWindow);
     laura->asetaQMLosa(object);
+
     return laura;
 }
 
@@ -56,7 +57,8 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
 
         //erityisen tarkea jos parenttiin halutaan paasta kasiksi jatkossa! -IH
         object->setParent(gameWindow);
-        object->setProperty("tunniste", i);
+        QString arvo = "kyborgi" + QString::number(i);
+        object->setProperty("tunniste", arvo);
         if (i == 1){
             object->setProperty("color", "darkorange");
 
@@ -67,7 +69,6 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
             object->setProperty("color", "gold");
 
         }
-
         kyborgi->asetaQMLosa(object);
 
         kyborgit.append(kyborgi);

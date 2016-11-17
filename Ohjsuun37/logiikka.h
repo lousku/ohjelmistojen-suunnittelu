@@ -16,10 +16,10 @@ class Logiikka : public QObject
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE void kaannaLauraa(QString suunta);
-    Q_INVOKABLE void liikutaLauraa();
+    Q_INVOKABLE void liikutaLauraaVaaka(double suunta);
+    Q_INVOKABLE void liikutaLauraaPysty(double suunta);
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
-    Q_INVOKABLE void asetaKaskettava(int tunniste);
+    Q_INVOKABLE void asetaKaskettava(QString tunniste);
     Q_INVOKABLE void luoAmmus();
     Q_INVOKABLE void luoPeli();
 
@@ -53,6 +53,9 @@ private:
 
     QList<QList<int>> esteet_;
     ParkkihallinRakentaja parkkihalli_;
+
+    double hiiriX_;
+    double hiiriY_;
 
 public slots:
     void suoritaTekoaly();

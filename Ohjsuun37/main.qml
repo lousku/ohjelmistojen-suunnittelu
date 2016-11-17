@@ -10,13 +10,16 @@ Item {
     state: "NORMAL"
 
     Keys.onLeftPressed: {
-        logiikka.kaannaLauraa("vasen");
+        logiikka.liikutaLauraaVaaka(-1);
     }
     Keys.onRightPressed: {
-        logiikka.kaannaLauraa("oikea");
+        logiikka.liikutaLauraaVaaka(1);
     }
     Keys.onUpPressed: {
-        logiikka.liikutaLauraa();
+        logiikka.liikutaLauraaPysty(-1);
+    }
+    Keys.onDownPressed: {
+        logiikka.liikutaLauraaPysty(1);
     }
     Keys.onSpacePressed: {
         logiikka.luoAmmus();
@@ -82,28 +85,29 @@ Item {
         anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
         anchors.right: parent.right; anchors.bottom: parent.bottom
         visible:true
-            Rectangle{
-                width: 60
-                height: 60
-                x:20
-                y:20
-                color: "white"
-                MouseArea{
-                    //jos klikataan uusi peli on syytä alustaa
-                    //kutsutaan jotain ISONLOGIIKAN alustajaa c++ puolella
-                    anchors.fill: parent
-                    onClicked: {
-                        if(parkkihalliId.state == "NORMAL"){
-                            parkkihalliId.state = "PELI";
-                        }
-                        else{
-                            parkkihalliId.state = "NORMAL";
-                        }
 
-                        //KUTSUMINEN TAPAHTUU TÄSSÄ -IH
-                        logiikka.luoPeli();
+        Rectangle{
+            width: 60
+            height: 60
+            x:20
+            y:20
+            color: "white"
+            MouseArea{
+                //jos klikataan uusi peli on syytä alustaa
+                //kutsutaan jotain ISONLOGIIKAN alustajaa c++ puolella
+                anchors.fill: parent
+                onClicked: {
+                    if(parkkihalliId.state == "NORMAL"){
+                        parkkihalliId.state = "PELI";
                     }
+                    else{
+                        parkkihalliId.state = "NORMAL";
+                    }
+
+                    //KUTSUMINEN TAPAHTUU TÄSSÄ -IH
+                    logiikka.luoPeli();
                 }
             }
+        }
     }
 }
