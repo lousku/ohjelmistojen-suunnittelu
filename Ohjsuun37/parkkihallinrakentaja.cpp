@@ -14,10 +14,15 @@ ParkkihallinRakentaja::ParkkihallinRakentaja()
 
 }
 
-ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* nakyma):
-    nakyma_(nakyma)
+ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* view, Tieto* tieto):
+    nakyma_(view), tieto_(tieto)
 {
 
+}
+
+QQuickView *ParkkihallinRakentaja::annaNakyma()
+{
+ return nakyma_;
 }
 
 QTimer* ParkkihallinRakentaja::alustaPelikello(){
@@ -124,8 +129,9 @@ QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
     return esteet;
 }
 
-QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int maara)
+QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset()
 {
+    int maara = 2; // TODO jotain tallaistatieto.annaVihollistenmaara();
     QList<Vihollinen *> viholliset;
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 

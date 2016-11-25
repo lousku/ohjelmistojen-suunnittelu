@@ -6,6 +6,7 @@
 #include "vihollinen.h"
 #include "ammus.h"
 #include "parkkihallinrakentaja.h"
+#include "tieto.h"
 
 #include <QTimer>
 #include <QObject>
@@ -24,7 +25,7 @@ public:
     Q_INVOKABLE void luoPeli();
 
     Logiikka();
-    Logiikka(QQuickView* view);
+    Logiikka(QQuickView* view, Tieto* tieto);
 
     bool kaskytaKyborgia(Kyborgi* kyborgi);
     bool kaskytaVihollista(Vihollinen* vihollinen);
@@ -52,7 +53,7 @@ private:
     Kyborgi* kaskettava_;
 
     QList<QList<int>> esteet_;
-    ParkkihallinRakentaja parkkihalli_;
+    ParkkihallinRakentaja* parkkihalli_;
 
     double hiiriX_;
     double hiiriY_;

@@ -23,6 +23,7 @@ Item {
     }
     Keys.onSpacePressed: {
         logiikka.luoAmmus();
+        kauppa.testi();
     }
 
     states: [

@@ -13,7 +13,6 @@ public:
     Laura();
     Laura(double x, double y);
     Ammus ammu();
-    bool liikuSuuntaan();
     bool onkoHengissa();
     virtual void paivitaTiedot();
 

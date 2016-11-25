@@ -67,7 +67,8 @@ void Toimija::muutaSuuntaa(double suuntamuutos)
 {
 
     suunta_ = suunta_+ qDegreesToRadians( suuntamuutos );
-    //suunta_ += suuntamuutos;
+
+
 
     paivitaTiedot();
 }

@@ -2,9 +2,11 @@
 #define KYBORGI_H
 
 #include "tekoalylliset.h"
+#include <QObject>
 
 class Kyborgi : public Tekoalylliset
 {
+    Q_OBJECT
 public:
     virtual ~Kyborgi();
     Kyborgi();

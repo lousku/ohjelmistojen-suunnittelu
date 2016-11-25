@@ -3,7 +3,8 @@
 #include <QQmlContext>  //tarvitaa, jotta ContextPropertyn linkitys onnistuu IH
 
 #include "logiikka.h"
-#include "parkkihallinrakentaja.h"
+#include "tieto.h"
+#include "kauppa.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,9 +14,13 @@ int main(int argc, char *argv[])
     view->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
     view->show();
 
-    Logiikka parkkihalli(view);
+    Tieto* tieto = new Tieto();
 
-    view->engine()->rootContext()->setContextProperty("logiikka", &(parkkihalli));
+    Logiikka logiikka(view, tieto);
+
+    view->engine()->rootContext()->setContextProperty("logiikka", &(logiikka));
+    Kauppa kauppa(tieto);
+    view->engine()->rootContext()->setContextProperty("kauppa", &(kauppa));
 
     return app.exec();
 }

@@ -1,6 +1,7 @@
 #include "sijainti.h"
 #include <cmath>
 #include <QDebug>
+#include <QtMath>
 
 Sijainti::Sijainti():
     paikkaX_(0), paikkaY_(0)
@@ -90,10 +91,16 @@ double Sijainti::missaSuunnassa(double X, double Y)
     double etaisyysX = X - paikkaX_;
     double etaisyysY = Y - paikkaY_;
 
-    //TODO oikean kulman palautus
-    double kulma = etaisyysX;
 
-    return kulma;
+
+
+
+    //TODO oikean kulman palautus
+    //double kulma = etaisyysX;
+
+    double kulma = 0;
+
+    return qRadiansToDegrees(kulma);
 }
 
 double Sijainti::etaisyys(double uusiX, double vanhaX,double uusiY, double vanhaY)

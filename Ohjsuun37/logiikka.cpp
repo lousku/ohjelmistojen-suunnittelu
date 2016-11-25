@@ -8,53 +8,11 @@
 #include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
 #include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
 
-
-
-/*TODO tanne jotain fiksua! -IH
-void Logiikka::kaannaLauraa(QString suunta)
-{
-    if ( suunta == "oikea" ){
-        laura_->muutaSuuntaa(45);
-    }
-    else if ( suunta == "vasen"){
-        laura_->muutaSuuntaa(-45);
-    }
-    qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
-
-    laura_->paivitaTiedot();
-}
-
-void Logiikka::liikutaLauraa()
-{
-    // Asettaa suunnan ja nopeuden mukaisen paamaaran Lauralle AH
-    laura_->liikuSuuntaan();
-
-    //Esteiden tarkastelu puuttuu:
-
-    // liikutaToimijaa(laura_) olis siisti ratkasu mutta jostain syysta
-    // laura liikkuu silla vaan vasemmalle..? AH
-
-    // onkoEstetta ei myoskaan toimi Lauralle, tunnistaa olematttomia
-    // esteita mutta ei tunnista oikeita esteita. Mielellaan
-    // silti kayttaisi samaa funktiota ettei logiikka paisu?
-
-    double suunnattu_x = laura_->annaPaamaara().annaX();
-    double suunnattu_y = laura_->annaPaamaara().annaY();
-
-    laura_->liikuta(suunnattu_x, suunnattu_y);
-
-
-    laura_->paivitaTiedot(); //pitaahan lauranki tiedot paivitella
-
-
-}*/
-
 void Logiikka::liikutaLauraaVaaka(double suunta)
 {
     double uusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus()*suunta;
     laura_->asetaPaamaara(Sijainti(uusiX, laura_->annaSijainti().annaY()));
     liikutaToimijaa(laura_);
-
 }
 
 void Logiikka::liikutaLauraaPysty(double suunta)
@@ -91,12 +49,13 @@ Logiikka::Logiikka()
 
 }
 
-Logiikka::Logiikka(QQuickView* view)
+Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
 {
-    nakyma_ = view;
-    parkkihalli_ = ParkkihallinRakentaja(nakyma_);
+    nakyma_ = view; //parkkihalli_->annaNakyma();
 
-    pelikello_ = parkkihalli_.alustaPelikello();
+    parkkihalli_ = new ParkkihallinRakentaja(nakyma_, tieto);
+
+    pelikello_ = parkkihalli_->alustaPelikello();
     QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
 
     hiiriX_ = 0; //ei ehka valttamattomat -IH
@@ -551,6 +510,9 @@ void Logiikka::lopetaPeli(bool voitettu)
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
 
+    //TODO poistaa kyborgit, ammukset ja viholliset.
+    //alustaParkkihallin esteet pois sekä QML puoli, että matriisi
+
     //TODO tähän jäin.
     /*QObject *banneri= nakyma_->rootObject()->findChild<QObject*>("topBanner");
     for (int i = 1; i < 4; i++){
@@ -567,13 +529,13 @@ void Logiikka::lopetaPeli(bool voitettu)
 
 void Logiikka::luoPeli()
 {
-    esteet_ = parkkihalli_.alustaEsteet();
+    esteet_ = parkkihalli_->alustaEsteet();
 
-    laura_ = parkkihalli_.alustaLaura();
-    kyborgit_ = parkkihalli_.alustaKyborgit();
+    laura_ = parkkihalli_->alustaLaura();
+    kyborgit_ = parkkihalli_->alustaKyborgit();
 
     //mista saadan tieto, etta kuinka monta vihollista luodaan?
-    viholliset_ = parkkihalli_.lisaaViholliset(2);
+    viholliset_ = parkkihalli_->lisaaViholliset();
 
     pelikello_->start();
 }
@@ -669,7 +631,9 @@ void Logiikka::suoritaTekoaly()
     //tarkastellaa, ettei kokoajan paiviteta hiirta -IH
     if (Sijainti::etaisyys(uusiX, hiiriX_, uusiY, hiiriY_) > 20){
         // kutsu funktiolle, mika palauttaa kulman kahden sijainnin valilta
-        double kulma = laura_->annaSijainti().missaSuunnassa(uusiX, uusiY);
+        //-10, koska siirretään vastaamaan lauran kulmasta riiputusta -IH
+        //kysykaa, jos ei oo selva!
+        double kulma = laura_->annaSijainti().missaSuunnassa(uusiX - 10, uusiY - 10);
 
         hiiriX_ = uusiX;
         hiiriY_ = uusiY;
