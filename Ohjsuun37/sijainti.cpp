@@ -86,19 +86,29 @@ bool Sijainti::operator !=(const Sijainti &sijainti)
     return !operator ==(sijainti);
 }
 
+//palauttaa kulman 0-360 jossa suunna syotetty sijainti on itseen nähden
+// 0 -oikealla   180 - vasemmalla   270 - ylhäällä
 double Sijainti::missaSuunnassa(double X, double Y)
 {
     double etaisyysX = X - paikkaX_;
     double etaisyysY = Y - paikkaY_;
 
 
+    double kulma;
+    //koska tangentti kayttaytyy hassusti(antaa negatiivisia) pitaa kikkailla -MS
+    if(etaisyysX < 0 and etaisyysY <0){
+       kulma = qAtan(etaisyysY/etaisyysX) + 3.14;
+    }
+    else if (etaisyysX < 0 and etaisyysY > 0 ){
+        kulma = 3.14 + qAtan(etaisyysY/etaisyysX);
+    }
+    else if (etaisyysX >= 0 and etaisyysY < 0){
+        kulma = 2* 3.14 + qAtan(etaisyysY/etaisyysX);
+    }
+    else {
+        kulma = qAtan(etaisyysY/etaisyysX);
 
-
-
-    //TODO oikean kulman palautus
-    //double kulma = etaisyysX;
-
-    double kulma = 0;
+    }
 
     return qRadiansToDegrees(kulma);
 }

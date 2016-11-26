@@ -12,14 +12,14 @@ void Logiikka::liikutaLauraaVaaka(double suunta)
 {
     double uusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus()*suunta;
     laura_->asetaPaamaara(Sijainti(uusiX, laura_->annaSijainti().annaY()));
-    liikutaToimijaa(laura_);
+    //liikutaToimijaa(laura_); siirsin taman tekoalynsuorittamiseen, ei tarvitse rampyttaa liikkuessa
 }
 
 void Logiikka::liikutaLauraaPysty(double suunta)
 {
     double uusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus()*suunta;
     laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(), uusiY));
-    liikutaToimijaa(laura_);
+    // siirretty tekoalyn suorittamiseen liikutaToimijaa(laura_);
 }
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
@@ -556,25 +556,12 @@ void Logiikka::luoAmmus()
         ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
         ammus->asetaNopeus(5);
 
-        double omaX = laura_->annaSijainti().annaX();
-        double omaY = laura_->annaSijainti().annaY();
-        double kohdeX;
-        double kohdeY;
-        //lasketaan ammuksen x/y suunta cos/sin avulla
-        double suuntaD = (double) ammus->annaSuunta();
-        double kulmaRad = qDegreesToRadians(suuntaD);
-        double cos = qCos(kulmaRad);
-        double sin = qSin(kulmaRad);
 
-        //asetetaan ammuksen paamara suunnan ja kantaman avulla
-        kohdeX = omaX+sin*ammus->annaKantama();
-        kohdeY = omaY+(-cos*ammus->annaKantama());
 
         //asetetaan paamaara ammukselle
-        Sijainti paamaara(kohdeX,kohdeY);
+        Sijainti paamaara(hiiriX_-10,hiiriY_-10);
         qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-        qDebug() << "Ammuksen suunta: "<< suuntaD;
-        qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
+        qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
         ammus->asetaPaamaara(paamaara);
 
         ammukset_.append(ammus);
@@ -592,10 +579,12 @@ void Logiikka::asetaKaskettava(QString tunniste)
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
 
-            kyborgi->annaQMLosa()->setProperty("reunanpaksuus", 2);
+            kyborgi->annaQMLosa()->setProperty("height", 23);
+            kyborgi->annaQMLosa()->setProperty("width", 23);
+
         }else{
-            kyborgi->annaQMLosa()->setProperty("reunanpaksuus", 0);
-        }
+            kyborgi->annaQMLosa()->setProperty("height", 20);
+            kyborgi->annaQMLosa()->setProperty("width", 20);        }
     }
 }
 
@@ -641,6 +630,30 @@ void Logiikka::suoritaTekoaly()
         laura_->asetaSuunta(kulma); //tahan tietysti oikean kulman vaihto
     }
 
+    //UUSI lauran liikkuminen, jossa nappeja voi pitaa pohjassa ja
+    //ja liikkua kahteen suuntaan kerrallaan
+
+    double lauranUusiX;
+    double lauranUusiY;
+
+    if(gameWindow->property("lauraLiikkuuOikealle").toBool() == true){
+         lauranUusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus();
+        laura_->asetaPaamaara(Sijainti(lauranUusiX, laura_->annaSijainti().annaY()));
+    }
+     if(gameWindow->property("lauraLiikkuuVasemmalle").toBool() == true){
+        lauranUusiX = laura_->annaSijainti().annaX() - laura_->annaNopeus();
+        laura_->asetaPaamaara(Sijainti(lauranUusiX, laura_->annaSijainti().annaY()));
+    }
+     if(gameWindow->property("lauraLiikkuuYlos").toBool() == true){
+        lauranUusiY = laura_->annaSijainti().annaY() - laura_->annaNopeus();
+        laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(),lauranUusiY ));
+    }
+     if(gameWindow->property("lauraLiikkuuAlas").toBool() == true){
+        lauranUusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus();
+        laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(), lauranUusiY));
+    }
+
+    liikutaToimijaa(laura_);
 
 }
 
