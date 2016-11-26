@@ -1,8 +1,13 @@
 import QtQuick 2.0
 
-Rectangle{
+Item{
     id: ammus
     width: 20
     height: 20
-    color: "green"
+
+    Image {
+        id: ammusKuva
+        source: "qrc:graphics/Ammus.png"
+        anchors.fill: parent
+    }
 }

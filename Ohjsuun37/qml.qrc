@@ -20,5 +20,6 @@
         <file>graphics/Laura.png</file>
         <file>graphics/kyborg.png</file>
         <file>graphics/vihollinen.png</file>
+        <file>graphics/Ammus.png</file>
     </qresource>
 </RCC>

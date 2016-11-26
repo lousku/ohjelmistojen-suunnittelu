@@ -34,6 +34,16 @@ Rectangle {
     }
     Button{
         x:5
+        y:215
+        height: 30
+        width: 180
+        text: "paranna Lauran nopeutta"
+        onClicked: {
+            //TODO klikkauksen kutsuva asefunktio
+        }
+    }
+    Button{
+        x:5
         y:300
         height: 30
         width: 200
