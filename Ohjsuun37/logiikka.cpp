@@ -487,8 +487,12 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     }
     else{
 
+        //ammuksen kantama saadaan elamatasoa vahentamalla -MS
+        ammus->muutaElamatasoa(ammus->annaElamataso()-1);
+
         if(liikutaToimijaa(ammus) == false or
-           ammus->annaSijainti() == ammus->annaPaamaara()){
+           ammus->annaSijainti() == ammus->annaPaamaara() or
+           ammus->annaElamataso() < 5){
             qDebug() <<"Ammus TUHOTTIIN";
             for (int i = 0 ; i < ammukset_.size(); i ++){
                 if (ammukset_.at(i) == ammus){
@@ -633,26 +637,23 @@ void Logiikka::suoritaTekoaly()
     //UUSI lauran liikkuminen, jossa nappeja voi pitaa pohjassa ja
     //ja liikkua kahteen suuntaan kerrallaan
 
-    double lauranUusiX;
-    double lauranUusiY;
+    double lauranUusiX = laura_->annaSijainti().annaX();
+    double lauranUusiY = laura_->annaSijainti().annaY();
 
     if(gameWindow->property("lauraLiikkuuOikealle").toBool() == true){
          lauranUusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus();
-        laura_->asetaPaamaara(Sijainti(lauranUusiX, laura_->annaSijainti().annaY()));
     }
      if(gameWindow->property("lauraLiikkuuVasemmalle").toBool() == true){
         lauranUusiX = laura_->annaSijainti().annaX() - laura_->annaNopeus();
-        laura_->asetaPaamaara(Sijainti(lauranUusiX, laura_->annaSijainti().annaY()));
     }
      if(gameWindow->property("lauraLiikkuuYlos").toBool() == true){
         lauranUusiY = laura_->annaSijainti().annaY() - laura_->annaNopeus();
-        laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(),lauranUusiY ));
     }
      if(gameWindow->property("lauraLiikkuuAlas").toBool() == true){
         lauranUusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus();
-        laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(), lauranUusiY));
     }
 
+    laura_->asetaPaamaara(Sijainti(lauranUusiX, lauranUusiY));
     liikutaToimijaa(laura_);
 
 }

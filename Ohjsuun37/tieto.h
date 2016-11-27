@@ -7,6 +7,8 @@ class Tieto
 public:
     Tieto();
     //annaVihollisten
+private:
+    int pisteet_;
 };
 
 #endif // TIETO_H

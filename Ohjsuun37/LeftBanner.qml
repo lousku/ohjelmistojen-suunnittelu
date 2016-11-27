@@ -4,10 +4,15 @@ import QtQuick 2.0
 Rectangle {
     width: 100
     color: "red"
-    Text {
-        id: leftBanText
-        text: qsTr("LeftBanner")
-        anchors.centerIn: parent
+    Image {
+        height: 10
+        width:  10
+        id: ylaBanneriKuva
+        source: "qrc:graphics/esteLaatta.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+        anchors.fill: parent
     }
 
 }

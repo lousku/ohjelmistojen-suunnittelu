@@ -7,6 +7,11 @@ Rectangle {
     anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
     anchors.right: parent.right; anchors.bottom: parent.bottom
 
+    Image {
+        id: kauppaKuva
+        source: "qrc:graphics/kauppa.png"
+        anchors.fill: parent
+    }
     Button{
         x:5
         y:5
@@ -23,39 +28,34 @@ Rectangle {
         }
     }
     Button{
-        x:5
-        y:150
+        x:380
+        y:380
         height: 30
-        width: 150
-        text: "paranna asetta"
+        width: 50
+        text: "elämää"
         onClicked: {
             //TODO klikkauksen kutsuva asefunktio
         }
     }
     Button{
-        x:5
-        y:215
+        x:220
+        y:380
         height: 30
-        width: 180
-        text: "paranna Lauran nopeutta"
+        width: 70
+        text: "kantamaa"
         onClicked: {
             //TODO klikkauksen kutsuva asefunktio
         }
     }
     Button{
-        x:5
-        y:300
+        x:70
+        y:380
         height: 30
-        width: 200
-        text: "osta täydet elämät"
+        width: 70
+        text: "nopeutta"
         onClicked: {
             //TODO klikkauksen kutsuva funktio
         }
-    }
-    Text{
-        id: kauppaTeksi
-        anchors.centerIn: parent
-        text: "Kauppa"
     }
 
 }

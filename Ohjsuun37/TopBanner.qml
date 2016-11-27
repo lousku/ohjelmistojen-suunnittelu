@@ -5,6 +5,18 @@ Rectangle {
     height: 100
     color: "green"
 
+    Image {
+        height: 10
+        width:  10
+        id: ylaBanneriKuva
+        source: "qrc:graphics/esteLaatta.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+        anchors.fill: parent
+    }
+
+
     property alias palkkinakyvissa: palkkirivi.visible
     property alias lauranElama: lauranElamaBar.value
 

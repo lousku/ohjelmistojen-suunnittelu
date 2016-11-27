@@ -124,10 +124,24 @@ Item {
 
         //TODO liikkuminen vinottain kahdella napilla
         Keys.onPressed: {
-            if (event.key == Qt.Key_W)lauraLiikkuuYlos = true;
-            if (event.key == Qt.Key_S)lauraLiikkuuAlas = true;
-            if (event.key == Qt.Key_A)lauraLiikkuuVasemmalle = true;
-            if (event.key == Qt.Key_D)lauraLiikkuuOikealle = true ;
+            if (event.key == Qt.Key_W){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuYlos = true;
+            }
+             if (event.key == Qt.Key_S){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuAlas = true;
+            }
+             if (event.key == Qt.Key_A){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuVasemmalle = true;
+            }
+             if (event.key == Qt.Key_D){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuOikealle = true ;
+            }
+
+             console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
 
            }
 

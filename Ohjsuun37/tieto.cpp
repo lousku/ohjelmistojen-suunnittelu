@@ -1,6 +1,7 @@
 #include "tieto.h"
 
-Tieto::Tieto()
+Tieto::Tieto():
+    pisteet_(0)
 {
 
 }

@@ -21,5 +21,6 @@
         <file>graphics/kyborg.png</file>
         <file>graphics/vihollinen.png</file>
         <file>graphics/Ammus.png</file>
+        <file>graphics/kauppa.png</file>
     </qresource>
 </RCC>
