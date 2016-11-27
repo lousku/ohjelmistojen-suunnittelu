@@ -8,40 +8,18 @@
 #include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
 #include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
 
-
-
-//TODO tanne jotain fiksua! -IH
-void Logiikka::kaannaLauraa(QString suunta)
+void Logiikka::liikutaLauraaVaaka(double suunta)
 {
-    if ( suunta == "oikea" ){
-        laura_->muutaSuuntaa(45);
-    }
-    else if ( suunta == "vasen"){
-        laura_->muutaSuuntaa(-45);
-    }
-    qDebug() << "HYVÄ ILE!!"; //Self-motivation :D -MS
+    double uusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus()*suunta;
+    laura_->asetaPaamaara(Sijainti(uusiX, laura_->annaSijainti().annaY()));
+    //liikutaToimijaa(laura_); siirsin taman tekoalynsuorittamiseen, ei tarvitse rampyttaa liikkuessa
 }
 
-void Logiikka::liikutaLauraa()
+void Logiikka::liikutaLauraaPysty(double suunta)
 {
-    // Asettaa suunnan ja nopeuden mukaisen paamaaran Lauralle AH
-    laura_->liikuSuuntaan();
-
-    //Esteiden tarkastelu puuttuu:
-
-    // liikutaToimijaa(laura_) olis siisti ratkasu mutta jostain syysta
-    // laura liikkuu silla vaan vasemmalle..? AH
-
-    // onkoEstetta ei myoskaan toimi Lauralle, tunnistaa olematttomia
-    // esteita mutta ei tunnista oikeita esteita. Mielellaan
-    // silti kayttaisi samaa funktiota ettei logiikka paisu?
-
-    double suunnattu_x = laura_->annaPaamaara().annaX();
-    double suunnattu_y = laura_->annaPaamaara().annaY();
-
-    laura_->liikuta(suunnattu_x, suunnattu_y);
-
-
+    double uusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus()*suunta;
+    laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(), uusiY));
+    // siirretty tekoalyn suorittamiseen liikutaToimijaa(laura_);
 }
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
@@ -71,10 +49,17 @@ Logiikka::Logiikka()
 
 }
 
-Logiikka::Logiikka(QQuickView* view)
+Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
 {
-    nakyma_ = view;
-    //luoPeli();
+    nakyma_ = view; //parkkihalli_->annaNakyma();
+
+    parkkihalli_ = new ParkkihallinRakentaja(nakyma_, tieto);
+
+    pelikello_ = parkkihalli_->alustaPelikello();
+    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
+
+    hiiriX_ = 0; //ei ehka valttamattomat -IH
+    hiiriY_ = 0;
 }
 
 
@@ -502,8 +487,12 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     }
     else{
 
+        //ammuksen kantama saadaan elamatasoa vahentamalla -MS
+        ammus->muutaElamatasoa(ammus->annaElamataso()-1);
+
         if(liikutaToimijaa(ammus) == false or
-           ammus->annaSijainti() == ammus->annaPaamaara()){
+           ammus->annaSijainti() == ammus->annaPaamaara() or
+           ammus->annaElamataso() < 5){
             qDebug() <<"Ammus TUHOTTIIN";
             for (int i = 0 ; i < ammukset_.size(); i ++){
                 if (ammukset_.at(i) == ammus){
@@ -517,20 +506,42 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     }
 }
 
+//voitettu paremetria, ei viela kayteta -IH
+void Logiikka::lopetaPeli(bool voitettu)
+{
+
+    pelikello_->stop();
+    QObject *mainView = nakyma_->rootObject();
+    mainView->setProperty("state", "NORMAL");
+
+    //TODO poistaa kyborgit, ammukset ja viholliset.
+    //alustaParkkihallin esteet pois sekä QML puoli, että matriisi
+
+    //TODO tähän jäin.
+    /*QObject *banneri= nakyma_->rootObject()->findChild<QObject*>("topBanner");
+    for (int i = 1; i < 4; i++){
+
+        QString tunniste = "tunniste" + QString::number(i);
+        QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
+
+        palkki->setProperty("reunanleveys", 3);
+        palkki->setProperty("paikka", i-1);
+
+    }*/
+
+}
+
 void Logiikka::luoPeli()
 {
-    //kun taman luo taalla, niin eikos se unohdeta funktion loputtua?
-    //jos halutaan kesken lisata lisaa vihollisia, otettava siis talteen -IH
-    ParkkihallinRakentaja alustus(nakyma_);
-    pelikello_ = alustus.alustaPelikello();
-    QObject::connect(pelikello_,SIGNAL(timeout()),this,SLOT(suoritaTekoaly()));
-    esteet_ = alustus.alustaEsteet();
+    esteet_ = parkkihalli_->alustaEsteet();
 
-    laura_ = alustus.alustaLaura();
-    kyborgit_ = alustus.alustaKyborgit();
+    laura_ = parkkihalli_->alustaLaura();
+    kyborgit_ = parkkihalli_->alustaKyborgit();
 
     //mista saadan tieto, etta kuinka monta vihollista luodaan?
-    viholliset_ = alustus.lisaaViholliset(2);
+    viholliset_ = parkkihalli_->lisaaViholliset();
+
+    pelikello_->start();
 }
 
 void Logiikka::luoAmmus()
@@ -549,25 +560,12 @@ void Logiikka::luoAmmus()
         ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
         ammus->asetaNopeus(5);
 
-        double omaX = laura_->annaSijainti().annaX();
-        double omaY = laura_->annaSijainti().annaY();
-        double kohdeX;
-        double kohdeY;
-        //lasketaan ammuksen x/y suunta cos/sin avulla
-        double suuntaD = (double) ammus->annaSuunta();
-        double kulmaRad = qDegreesToRadians(suuntaD);
-        double cos = qCos(kulmaRad);
-        double sin = qSin(kulmaRad);
 
-        //asetetaan ammuksen paamara suunnan ja kantaman avulla
-        kohdeX = omaX+sin*ammus->annaKantama();
-        kohdeY = omaY+(-cos*ammus->annaKantama());
 
         //asetetaan paamaara ammukselle
-        Sijainti paamaara(kohdeX,kohdeY);
+        Sijainti paamaara(hiiriX_-10,hiiriY_-10);
         qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-        qDebug() << "Ammuksen suunta: "<< suuntaD;
-        qDebug() << "Ammuksen paamaara: " << kohdeX <<", " << kohdeY;
+        qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
         ammus->asetaPaamaara(paamaara);
 
         ammukset_.append(ammus);
@@ -579,27 +577,32 @@ void Logiikka::luoAmmus()
 
 
 //TODO tanne esim kyseessa olevan kyborgin varinvaihto
-void Logiikka::asetaKaskettava(int tunniste)
+void Logiikka::asetaKaskettava(QString tunniste)
 {
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
 
+            kyborgi->annaQMLosa()->setProperty("height", 23);
+            kyborgi->annaQMLosa()->setProperty("width", 23);
 
-
-            kyborgi->annaQMLosa()->setProperty("border.color", "black");
-            //qDebug() << "HYVÄ ILE TOISTAMISEEN!!!";
-            //return;
         }else{
-            kyborgi->annaQMLosa()->setProperty("border.color", "yellow");
-        }
+            kyborgi->annaQMLosa()->setProperty("height", 20);
+            kyborgi->annaQMLosa()->setProperty("width", 20);        }
     }
-
 }
 
 
 void Logiikka::suoritaTekoaly()
 {
+    //pelin lopetus tarkastelut -IH
+    if (viholliset_.size() == 0){
+        lopetaPeli(true);
+    }else if (not laura_->onkoHengissa()){
+        lopetaPeli(false);
+    }
+
+
     for (auto it = kyborgit_.begin(); it != kyborgit_.end(); it++){
         kaskytaKyborgia(*it);
     }
@@ -614,17 +617,45 @@ void Logiikka::suoritaTekoaly()
     }
 
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-    qDebug() << "hiiriX: " << gameWindow->property("hiiriX").toDouble();
-    qDebug() << "hiiriY: " << gameWindow->property("hiiriY").toDouble();
+    double uusiX = gameWindow->property("hiiriX").toDouble();
+    double uusiY = gameWindow->property("hiiriY").toDouble();
 
-    //ongelmana, etta kysyy mahdollisia esteita paikasta mita ei ole maaritelty
-    //saa siirtymakseen Nan, mutta miksi... -IH
 
-    //talla saattaa kaatua jos ampuu useita ammuksia -IH
-    //ongelmaa ei kuitenkaan viela varmistettu ^ ylla mahdollinen ratkaisu
-    /*for (auto it = ammukset_.begin(); it != ammukset_.end(); it++){
-        kaskytaAmmusta(*it);
-    }*/
+    //tarkastellaa, ettei kokoajan paiviteta hiirta -IH
+    if (Sijainti::etaisyys(uusiX, hiiriX_, uusiY, hiiriY_) > 20){
+        // kutsu funktiolle, mika palauttaa kulman kahden sijainnin valilta
+        //-10, koska siirretään vastaamaan lauran kulmasta riiputusta -IH
+        //kysykaa, jos ei oo selva!
+        double kulma = laura_->annaSijainti().missaSuunnassa(uusiX - 10, uusiY - 10);
+
+        hiiriX_ = uusiX;
+        hiiriY_ = uusiY;
+
+        laura_->asetaSuunta(kulma); //tahan tietysti oikean kulman vaihto
+    }
+
+    //UUSI lauran liikkuminen, jossa nappeja voi pitaa pohjassa ja
+    //ja liikkua kahteen suuntaan kerrallaan
+
+    double lauranUusiX = laura_->annaSijainti().annaX();
+    double lauranUusiY = laura_->annaSijainti().annaY();
+
+    if(gameWindow->property("lauraLiikkuuOikealle").toBool() == true){
+         lauranUusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus();
+    }
+     if(gameWindow->property("lauraLiikkuuVasemmalle").toBool() == true){
+        lauranUusiX = laura_->annaSijainti().annaX() - laura_->annaNopeus();
+    }
+     if(gameWindow->property("lauraLiikkuuYlos").toBool() == true){
+        lauranUusiY = laura_->annaSijainti().annaY() - laura_->annaNopeus();
+    }
+     if(gameWindow->property("lauraLiikkuuAlas").toBool() == true){
+        lauranUusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus();
+    }
+
+    laura_->asetaPaamaara(Sijainti(lauranUusiX, lauranUusiY));
+    liikutaToimijaa(laura_);
+
 }
 
 

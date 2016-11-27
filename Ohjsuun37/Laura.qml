@@ -1,12 +1,12 @@
 import QtQuick 2.0
 
 
-Rectangle {
+Item {
     id: laura //tarvitseeko edes?
     objectName: "laura"
     width: 20
     height: 20
-    color: "purple"
+   // color: "purple"
 
     property alias angle: suunta.angle
 
@@ -16,13 +16,22 @@ Rectangle {
         origin.y:10
         angle:0
     }
+//Lauran hahmon kuva -MS
+    Image {
+        id: lauraImage
+        source: "qrc:graphics/Laura.png"
+        anchors.fill: parent
+    }
 
     //radius: width*0.5  //muutin lauran lapalla palloksi -IH
 
     property alias text: teksti.text
 
+        //elämäteksti piilotettu -MS
+
     Text {
         id: teksti
         text: qsTr("")
+        anchors.top: parent.bottom
     }
 }

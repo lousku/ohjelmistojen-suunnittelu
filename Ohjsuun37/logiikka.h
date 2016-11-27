@@ -6,6 +6,7 @@
 #include "vihollinen.h"
 #include "ammus.h"
 #include "parkkihallinrakentaja.h"
+#include "tieto.h"
 
 #include <QTimer>
 #include <QObject>
@@ -16,15 +17,15 @@ class Logiikka : public QObject
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE void kaannaLauraa(QString suunta);
-    Q_INVOKABLE void liikutaLauraa();
+    Q_INVOKABLE void liikutaLauraaVaaka(double suunta);
+    Q_INVOKABLE void liikutaLauraaPysty(double suunta);
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
-    Q_INVOKABLE void asetaKaskettava(int tunniste);
+    Q_INVOKABLE void asetaKaskettava(QString tunniste);
     Q_INVOKABLE void luoAmmus();
     Q_INVOKABLE void luoPeli();
 
     Logiikka();
-    Logiikka(QQuickView* view);
+    Logiikka(QQuickView* view, Tieto* tieto);
 
     bool kaskytaKyborgia(Kyborgi* kyborgi);
     bool kaskytaVihollista(Vihollinen* vihollinen);
@@ -38,6 +39,10 @@ public:
     bool onkoValillaEstetta(Sijainti sijainti1, Sijainti sijainti2);
     void kaskytaAmmusta(Ammus *ammus);
 
+
+    //vaihto Q_INVOKABLEKSI, jos tulee tarve kutsua QML puolelta
+    void lopetaPeli(bool voitettu);
+
 private:
     Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
     QList<Kyborgi*> kyborgit_;    //Shared_ptr:iä pitää olla huolellinen
@@ -48,6 +53,10 @@ private:
     Kyborgi* kaskettava_;
 
     QList<QList<int>> esteet_;
+    ParkkihallinRakentaja* parkkihalli_;
+
+    double hiiriX_;
+    double hiiriY_;
 
 public slots:
     void suoritaTekoaly();

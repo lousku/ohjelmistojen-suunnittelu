@@ -7,9 +7,20 @@
         <file>GameWindow.qml</file>
         <file>LeftBanner.qml</file>
         <file>TopBanner.qml</file>
-        <file>Este.qml</file>
+        <file>EsteetonAlue.qml</file>
         <file>Ammus.qml</file>
         <file>graphics/TampereMap</file>
         <file>MapView.qml</file>
+        <file>Elamamittari.qml</file>
+        <file>Kauppa.qml</file>
+        <file>graphics/pysakointihalliLogo.jpg</file>
+        <file>Pysakointihalli.qml</file>
+        <file>graphics/lattiaLaatta.png</file>
+        <file>graphics/esteLaatta.png</file>
+        <file>graphics/Laura.png</file>
+        <file>graphics/kyborg.png</file>
+        <file>graphics/vihollinen.png</file>
+        <file>graphics/Ammus.png</file>
+        <file>graphics/kauppa.png</file>
     </qresource>
 </RCC>

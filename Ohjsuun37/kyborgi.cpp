@@ -33,21 +33,21 @@ void Kyborgi::paivitaTiedot()
 {
     Toimija::paivitaTiedot();
 
-    QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
-
     //muutettava jos elamataso muuttuu niin, ettei ala 100:sta - IH
     double arvo = double(annaElamataso())/100;
 
-    QString tunniste = annaQMLosa()->property("tunniste").toString();;
-    if (tunniste == "1"){
-        banneri->setProperty("barValue1", arvo);
-    }else if (tunniste == "2"){
-        banneri->setProperty("barValue2", arvo);
-    }else{
-        banneri->setProperty("barValue3", arvo);
+    QString tunniste = annaQMLosa()->property("tunniste").toString();
+    if (tunniste != ""){
+        QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
+        QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
+
+        palkki->setProperty("value", arvo);
+        if (arvo == 0){
+            palkki->setProperty("reunanleveys", 0);
+            int kohta = palkki->property("paikka").toInt() + 3;
+            palkki->setProperty("paikka", kohta);
+        }
     }
-
-
 }
 
 

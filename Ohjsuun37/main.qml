@@ -1,4 +1,4 @@
-import QtQuick 2.5
+import QtQuick 2.7
 import QtQuick.Window 2.2
 
 Item {
@@ -6,35 +6,72 @@ Item {
     id:parkkihalliId
     width: 600
     height: 600
-    focus: true  //Ratkaiseva, jotta painallus huomataan -IH
+    focus: false  //Ratkaiseva, jotta painallus huomataan -IH
     state: "NORMAL"
-
+/*
     Keys.onLeftPressed: {
-        logiikka.kaannaLauraa("vasen");
+        logiikka.liikutaLauraaVaaka(-1);
     }
     Keys.onRightPressed: {
-        logiikka.kaannaLauraa("oikea");
+        logiikka.liikutaLauraaVaaka(1);
     }
     Keys.onUpPressed: {
-        logiikka.liikutaLauraa();
+        logiikka.liikutaLauraaPysty(-1);
+    }
+    Keys.onDownPressed: {
+        logiikka.liikutaLauraaPysty(1);
     }
     Keys.onSpacePressed: {
         logiikka.luoAmmus();
-    }
+        kauppa.testi();
+    }*/
 
     states: [
             State {
                 name: "NORMAL"
+                //piilotetaan muut paitsi karttaikkuna -MS
                 PropertyChanges { target: mapWindow; visible:true}
                 PropertyChanges { target: gameWindow; visible:false}
-                //lisatty, jottei karttanakymassa nappaimilla voi kaataa! -IH
+                PropertyChanges { target: kauppaIkkuna; visible:false}
+                PropertyChanges { target: topBanner; palkkinakyvissa: false}
+
+
+                //huomioidaan painallukset vain karttaikkunassa -MS
+                PropertyChanges { target: parkkihalliId; focus: true}
+                PropertyChanges { target: kauppaIkkuna; focus: false}
+                PropertyChanges { target: gameWindow; focus: true}
+
+
+            },
+            State {
+                name: "KAUPPA"
+                //piilotetaan muut paitsi kauppaikkuna -MS
+                PropertyChanges { target: mapWindow; visible:false}
+                PropertyChanges { target: gameWindow; visible:false}
+                PropertyChanges { target: kauppaIkkuna; visible:true}
+                PropertyChanges { target: topBanner; palkkinakyvissa: false}
+
+
+                //huomioidaan painallukset vain kauppaikkunassa -MS
+                PropertyChanges { target: mapWindow; focus: false}
                 PropertyChanges { target: parkkihalliId; focus: false}
+                PropertyChanges { target: kauppaIkkuna; focus: true}
+
+
             },
             State {
                 name: "PELI"
+                //piilotetaan muut paitsi peliikkuna -MS
                 PropertyChanges { target: mapWindow; visible:false}
                 PropertyChanges { target: gameWindow; visible:true}
-                PropertyChanges { target: parkkihalliId; focus: true}
+                PropertyChanges { target: kauppaIkkuna; visible:false}
+                PropertyChanges { target: topBanner; palkkinakyvissa: true}
+
+                //huomioidaan painallukset vain peliikkunassa -MS
+                PropertyChanges { target: mapWindow; focus: false}
+                PropertyChanges { target: gameWindow; focus: true}
+                PropertyChanges { target: kauppaIkkuna; focus: false}
+
         }
     ]
 
@@ -60,6 +97,62 @@ Item {
         anchors.right: parent.right; anchors.bottom: parent.bottom
         visible: false
 
+        Keys.onLeftPressed: {
+            logiikka.liikutaLauraaVaaka(-1);
+        }
+        Keys.onRightPressed: {
+            logiikka.liikutaLauraaVaaka(1);
+        }
+        Keys.onUpPressed: {
+            logiikka.liikutaLauraaPysty(-1);
+        }
+        Keys.onDownPressed: {
+            logiikka.liikutaLauraaPysty(1);
+        }
+        Keys.onSpacePressed: {
+            logiikka.luoAmmus();
+           // kauppa.testi();
+        }
+
+        //WASD liikkuminen -MS
+
+
+        property bool lauraLiikkuuOikealle: false
+        property bool lauraLiikkuuVasemmalle: false
+        property bool lauraLiikkuuYlos: false
+        property bool lauraLiikkuuAlas: false
+
+        //TODO liikkuminen vinottain kahdella napilla
+        Keys.onPressed: {
+            if (event.key == Qt.Key_W){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuYlos = true;
+            }
+             if (event.key == Qt.Key_S){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuAlas = true;
+            }
+             if (event.key == Qt.Key_A){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuVasemmalle = true;
+            }
+             if (event.key == Qt.Key_D){
+                if(event.isAutoRepeat) return
+                lauraLiikkuuOikealle = true ;
+            }
+
+             console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
+
+           }
+
+        Keys.onReleased: {
+          if(event.isAutoRepeat) return
+          if (event.key == Qt.Key_W)lauraLiikkuuYlos = false;
+          if (event.key == Qt.Key_S)lauraLiikkuuAlas = false;
+          if (event.key == Qt.Key_A)lauraLiikkuuVasemmalle = false;
+          if (event.key == Qt.Key_D)lauraLiikkuuOikealle = false ;
+        }
+
         //property valietaan hiiren sijainti c++:lle
         property double hiiriX: 0
         property double hiiriY: 0
@@ -78,31 +171,10 @@ Item {
 
     MapView{
         id:mapWindow
-        anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
-        anchors.right: parent.right; anchors.bottom: parent.bottom
         visible:true
-            Rectangle{
-                width: 60
-                height: 60
-                x:20
-                y:20
-                color: "white"
-                MouseArea{
-                    //jos klikataan uusi peli on syytä alustaa
-                    //kutsutaan jotain ISONLOGIIKAN alustajaa c++ puolella
-                    anchors.fill: parent
-                    onClicked: {
-                        if(parkkihalliId.state == "NORMAL"){
-                            parkkihalliId.state = "PELI";
-                        }
-                        else{
-                            parkkihalliId.state = "NORMAL";
-                        }
-
-                        //KUTSUMINEN TAPAHTUU TÄSSÄ -IH
-                        logiikka.luoPeli();
-                    }
-                }
-            }
+    }
+    Kauppa{
+        id: kauppaIkkuna
+        visible:false
     }
 }

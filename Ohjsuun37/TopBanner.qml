@@ -1,69 +1,58 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.4
-import QtQuick.Controls.Styles 1.4  //jos halutaan muokata progress baria
+import QtQuick.Layouts 1.3
 
 Rectangle {
     height: 100
     color: "green"
 
-    property alias barValue1: bar1.value
-    property alias barValue2: bar2.value
-    property alias barValue3: bar3.value
+    Image {
+        height: 10
+        width:  10
+        id: ylaBanneriKuva
+        source: "qrc:graphics/esteLaatta.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+        anchors.fill: parent
+    }
 
 
-    Row {
+    property alias palkkinakyvissa: palkkirivi.visible
+    property alias lauranElama: lauranElamaBar.value
 
-        spacing: 10
-        ProgressBar {
-            id : bar1
-            value: 1
+    GridLayout {
+        id: palkkirivi
+        objectName: "palkkirivi"
+        visible: false
 
-            style: ProgressBarStyle {
-                background: Rectangle {
-                    radius: 2
-                    color: "white"
-                    border.color: "steelblue"
-                    border.width: 1
-                    implicitWidth: 100
-                    implicitHeight: 16
-
-                }
-
-            }
+        Elamamittari{
+            //id: kyborgi1 //tata ei valttamatta tarvita -IH
+            objectName: "kyborgi1"
+            vari: "darkorange"
+            property int paikka: 0
+            Layout.column: paikka
         }
-        ProgressBar {
-            id : bar2
-            value: 1
 
-            style: ProgressBarStyle {
-                background: Rectangle {
-                    radius: 2
-                    color: "white"
-                    border.color: "steelblue"
-                    border.width: 1
-                    implicitWidth: 100
-                    implicitHeight: 16
-
-                }
-
-            }
+        Elamamittari{
+            id: kyborgi2
+            objectName: "kyborgi2"
+            vari: "salmon"
+            property int paikka: 1
+            Layout.column: paikka
         }
-        ProgressBar {
-            id : bar3
-            value: 1
+        Elamamittari{
+            id: kyborgi3
+            objectName: "kyborgi3"
+            vari: "gold"
+            property int paikka: 2
+            Layout.column: paikka
+        }
 
-            style: ProgressBarStyle {
-                background: Rectangle {
-                    radius: 2
-                    color: "white"
-                    border.color: "steelblue"
-                    border.width: 1
-                    implicitWidth: 100
-                    implicitHeight: 16
-
-                }
-
-            }
+        Elamamittari{
+            id: lauranElamaBar
+            vari: "purple"
+            Layout.row: 1
+            implicitHeight: 25
         }
     }
 }

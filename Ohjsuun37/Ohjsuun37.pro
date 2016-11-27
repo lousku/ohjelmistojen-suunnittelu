@@ -15,7 +15,10 @@ SOURCES += main.cpp \
     logiikka.cpp \
     tekoalylliset.cpp \
     parkkihallinrakentaja.cpp \
-    xml.cpp
+    xml.cpp \
+    tieto.cpp \
+    kauppa.cpp
+
 
 RESOURCES += qml.qrc
 
@@ -42,4 +45,7 @@ HEADERS += \
     sijainti.h \
     logiikka.h \
     parkkihallinrakentaja.h \
-    xml.h
+    xml.h \
+    tieto.h \
+    kauppa.h
+

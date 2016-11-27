@@ -5,15 +5,19 @@
 #include "kyborgi.h"
 #include "vihollinen.h"
 #include "xml.h"
+#include "tieto.h"
 #include <QTimer>
 #include <QQuickView>
+
 
 
 class ParkkihallinRakentaja
 {
 public:
     ParkkihallinRakentaja();
-    ParkkihallinRakentaja(QQuickView* nakyma);
+    ParkkihallinRakentaja(QQuickView* view, Tieto* tieto);
+
+    QQuickView* annaNakyma();
 
 
     QTimer* alustaPelikello();
@@ -21,10 +25,11 @@ public:
 
     Laura* alustaLaura();
     QList<Kyborgi*> alustaKyborgit();
-    QList<Vihollinen*> lisaaViholliset(int maara);
+    QList<Vihollinen*> lisaaViholliset();
 
 private:
     QQuickView* nakyma_;
+    Tieto* tieto_;
 
 };
 

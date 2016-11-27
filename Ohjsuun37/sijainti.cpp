@@ -1,6 +1,7 @@
 #include "sijainti.h"
 #include <cmath>
 #include <QDebug>
+#include <QtMath>
 
 Sijainti::Sijainti():
     paikkaX_(0), paikkaY_(0)
@@ -72,7 +73,7 @@ double Sijainti::laskeEtaisyys(Sijainti paamaara) const
 {
     double uusiX = paamaara.annaX();
     double uusiY = paamaara.annaY();
-    return sqrt(pow((uusiX-paikkaX_),2) + pow((uusiY-paikkaY_),2));
+    return etaisyys(uusiX, paikkaX_,uusiY,paikkaY_);
 }
 
 bool Sijainti::operator==(const Sijainti &sijainti)
@@ -83,4 +84,36 @@ bool Sijainti::operator==(const Sijainti &sijainti)
 bool Sijainti::operator !=(const Sijainti &sijainti)
 {
     return !operator ==(sijainti);
+}
+
+//palauttaa kulman 0-360 jossa suunna syotetty sijainti on itseen nähden
+// 0 -oikealla   180 - vasemmalla   270 - ylhäällä
+double Sijainti::missaSuunnassa(double X, double Y)
+{
+    double etaisyysX = X - paikkaX_;
+    double etaisyysY = Y - paikkaY_;
+
+
+    double kulma;
+    //koska tangentti kayttaytyy hassusti(antaa negatiivisia) pitaa kikkailla -MS
+    if(etaisyysX < 0 and etaisyysY <0){
+       kulma = qAtan(etaisyysY/etaisyysX) + 3.14;
+    }
+    else if (etaisyysX < 0 and etaisyysY > 0 ){
+        kulma = 3.14 + qAtan(etaisyysY/etaisyysX);
+    }
+    else if (etaisyysX >= 0 and etaisyysY < 0){
+        kulma = 2* 3.14 + qAtan(etaisyysY/etaisyysX);
+    }
+    else {
+        kulma = qAtan(etaisyysY/etaisyysX);
+
+    }
+
+    return qRadiansToDegrees(kulma);
+}
+
+double Sijainti::etaisyys(double uusiX, double vanhaX,double uusiY, double vanhaY)
+{
+    return sqrt(pow((uusiX-vanhaX),2) + pow((uusiY-vanhaY),2));
 }
