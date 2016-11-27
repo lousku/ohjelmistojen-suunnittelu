@@ -1,6 +1,8 @@
 TEMPLATE = app
 
 QT += qml quick
+QT += xml
+
 CONFIG += c++11
 
 SOURCES += main.cpp \
@@ -12,9 +14,12 @@ SOURCES += main.cpp \
     sijainti.cpp \
     logiikka.cpp \
     tekoalylliset.cpp \
-    parkkihallinrakentaja.cpp
+    parkkihallinrakentaja.cpp \
+    xml.cpp
 
 RESOURCES += qml.qrc
+
+OTHER_FILES += xml.xml
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -24,7 +29,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    xml.xml
 
 HEADERS += \
     toimija.h \
@@ -35,4 +41,5 @@ HEADERS += \
     vihollinen.h \
     sijainti.h \
     logiikka.h \
-    parkkihallinrakentaja.h
+    parkkihallinrakentaja.h \
+    xml.h

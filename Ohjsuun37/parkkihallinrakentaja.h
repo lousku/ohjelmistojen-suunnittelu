@@ -4,6 +4,7 @@
 #include "laura.h"
 #include "kyborgi.h"
 #include "vihollinen.h"
+#include "xml.h"
 #include <QTimer>
 #include <QQuickView>
 

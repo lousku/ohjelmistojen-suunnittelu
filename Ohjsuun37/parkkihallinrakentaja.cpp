@@ -17,7 +17,6 @@ ParkkihallinRakentaja::ParkkihallinRakentaja()
 ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* nakyma):
     nakyma_(nakyma)
 {
-
 }
 
 QTimer* ParkkihallinRakentaja::alustaPelikello(){
@@ -67,6 +66,8 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
 
 QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
 {
+    xml::xml();
+
     QList<QList<int>> esteet;
 
     esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
