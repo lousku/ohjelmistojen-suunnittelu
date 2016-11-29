@@ -26,7 +26,7 @@ Rectangle {
 
         }
     }
-
+    //TODO näiden lisäys c++ puolelle
     Pysakointihalli{
         x:150
         y:150
