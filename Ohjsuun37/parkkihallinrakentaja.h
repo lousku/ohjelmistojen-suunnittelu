@@ -30,7 +30,6 @@ public:
 private:
     QQuickView* nakyma_;
     Tieto* tieto_;
-    QList<QList<int>> esteet;
 
 };
 

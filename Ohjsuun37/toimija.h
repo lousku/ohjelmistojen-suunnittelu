@@ -11,8 +11,7 @@ public:
 
     virtual ~Toimija();
     Toimija();
-    Toimija(double x, double y);
-    Toimija(double x, double y, int nopeus);
+    Toimija(double x, double y, int elama, int nopeus, int teho);
     void muutaSuuntaa(double suuntamuutos);
     bool liikuta(double x, double y);
     void muutaElamatasoa(int arvo);
@@ -47,8 +46,8 @@ private:
     bool ampumavalmis_;
     int elamataso_;
     Sijainti sijainti_;
-    QObject* QMLosa_;
     Sijainti paamaara_;
+    QObject* QMLosa_;
 
 };
 

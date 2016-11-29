@@ -13,15 +13,12 @@ Toimija::~Toimija()
 Toimija::Toimija():
     sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0), nopeus_(1)
 {
+
 }
 
-Toimija::Toimija(double x, double y):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1), paamaara_(x,y), suunta_(0)
-{
-}
 
-Toimija::Toimija(double x, double y, int nopeus):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus), paamaara_(x,y), suunta_(0)
+Toimija::Toimija(double x, double y, int elama, int nopeus, int teho):
+    sijainti_(x,y), elamataso_(elama), nopeus_(nopeus), teho_(teho), paamaara_(x,y), suunta_(0)
 {
 
 }

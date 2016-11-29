@@ -12,7 +12,7 @@ public:
 
     virtual ~Laura(); //periytetyissä pitää olla virtuaaliset purkajat
     Laura();
-    Laura(double x, double y);
+    Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama);
     Ammus ammu();
     bool onkoHengissa();
     virtual void paivitaTiedot();
@@ -29,6 +29,7 @@ private:
     QTimer* ampumaKello_;
     bool ampumaValmis_;
     int ampumatiheys_;
+    int ammustenKantama_;
 
 };
 

@@ -11,15 +11,9 @@ Kyborgi::Kyborgi()
 
 }
 
-//alustaa nyt saman paamaaran, kuin sijainti on -IH
-Kyborgi::Kyborgi(double x, double y):
-    Tekoalylliset(x,y)
-{
 
-}
-
-Kyborgi::Kyborgi(double x, double y, int nopeus):
-    Tekoalylliset(x,y, nopeus)
+Kyborgi::Kyborgi(double x, double y, int elama, int nopeus, int teho):
+    Tekoalylliset(x, y, elama, nopeus, teho)
 {
 
 }

@@ -3,14 +3,13 @@
 #include <QList>
 #include "xmllukija.h"
 
-
-struct KyborginTiedot {
+struct kyborginTiedot {
     int elama;
     int nopeus;
     int teho;
 };
 
-struct LauranTiedot {
+struct lauranTiedot {
     int elama;
     int kantama;
     int nopeus;
@@ -18,27 +17,34 @@ struct LauranTiedot {
     int teho;
 };
 
+struct kentanTiedot {
+    int vihollistenElama;
+    int vihollistenNopeus;
+    int vihollistenTeho;
+    QList<QList<int>> sijainnit;
+};
+
 class Tieto
 {
 public:
     Tieto();
 
-    QList<int> kyborgienElamat() const;
-
     bool lueXmlTiedot();
 
     int pisteet() const;
 
-    QList<KyborginTiedot> KyborgienTiedot() const;
+    QList<kyborginTiedot> annaKyborgienTiedot() const;
 
-    LauranTiedot lauranTiedot() const;
+    lauranTiedot annaLauranTiedot() const;
+
+    kentanTiedot annaKentantiedot(int kentanNumero);
 
 private:
 
     int pisteet_;
 
-    LauranTiedot lauranTiedot_;
-    QList<KyborginTiedot> kyborgienTiedot_;
+    lauranTiedot lauranTiedot_;
+    QList<kyborginTiedot> kyborgienTiedot_;
     XmlLukija lukija_;
 
 };

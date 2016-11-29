@@ -12,14 +12,10 @@ Laura::Laura()
 
 }
 
-Laura::Laura(double x, double y):
-    // Lauralle nopeus kolme
-    Toimija(x,y,7), tuhottu_(false), ampumatiheys_(1000)
+Laura::Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama):
+    Toimija(x,y,elama, nopeus, teho), ampumatiheys_(ampumatiheys), ammustenKantama_(kantama)
 {
-   // ampumaKello_ = new QTimer();
-   // ampumaKello_->setInterval(1000);
-   // QObject::connect(ampumaKello_,SIGNAL(timeout()),this,SLOT(asetaAmpumavalmiiksi()));
-   // ampumaKello_->start();
+
 }
 
 Ammus Laura::ammu()

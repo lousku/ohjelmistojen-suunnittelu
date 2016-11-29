@@ -10,8 +10,8 @@ Vihollinen::Vihollinen()
 
 }
 
-Vihollinen::Vihollinen(double x, double y):
-    Tekoalylliset(x, y),liikkeidenMaara_(0)
+Vihollinen::Vihollinen(double x, double y, int elama, int nopeus, int teho):
+    Tekoalylliset(x, y, elama, nopeus, teho),liikkeidenMaara_(0)
 {
 
 }
