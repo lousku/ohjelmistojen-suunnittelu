@@ -6,25 +6,7 @@ Item {
     id:parkkihalliId
     width: 600
     height: 600
-    focus: false  //Ratkaiseva, jotta painallus huomataan -IH
     state: "NORMAL"
-/*
-    Keys.onLeftPressed: {
-        logiikka.liikutaLauraaVaaka(-1);
-    }
-    Keys.onRightPressed: {
-        logiikka.liikutaLauraaVaaka(1);
-    }
-    Keys.onUpPressed: {
-        logiikka.liikutaLauraaPysty(-1);
-    }
-    Keys.onDownPressed: {
-        logiikka.liikutaLauraaPysty(1);
-    }
-    Keys.onSpacePressed: {
-        logiikka.luoAmmus();
-        kauppa.testi();
-    }*/
 
     states: [
             State {
@@ -97,23 +79,6 @@ Item {
         anchors.right: parent.right; anchors.bottom: parent.bottom
         visible: false
 
-        Keys.onLeftPressed: {
-            logiikka.liikutaLauraaVaaka(-1);
-        }
-        Keys.onRightPressed: {
-            logiikka.liikutaLauraaVaaka(1);
-        }
-        Keys.onUpPressed: {
-            logiikka.liikutaLauraaPysty(-1);
-        }
-        Keys.onDownPressed: {
-            logiikka.liikutaLauraaPysty(1);
-        }
-        Keys.onSpacePressed: {
-            logiikka.luoAmmus();
-           // kauppa.testi();
-        }
-
         //WASD liikkuminen -MS
 
 
@@ -141,9 +106,12 @@ Item {
                 lauraLiikkuuOikealle = true ;
             }
 
-             console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
-
+             //console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
            }
+
+        Keys.onSpacePressed: {
+            logiikka.luoAmmus();
+        }
 
         Keys.onReleased: {
           if(event.isAutoRepeat) return

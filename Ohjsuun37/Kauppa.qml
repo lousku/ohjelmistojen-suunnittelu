@@ -34,7 +34,7 @@ Rectangle {
         width: 50
         text: "elämää"
         onClicked: {
-            //TODO klikkauksen kutsuva asefunktio
+            kauppa.elamaaLisaa();
         }
     }
     Button{
@@ -44,7 +44,7 @@ Rectangle {
         width: 70
         text: "kantamaa"
         onClicked: {
-            //TODO klikkauksen kutsuva asefunktio
+            kauppa.kantamaaLisaa();
         }
     }
     Button{
@@ -54,7 +54,7 @@ Rectangle {
         width: 70
         text: "nopeutta"
         onClicked: {
-            //TODO klikkauksen kutsuva funktio
+            kauppa.nopeuttaLisaa();
         }
     }
 

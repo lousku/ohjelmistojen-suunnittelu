@@ -7,8 +7,11 @@
 
 class Kauppa : public QObject
 {
+    Q_OBJECT
 public:
-    Q_INVOKABLE void testi();
+    Q_INVOKABLE void elamaaLisaa();
+    Q_INVOKABLE void kantamaaLisaa();
+    Q_INVOKABLE void nopeuttaLisaa();
 
     Kauppa();
     Kauppa(Tieto* tieto);

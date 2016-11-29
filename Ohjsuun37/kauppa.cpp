@@ -1,9 +1,19 @@
 #include "kauppa.h"
 #include <QDebug>
 
-void Kauppa::testi()
+void Kauppa::elamaaLisaa()
 {
-    qDebug() << "mgegegeg";
+
+}
+
+void Kauppa::kantamaaLisaa()
+{
+
+}
+
+void Kauppa::nopeuttaLisaa()
+{
+
 }
 
 Kauppa::Kauppa()

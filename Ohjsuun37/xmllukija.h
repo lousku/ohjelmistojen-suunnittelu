@@ -5,10 +5,10 @@
 #include <QFile>
 #include <QDebug>
 
-class xml
+class XmlLukija
 {
 public:
-    xml();
+    XmlLukija();
 };
 
 #endif // XML_H
