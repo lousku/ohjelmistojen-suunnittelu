@@ -16,16 +16,20 @@ Tieto::Tieto():
         tieto.elama = 100;
         tieto.nopeus = 3;
         tieto.teho = 1;
+        tieto.iskuetaisyys = 10;
         kyborgienTiedot_.append(tieto);
     }
-    qDebug() << kyborgienTiedot_.size();
 }
 
 bool Tieto::lueXmlTiedot(){
+    //TODO tämän tulisi päivittää kentänTiedot listaa
+    //if (paivitysaika < 2min){return true;}
+
+
     return true;
 }
 
-int Tieto::pisteet() const
+int Tieto::annaPisteet() const
 {
     return pisteet_;
 }
@@ -46,6 +50,7 @@ kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
     kentanTieto.vihollistenElama = 100;
     kentanTieto.vihollistenNopeus = 1;
     kentanTieto.vihollistenTeho = 1;
+    kentanTieto.iskuetaisyys = 10;
 
     QList<QList<int>> esteet;
 
