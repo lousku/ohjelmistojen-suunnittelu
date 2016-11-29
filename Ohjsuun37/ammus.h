@@ -9,7 +9,7 @@ public:
     virtual ~Ammus();
     Ammus();
     bool etene();
-    double annaKantama();
+    double kantama() const;
     void asetaKantama(double kantama);
 
 private:

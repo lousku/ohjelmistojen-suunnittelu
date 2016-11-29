@@ -6,7 +6,7 @@
 
 class Toimija : public QObject
 {
-
+    Q_OBJECT
 public:
 
     virtual ~Toimija();
@@ -33,12 +33,18 @@ public:
     virtual void paivitaTiedot();
 
     //vaihto protected?, voiko edes mitään? -IH
+    bool ampumavalmis() const;
+    void asetaAmpumavalmis(bool ampumavalmis);
+
+public slots:
+    void asetaAmpumavalmiiksi();
+
 
 private:
     int teho_;
     int nopeus_;
     double suunta_; //radiaaneissa AH
-
+    bool ampumavalmis_;
     int elamataso_;
     Sijainti sijainti_;
     QObject* QMLosa_;

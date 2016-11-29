@@ -3,6 +3,7 @@
 
 #include "toimija.h"
 #include "ammus.h"
+#include <QTimer>
 
 class Laura : public Toimija
 {
@@ -15,12 +16,20 @@ public:
     Ammus ammu();
     bool onkoHengissa();
     virtual void paivitaTiedot();
+    void ampuu();
 
     //myohemmin tahan lopetetaan peli! RATKAISTU -IH
     void tuhoa();
 
+    int ampumatiheys() const;
+    void asetaAmpumatiheys(int ampumatiheys);
+
 private:
     bool tuhottu_;
+    QTimer* ampumaKello_;
+    bool ampumaValmis_;
+    int ampumatiheys_;
+
 };
 
 #endif // LAURA_H

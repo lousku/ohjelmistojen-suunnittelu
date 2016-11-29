@@ -68,8 +68,6 @@ void Toimija::muutaSuuntaa(double suuntamuutos)
 
     suunta_ = suunta_+ qDegreesToRadians( suuntamuutos );
 
-
-
     paivitaTiedot();
 }
 
@@ -134,6 +132,23 @@ void Toimija::paivitaTiedot()
     //QMLosa_->setProperty("rotation", suunta_);  --tama oli turha
     //ellei halunnut sita tupla kaantoa! -IH
 
+}
+
+void Toimija::asetaAmpumavalmiiksi()
+{
+    ampumavalmis_ = true;
+    qDebug() << "Ampumavalmis";
+
+}
+
+bool Toimija::ampumavalmis() const
+{
+    return ampumavalmis_;
+}
+
+void Toimija::asetaAmpumavalmis(bool ampumavalmis)
+{
+    ampumavalmis_ = ampumavalmis;
 }
 
 bool Toimija::asetaPaamaara(Sijainti sijainti)
