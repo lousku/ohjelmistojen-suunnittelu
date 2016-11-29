@@ -22,5 +22,6 @@
         <file>graphics/vihollinen.png</file>
         <file>graphics/Ammus.png</file>
         <file>graphics/kauppa.png</file>
+        <file>ReunaAlue.qml</file>
     </qresource>
 </RCC>

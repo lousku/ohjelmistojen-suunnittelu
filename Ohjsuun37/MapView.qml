@@ -3,8 +3,11 @@ import QtQuick 2.0
 
 Rectangle {
     color: "blue"
-    anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
-    anchors.right: parent.right; anchors.bottom: parent.bottom
+    anchors.left: parent.left; anchors.top: parent.top;
+    anchors.right: parent.right; anchors.bottom: parent.bottom;
+    anchors.rightMargin: 50; anchors.bottomMargin: 50;
+    anchors.leftMargin: 100; anchors.topMargin: 100;
+
     Image {
         id: karttaKuva
         source: "qrc:graphics/TampereMap"

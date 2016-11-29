@@ -1,8 +1,22 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.3
 
-Item {
-    height: 100
+Rectangle {
+    height: 550
+    width: 550
+    color: "green"
+
+    Image {
+        height: 10
+        width:  10
+        id: ylaBanneriKuva
+        source: "qrc:graphics/esteLaatta.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+        anchors.fill: parent
+    }
+
 
     property alias palkkinakyvissa: palkkirivi.visible
     property alias lauranElama: lauranElamaBar.value

@@ -4,8 +4,20 @@ import QtQuick.Window 2.2
 Item {
     objectName: "parkkihalli"
     id:parkkihalliId
-    width: 600
-    height: 600
+    width: 650
+    height: 650
+
+    Image {
+        height: 10
+        width:  10
+        id: ylaBanneriKuva
+        source: "qrc:graphics/esteLaatta.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+        anchors.fill: parent
+    }
+
     state: "NORMAL"
 
     states: [
@@ -65,22 +77,26 @@ Item {
 
         anchors.left: parent.left;anchors.top: parent.top
         anchors.bottom: parent.bottom
+
     }
     TopBanner{
         id:topBanner
         objectName: "topBanner"
         anchors.left: leftBanner.right; anchors.top: parent.top; anchors.right: parent.right
+
+        //anchors.left: parent.left; anchors.top: parent.top;
     }
 
     GameWindow{
         id: gameWindow
         objectName: "gameWindow"
-        anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
-        anchors.right: parent.right; anchors.bottom: parent.bottom
+        anchors.left: parent.left; anchors.top: parent.top;
+        anchors.right: parent.right; anchors.bottom: parent.bottom;
+        anchors.rightMargin: 50; anchors.bottomMargin: 50;
+        anchors.leftMargin: 100; anchors.topMargin: 100;
         visible: false
 
         //WASD liikkuminen -MS
-
 
         property bool lauraLiikkuuOikealle: false
         property bool lauraLiikkuuVasemmalle: false

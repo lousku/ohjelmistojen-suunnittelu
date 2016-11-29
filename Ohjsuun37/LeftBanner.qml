@@ -1,18 +1,15 @@
 import QtQuick 2.0
 
 //vasemman laidan infobanneri -MS
-Rectangle {
+Item {
     width: 100
-    color: "red"
-    Image {
-        height: 10
-        width:  10
-        id: ylaBanneriKuva
-        source: "qrc:graphics/esteLaatta.png"
-        fillMode: Image.Tile
-        horizontalAlignment: Image.AlignLeft
-        verticalAlignment: Image.AlignTop
-        anchors.fill: parent
-    }
+
+    id:leftBanner
+    //laitoin hipsuihin, koska tuli herjaa, muuten siis koittaa sijoittaa Rectanglea objectNameen -IH
+    objectName: "leftBanner"
+
+    anchors.left: parent.left;anchors.top: parent.top
+    anchors.bottom: parent.bottom
+
 
 }
