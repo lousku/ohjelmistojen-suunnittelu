@@ -4,33 +4,35 @@ Tieto::Tieto():
     pisteet_(0)
 {
     lukija_ = XmlLukija();
+    lauranTiedot_.ammustiheys = 1000;
+    lauranTiedot_.elama = 200;
+    lauranTiedot_.kantama = 100;
+    lauranTiedot_.nopeus = 0.5;
+    lauranTiedot_.teho = 10;
+
+    for( int i=0; i<kyborgienTiedot_.count(); ++i )
+    {
+        kyborgienTiedot_[i].elama = 100;
+        kyborgienTiedot_[i].nopeus = 1;
+        kyborgienTiedot_[i].teho = 1;
+    }
 }
 
 bool Tieto::lueXmlTiedot(){
     return true;
 }
 
-QList<int> Tieto::kyborgienElamat() const
+int Tieto::pisteet() const
 {
-    return kyborgienElamat_;
+    return pisteet_;
 }
 
-int Tieto::lauranNopeus() const
+QList<KyborginTiedot> Tieto::KyborgienTiedot() const
 {
-    return lauranNopeus_;
+    return kyborgienTiedot_;
 }
 
-int Tieto::lauranKantama() const
+LauranTiedot Tieto::lauranTiedot() const
 {
-    return lauranKantama_;
-}
-
-int Tieto::lauranElama() const
-{
-    return lauranElama_;
-}
-
-int Tieto::ammustenMaara() const
-{
-    return ammustenMaara_;
+    return lauranTiedot_;
 }
