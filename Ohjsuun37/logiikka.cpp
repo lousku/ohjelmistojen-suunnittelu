@@ -8,20 +8,6 @@
 #include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
 #include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
 
-void Logiikka::liikutaLauraaVaaka(double suunta)
-{
-    double uusiX = laura_->annaSijainti().annaX() + laura_->annaNopeus()*suunta;
-    laura_->asetaPaamaara(Sijainti(uusiX, laura_->annaSijainti().annaY()));
-    //liikutaToimijaa(laura_); siirsin taman tekoalynsuorittamiseen, ei tarvitse rampyttaa liikkuessa
-}
-
-void Logiikka::liikutaLauraaPysty(double suunta)
-{
-    double uusiY = laura_->annaSijainti().annaY() + laura_->annaNopeus()*suunta;
-    laura_->asetaPaamaara(Sijainti(laura_->annaSijainti().annaX(), uusiY));
-    // siirretty tekoalyn suorittamiseen liikutaToimijaa(laura_);
-}
-
 void Logiikka::asetaKyborginPaamaara(double x, double y)
 {
     //rajoitetaan klikkaus kentan sisalle - IH
@@ -286,11 +272,6 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
             liikutaToimijaaRandomisti(vihollinen);
         }
     }
-
-
-
-
-
 }
 
 //vaihdoin palauttamaan jaljelle jaaneen elamatason -IH
@@ -343,7 +324,6 @@ void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
         }
         i++;
     }
-
 }
 
 Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
@@ -395,16 +375,6 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
 
 bool Logiikka::onkoEstetta(double x, double y)
 {
-    //lisatty oikaisu, ettei tehda kyselyja alueen ulkopuolelle ja kaadeta -IH
-    /*if (x > 480){
-        x = 480;
-    }else if (x < 0){
-        x = 0;
-    }if (y > 480){
-        y = 480;
-    }else if (y < 0){
-        y = 0;
-    }*/
 
     //oikaisu muutettu niin, etta reunoille yrittaessa todetaan edessa olevan este
     //nain ammukset, jotka yrittavat reunan saadaan fiksusti poistettua -IH
@@ -434,14 +404,11 @@ bool Logiikka::onkoValillaEstetta(Toimija *toimija1, Toimija *toimija2)
 
 bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti)
 {
-    double xSiirtyma;
-    double ySiirtyma;
     double tutkittavaX;
     double tutkittavaY;
-    //bool onkoLinjallaEstetta = false;
 
-    xSiirtyma = kohdeSijainti.annaX() - lahtoSijainti.annaX();
-    ySiirtyma = kohdeSijainti.annaY() - lahtoSijainti.annaY();
+    double xSiirtyma = kohdeSijainti.annaX() - lahtoSijainti.annaX();
+    double ySiirtyma = kohdeSijainti.annaY() - lahtoSijainti.annaY();
 
     //pilkotaan "siirtymajana" 20 pituisiin otantapisteisiin
     //ja tutkitaan nakyyko kyborgi aka onko linjalla esteita
@@ -456,7 +423,7 @@ bool Logiikka::onkoValillaEstetta(Sijainti lahtoSijainti, Sijainti kohdeSijainti
             return true; //turha katella loppuja - IH
         }
     }
-    return false; //onkoLinjallaEstetta;
+    return false;
 }
 
 void Logiikka::kaskytaAmmusta(Ammus *ammus)
@@ -465,7 +432,6 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     Toimija* kohde = iskuetaisyydella(ammus);
     if (kohde != nullptr){
         //tarkastelee, jaako toimijalle enaan elamatasoa -IH
-        //jostain syysta ensimmainen osuma ei vahingoita vihollista -MS
         if (vahingoitaToimijaa(kohde, 10) <= 0){
 
             for (int i = 0 ; i < viholliset_.size(); i ++){
@@ -493,7 +459,7 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
         if(liikutaToimijaa(ammus) == false or
            ammus->annaSijainti() == ammus->annaPaamaara() or
            ammus->annaElamataso() < 5){
-            qDebug() <<"Ammus TUHOTTIIN";
+
             for (int i = 0 ; i < ammukset_.size(); i ++){
                 if (ammukset_.at(i) == ammus){
                     qDebug() << "POISTETTIIN LISTASTA";
@@ -517,15 +483,16 @@ void Logiikka::lopetaPeli(bool voitettu)
     //TODO poistaa kyborgit, ammukset ja viholliset.
     //alustaParkkihallin esteet pois sekä QML puoli, että matriisi
 
-    //TODO tähän jäin.
-    /*QObject *banneri= nakyma_->rootObject()->findChild<QObject*>("topBanner");
-    for (int i = 1; i < 4; i++){
+    //TODO tähän elämäpalkkien siirto takaisin jos ne halutaan siirtää
+    /*
+    QObject *banneri= nakyma_->rootObject()->findChild<QObject*>("topBanner");
+    for (int i = 0; i < 3; i++){
 
         QString tunniste = "tunniste" + QString::number(i);
         QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
 
         palkki->setProperty("reunanleveys", 3);
-        palkki->setProperty("paikka", i-1);
+        palkki->setProperty("paikka", i);
 
     }*/
 
@@ -564,8 +531,8 @@ void Logiikka::luoAmmus()
 
         //asetetaan paamaara ammukselle
         Sijainti paamaara(hiiriX_-10,hiiriY_-10);
-        qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-        qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
+        //qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+        //qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
         ammus->asetaPaamaara(paamaara);
 
         ammukset_.append(ammus);

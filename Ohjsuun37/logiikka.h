@@ -17,8 +17,6 @@ class Logiikka : public QObject
 {
     Q_OBJECT
 public:
-    Q_INVOKABLE void liikutaLauraaVaaka(double suunta);
-    Q_INVOKABLE void liikutaLauraaPysty(double suunta);
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
     Q_INVOKABLE void asetaKaskettava(QString tunniste);
     Q_INVOKABLE void luoAmmus();

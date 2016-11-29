@@ -4,7 +4,7 @@
 #include "laura.h"
 #include "kyborgi.h"
 #include "vihollinen.h"
-#include "xml.h"
+#include "xmllukija.h"
 #include "tieto.h"
 #include <QTimer>
 #include <QQuickView>
@@ -30,6 +30,10 @@ public:
 private:
     QQuickView* nakyma_;
     Tieto* tieto_;
+
+
+    //TODO POIS TÄÄLTÄ
+    QList<QList<int>> esteet;
 
 };
 
