@@ -4,7 +4,7 @@
 #include "laura.h"
 #include "kyborgi.h"
 #include "vihollinen.h"
-#include "xml.h"
+//#include "xml.h"
 #include "tieto.h"
 #include <QTimer>
 #include <QQuickView>
