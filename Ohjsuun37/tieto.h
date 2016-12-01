@@ -7,6 +7,7 @@ struct kyborginTiedot {
     int elama;
     int nopeus;
     int teho;
+    int iskuetaisyys;
 };
 
 struct lauranTiedot {
@@ -21,6 +22,7 @@ struct kentanTiedot {
     int vihollistenElama;
     int vihollistenNopeus;
     int vihollistenTeho;
+    int iskuetaisyys;
     QList<QList<int>> sijainnit;
 };
 
@@ -38,6 +40,8 @@ public:
     lauranTiedot annaLauranTiedot() const;
 
     kentanTiedot annaKentantiedot(int kentanNumero);
+
+    int annaPisteet() const;
 
 private:
 
