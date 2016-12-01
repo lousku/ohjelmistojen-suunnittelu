@@ -3,9 +3,7 @@
 
 XmlLukija::XmlLukija()
 {
-    QFile xml("/Users/Ile/Git/Ohjsuun37/xml.xml");
-
-    //QFile xml("/Users/annimari/Documents/Git/Ohjsuun37/xml.xml");
+    QFile xml("qrc:xml.xml");
 
     if( !xml.open(QFile::ReadOnly | QFile::Text )){
         qDebug() << "Virhe xml-tiedoston lukemisessa" << xml.errorString();
