@@ -25,7 +25,7 @@ Item {
         Elamamittari{
             //id: kyborgi1 //tata ei valttamatta tarvita -IH
             objectName: "kyborgi1"
-            vari: "darkorange"
+            vari: "lime"
             property int paikka: 1
             Layout.column: paikka
         }
@@ -33,14 +33,14 @@ Item {
         Elamamittari{
             id: kyborgi2
             objectName: "kyborgi2"
-            vari: "salmon"
+            vari: "magenta"
             property int paikka: 2
             Layout.column: paikka
         }
         Elamamittari{
             id: kyborgi3
             objectName: "kyborgi3"
-            vari: "gold"
+            vari: "royalblue"
             property int paikka: 3
             Layout.column: paikka
         }

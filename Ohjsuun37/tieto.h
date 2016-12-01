@@ -41,7 +41,6 @@ public:
 
     kentanTiedot annaKentantiedot(int kentanNumero);
 
-
 private:
 
     int pisteet_;

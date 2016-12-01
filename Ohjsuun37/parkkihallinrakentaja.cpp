@@ -40,6 +40,7 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
 
     //alustetaan Laura
     Laura* laura = new Laura(60,20, tiedot.elama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
+                                                  //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
     QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
@@ -56,6 +57,7 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
     QList<kyborginTiedot> tiedot = tieto_->annaKyborgienTiedot();
+    QList<QString> varit = { "lime", "magenta", "royalblue"};
 
     //alustetaan Kyborgit
     QList<Kyborgi*> kyborgit;
@@ -65,7 +67,7 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
         Kyborgi *kyborgi = new Kyborgi(i*100, i*60, tiedot[i-1].elama, tiedot[i-1].nopeus,
                             tiedot[i-1].teho, tiedot[i-1].iskuetaisyys);
 
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
+        QQmlComponent component(nakyma_->engine(), QUrl("qrc:/Kyborgi.qml"));
         QObject *object = component.create();
         QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
@@ -74,19 +76,9 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
         QString arvo = "kyborgi" + QString::number(i);
         object->setProperty("tunniste", arvo);
 
+        QString kuvapolku = "qrc:graphics/kyborg_" + varit[i-1] + ".png";
+        object->setProperty("kuvapolku", kuvapolku);
 
-
-        //TODO KYBORGEILLE ERI VÄREJÄ?!
-        if (i == 1){
-            object->setProperty("color", "darkorange");
-
-        }else if (i == 2){
-            object->setProperty("color", "salmon");
-
-        }else{
-            object->setProperty("color", "gold");
-
-        }
         kyborgi->asetaQMLosa(object);
 
         kyborgit.append(kyborgi);
