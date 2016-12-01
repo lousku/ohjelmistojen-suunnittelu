@@ -12,8 +12,8 @@ Kyborgi::Kyborgi()
 }
 
 
-Kyborgi::Kyborgi(double x, double y, int elama, int nopeus, int teho):
-    Tekoalylliset(x, y, elama, nopeus, teho)
+Kyborgi::Kyborgi(double x, double y, int elama, int nopeus, int teho, int iskuetaisyys):
+    Tekoalylliset(x, y, elama, nopeus, teho, iskuetaisyys)
 {
 
 }
@@ -38,8 +38,10 @@ void Kyborgi::paivitaTiedot()
         palkki->setProperty("value", arvo);
         if (arvo == 0){
             palkki->setProperty("reunanleveys", 0);
-            int kohta = palkki->property("paikka").toInt() + 3;
-            palkki->setProperty("paikka", kohta);
+
+            //TODO jotain jos halutaan siirtaa kuolleiden kyborgien palkit viimeiseki
+            //int kohta = palkki->property("paikka").toInt() + 3;
+            //palkki->setProperty("paikka", kohta);
         }
     }
 }

@@ -8,7 +8,7 @@ class Vihollinen : public Tekoalylliset
 public:
     virtual ~Vihollinen();
     Vihollinen();
-    Vihollinen(double x, double y, int elama, int nopeus, int teho);
+    Vihollinen(double x, double y, int elama, int nopeus, int teho, int iskuetaisyys);
     Sijainti laskePaamaara();
     int annaLiikkeidenMaara();
     void asetaLiikkeidenMaara(int maara);

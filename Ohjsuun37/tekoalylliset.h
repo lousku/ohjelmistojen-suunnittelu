@@ -9,7 +9,7 @@ class Tekoalylliset : public Toimija
 public:
     virtual ~Tekoalylliset();
     Tekoalylliset();
-    Tekoalylliset(double x, double y, int elama, int nopeus, int teho);
+    Tekoalylliset(double x, double y, int elama, int nopeus, int teho, int iskuetaisyys);
     int annaIskuetaisyys();
 private:
     int iskuetaisyys_;

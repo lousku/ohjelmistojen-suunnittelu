@@ -7,6 +7,7 @@ struct kyborginTiedot {
     int elama;
     int nopeus;
     int teho;
+    int iskuetaisyys;
 };
 
 struct lauranTiedot {
@@ -21,6 +22,7 @@ struct kentanTiedot {
     int vihollistenElama;
     int vihollistenNopeus;
     int vihollistenTeho;
+    int iskuetaisyys;
     QList<QList<int>> sijainnit;
 };
 
@@ -31,7 +33,7 @@ public:
 
     bool lueXmlTiedot();
 
-    int pisteet() const;
+    int annaPisteet() const;
 
     QList<kyborginTiedot> annaKyborgienTiedot() const;
 
@@ -45,7 +47,9 @@ private:
 
     lauranTiedot lauranTiedot_;
     QList<kyborginTiedot> kyborgienTiedot_;
+    QList<kentanTiedot> kenttienTiedot_;
     XmlLukija lukija_;
+    //paivitysaika johonki ylos?
 
 };
 

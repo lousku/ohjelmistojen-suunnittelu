@@ -62,7 +62,8 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     for (int i = 1; i < 4; i++){
         //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
 
-        Kyborgi *kyborgi = new Kyborgi(i*100, i*60, tiedot[i-1].elama, tiedot[i-1].nopeus, tiedot[i-1].teho); //lisasin alkusijainnin -MS
+        Kyborgi *kyborgi = new Kyborgi(i*100, i*60, tiedot[i-1].elama, tiedot[i-1].nopeus,
+                            tiedot[i-1].teho, tiedot[i-1].iskuetaisyys);
 
         QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
         QObject *object = component.create();
@@ -94,9 +95,9 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
 }
 
 
-QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
+QList<QList<int>> ParkkihallinRakentaja::alustaEsteet(int numero)
 {   
-    QList<QList<int>> esteet = tieto_->annaKentantiedot(1).sijainnit;
+    QList<QList<int>> esteet = tieto_->annaKentantiedot(numero).sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
     {
@@ -134,8 +135,8 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset()
         for( int j=0; j<esteet[i].count(); ++j )
         {
             if (esteet[i][j] == 2){
-                Vihollinen *vihollinen = new  Vihollinen(j*20,i*20,
-                              tiedot.vihollistenElama, tiedot.vihollistenNopeus, tiedot.vihollistenTeho);
+                Vihollinen *vihollinen = new  Vihollinen(j*20,i*20,tiedot.vihollistenElama,
+                               tiedot.vihollistenNopeus, tiedot.vihollistenTeho, tiedot.iskuetaisyys);
 
                 QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
                 QObject *object = component.create();

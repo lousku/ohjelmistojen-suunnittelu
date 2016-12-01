@@ -46,6 +46,8 @@ Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
 
     hiiriX_ = 0; //ei ehka valttamattomat -IH
     hiiriY_ = 0;
+
+    laura_ = nullptr;
 }
 
 
@@ -338,11 +340,12 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
                 return *it;
             }
         }
-        //tarkastellaan, onko laura viela pelissa. -IH
+        //tarkastellaan, onko laura viela pelissa.
+        //peli kylla loppuu lauran kuolemaan, mutta ehtii kaatua ennen jos tata ei ole -IH
         if (laura_->onkoHengissa()){
             double etaisyys = laura_->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
-                qDebug() << "lähistöllä" << etaisyys;
+                //qDebug() << "lähistöllä" << etaisyys;
                 return laura_;
             }
         }
@@ -475,13 +478,38 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 //voitettu paremetria, ei viela kayteta -IH
 void Logiikka::lopetaPeli(bool voitettu)
 {
+    //TODO jotain mika ilmoittaa hävitystä pelistä?
+
+
 
     pelikello_->stop();
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
 
-    //TODO poistaa kyborgit, ammukset ja viholliset.
-    //alustaParkkihallin esteet pois sekä QML puoli, että matriisi
+    //TODO alustaParkkihallin esteet pois
+
+    for( int i = ammukset_.size(); i > 0; --i ){
+        Ammus* ammus = ammukset_.at(i);
+        ammukset_.removeAt(i);
+        delete ammus;
+    }
+
+    for( int i = kyborgit_.size(); i > 0; --i ){
+        Kyborgi* kyborgi = kyborgit_.at(i);
+        kyborgit_.removeAt(i);
+        delete kyborgi;
+    }
+
+    for( int i = viholliset_.size(); i > 0; --i ){
+        Vihollinen* vihollinen = viholliset_.at(i);
+        viholliset_.removeAt(i);
+        delete vihollinen;
+    }
+
+
+
+
+
 
     //TODO tähän elämäpalkkien siirto takaisin jos ne halutaan siirtää
     /*
@@ -500,7 +528,7 @@ void Logiikka::lopetaPeli(bool voitettu)
 
 void Logiikka::luoPeli()
 {
-    esteet_ = parkkihalli_->alustaEsteet();
+    esteet_ = parkkihalli_->alustaEsteet(1);
 
     laura_ = parkkihalli_->alustaLaura();
     kyborgit_ = parkkihalli_->alustaKyborgit();
@@ -628,6 +656,15 @@ void Logiikka::suoritaTekoaly()
     liikutaToimijaa(laura_);
 
 }
+
+/* TODO selvitys apufunktiomahdollisuudesta
+void tyhjennaLista(&QList<Toimija*> lista){
+    for( int i = lista.size(); i > 0; --i ){
+        Toimija* osa = lista.at(i);
+        listaremoveAt(i);
+        delete osa;
+    }
+}*/
 
 
 
