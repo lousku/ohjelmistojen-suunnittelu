@@ -13,15 +13,12 @@ Toimija::~Toimija()
 Toimija::Toimija():
     sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0), nopeus_(1)
 {
+
 }
 
-Toimija::Toimija(double x, double y):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(1), paamaara_(x,y), suunta_(0)
-{
-}
 
-Toimija::Toimija(double x, double y, int nopeus):
-    sijainti_(x,y), elamataso_(100), teho_(1), nopeus_(nopeus), paamaara_(x,y), suunta_(0)
+Toimija::Toimija(double x, double y, int elama, int nopeus, int teho):
+    sijainti_(x,y), elamataso_(elama), nopeus_(nopeus), teho_(teho), paamaara_(x,y), suunta_(0)
 {
 
 }
@@ -67,8 +64,6 @@ void Toimija::muutaSuuntaa(double suuntamuutos)
 {
 
     suunta_ = suunta_+ qDegreesToRadians( suuntamuutos );
-
-
 
     paivitaTiedot();
 }
@@ -134,6 +129,23 @@ void Toimija::paivitaTiedot()
     //QMLosa_->setProperty("rotation", suunta_);  --tama oli turha
     //ellei halunnut sita tupla kaantoa! -IH
 
+}
+
+void Toimija::asetaAmpumavalmiiksi()
+{
+    ampumavalmis_ = true;
+    qDebug() << "Ampumavalmis";
+
+}
+
+bool Toimija::ampumavalmis() const
+{
+    return ampumavalmis_;
+}
+
+void Toimija::asetaAmpumavalmis(bool ampumavalmis)
+{
+    ampumavalmis_ = ampumavalmis;
 }
 
 bool Toimija::asetaPaamaara(Sijainti sijainti)

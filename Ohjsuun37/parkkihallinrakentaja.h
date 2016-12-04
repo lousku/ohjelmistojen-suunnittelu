@@ -21,7 +21,7 @@ public:
 
 
     QTimer* alustaPelikello();
-    QList<QList<int>> alustaEsteet();
+    QList<QList<int>> alustaEsteet(int numero);
 
     Laura* alustaLaura();
     QList<Kyborgi*> alustaKyborgit();
@@ -30,10 +30,6 @@ public:
 private:
     QQuickView* nakyma_;
     Tieto* tieto_;
-
-
-    //TODO POIS TÄÄLTÄ
-    QList<QList<int>> esteet;
 
 };
 

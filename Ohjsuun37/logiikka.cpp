@@ -46,6 +46,8 @@ Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
 
     hiiriX_ = 0; //ei ehka valttamattomat -IH
     hiiriY_ = 0;
+
+    laura_ = nullptr;
 }
 
 
@@ -338,11 +340,12 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
                 return *it;
             }
         }
-        //tarkastellaan, onko laura viela pelissa. -IH
+        //tarkastellaan, onko laura viela pelissa.
+        //peli kylla loppuu lauran kuolemaan, mutta ehtii kaatua ennen jos tata ei ole -IH
         if (laura_->onkoHengissa()){
             double etaisyys = laura_->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
-                qDebug() << "lähistöllä" << etaisyys;
+                //qDebug() << "lähistöllä" << etaisyys;
                 return laura_;
             }
         }
@@ -454,13 +457,13 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     else{
 
         //ammuksen kantama saadaan elamatasoa vahentamalla -MS
-        ammus->muutaElamatasoa(ammus->annaElamataso()-1);
+        ammus->asetaKantama(ammus->kantama()-1);
 
         if(liikutaToimijaa(ammus) == false or
            ammus->annaSijainti() == ammus->annaPaamaara() or
-           ammus->annaElamataso() < 5){
-
-            for (int i = 0 ; i < ammukset_.size(); i ++){
+           ammus->kantama() < 1){
+            qDebug() <<"Ammus TUHOTTIIN";
+                   for (int i = 0 ; i < ammukset_.size(); i ++){
                 if (ammukset_.at(i) == ammus){
                     qDebug() << "POISTETTIIN LISTASTA";
                     ammukset_.removeAt(i);
@@ -475,13 +478,38 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 //voitettu paremetria, ei viela kayteta -IH
 void Logiikka::lopetaPeli(bool voitettu)
 {
+    //TODO jotain mika ilmoittaa hävitystä pelistä?
+
+
 
     pelikello_->stop();
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
 
-    //TODO poistaa kyborgit, ammukset ja viholliset.
-    //alustaParkkihallin esteet pois sekä QML puoli, että matriisi
+    //TODO alustaParkkihallin esteet pois
+
+    for( int i = ammukset_.size(); i > 0; --i ){
+        Ammus* ammus = ammukset_.at(i);
+        ammukset_.removeAt(i);
+        delete ammus;
+    }
+
+    for( int i = kyborgit_.size(); i > 0; --i ){
+        Kyborgi* kyborgi = kyborgit_.at(i);
+        kyborgit_.removeAt(i);
+        delete kyborgi;
+    }
+
+    for( int i = viholliset_.size(); i > 0; --i ){
+        Vihollinen* vihollinen = viholliset_.at(i);
+        viholliset_.removeAt(i);
+        delete vihollinen;
+    }
+
+
+
+
+
 
     //TODO tähän elämäpalkkien siirto takaisin jos ne halutaan siirtää
     /*
@@ -500,7 +528,7 @@ void Logiikka::lopetaPeli(bool voitettu)
 
 void Logiikka::luoPeli()
 {
-    esteet_ = parkkihalli_->alustaEsteet();
+    esteet_ = parkkihalli_->alustaEsteet(1);
 
     laura_ = parkkihalli_->alustaLaura();
     kyborgit_ = parkkihalli_->alustaKyborgit();
@@ -513,30 +541,34 @@ void Logiikka::luoPeli()
 
 void Logiikka::luoAmmus()
 {
-    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-    //luodaan ammus, asetetaan sijainti lauran sijainniksi
-        Ammus* ammus = new Ammus();
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
-        QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
+    if(laura_->ampumavalmis()){
+        QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+        //luodaan ammus, asetetaan sijainti lauran sijainniksi
+            Ammus* ammus = new Ammus();
+            QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
+            QObject *object = component.create();
+            QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
-        ammus->asetaQMLosa(object);
-        //ammus lähtee lauran sijainnista lauran suuntaan
-        ammus->asetaSijainti(laura_->annaSijainti());
-        // QML kayttaa astelukuja mutta c++ tarvitsee laskentaan radiaanit AH
-        ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
-        ammus->asetaNopeus(5);
+            ammus->asetaQMLosa(object);
+            //ammus lähtee lauran sijainnista lauran suuntaan
+            ammus->asetaSijainti(laura_->annaSijainti());
+            // QML kayttaa astelukuja mutta c++ tarvitsee laskentaan radiaanit AH
+            ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
+            ammus->asetaNopeus(5);
 
 
 
-        //asetetaan paamaara ammukselle
-        Sijainti paamaara(hiiriX_-10,hiiriY_-10);
-        //qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-        //qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
-        ammus->asetaPaamaara(paamaara);
+            //asetetaan paamaara ammukselle
+            Sijainti paamaara(hiiriX_-10,hiiriY_-10);
+            qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+            qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
+            ammus->asetaPaamaara(paamaara);
 
-        ammukset_.append(ammus);
+            ammukset_.append(ammus);
+            laura_->asetaAmpumavalmis(false);
+            laura_->ampuu(); //viestittää lauralle että ammuttiin, käynnisttää ampumakellon
 
+     }
 
         return;
 
@@ -624,6 +656,15 @@ void Logiikka::suoritaTekoaly()
     liikutaToimijaa(laura_);
 
 }
+
+/* TODO selvitys apufunktiomahdollisuudesta
+void tyhjennaLista(&QList<Toimija*> lista){
+    for( int i = lista.size(); i > 0; --i ){
+        Toimija* osa = lista.at(i);
+        listaremoveAt(i);
+        delete osa;
+    }
+}*/
 
 
 

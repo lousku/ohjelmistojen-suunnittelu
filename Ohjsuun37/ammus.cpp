@@ -17,7 +17,7 @@ bool Ammus::etene()
 
 }
 
-double Ammus::annaKantama()
+double Ammus::kantama() const
 {
     return kantama_;
 }

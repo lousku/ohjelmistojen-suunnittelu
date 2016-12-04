@@ -42,10 +42,10 @@ public:
     void lopetaPeli(bool voitettu);
 
 private:
-    Laura* laura_;          //HUOM koska käytetään normi osoittimia, eikä esim
-    QList<Kyborgi*> kyborgit_;    //Shared_ptr:iä pitää olla huolellinen
-    QList<Vihollinen*> viholliset_;    //Että olioiden poistaminen toimii fiksusti
-    QList<Ammus*> ammukset_;  //lisasin tanne myos ammukset -IH
+    Laura* laura_;
+    QList<Kyborgi*> kyborgit_;
+    QList<Vihollinen*> viholliset_;
+    QList<Ammus*> ammukset_;
     QTimer* pelikello_;
     QQuickView* nakyma_;
     Kyborgi* kaskettava_;

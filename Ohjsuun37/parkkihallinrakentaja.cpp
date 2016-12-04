@@ -19,32 +19,6 @@ ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* view, Tieto* tieto):
 {
     tieto_ ->lueXmlTiedot();
 
-
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
-    esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 }
 
 QQuickView *ParkkihallinRakentaja::annaNakyma()
@@ -62,8 +36,11 @@ QTimer* ParkkihallinRakentaja::alustaPelikello(){
 Laura* ParkkihallinRakentaja::alustaLaura(){
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
+    lauranTiedot tiedot = tieto_->annaLauranTiedot();
+
     //alustetaan Laura
-    Laura* laura = new Laura(60,20);
+    Laura* laura = new Laura(60,20, tiedot.elama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
+                                                  //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
     QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
@@ -79,13 +56,18 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
 QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
+    QList<kyborginTiedot> tiedot = tieto_->annaKyborgienTiedot();
+    QList<QString> varit = { "lime", "magenta", "royalblue"};
+
     //alustetaan Kyborgit
     QList<Kyborgi*> kyborgit;
     for (int i = 1; i < 4; i++){
         //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
-        Kyborgi *kyborgi = new Kyborgi(i*100,i*60, 4); //lisasin alkusijainnin -MS
 
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Kyborgi.qml")));
+        Kyborgi *kyborgi = new Kyborgi(i*100, i*60, tiedot[i-1].elama, tiedot[i-1].nopeus,
+                            tiedot[i-1].teho, tiedot[i-1].iskuetaisyys);
+
+        QQmlComponent component(nakyma_->engine(), QUrl("qrc:/Kyborgi.qml"));
         QObject *object = component.create();
         QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
@@ -93,16 +75,10 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
         object->setParent(gameWindow);
         QString arvo = "kyborgi" + QString::number(i);
         object->setProperty("tunniste", arvo);
-        if (i == 1){
-            object->setProperty("color", "darkorange");
 
-        }else if (i == 2){
-            object->setProperty("color", "salmon");
+        QString kuvapolku = "qrc:graphics/kyborg_" + varit[i-1] + ".png";
+        object->setProperty("kuvapolku", kuvapolku);
 
-        }else{
-            object->setProperty("color", "gold");
-
-        }
         kyborgi->asetaQMLosa(object);
 
         kyborgit.append(kyborgi);
@@ -111,8 +87,8 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
 }
 
 
-QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
-{
+
+/*QList<QList<int>> ParkkihallinRakentaja::alustaEsteet(){
 
     QList<QList<int>> esteet;
 
@@ -143,6 +119,11 @@ QList<QList<int>> ParkkihallinRakentaja::alustaEsteet()
     esteet.append(QList<int> ({0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}));
 
     XmlLukija::XmlLukija();
+}*/
+
+QList<QList<int>> ParkkihallinRakentaja::alustaEsteet(int numero)
+{   
+    QList<QList<int>> esteet = tieto_->annaKentantiedot(numero).sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
     {
@@ -171,13 +152,17 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset()
     QList<Vihollinen *> viholliset;
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
+    kentanTiedot tiedot = tieto_->annaKentantiedot(1);
+
+    QList<QList<int>> esteet = tiedot.sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
     {
         for( int j=0; j<esteet[i].count(); ++j )
         {
             if (esteet[i][j] == 2){
-                Vihollinen *vihollinen = new  Vihollinen(j*20,i*20);
+                Vihollinen *vihollinen = new  Vihollinen(j*20,i*20,tiedot.vihollistenElama,
+                               tiedot.vihollistenNopeus, tiedot.vihollistenTeho, tiedot.iskuetaisyys);
 
                 QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
                 QObject *object = component.create();
@@ -186,27 +171,10 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset()
 
                 viholliset.append(vihollinen);
             }
-
-
         }
     }
     //Miikan toteutus loppuu, tässä toteutuksessa pitäisi lopulta välittää estematriisi tälle funktiolle -MS
     //tähän tyyliin vois lopulta lauran ja kyborgitkin lisätä -MS
 
-
-    int maara = 2; // TODO jotain tallaistatieto.annaVihollistenmaara();
-   // QList<Vihollinen *> viholliset;  nama siirretty ylemmas uuden vihollisten lisaystavan vuoksi MS
-  //  QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-
-    for (int i = 0; i < maara; i++){
-        Vihollinen *vihollinen = new  Vihollinen(150,200);
-
-        QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:Vihollinen.qml")));
-        QObject *object = component.create();
-        QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
-        vihollinen->asetaQMLosa(object);
-
-        viholliset.append(vihollinen);
-    }
     return viholliset;
 }

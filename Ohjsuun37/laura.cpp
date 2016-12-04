@@ -12,9 +12,8 @@ Laura::Laura()
 
 }
 
-Laura::Laura(double x, double y):
-    // Lauralle nopeus kolme
-    Toimija(x,y,7), tuhottu_(false)
+Laura::Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama):
+    Toimija(x,y,elama, nopeus, teho), ampumatiheys_(ampumatiheys), ammustenKantama_(kantama)
 {
 
 }
@@ -40,8 +39,23 @@ void Laura::paivitaTiedot()
 
 }
 
+void Laura::ampuu()
+{
+   QTimer::singleShot(ampumatiheys_, this, SLOT(asetaAmpumavalmiiksi()));
+}
+
 void Laura::tuhoa()
 {
     tuhottu_ = true;
     delete annaQMLosa();
+}
+
+int Laura::ampumatiheys() const
+{
+    return ampumatiheys_;
+}
+
+void Laura::asetaAmpumatiheys(int ampumatiheys)
+{
+    ampumatiheys_ = ampumatiheys;
 }

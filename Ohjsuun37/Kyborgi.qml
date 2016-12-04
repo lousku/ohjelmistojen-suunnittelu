@@ -6,17 +6,14 @@ Item {
     height: 20
 
     property alias text: teksti.text
+    property string kuvapolku: "qrc:graphics/kyborg.png"
     property string tunniste: ""
-   // property int reunanpaksuus: 0
 
     // nyt kyborgi kasvaa hieman kun se on valittu -MS
 
-   // border.color: "black"
-   // border.width: reunanpaksuus
-
     Image {
         id: lauraImage
-        source: "qrc:graphics/kyborg.png"
+        source: kuvapolku
         anchors.fill: parent
     }
 
