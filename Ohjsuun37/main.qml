@@ -4,13 +4,15 @@ import QtQuick.Window 2.2
 Item {
     objectName: "parkkihalli"
     id:parkkihalliId
-    width: 650
-    height: 650
+    width: 600
+    height: 600
+    focus: false  //Ratkaiseva, jotta painallus huomataan -IH
+    state: "ALOITUS"
 
     Image {
         height: 10
         width:  10
-        id: ylaBanneriKuva
+        id: esteKuva
         source: "qrc:graphics/esteLaatta.png"
         fillMode: Image.Tile
         horizontalAlignment: Image.AlignLeft
@@ -18,22 +20,40 @@ Item {
         anchors.fill: parent
     }
 
-    state: "NORMAL"
-
     states: [
+            State {
+                name: "ALOITUS"
+                //piilotetaan muut paitsi karttaikkuna -MS
+                PropertyChanges { target: mapWindow; visible:false}
+                PropertyChanges { target: gameWindow; visible:false}
+                PropertyChanges { target: kauppaIkkuna; visible:false}
+                PropertyChanges { target: topBanner; palkkinakyvissa: false}
+                PropertyChanges { target: aloitusnaytto; visible: true}
+
+
+                //huomioidaan painallukset vain karttaikkunassa -MS
+                PropertyChanges { target: parkkihalliId; focus: false}
+                PropertyChanges { target: kauppaIkkuna; focus: false}
+                PropertyChanges { target: gameWindow; focus: false}
+                PropertyChanges { target: aloitusnaytto; focus: true}
+
+
+            },
             State {
                 name: "NORMAL"
                 //piilotetaan muut paitsi karttaikkuna -MS
                 PropertyChanges { target: mapWindow; visible:true}
                 PropertyChanges { target: gameWindow; visible:false}
                 PropertyChanges { target: kauppaIkkuna; visible:false}
-                PropertyChanges { target: topBanner; palkkinakyvissa: false}
+                PropertyChanges { target: topBanner; visible: true}
+                PropertyChanges { target: aloitusnaytto; visible: false}
 
 
                 //huomioidaan painallukset vain karttaikkunassa -MS
                 PropertyChanges { target: parkkihalliId; focus: true}
                 PropertyChanges { target: kauppaIkkuna; focus: false}
                 PropertyChanges { target: gameWindow; focus: true}
+                PropertyChanges { target: aloitusnaytto; focus: false}
 
 
             },
@@ -44,12 +64,14 @@ Item {
                 PropertyChanges { target: gameWindow; visible:false}
                 PropertyChanges { target: kauppaIkkuna; visible:true}
                 PropertyChanges { target: topBanner; palkkinakyvissa: false}
+                PropertyChanges { target: aloitusnaytto; visible: false}
 
 
                 //huomioidaan painallukset vain kauppaikkunassa -MS
                 PropertyChanges { target: mapWindow; focus: false}
                 PropertyChanges { target: parkkihalliId; focus: false}
                 PropertyChanges { target: kauppaIkkuna; focus: true}
+                PropertyChanges { target: aloitusnaytto; focus: false}
 
 
             },
@@ -60,16 +82,23 @@ Item {
                 PropertyChanges { target: gameWindow; visible:true}
                 PropertyChanges { target: kauppaIkkuna; visible:false}
                 PropertyChanges { target: topBanner; palkkinakyvissa: true}
+                PropertyChanges { target: aloitusnaytto; visible: false}
 
                 //huomioidaan painallukset vain peliikkunassa -MS
                 PropertyChanges { target: mapWindow; focus: false}
                 PropertyChanges { target: gameWindow; focus: true}
                 PropertyChanges { target: kauppaIkkuna; focus: false}
+                PropertyChanges { target: aloitusnaytto; focus: false}
 
         }
     ]
 
     //omat tiedostot reunabannerille, sisältää toistaiseksi sekä id että objName -MS
+    Aloitusnaytto{
+        id:aloitusnaytto
+        anchors.fill: parent
+    }
+
     LeftBanner{
         id:leftBanner
         //laitoin hipsuihin, koska tuli herjaa, muuten siis koittaa sijoittaa Rectanglea objectNameen -IH
@@ -77,26 +106,39 @@ Item {
 
         anchors.left: parent.left;anchors.top: parent.top
         anchors.bottom: parent.bottom
-
     }
     TopBanner{
         id:topBanner
         objectName: "topBanner"
         anchors.left: leftBanner.right; anchors.top: parent.top; anchors.right: parent.right
-
-        //anchors.left: parent.left; anchors.top: parent.top;
     }
 
     GameWindow{
         id: gameWindow
         objectName: "gameWindow"
-        anchors.left: parent.left; anchors.top: parent.top;
-        anchors.right: parent.right; anchors.bottom: parent.bottom;
-        anchors.rightMargin: 50; anchors.bottomMargin: 50;
-        anchors.leftMargin: 100; anchors.topMargin: 100;
+        anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
+        anchors.right: parent.right; anchors.bottom: parent.bottom
         visible: false
 
+        Keys.onLeftPressed: {
+            logiikka.liikutaLauraaVaaka(-1);
+        }
+        Keys.onRightPressed: {
+            logiikka.liikutaLauraaVaaka(1);
+        }
+        Keys.onUpPressed: {
+            logiikka.liikutaLauraaPysty(-1);
+        }
+        Keys.onDownPressed: {
+            logiikka.liikutaLauraaPysty(1);
+        }
+        Keys.onSpacePressed: {
+            logiikka.luoAmmus();
+           // kauppa.testi();
+        }
+
         //WASD liikkuminen -MS
+
 
         property bool lauraLiikkuuOikealle: false
         property bool lauraLiikkuuVasemmalle: false
@@ -122,12 +164,9 @@ Item {
                 lauraLiikkuuOikealle = true ;
             }
 
-             //console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
-           }
+             console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
 
-        Keys.onSpacePressed: {
-            logiikka.luoAmmus();
-        }
+           }
 
         Keys.onReleased: {
           if(event.isAutoRepeat) return
