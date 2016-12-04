@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     tieto.cpp \
     kauppa.cpp \
     xmllukija.cpp \
-    haeapidata.cpp
+    haeapidata.cpp \
+
 
 
 RESOURCES += qml.qrc

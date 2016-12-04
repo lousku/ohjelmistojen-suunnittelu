@@ -8,23 +8,17 @@ Item {
     height: 600
     focus: false  //Ratkaiseva, jotta painallus huomataan -IH
     state: "ALOITUS"
-/*
-    Keys.onLeftPressed: {
-        logiikka.liikutaLauraaVaaka(-1);
+
+    Image {
+        height: 10
+        width:  10
+        id: esteKuva
+        source: "qrc:graphics/esteLaatta.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+        anchors.fill: parent
     }
-    Keys.onRightPressed: {
-        logiikka.liikutaLauraaVaaka(1);
-    }
-    Keys.onUpPressed: {
-        logiikka.liikutaLauraaPysty(-1);
-    }
-    Keys.onDownPressed: {
-        logiikka.liikutaLauraaPysty(1);
-    }
-    Keys.onSpacePressed: {
-        logiikka.luoAmmus();
-        kauppa.testi();
-    }*/
 
     states: [
             State {
