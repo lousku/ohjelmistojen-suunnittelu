@@ -2,6 +2,7 @@ TEMPLATE = app
 
 QT += qml quick
 QT += xml
+QT += network
 
 CONFIG += c++11
 
@@ -17,7 +18,8 @@ SOURCES += main.cpp \
     parkkihallinrakentaja.cpp \
     tieto.cpp \
     kauppa.cpp \
-    xmllukija.cpp
+    xmllukija.cpp \
+    haeapidata.cpp
 
 
 RESOURCES += qml.qrc
@@ -47,5 +49,6 @@ HEADERS += \
     parkkihallinrakentaja.h \
     tieto.h \
     kauppa.h \
-    xmllukija.h
+    xmllukija.h \
+    haeapidata.h
 
