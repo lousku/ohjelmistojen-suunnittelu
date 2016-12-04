@@ -48,7 +48,7 @@ private:
     lauranTiedot lauranTiedot_;
     QList<kyborginTiedot> kyborgienTiedot_;
     QList<kentanTiedot> kenttienTiedot_;
-    XmlLukija lukija_;
+    XmlLukija *lukija_;
     //paivitysaika johonki ylos?
 
 };
