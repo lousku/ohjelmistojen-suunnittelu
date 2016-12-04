@@ -27,5 +27,6 @@
         <file>graphics/kyborg_magenta.png</file>
         <file>graphics/kyborg_royalblue.png</file>
         <file>xml.xml</file>
+        <file>Aloitusnaytto.qml</file>
     </qresource>
 </RCC>
