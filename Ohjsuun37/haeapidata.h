@@ -4,12 +4,21 @@
 #include <QNetworkAccessManager>
 #include <QUrl>
 #include <QNetworkRequest>
+#include <QObject>
+#include <QNetworkReply>
 
 
 class haeAPIdata : public QNetworkAccessManager
 {
+    Q_OBJECT
+
 public:
     haeAPIdata();
+    void haeTiedot();
+public slots:
+    void replyFinished();
+private:
+    QNetworkReply* vastaus_;
 };
 
 #endif // HAEAPIDATA_H

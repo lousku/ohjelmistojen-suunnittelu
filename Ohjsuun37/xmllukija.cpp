@@ -3,17 +3,18 @@
 
 XmlLukija::XmlLukija()
 {
-    haeAPIdata::haeAPIdata();
+    haeAPIdata *ApiData = new haeAPIdata();
+    ApiData->haeTiedot();
 
     //QFile xml("/Users/Ile/Git/Ohjsuun37/xml.xml");
-    QFile xml("/Users/annimari/Documents/Git/Ohjsuun37/xml.xml");
+    QFile *xml = new QFile("/Users/annimari/Documents/Git/Ohjsuun37/xml.xml");
     //QFile xml("qrc:xml.xml");
 
-    if( !xml.open(QFile::ReadOnly | QFile::Text )){
-        qDebug() << "Virhe xml-tiedoston lukemisessa" << xml.errorString();
+    if( !xml->open(QIODevice::ReadOnly | QIODevice::Text )){
+        qDebug() << "Virhe xml-tiedoston lukemisessa" << xml->errorString();
     }
 
-    QXmlStreamReader lukija(&xml);
+    QXmlStreamReader lukija(xml);
 
 // saako supistettua?
     if( lukija.readNextStartElement() ){

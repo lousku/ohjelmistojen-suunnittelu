@@ -4,7 +4,8 @@ QT += qml quick
 QT += xml
 QT += network
 
-CONFIG += c++11
+CONFIG += c++11 \
+          -no-openssl
 
 SOURCES += main.cpp \
     toimija.cpp \

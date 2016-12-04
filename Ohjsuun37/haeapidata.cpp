@@ -2,20 +2,31 @@
 
 haeAPIdata::haeAPIdata()
 {
-   QNetworkAccessManager *manager = new QNetworkAccessManager(this);
-   /*
-    manager->get(QNetworkRequest(QUrl("http://parkingdata.finnpark.fi:8080/Datex2/OpenData")));
-    */
-
-    QNetworkRequest pyynto;
-    pyynto.setUrl(QUrl("http://parkingdata.finnpark.fi:8080/Datex2/OpenData"));
 
 
-    QNetworkReply *vastaus = manager->get(pyynto);
-    //QOI hommaa? QNetworkReply->QObject
-    /*connect(vastaus, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
-    connect(vastaus, SIGNAL(error(QNetworkReply::NetworkError)),
-            this, SLOT(slotError(QNetworkReply::NetworkError)));
-    connect(vastaus, SIGNAL(sslErrors(QList<QSslError>)),
-            this, SLOT(slotSslErrors(QList<QSslError>)));*/
 }
+
+void haeAPIdata::haeTiedot()
+{
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+    connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished()));
+
+
+   // QNetworkRequest pyynto;
+
+    //pyynto.setUrl(QUrl("http:// parkingdata.finnpark.fi:8080/Datex2/OpenData"));
+
+
+
+    vastaus_ = manager->get(QNetworkRequest(QUrl("http:// parkingdata.finnpark.fi:8080/Datex2/OpenData")));
+}
+
+void haeAPIdata::replyFinished()
+{
+    qDebug() << "slotissa";
+
+
+}
+
+

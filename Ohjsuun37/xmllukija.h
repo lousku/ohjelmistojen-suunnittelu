@@ -5,6 +5,7 @@
 #include <QXmlStreamReader>
 #include <QFile>
 #include <QDebug>
+#include <QIODevice>
 
 class XmlLukija
 {
