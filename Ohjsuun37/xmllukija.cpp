@@ -3,6 +3,8 @@
 
 XmlLukija::XmlLukija()
 {
+    haeAPIdata::haeAPIdata();
+
     //QFile xml("/Users/Ile/Git/Ohjsuun37/xml.xml");
     QFile xml("/Users/annimari/Documents/Git/Ohjsuun37/xml.xml");
     //QFile xml("qrc:xml.xml");
@@ -22,17 +24,17 @@ XmlLukija::XmlLukija()
                         if( lukija.name() == "genericPublicationExtension" ){
                             while( lukija.readNextStartElement() ){
                                 if( lukija.name() == "parkingFacilityTablePublication" ){
-                                    qDebug() << "4";
+                                    //qDebug() << "4";
                                     while( lukija.readNextStartElement() ){
                                         if( lukija.name() == "parkingFacilityTable" ){
-                                            qDebug() << "5";
+                                            //qDebug() << "5";
                                             while( lukija.readNextStartElement()) {
                                                 if (lukija.name() == "parkingFacility"){
                                                     while( lukija.readNextStartElement()) {
                                                         if (lukija.name() == "parkingFacilityName"){
-                                                            qDebug() << "Halli: " << lukija.readElementText();
+                                                            //qDebug() << "Halli: " << lukija.readElementText();
                                                         }else if( lukija.name() == "totalParkingCapacity" ){
-                                                            qDebug() << "Orkkeja mahtuu: "<< lukija.readElementText();
+                                                            //qDebug() << "Orkkeja mahtuu: "<< lukija.readElementText();
                                                         }
                                                         else{
                                                             lukija.skipCurrentElement();
@@ -48,17 +50,17 @@ XmlLukija::XmlLukija()
                                     }
                                 }else{
                                      lukija.skipCurrentElement();
-                                     qDebug() << "skip 3";
+                                     //qDebug() << "skip 3";
                                 }
                             }
                         }else{
                             lukija.skipCurrentElement();
-                            qDebug() << "skip 2";
+                            //qDebug() << "skip 2";
                         }
                     }
                 }else{
                     lukija.skipCurrentElement();
-                    qDebug() << "skip 1";
+                    //qDebug() << "skip 1";
                 }
             }
         }
