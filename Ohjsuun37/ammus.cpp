@@ -5,25 +5,19 @@ Ammus::~Ammus()
 
 }
 
-Ammus::Ammus():
-    kantama_(100),ammusTiheys_(1)
+Ammus::Ammus(Sijainti sijainti, int teho):
+                //kantama = 100, nopeus = 5,  teho = lauran teho,  iskuetaisyys = 10
+    Tekoalylliset(sijainti.annaX(), sijainti.annaY(), 100, 5, teho, 10)
 {
 
 }
 
-//TODO etenee suuntaan ja menettaa kantoaikaa alias elamatasoaan -IH
-bool Ammus::etene()
+bool Ammus::asetaSuunta(double suunta)
 {
-
+    suunta_ = suunta;
 }
 
-double Ammus::kantama() const
+void Ammus::liikutaAmmusta()
 {
-    return kantama_;
+    muutaElamatasoa(-annaNopeus());
 }
-
-void Ammus::asetaKantama(double kantama)
-{
-    kantama_ = kantama;
-}
-

@@ -13,14 +13,9 @@ Laura::Laura()
 }
 
 Laura::Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama):
-    Toimija(x,y,elama, nopeus, teho), ampumatiheys_(ampumatiheys), ammustenKantama_(kantama)
+    Toimija(x,y,elama, nopeus, teho), ampumatiheys_(ampumatiheys), ammustenKantama_(kantama), suunta_(0)
 {
-
-}
-
-Ammus Laura::ammu()
-{
-
+    asetaAmpumavalmiiksi();
 }
 
 bool Laura::onkoHengissa()
@@ -33,10 +28,20 @@ void Laura::paivitaTiedot()
     Toimija::paivitaTiedot();
 
     QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
-
     double arvo = double(annaElamataso())/100;
     banneri->setProperty("lauranElama", arvo);
 
+}
+
+double Laura::annaSuunta()
+{
+    return suunta_;
+}
+
+bool Laura::asetaSuunta(double suunta)
+{
+    suunta_ = suunta;
+    annaQMLosa()->setProperty("angle",  suunta_ -90);
 }
 
 void Laura::ampuu()
