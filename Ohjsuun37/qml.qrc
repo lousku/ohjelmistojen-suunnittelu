@@ -29,5 +29,6 @@
         <file>xml.xml</file>
         <file>Aloitusnaytto.qml</file>
         <file>kentat.txt</file>
+        <file>graphics/Kauppa2.0.png</file>
     </qresource>
 </RCC>
