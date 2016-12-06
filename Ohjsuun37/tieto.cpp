@@ -16,8 +16,7 @@ Tieto::Tieto():
     lauranTiedot_.nopeus = 1;
     lauranTiedot_.teho = 100;
 
-    for( int i=0; i < 3; ++i )
-    {
+    for( int i=0; i < 3; ++i ){
         kyborginTiedot tieto;
         tieto.elama = 100;
         tieto.nopeus = 3;
@@ -56,8 +55,7 @@ Tieto::Tieto():
             kenttienTiedot_.append(lisattava);
         }
         //else haara mahdollistaa sen, etta kentta tiedoston alussa voi olla teksia
-        else
-        {
+        else{
             rivi = in.readLine();
         }
     }
@@ -90,6 +88,5 @@ lauranTiedot Tieto::annaLauranTiedot() const
 
 kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
 {
-    qDebug() << kenttienTiedot_.size();
     return kenttienTiedot_.at(kentanNumero);
 }

@@ -4,6 +4,13 @@ import QtQuick 2.0
 Item {
     width: 100
 
-
-
+    //TODO jotain vähän fiksumpaa ulkoasua tänne
+    Text {
+        x: 50
+        y: 50
+        id: pisteet
+        text: qsTr("Pisteitä: ")
+        color: "red"
+        font.pointSize: 20
+    }
 }

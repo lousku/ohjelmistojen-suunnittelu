@@ -27,6 +27,8 @@ public:
     QList<Kyborgi*> alustaKyborgit();
     QList<Vihollinen*> lisaaViholliset(int kentanNumero);
 
+    int annaLauranElamataso();
+
 private:
     QQuickView* nakyma_;
     Tieto* tieto_;

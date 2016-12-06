@@ -12,7 +12,7 @@ Item {
     // nyt kyborgi kasvaa hieman kun se on valittu -MS
 
     Image {
-        id: lauraImage
+        id: kyborgiImage  //muutin LauraImagesta kun tais olla typo -IH
         source: kuvapolku
         anchors.fill: parent
     }

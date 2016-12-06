@@ -528,6 +528,15 @@ void Logiikka::luoPeli(int numero)
     //laura alustetaan vain ensimmäisellä kerralla -IH
     if (laura_ == nullptr){
         laura_ = parkkihalli_->alustaLaura();
+    }else{
+        //alustetaan laura takaisin lähtöpisteeseen
+        laura_->asetaSijainti(Sijainti(40,40));
+
+        //elamatason alustuksessa hieman kierretty, jotta uutta funktiota ei tarvittaisi -IH
+        int erotus = parkkihalli_->annaLauranElamataso() - laura_->annaElamataso();
+        laura_->muutaElamatasoa(erotus);
+
+        laura_->paivitaTiedot();
     }
 
     kyborgit_ = parkkihalli_->alustaKyborgit();   

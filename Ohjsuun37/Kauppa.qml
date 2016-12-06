@@ -3,7 +3,6 @@ import QtQuick.Controls 1.4
 
 //yksi kolmesta päänäkymästä -MS
 Rectangle {
-    color: "blue"
     anchors.left: parent.left; anchors.top: parent.top;
     anchors.right: parent.right; anchors.bottom: parent.bottom;
     anchors.rightMargin: 50; anchors.bottomMargin: 50;

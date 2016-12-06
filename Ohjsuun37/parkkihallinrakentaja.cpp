@@ -38,8 +38,8 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
 
     lauranTiedot tiedot = tieto_->annaLauranTiedot();
 
-    //alustetaan Laura
-    Laura* laura = new Laura(60,20, tiedot.elama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
+    //alustetaan Laura    //TODO onko sijainti 40,40 hyvä?
+    Laura* laura = new Laura(40,40, tiedot.elama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
                                                   //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
@@ -107,7 +107,6 @@ QList<QStringList> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject
 
         }
     }
-    qDebug() << esteet.size() << "fefee";
     return esteet;
 }
 
@@ -144,4 +143,9 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
     //tähän tyyliin vois lopulta lauran ja kyborgitkin lisätä -MS
 
     return viholliset;
+}
+
+int ParkkihallinRakentaja::annaLauranElamataso()
+{
+    return tieto_->annaLauranTiedot().elama;
 }

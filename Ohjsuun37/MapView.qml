@@ -2,7 +2,6 @@ import QtQuick 2.0
  import QtQuick.Controls 1.4
 
 Rectangle {
-    color: "blue"
     anchors.left: parent.left; anchors.top: parent.top;
     anchors.right: parent.right; anchors.bottom: parent.bottom;
     anchors.rightMargin: 50; anchors.bottomMargin: 50;

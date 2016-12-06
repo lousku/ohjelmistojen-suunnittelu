@@ -24,77 +24,35 @@ Item {
             State {
                 name: "ALOITUS"
                 //piilotetaan muut paitsi karttaikkuna -MS
-                PropertyChanges { target: mapWindow; visible:false}
-                PropertyChanges { target: gameWindow; visible:false}
-                PropertyChanges { target: kauppaIkkuna; visible:false}
-                PropertyChanges { target: topBanner; palkkinakyvissa: false}
                 PropertyChanges { target: aloitusnaytto; visible: true}
-
-
-                //huomioidaan painallukset vain karttaikkunassa -MS
-                PropertyChanges { target: parkkihalliId; focus: false}
-                PropertyChanges { target: kauppaIkkuna; focus: false}
-                PropertyChanges { target: gameWindow; focus: false}
-                PropertyChanges { target: aloitusnaytto; focus: false}
-                PropertyChanges { target: mapWindow; focus: false}
-
+                PropertyChanges { target: leftBanner; visible: false}
 
             },
             State {
                 name: "NORMAL"
                 //piilotetaan muut paitsi karttaikkuna -MS
                 PropertyChanges { target: mapWindow; visible:true}
-                PropertyChanges { target: gameWindow; visible:false}
-                PropertyChanges { target: kauppaIkkuna; visible:false}
-                PropertyChanges { target: topBanner; visible: true}
-                PropertyChanges { target: aloitusnaytto; visible: false}
 
-
-                //huomioidaan painallukset vain karttaikkunassa -MS
-                PropertyChanges { target: parkkihalliId; focus: false}
-                PropertyChanges { target: mapWindow; focus: true}
-                PropertyChanges { target: kauppaIkkuna; focus: false}
-                PropertyChanges {target: gameWindow; focus: false}
-                PropertyChanges { target: aloitusnaytto; focus: false}
 
 
             },
             State {
                 name: "KAUPPA"
                 //piilotetaan muut paitsi kauppaikkuna -MS
-                PropertyChanges { target: mapWindow; visible:false}
-                PropertyChanges { target: gameWindow; visible:false}
                 PropertyChanges { target: kauppaIkkuna; visible:true}
-                PropertyChanges { target: topBanner; palkkinakyvissa: false}
-                PropertyChanges { target: aloitusnaytto; visible: false}
-
-
-                //huomioidaan painallukset vain kauppaikkunassa -MS
-                PropertyChanges { target: mapWindow; focus: false}
-                PropertyChanges { target: parkkihalliId; focus: false}
-                PropertyChanges { target: kauppaIkkuna; focus: true}
-                PropertyChanges { target: aloitusnaytto; focus: false}
-                PropertyChanges { target: gameWindow; focus: false}
-
-
-
 
             },
             State {
                 name: "PELI"
                 //piilotetaan muut paitsi peliikkuna -MS
-                PropertyChanges { target: mapWindow; visible:false}
                 PropertyChanges { target: gameWindow; visible:true}
-                PropertyChanges { target: kauppaIkkuna; visible:false}
-                PropertyChanges { target: topBanner; palkkinakyvissa: true}
-                PropertyChanges { target: aloitusnaytto; visible: false}
+                PropertyChanges { target: topBanner; visible: true}
+
+                //PropertyChanges { target: topBanner; palkkinakyvissa: true}
 
                 //huomioidaan painallukset vain peliikkunassa -MS
-                PropertyChanges { target: mapWindow; focus: false}
                 PropertyChanges { target: gameWindow; focus: true}
-                PropertyChanges { target: kauppaIkkuna; focus: false}
-                PropertyChanges { target: aloitusnaytto; focus: false}
-                PropertyChanges { target: parkkihalliId; focus: false}
+
 
         }
     ]
@@ -103,6 +61,7 @@ Item {
     Aloitusnaytto{
         id:aloitusnaytto
         anchors.fill: parent
+        visible:false
     }
 
     LeftBanner{
@@ -113,10 +72,12 @@ Item {
         anchors.left: parent.left;anchors.top: parent.top
         anchors.bottom: parent.bottom
     }
+
     TopBanner{
         id:topBanner
         objectName: "topBanner"
         anchors.left: leftBanner.right; anchors.top: parent.top; anchors.right: parent.right
+        visible:false
     }
 
     GameWindow{
@@ -130,7 +91,7 @@ Item {
 
     MapView{
         id:mapWindow
-        visible:true
+        visible:false
     }
     Kauppa{
         id: kauppaIkkuna

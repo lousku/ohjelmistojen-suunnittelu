@@ -6,7 +6,6 @@ import QtQuick 2.0
 Rectangle{
     width: 30
     height: 30
-    color: "white" //tarviiko? -IH
 
     property int hallinNumero: 0
 
