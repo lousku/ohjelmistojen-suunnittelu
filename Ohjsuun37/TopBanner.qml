@@ -5,7 +5,6 @@ Item {
     height: 100
 
     property alias palkkinakyvissa: palkkirivi.visible  //tarvitaanko? -IH
-    property alias lauranElama: lauranElamaBar.value
 
     GridLayout {
         id: palkkirivi
@@ -15,15 +14,13 @@ Item {
         anchors.leftMargin: 20; anchors.topMargin: 20;
 
         Elamamittari{
-            id: lauranElamaBar
-            vari: "yellow" //TODO parempi vari?
+            objectName: "lauranElamaBar"
+            vari: "orange" //TODO parempi vari?
             Layout.row: 1
             Layout.column: 0
-            implicitHeight: 25
         }
 
         Elamamittari{
-            //id: kyborgi1 //tata ei valttamatta tarvita -IH
             objectName: "kyborgi1"
             vari: "lime"
             property int paikka: 1
@@ -32,7 +29,6 @@ Item {
         }
 
         Elamamittari{
-            id: kyborgi2
             objectName: "kyborgi2"
             vari: "magenta"
             property int paikka: 2
@@ -40,7 +36,6 @@ Item {
             Layout.row: 1
         }
         Elamamittari{
-            id: kyborgi3
             objectName: "kyborgi3"
             vari: "royalblue"
             property int paikka: 3

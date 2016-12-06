@@ -482,7 +482,7 @@ void Logiikka::lopetaPeli(bool voitettu)
     pelikello_->stop();
 
     if (not voitettu) {
-        //TODO PELI LOPPU MITÄ  NYT
+        //TODO PELI LOPPU MITÄ NYT
         return;
     }
 
@@ -531,10 +531,6 @@ void Logiikka::luoPeli(int numero)
     }else{
         //alustetaan laura takaisin lähtöpisteeseen
         laura_->asetaSijainti(Sijainti(40,40));
-
-        //elamatason alustuksessa hieman kierretty, jotta uutta funktiota ei tarvittaisi -IH
-        int erotus = parkkihalli_->annaLauranElamataso() - laura_->annaElamataso();
-        laura_->muutaElamatasoa(erotus);
 
         laura_->paivitaTiedot();
     }

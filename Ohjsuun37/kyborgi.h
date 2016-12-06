@@ -13,7 +13,11 @@ public:
     Kyborgi(double x, double y, int nopeus);
     Kyborgi(double x, double y,int elama, int nopeus, int teho, int iskuetaisyys);
     bool onkoLiikkeessa();
+    virtual void asetaQMLosa(QObject* objekti);
     virtual void paivitaTiedot();
+
+private:
+    QObject* palkki_;
 
 };
 
