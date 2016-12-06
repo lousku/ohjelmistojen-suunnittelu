@@ -28,5 +28,6 @@
         <file>graphics/kyborg_royalblue.png</file>
         <file>xml.xml</file>
         <file>Aloitusnaytto.qml</file>
+        <file>graphics/Kauppa2.0.png</file>
     </qresource>
 </RCC>
