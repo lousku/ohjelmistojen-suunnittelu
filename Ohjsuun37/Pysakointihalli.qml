@@ -6,8 +6,9 @@ import QtQuick 2.0
 Rectangle{
     width: 30
     height: 30
+    color: "white" //tarviiko? -IH
 
-    color: "white"
+    property int hallinNumero: 0
 
     Image {
         id: parkkihalliLogo
@@ -28,7 +29,7 @@ Rectangle{
             }
 
             //KUTSUMINEN TAPAHTUU TÄSSÄ -IH
-            logiikka.luoPeli();
+            logiikka.luoPeli(hallinNumero);
         }
     }
 }

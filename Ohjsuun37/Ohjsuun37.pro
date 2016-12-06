@@ -22,8 +22,6 @@ SOURCES += main.cpp \
     xmllukija.cpp \
     haeapidata.cpp \
 
-
-
 RESOURCES += qml.qrc
 
 OTHER_FILES += xml.xml

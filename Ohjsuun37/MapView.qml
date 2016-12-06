@@ -33,11 +33,31 @@ Rectangle {
     Pysakointihalli{
         x:150
         y:150
+        hallinNumero: 0
     }
 
     Pysakointihalli{
         x:250
         y:150
+        hallinNumero: 1
+    }
+
+    Pysakointihalli{
+        x:250
+        y:300
+        hallinNumero: 2
+    }
+
+    Pysakointihalli{
+        x:350
+        y:100
+        hallinNumero: 3
+    }
+
+    Pysakointihalli{
+        x:230
+        y:410
+        hallinNumero: 4
     }
 
 
