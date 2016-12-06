@@ -12,7 +12,6 @@ public:
     virtual ~Toimija();
     Toimija();
     Toimija(double x, double y, int elama, int nopeus, int teho);
-    void muutaSuuntaa(double suuntamuutos);
     bool liikuta(double x, double y);
     void muutaElamatasoa(int arvo);
     Sijainti annaSijainti();
@@ -22,11 +21,9 @@ public:
     int annaTeho();
     int annaNopeus();
     int annaElamataso();
-    double annaSuunta();
     QObject* annaQMLosa();
     Sijainti annaPaamaara();
     bool liikuta(Sijainti sijainti);
-    bool asetaSuunta(int suunta);
     void asetaQMLosa(QObject *objekti);
     bool asetaSijainti(Sijainti sijainti);
     virtual void paivitaTiedot();
@@ -42,7 +39,6 @@ public slots:
 private:
     int teho_;
     int nopeus_;
-    double suunta_; //radiaaneissa AH
     bool ampumavalmis_;
     int elamataso_;
     Sijainti sijainti_;

@@ -36,9 +36,6 @@ public:
     bool onkoValillaEstetta(Toimija* toimija1, Toimija* toimija2);
     bool onkoValillaEstetta(Sijainti sijainti1, Sijainti sijainti2);
     void kaskytaAmmusta(Ammus *ammus);
-
-
-    //vaihto Q_INVOKABLEKSI, jos tulee tarve kutsua QML puolelta
     void lopetaPeli(bool voitettu);
 
 private:
@@ -46,6 +43,7 @@ private:
     QList<Kyborgi*> kyborgit_;
     QList<Vihollinen*> viholliset_;
     QList<Ammus*> ammukset_;
+    QList<QObject*> klikattavatlaatat_;
     QTimer* pelikello_;
     QQuickView* nakyma_;
     Kyborgi* kaskettava_;

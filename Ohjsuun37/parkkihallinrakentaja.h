@@ -21,7 +21,7 @@ public:
 
 
     QTimer* alustaPelikello();
-    QList<QList<int>> alustaEsteet(int numero);
+    QList<QList<int>> alustaEsteet(int numero, QList<QObject*> &laatat);
 
     Laura* alustaLaura();
     QList<Kyborgi*> alustaKyborgit();

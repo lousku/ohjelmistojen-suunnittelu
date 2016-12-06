@@ -6,7 +6,7 @@ Item {
     objectName: "laura"
     width: 20
     height: 20
-   // color: "purple"
+    z: 100  //tällä lauran saa jäämään päällimmäiseksi
 
     property alias angle: suunta.angle
 
