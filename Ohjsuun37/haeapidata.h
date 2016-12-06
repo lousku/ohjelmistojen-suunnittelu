@@ -19,6 +19,7 @@ public:
     void haeTiedot();
 public slots:
     void replyFinished();
+    void parseXML();
 private:
     QNetworkReply* vastaus_;
     QNetworkAccessManager manager_;

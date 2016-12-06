@@ -11,14 +11,13 @@ Toimija::~Toimija()
 }
 
 Toimija::Toimija():
-    sijainti_(0,0), elamataso_(100), teho_(1), suunta_(0), nopeus_(1)
+    sijainti_(0,0), elamataso_(100), teho_(1), nopeus_(1), paamaara_(0,0)
 {
 
 }
 
-
 Toimija::Toimija(double x, double y, int elama, int nopeus, int teho):
-    sijainti_(x,y), elamataso_(elama), nopeus_(nopeus), teho_(teho), paamaara_(x,y), suunta_(0)
+    sijainti_(x,y), elamataso_(elama), nopeus_(nopeus), teho_(teho), paamaara_(x,y)
 {
 
 }
@@ -60,18 +59,7 @@ bool Toimija::liikuta(double x, double y)
     return (liikuttuX or liikuttuY);
 }
 
-void Toimija::muutaSuuntaa(double suuntamuutos)
-{
 
-    suunta_ = suunta_+ qDegreesToRadians( suuntamuutos );
-
-    paivitaTiedot();
-}
-
-double Toimija::annaSuunta()
-{
-    return suunta_;
-}
 
 void Toimija::muutaElamatasoa(int arvo)
 {
@@ -124,10 +112,7 @@ void Toimija::paivitaTiedot()
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
     //QML kayttaa asteita, c++ radiaaneja AH
-    QMLosa_->setProperty("angle",  suunta_ -90);
     QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
-    //QMLosa_->setProperty("rotation", suunta_);  --tama oli turha
-    //ellei halunnut sita tupla kaantoa! -IH
 
 }
 
@@ -156,12 +141,6 @@ bool Toimija::asetaPaamaara(Sijainti sijainti)
 Sijainti Toimija::annaPaamaara()
 {
     return paamaara_;
-}
-
-bool Toimija::asetaSuunta(int suunta)
-{
-    suunta_ = suunta;
-    paivitaTiedot();
 }
 
 

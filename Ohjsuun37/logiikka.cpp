@@ -48,6 +48,7 @@ Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
     hiiriY_ = 0;
 
     laura_ = nullptr;
+    klikattavatlaatat_ = QList<QObject*>();
 }
 
 
@@ -435,7 +436,7 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     Toimija* kohde = iskuetaisyydella(ammus);
     if (kohde != nullptr){
         //tarkastelee, jaako toimijalle enaan elamatasoa -IH
-        if (vahingoitaToimijaa(kohde, 10) <= 0){
+        if (vahingoitaToimijaa(kohde, ammus->annaTeho()) <= 0){
 
             for (int i = 0 ; i < viholliset_.size(); i ++){
                 if (viholliset_.at(i) == kohde){
@@ -457,11 +458,10 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
     else{
 
         //ammuksen kantama saadaan elamatasoa vahentamalla -MS
-        ammus->asetaKantama(ammus->kantama()-1);
+        ammus->liikutaAmmusta();
 
-        if(liikutaToimijaa(ammus) == false or
-           ammus->annaSijainti() == ammus->annaPaamaara() or
-           ammus->kantama() < 1){
+        if(liikutaToimijaa(ammus) == false or ammus->annaElamataso() < 1 or
+                            ammus->annaSijainti() == ammus->annaPaamaara()){
             qDebug() <<"Ammus TUHOTTIIN";
                    for (int i = 0 ; i < ammukset_.size(); i ++){
                 if (ammukset_.at(i) == ammus){
@@ -478,62 +478,58 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 //voitettu paremetria, ei viela kayteta -IH
 void Logiikka::lopetaPeli(bool voitettu)
 {
-    //TODO jotain mika ilmoittaa hävitystä pelistä?
-
-
 
     pelikello_->stop();
+
+    if (not voitettu) {
+        //TODO PELI LOPPU MITÄ  NYT
+        return;
+    }
+
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
 
-    //TODO alustaParkkihallin esteet pois
+    for (int i = klikattavatlaatat_.size() - 1; i >= 0; --i){
+        delete klikattavatlaatat_.at(i);
+        klikattavatlaatat_.removeAt(i);
+    }
 
-    for( int i = ammukset_.size(); i > 0; --i ){
-        Ammus* ammus = ammukset_.at(i);
+    for( int i = ammukset_.size() - 1; i >= 0; --i ){
+        delete ammukset_.at(i);
         ammukset_.removeAt(i);
-        delete ammus;
     }
 
-    for( int i = kyborgit_.size(); i > 0; --i ){
-        Kyborgi* kyborgi = kyborgit_.at(i);
+    for( int i = kyborgit_.size() - 1; i >= 0; --i ){
+        delete kyborgit_.at(i);
         kyborgit_.removeAt(i);
-        delete kyborgi;
     }
 
-    for( int i = viholliset_.size(); i > 0; --i ){
-        Vihollinen* vihollinen = viholliset_.at(i);
+    for( int i = viholliset_.size() - 1; i >= 0; --i ){
+        delete viholliset_.at(i);
         viholliset_.removeAt(i);
-        delete vihollinen;
     }
 
+    //TODO alusta lauran liike yms nolliin
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
-
-
-
-
-    //TODO tähän elämäpalkkien siirto takaisin jos ne halutaan siirtää
-    /*
-    QObject *banneri= nakyma_->rootObject()->findChild<QObject*>("topBanner");
-    for (int i = 0; i < 3; i++){
-
-        QString tunniste = "tunniste" + QString::number(i);
-        QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
-
-        palkki->setProperty("reunanleveys", 3);
-        palkki->setProperty("paikka", i);
-
-    }*/
+    gameWindow->setProperty("lauraLiikkuuYlos", false);
+    gameWindow->setProperty("lauraLiikkuuAlas", false);
+    gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
+    gameWindow->setProperty("lauraLiikkuuOikealle", false);
 
 }
 
 void Logiikka::luoPeli()
 {
-    esteet_ = parkkihalli_->alustaEsteet(1);
+    esteet_ = parkkihalli_->alustaEsteet(1, klikattavatlaatat_);
 
-    laura_ = parkkihalli_->alustaLaura();
-    kyborgit_ = parkkihalli_->alustaKyborgit();
 
-    //mista saadan tieto, etta kuinka monta vihollista luodaan?
+    //laura alustetaan vain ensimmäisellä kerralla -IH
+    if (laura_ == nullptr){
+        laura_ = parkkihalli_->alustaLaura();
+    }
+
+    kyborgit_ = parkkihalli_->alustaKyborgit();   
     viholliset_ = parkkihalli_->lisaaViholliset();
 
     pelikello_->start();
@@ -544,19 +540,14 @@ void Logiikka::luoAmmus()
     if(laura_->ampumavalmis()){
         QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
         //luodaan ammus, asetetaan sijainti lauran sijainniksi
-            Ammus* ammus = new Ammus();
+            Ammus* ammus = new Ammus(laura_->annaSijainti(), laura_->annaTeho());
             QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Ammus.qml")));
             QObject *object = component.create();
             QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
 
             ammus->asetaQMLosa(object);
-            //ammus lähtee lauran sijainnista lauran suuntaan
-            ammus->asetaSijainti(laura_->annaSijainti());
             // QML kayttaa astelukuja mutta c++ tarvitsee laskentaan radiaanit AH
             ammus->asetaSuunta(qRadiansToDegrees(laura_->annaSuunta()));
-            ammus->asetaNopeus(5);
-
-
 
             //asetetaan paamaara ammukselle
             Sijainti paamaara(hiiriX_-10,hiiriY_-10);
@@ -569,13 +560,11 @@ void Logiikka::luoAmmus()
             laura_->ampuu(); //viestittää lauralle että ammuttiin, käynnisttää ampumakellon
 
      }
-
         return;
 
 }
 
 
-//TODO tanne esim kyseessa olevan kyborgin varinvaihto
 void Logiikka::asetaKaskettava(QString tunniste)
 {
     for (auto kyborgi: kyborgit_){
