@@ -4,6 +4,7 @@
 
 XmlLukija::XmlLukija()
 {
+
 }
 
 XmlLukija::~XmlLukija()
@@ -13,13 +14,11 @@ XmlLukija::~XmlLukija()
 
 bool XmlLukija::lueXmlTiedosto()
 {
-    //luodaan olio lähettämän http pyyntö ja päivittämään xml.xml tiedosto
+    //luodaan olio lähettämään http pyyntö ja päivittämään xml.xml tiedosto
     haeAPIdata *ApiData = new haeAPIdata();
     ApiData->haeTiedot();
 
     QTimer::singleShot(3000, this, SLOT(paivitaXmltiedot()));
-
-
 
 }
 
@@ -36,54 +35,58 @@ void XmlLukija::paivitaXmltiedot()
         qDebug() << "Virhe xml-tiedoston lukemisessa" << xml->errorString();
     }
 
-    QXmlStreamReader lukija(xml);
-    qDebug() << "parsitaan saatu xml tiedosto";
+    //QXmlStreamReader lukija(xml);
+    lukija_= new QXmlStreamReader(xml);
 
+    haeXmlDatasta();
+}
 // saako supistettua?
-    if( lukija.readNextStartElement() ){
-        if( lukija.name() == "d2LogicaModel" ){ // Syvennyksittain
-            while( lukija.readNextStartElement() ){
-                if( lukija.name() == "payloadPublication" ){
-                    while( lukija.readNextStartElement() ){
-                        if( lukija.name() == "genericPublicationExtension" ){
-                            while( lukija.readNextStartElement() ){
-                                if( lukija.name() == "parkingFacilityTablePublication" ){
+void XmlLukija::haeXmlDatasta(){
+    if( lukija_->readNextStartElement() ){
+        if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
+            while( lukija_->readNextStartElement() ){
+                if( lukija_->name() == "payloadPublication" ){
+                    while( lukija_->readNextStartElement() ){
+                        if( lukija_->name() == "genericPublicationExtension" ){
+                            while( lukija_->readNextStartElement() ){
+                                if( lukija_->name() == "parkingFacilityTablePublication" ){
                                     qDebug() << "4";
-                                    while( lukija.readNextStartElement() ){
-                                        if( lukija.name() == "parkingFacilityTable" ){
+                                    while( lukija_->readNextStartElement() ){
+                                        if( lukija_->name() == "parkingFacilityTable" ){
                                             qDebug() << "5";
-                                            while( lukija.readNextStartElement()) {
-                                                if (lukija.name() == "parkingFacility"){
-                                                    while( lukija.readNextStartElement()) {
-                                                        if (lukija.name() == "parkingFacilityName"){
-                                                            qDebug() << "Halli: " << lukija.readElementText();
-                                                        }else if( lukija.name() == "totalParkingCapacity" ){
-                                                            qDebug() << "Orkkeja mahtuu: "<< lukija.readElementText();
+                                            while( lukija_->readNextStartElement()) {
+                                                if (lukija_->name() == "parkingFacility"){
+                                                    qDebug() << "etsitaan id"<< lukija_->attributes().value("id").toString();
+                                                    while( lukija_->readNextStartElement()) {
+                                                        if (lukija_->name() == "parkingFacilityName"){
+                                                            //qDebug() << "Halli: " << lukija_->readElementText();
+                                                        }else if( lukija_->name() == "totalParkingCapacity" ){
+                                                            //qDebug() << "Orkkeja mahtuu: "<< lukija_->readElementText();
                                                         }
                                                         else{
-                                                            lukija.skipCurrentElement();
+                                                            lukija_->skipCurrentElement();
                                                         }
                                                     }
                                                 }else{
-                                                    lukija.skipCurrentElement();
+                                                    lukija_->skipCurrentElement();
                                                 }
                                             }
                                         }else{
-                                            lukija.skipCurrentElement();
+                                            lukija_->skipCurrentElement();
                                         }
                                     }
                                 }else{
-                                     lukija.skipCurrentElement();
+                                     lukija_->skipCurrentElement();
                                      //qDebug() << "skip 3";
                                 }
                             }
                         }else{
-                            lukija.skipCurrentElement();
+                            lukija_->skipCurrentElement();
                             //qDebug() << "skip 2";
                         }
                     }
                 }else{
-                    lukija.skipCurrentElement();
+                    lukija_->skipCurrentElement();
                     //qDebug() << "skip 1";
                 }
             }

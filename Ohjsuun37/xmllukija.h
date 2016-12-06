@@ -16,10 +16,14 @@ public:
     XmlLukija();
     ~XmlLukija();
 
-    bool lueXmlTiedosto();
+    bool lueXmlTiedosto();    
+    void haeXmlDatasta();
 
 public slots:
     void paivitaXmltiedot();
+
+private:
+    QXmlStreamReader *lukija_;
 
 };
 
