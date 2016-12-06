@@ -1,16 +1,26 @@
-#ifndef XML_H
-#define XML_H
+#ifndef XMLLUKIJA_H
+#define XMLLUKIJA_H
 #include "haeapidata.h"
 
 #include <QXmlStreamReader>
 #include <QFile>
 #include <QDebug>
 #include <QIODevice>
+#include <QObject>
+#include <QTimer>
 
-class XmlLukija
+class XmlLukija : public QObject
 {
+    Q_OBJECT
 public:
     XmlLukija();
+    ~XmlLukija();
+
+    bool lueXmlTiedosto();
+
+public slots:
+    void paivitaXmltiedot();
+
 };
 
-#endif // XML_H
+#endif // XMLLUKIJA_H

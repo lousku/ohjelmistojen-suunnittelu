@@ -35,7 +35,8 @@ Item {
                 PropertyChanges { target: parkkihalliId; focus: false}
                 PropertyChanges { target: kauppaIkkuna; focus: false}
                 PropertyChanges { target: gameWindow; focus: false}
-                PropertyChanges { target: aloitusnaytto; focus: true}
+                PropertyChanges { target: aloitusnaytto; focus: false}
+                PropertyChanges { target: mapWindow; focus: false}
 
 
             },
@@ -50,9 +51,10 @@ Item {
 
 
                 //huomioidaan painallukset vain karttaikkunassa -MS
-                PropertyChanges { target: parkkihalliId; focus: true}
+                PropertyChanges { target: parkkihalliId; focus: false}
+                PropertyChanges { target: mapWindow; focus: true}
                 PropertyChanges { target: kauppaIkkuna; focus: false}
-                PropertyChanges { target: gameWindow; focus: true}
+                PropertyChanges {target: gameWindow; focus: false}
                 PropertyChanges { target: aloitusnaytto; focus: false}
 
 
@@ -72,6 +74,9 @@ Item {
                 PropertyChanges { target: parkkihalliId; focus: false}
                 PropertyChanges { target: kauppaIkkuna; focus: true}
                 PropertyChanges { target: aloitusnaytto; focus: false}
+                PropertyChanges { target: gameWindow; focus: false}
+
+
 
 
             },
@@ -89,6 +94,7 @@ Item {
                 PropertyChanges { target: gameWindow; focus: true}
                 PropertyChanges { target: kauppaIkkuna; focus: false}
                 PropertyChanges { target: aloitusnaytto; focus: false}
+                PropertyChanges { target: parkkihalliId; focus: false}
 
         }
     ]
@@ -120,22 +126,6 @@ Item {
         anchors.right: parent.right; anchors.bottom: parent.bottom
         visible: false
 
-        Keys.onLeftPressed: {
-            logiikka.liikutaLauraaVaaka(-1);
-        }
-        Keys.onRightPressed: {
-            logiikka.liikutaLauraaVaaka(1);
-        }
-        Keys.onUpPressed: {
-            logiikka.liikutaLauraaPysty(-1);
-        }
-        Keys.onDownPressed: {
-            logiikka.liikutaLauraaPysty(1);
-        }
-        Keys.onSpacePressed: {
-            logiikka.luoAmmus();
-           // kauppa.testi();
-        }
 
         //WASD liikkuminen -MS
 
@@ -163,6 +153,9 @@ Item {
                 if(event.isAutoRepeat) return
                 lauraLiikkuuOikealle = true ;
             }
+             if (event.key == Qt.Key_Space){
+                logiikka.luoAmmus();
+             }
 
              console.log("ylos: " + lauraLiikkuuYlos + " oikea: " + lauraLiikkuuOikealle);
 

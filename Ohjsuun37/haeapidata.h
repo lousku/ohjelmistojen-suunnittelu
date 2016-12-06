@@ -6,6 +6,8 @@
 #include <QNetworkRequest>
 #include <QObject>
 #include <QNetworkReply>
+#include <QFile>
+#include <QTextStream>
 
 
 class haeAPIdata : public QNetworkAccessManager
@@ -20,6 +22,7 @@ public slots:
     void parseXML();
 private:
     QNetworkReply* vastaus_;
+    QNetworkAccessManager manager_;
 };
 
 #endif // HAEAPIDATA_H

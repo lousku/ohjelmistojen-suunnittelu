@@ -3,7 +3,11 @@
 Tieto::Tieto():
     pisteet_(0)
 {
-    lukija_ = XmlLukija();
+    //luo lukija olion ja kutsuu lukufunktiota.
+    lukija_ = new XmlLukija();
+
+    lukija_->lueXmlTiedosto();
+
     lauranTiedot_.ammustiheys = 1000;
     lauranTiedot_.elama = 200;
     lauranTiedot_.kantama = 100;
