@@ -8,6 +8,8 @@
 #include <QIODevice>
 #include <QObject>
 #include <QTimer>
+#include <string>
+
 
 class XmlLukija : public QObject
 {
@@ -17,7 +19,10 @@ public:
     ~XmlLukija();
 
     bool lueXmlTiedosto();    
-    void haeXmlDatasta();
+    void haeTrendi();
+    bool onkoTaynna(std::string halli);
+    void haePerustiedot();
+    QString etsiHallinId(std::string halli);
 
 public slots:
     void paivitaXmltiedot();
