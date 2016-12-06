@@ -9,7 +9,7 @@ Tieto::Tieto():
     lukija_->lueXmlTiedosto();
 
     lauranTiedot_.ammustiheys = 1000;
-    lauranTiedot_.elama = 200;
+    lauranTiedot_.MaxElama = 200;
     lauranTiedot_.kantama = 100;
     lauranTiedot_.nopeus = 1;
     lauranTiedot_.teho = 100;
@@ -17,7 +17,7 @@ Tieto::Tieto():
     for( int i=0; i < 3; ++i )
     {
         kyborginTiedot tieto;
-        tieto.elama = 100;
+        tieto.MaxElama = 100;
         tieto.nopeus = 3;
         tieto.teho = 10;
         tieto.iskuetaisyys = 10;
@@ -87,4 +87,20 @@ kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
     kentanTieto.sijainnit = esteet;
 
     return kentanTieto;
+}
+
+
+
+
+
+void Tieto::setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot)
+{
+    kyborgienTiedot_ = kyborgienTiedot;
+}
+
+
+
+void Tieto::setLauranTiedot(const lauranTiedot &lauranTiedot)
+{
+    lauranTiedot_ = lauranTiedot;
 }

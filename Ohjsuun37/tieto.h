@@ -4,14 +4,14 @@
 #include "xmllukija.h"
 
 struct kyborginTiedot {
-    int elama;
+    int MaxElama;
     int nopeus;
     int teho;
     int iskuetaisyys;
 };
 
 struct lauranTiedot {
-    int elama;
+    int MaxElama;
     int kantama;
     int nopeus;
     int ammustiheys;    //ms eli mita pienempi, sita useammin voi ampua
@@ -40,6 +40,15 @@ public:
     lauranTiedot annaLauranTiedot() const;
 
     kentanTiedot annaKentantiedot(int kentanNumero);
+
+
+    void asetaNopeus(int kohde);
+
+    void asetaTeho(int kohde);
+
+    void setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot);
+
+    void setLauranTiedot(const lauranTiedot &lauranTiedot);
 
 private:
 

@@ -62,7 +62,8 @@ Rectangle {
             width: 50
             text: "elämää"
             onClicked: {
-                kauppa.elamaaLisaa();
+                //kohde 0 = laura
+                kauppa.elamaaLisaa(0);
             }
         }
     }
