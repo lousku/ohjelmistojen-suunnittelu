@@ -40,6 +40,8 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
 
     //alustetaan Laura
     Laura* laura = new Laura(60,20, tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
+    //alustetaan Laura    //TODO onko sijainti 40,40 hyvä?
+
                                                   //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
@@ -86,15 +88,15 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     return kyborgit;
 }
 
-QList<QList<int>> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject*> &laatat)
+QList<QStringList> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject*> &laatat)
 {   
-    QList<QList<int>> esteet = tieto_->annaKentantiedot(numero).sijainnit;
+    QList<QStringList> esteet = tieto_->annaKentantiedot(numero).sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
     {
         for( int j=0; j<esteet[i].count(); ++j )
         {
-            if (esteet[i][j] != 1){
+            if (esteet[i][j] != "1"){
                 QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:EsteetonAlue.qml")));
                 QObject *object = component.create();
                 QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
@@ -110,23 +112,23 @@ QList<QList<int>> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject*
     return esteet;
 }
 
-QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset()
+QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
 {
 
 
     //siirretty alempaa -MS
     QList<Vihollinen *> viholliset;
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+                                        //TODO kentanNUMERO jostain
+    kentanTiedot tiedot = tieto_->annaKentantiedot(numero);
 
-    kentanTiedot tiedot = tieto_->annaKentantiedot(1);
-
-    QList<QList<int>> esteet = tiedot.sijainnit;
+    QList<QStringList> esteet = tiedot.sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
     {
         for( int j=0; j<esteet[i].count(); ++j )
         {
-            if (esteet[i][j] == 2){
+            if (esteet[i][j] == "2"){
                 Vihollinen *vihollinen = new  Vihollinen(j*20,i*20,tiedot.vihollistenElama,
                                tiedot.vihollistenNopeus, tiedot.vihollistenTeho, tiedot.iskuetaisyys);
 
@@ -143,4 +145,9 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset()
     //tähän tyyliin vois lopulta lauran ja kyborgitkin lisätä -MS
 
     return viholliset;
+}
+
+int ParkkihallinRakentaja::annaLauranElamataso()
+{
+    return tieto_->annaLauranTiedot().MaxElama;
 }

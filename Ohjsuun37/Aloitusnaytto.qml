@@ -5,6 +5,7 @@ Item {
     //Alkunaytto joka esitetaan vain peli avauksen yhteydessa
 
     Button{
+        id: aloitaNappi
         anchors.horizontalCenter: parent.horizontalCenter
         y:500
         width: 100
@@ -13,7 +14,8 @@ Item {
         onClicked: {
             if(parkkihalliId.state == "ALOITUS"){
                 parkkihalliId.state = "NORMAL";
-            }            }
+            }
+        }
     }
 
     Column{

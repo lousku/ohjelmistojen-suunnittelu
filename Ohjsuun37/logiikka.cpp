@@ -386,13 +386,13 @@ bool Logiikka::onkoEstetta(double x, double y)
         return true;
     }
     //TODO mitka ehdot tahan kuuluu, onko rajat eri kuin 0-480 -IH
-    if (esteet_[int((y+1)/20)][int((x+1)/20)] == 1){
+    if (esteet_[int((y+1)/20)][int((x+1)/20)] == "1"){
         return true;
-    }else if (esteet_[int((y+1)/20)][int((x+19)/20)] == 1){
+    }else if (esteet_[int((y+1)/20)][int((x+19)/20)] == "1"){
         return true;
-    }else if (esteet_[int((y+19)/20)][int((x+1)/20)] == 1){
+    }else if (esteet_[int((y+19)/20)][int((x+1)/20)] == "1"){
         return true;
-    }else if (esteet_[int((y+19)/20)][int((x+19)/20)] == 1){
+    }else if (esteet_[int((y+19)/20)][int((x+19)/20)] == "1"){
         return true;
     }
     return false;
@@ -519,18 +519,28 @@ void Logiikka::lopetaPeli(bool voitettu)
 
 }
 
-void Logiikka::luoPeli()
+void Logiikka::luoPeli(int numero)
 {
-    esteet_ = parkkihalli_->alustaEsteet(1, klikattavatlaatat_);
+    //TODO mistä kentan numero?
+    esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);
 
 
     //laura alustetaan vain ensimmäisellä kerralla -IH
     if (laura_ == nullptr){
         laura_ = parkkihalli_->alustaLaura();
+    }else{
+        //alustetaan laura takaisin lähtöpisteeseen
+        laura_->asetaSijainti(Sijainti(40,40));
+
+        //elamatason alustuksessa hieman kierretty, jotta uutta funktiota ei tarvittaisi -IH
+        int erotus = parkkihalli_->annaLauranElamataso() - laura_->annaElamataso();
+        laura_->muutaElamatasoa(erotus);
+
+        laura_->paivitaTiedot();
     }
 
     kyborgit_ = parkkihalli_->alustaKyborgit();   
-    viholliset_ = parkkihalli_->lisaaViholliset();
+    viholliset_ = parkkihalli_->lisaaViholliset(numero);
 
     pelikello_->start();
 }
