@@ -11,7 +11,12 @@ void haeAPIdata::haeTiedot()
 {
 
     //luo HHTP pyynnin url osoitteella
-    QNetworkRequest request(QUrl("http://parkingdata.finnpark.fi:8080/Datex2/OpenData"));
+    QNetworkRequest request(QString("http://parkingdata.finnpark.fi:8080/Datex2/ParkingFacilities"));
+
+    QString encoded = QString("tut:E2ksnh").toLocal8Bit().toBase64();
+    encoded = "Basic " + encoded;
+    request.setRawHeader("Authorization", encoded.toLocal8Bit());
+
     //lähettää pyynnön ja tallentaa vastauksen
     qDebug() << "lähetetään get request";
     vastaus_ = manager_.get(request);
@@ -24,11 +29,11 @@ void haeAPIdata::replyFinished()
 {
     qDebug() << "luetaan requestin tiedot";
     //luo arrayn jonne lukee x määrän merkkejä
-    QByteArray newData = vastaus_->read(40000);
+    QByteArray newData = vastaus_->read(800000);
 
     //kirjoittaa vastauksen tiedostoon xml.xml
     //TÄHÄN VAADITAAN TARKKA XML TIEDOSTON POLKU!!!!
-    QString fileName = "/Users/annimari/Documents/Git/Ohjsuun37/xml.xml";
+    QString fileName = "/Users/miika/37/Ohjsuun37/xml.xml";
     //avaa tiedoston
     QFile file(fileName);
     file.open(QIODevice::ReadWrite);
