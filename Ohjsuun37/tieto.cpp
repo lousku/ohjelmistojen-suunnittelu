@@ -91,15 +91,82 @@ kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
     return kenttienTiedot_.at(kentanNumero);
 }
 
-
-void Tieto::setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot)
+void Tieto::asetaNopeus(int kohde, int uusiArvo)
 {
-    kyborgienTiedot_ = kyborgienTiedot;
+    if(kohde == 0 ){
+        lauranTiedot_.nopeus = uusiArvo;
+    }
+    if(kohde == 1 ){
+        kyborgienTiedot_[0].nopeus = uusiArvo;
+    }
+    if(kohde == 2){
+        kyborgienTiedot_[1].nopeus = uusiArvo;
+    }
+    if(kohde ==3){
+        kyborgienTiedot_[2].nopeus = uusiArvo;
+    }
 }
 
 
-
-void Tieto::setLauranTiedot(const lauranTiedot &lauranTiedot)
+void Tieto::asetaTeho(int kohde, int uusiArvo)
 {
-    lauranTiedot_ = lauranTiedot;
+    if(kohde == 0 ){
+        lauranTiedot_.teho = uusiArvo;
+    }
+    if(kohde == 1 ){
+        kyborgienTiedot_[0].teho = uusiArvo;
+    }
+    if(kohde == 2){
+        kyborgienTiedot_[1].teho = uusiArvo;
+    }
+    if(kohde ==3){
+        kyborgienTiedot_[2].teho = uusiArvo;
+    }
 }
+
+//kohde: 0=Laura, 1= kyborgi1, 2=kyborgi2, 3= kyborgi3
+void Tieto::asetaElama(int kohde, int uusiArvo)
+
+{
+    if(kohde == 0 ){
+        lauranTiedot_.MaxElama = uusiArvo;
+    }
+    if(kohde == 1 ){
+        kyborgienTiedot_[0].MaxElama = uusiArvo;
+    }
+    if(kohde == 2){
+        kyborgienTiedot_[1].MaxElama = uusiArvo;
+    }
+    if(kohde ==3){
+        kyborgienTiedot_[2].MaxElama = uusiArvo;
+    }
+}
+
+void Tieto::asetaKantama(int kohde, int uusiArvo)
+{
+    if(kohde == 0 ){
+        lauranTiedot_.kantama = uusiArvo;
+    }
+    if(kohde == 1 ){
+        kyborgienTiedot_[0].iskuetaisyys = uusiArvo;
+    }
+    if(kohde == 2){
+        kyborgienTiedot_[1].iskuetaisyys = uusiArvo;
+    }
+    if(kohde ==3){
+        kyborgienTiedot_[2].iskuetaisyys = uusiArvo;
+    }
+}
+
+void Tieto::asetaAmmusTiheys(int kohde, int uusiArvo)
+{
+    // kyborgeillekkin toteutus? -MS
+    lauranTiedot_.ammustiheys = uusiArvo;
+}
+
+void Tieto::asetaPisteet(int Pisteet)
+{
+    pisteet_ = Pisteet;
+}
+
+

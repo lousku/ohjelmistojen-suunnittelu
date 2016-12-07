@@ -42,13 +42,18 @@ public:
     kentanTiedot annaKentantiedot(int kentanNumero);
 
 
-    void asetaNopeus(int kohde);
+    void asetaNopeus(int kohde, int uusiArvo);
 
-    void asetaTeho(int kohde);
+    void asetaTeho(int kohde, int uusiArvo);
 
-    void setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot);
+    void asetaElama(int kohde, int uusiArvo);
 
-    void setLauranTiedot(const lauranTiedot &lauranTiedot);
+    void asetaKantama(int kohde, int uusiArvo);
+
+    void asetaAmmusTiheys(int kohde, int uusiArvo);
+
+    void asetaPisteet(int Pisteet);
+
 
 private:
 
