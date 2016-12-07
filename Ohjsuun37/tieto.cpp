@@ -6,7 +6,7 @@ Tieto::Tieto():
     //luo lukija olion ja kutsuu lukufunktiota.
     lukija_ = new XmlLukija();
 
-    lukija_->lueXmlTiedosto();
+    //lukija_->lueXmlTiedosto();
 
     //TODO esim tänne vakioiden käyttöä
 
@@ -90,9 +90,6 @@ kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
 {
     return kenttienTiedot_.at(kentanNumero);
 }
-
-
-
 
 
 void Tieto::setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot)

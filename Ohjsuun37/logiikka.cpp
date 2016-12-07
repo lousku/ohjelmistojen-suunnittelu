@@ -240,7 +240,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
                 lahinNakyva = nakyvatToimijat.at(0);
             }
             //jos useampi nakyvissa, etsitaan lahin
-            else if(nakyvatToimijat.size() > 1){
+            else {
                 double etaisyysLahimpaan = 1000;   //alustettu yli pelilaudan koon
 
                 for(int i = 0; i < nakyvatToimijat.size(); i++){
@@ -517,7 +517,16 @@ void Logiikka::lopetaPeli(bool voitettu)
         viholliset_.removeAt(i);
     }
 
-    //TODO alusta lauran liike yms nolliin
+    QObject *banneri = nakyma_->rootObject()->findChild<QObject*>("leftBanner");
+
+    for (int i = 1; i < 4; i++){
+        QString tunnus = "kyborgi" + QString::number(i);
+        QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunnus);
+
+        kuvake->setProperty("height", 60);
+        kuvake->setProperty("width", 60);
+    }
+
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
     gameWindow->setProperty("lauraLiikkuuYlos", false);
@@ -528,7 +537,6 @@ void Logiikka::lopetaPeli(bool voitettu)
 
 void Logiikka::luoPeli(int numero)
 {
-    //TODO mistä kentan numero?
     esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);
 
 
@@ -579,6 +587,22 @@ void Logiikka::luoAmmus()
 
 void Logiikka::asetaKaskettava(QString tunniste)
 {
+    QObject *banneri = nakyma_->rootObject()->findChild<QObject*>("leftBanner");
+
+    //TODO minne nää?
+    for (int i = 1; i < 4; i++){
+        QString tunnus = "kyborgi" + QString::number(i);
+        QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunnus);
+
+        kuvake->setProperty("height", 60);
+        kuvake->setProperty("width", 60);
+    }
+
+    QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunniste);
+
+    kuvake->setProperty("height", 80);
+    kuvake->setProperty("width", 80);
+
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;

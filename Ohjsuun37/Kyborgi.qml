@@ -5,6 +5,7 @@ Item {
     width: 20
     height: 20
 
+    property bool painettavissa: true
     property alias text: teksti.text
     property string kuvapolku: "qrc:graphics/kyborg.png"
     property string tunniste: ""
@@ -26,7 +27,9 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            logiikka.asetaKaskettava(tunniste);
+            if (painettavissa){
+                logiikka.asetaKaskettava(tunniste);
+            }
         }
     }
 }

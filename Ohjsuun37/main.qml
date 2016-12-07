@@ -50,6 +50,7 @@ Item {
 
             //huomioidaan painallukset vain peliikkunassa -MS
             PropertyChanges { target: gameWindow; focus: true }
+            PropertyChanges { target: leftBanner; aktiivinen: true }
 
         }
     ]
@@ -64,7 +65,6 @@ Item {
     LeftBanner{
         id:leftBanner
         objectName: "leftBanner"
-
         anchors.left: parent.left;anchors.top: parent.top
         anchors.bottom: parent.bottom
     }

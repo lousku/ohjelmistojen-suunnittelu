@@ -6,6 +6,7 @@ import QtQuick.Layouts 1.3
 Item{
     width: 150
     property bool sivuPalkkinakyvissa: true
+    property bool aktiivinen: false
     visible: true
 
     GridLayout {
@@ -32,6 +33,8 @@ Item{
         Kyborgi{
             width: 60
             height: 60
+            painettavissa: aktiivinen
+            objectName: "kyborgi1"
             tunniste: "kyborgi1"
             kuvapolku: "qrc:graphics/kyborg_lime.png"
             Layout.row: 1
@@ -40,6 +43,8 @@ Item{
         Kyborgi{
             width: 60
             height: 60
+            painettavissa: aktiivinen
+            objectName: "kyborgi2"
             tunniste: "kyborgi2"
             kuvapolku: "qrc:graphics/kyborg_magenta.png"
             Layout.row: 2
@@ -48,17 +53,17 @@ Item{
         Kyborgi{
             width: 60
             height: 60
+            painettavissa: aktiivinen
+            objectName: "kyborgi3"
             tunniste: "kyborgi3"
             kuvapolku: "qrc:graphics/kyborg_royalblue.png"
             Layout.row: 3
         }
 
         Text {
-            //x: 20
-            //y: 50
+
             id: hp
-            text: qsTr("MAX HP
- 100 ")
+            text: qsTr("MAX HP \n100 ")
             color: "red"
             font.pointSize: 20
             Layout.row: 4
