@@ -116,7 +116,7 @@ void Toimija::paivitaTiedot()
 
 }
 
-void Toimija::asetaAmpumavalmiiksi()
+/*void Toimija::asetaAmpumavalmiiksi()
 {
     ampumavalmis_ = true;
     qDebug() << "Ampumavalmis";
@@ -131,7 +131,7 @@ bool Toimija::ampumavalmis() const
 void Toimija::asetaAmpumavalmis(bool ampumavalmis)
 {
     ampumavalmis_ = ampumavalmis;
-}
+}*/
 
 bool Toimija::asetaPaamaara(Sijainti sijainti)
 {

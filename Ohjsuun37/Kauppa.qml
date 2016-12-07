@@ -6,7 +6,7 @@ Rectangle {
     anchors.left: parent.left; anchors.top: parent.top;
     anchors.right: parent.right; anchors.bottom: parent.bottom;
     anchors.rightMargin: 50; anchors.bottomMargin: 50;
-    anchors.leftMargin: 100; anchors.topMargin: 100;
+    anchors.leftMargin: 150; anchors.topMargin: 100;
 
     Image {
         id: kauppaKuva
@@ -35,7 +35,7 @@ Rectangle {
     Column{
         spacing: 5
         x:50
-        y:250
+        y:280
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
@@ -88,8 +88,8 @@ Rectangle {
     //Kyborgi1 ostopainikkeet -MS
     Column{
         spacing: 5
-        x:130
-        y:250
+        x:150
+        y:280
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
@@ -132,8 +132,8 @@ Rectangle {
     //kyborgi2 painikkeet
     Column{
         spacing: 5
-        x:230
-        y:250
+        x:260
+        y:280
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
@@ -176,8 +176,8 @@ Rectangle {
     //kyborgi3 painikkeet
     Column{
         spacing: 5
-        x:320
-        y:250
+        x:360
+        y:280
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter

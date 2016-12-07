@@ -11,11 +11,11 @@ Item {
         objectName: "palkkirivi"
         visible: true
         anchors.left: parent.left; anchors.top: parent.top;
-        anchors.leftMargin: 20; anchors.topMargin: 20;
+        anchors.leftMargin: 40; anchors.topMargin: 25;
 
         Elamamittari{
             objectName: "lauranElamaBar"
-            vari: "orange" //TODO parempi vari?
+            vari: "orange"
             Layout.row: 1
             Layout.column: 0
         }
@@ -67,7 +67,5 @@ Item {
             source: "qrc:graphics/kyborg_royalblue.png"
             Layout.column: 3
         }
-
-
     }
 }

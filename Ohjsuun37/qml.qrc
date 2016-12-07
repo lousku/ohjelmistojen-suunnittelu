@@ -29,5 +29,6 @@
         <file>Aloitusnaytto.qml</file>
         <file>kentat.txt</file>
         <file>graphics/Kauppa2.0.png</file>
+        <file>PeliHavitty.qml</file>
     </qresource>
 </RCC>

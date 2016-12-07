@@ -17,9 +17,6 @@ public:
     ParkkihallinRakentaja();
     ParkkihallinRakentaja(QQuickView* view, Tieto* tieto);
 
-    QQuickView* annaNakyma();
-
-
     QTimer* alustaPelikello();
     QList<QStringList> alustaEsteet(int kentanNumero, QList<QObject*> &laatat);
 
@@ -27,7 +24,7 @@ public:
     QList<Kyborgi*> alustaKyborgit();
     QList<Vihollinen*> lisaaViholliset(int kentanNumero);
 
-    int annaLauranElamataso();
+    int annaPisteet();
 
 private:
     QQuickView* nakyma_;

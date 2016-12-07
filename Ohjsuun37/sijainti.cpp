@@ -15,16 +15,6 @@ Sijainti::Sijainti(double x, double y):
 
 }
 
-void Sijainti::asetaX(double uusi)
-{
-    paikkaX_ = uusi;
-}
-
-void Sijainti::asetaY(double uusi)
-{
-    paikkaY_ = uusi;
-}
-
 //oletus, ettei tata kutsuta mikali siirtyma on 0!
 bool Sijainti::liikutaX(double siirtyma)
 {   //tarkastellaa, etta liikutaan valilla 0-480,

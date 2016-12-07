@@ -15,7 +15,7 @@ Laura::Laura()
 Laura::Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama):
     Toimija(x,y,elama, nopeus, teho), ampumatiheys_(ampumatiheys), ammustenKantama_(kantama), suunta_(0)
 {
-    asetaAmpumavalmiiksi();
+    ampumavalmis_ = true;
 }
 
 bool Laura::onkoHengissa()
@@ -53,6 +53,8 @@ bool Laura::asetaSuunta(double suunta)
 
 void Laura::ampuu()
 {
+   qDebug() << "ammuttu";
+   ampumavalmis_ = false;
    QTimer::singleShot(ampumatiheys_, this, SLOT(asetaAmpumavalmiiksi()));
 }
 
@@ -62,12 +64,14 @@ void Laura::tuhoa()
     delete annaQMLosa();
 }
 
-int Laura::ampumatiheys() const
+void Laura::asetaAmpumavalmiiksi()
 {
-    return ampumatiheys_;
+    ampumavalmis_ = true;
+    qDebug() << "Ampumavalmis";
+
 }
 
-void Laura::asetaAmpumatiheys(int ampumatiheys)
+bool Laura::ampumavalmis() const
 {
-    ampumatiheys_ = ampumatiheys;
+    return ampumavalmis_;
 }
