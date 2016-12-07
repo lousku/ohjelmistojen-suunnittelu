@@ -5,7 +5,9 @@ import QtQuick.Controls.Styles 1.4  //jos halutaan muokata progress baria
 ProgressBar {
 
     property string vari: "steelblue"
-    property int reunanleveys: 3
+    property int reunanleveys: 4
+    minimumValue: 0
+    maximumValue: 1000
 
     style: ProgressBarStyle {
         background: Rectangle {
@@ -15,7 +17,7 @@ ProgressBar {
             border.color: vari
             border.width: reunanleveys
             implicitWidth: 100
-            implicitHeight: 16
+            implicitHeight: 18
 
         }
 

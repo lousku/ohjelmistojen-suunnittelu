@@ -20,7 +20,7 @@ public:
     Q_INVOKABLE void asetaKyborginPaamaara(double x, double y);
     Q_INVOKABLE void asetaKaskettava(QString tunniste);
     Q_INVOKABLE void luoAmmus();
-    Q_INVOKABLE void luoPeli();
+    Q_INVOKABLE void luoPeli(int numero);
 
     Logiikka();
     Logiikka(QQuickView* view, Tieto* tieto);
@@ -48,7 +48,7 @@ private:
     QQuickView* nakyma_;
     Kyborgi* kaskettava_;
 
-    QList<QList<int>> esteet_;
+    QList<QStringList> esteet_;
     ParkkihallinRakentaja* parkkihalli_;
 
     double hiiriX_;

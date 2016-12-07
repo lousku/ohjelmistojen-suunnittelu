@@ -2,7 +2,6 @@ import QtQuick 2.0
  import QtQuick.Controls 1.4
 
 Rectangle {
-    color: "blue"
     anchors.left: parent.left; anchors.top: parent.top;
     anchors.right: parent.right; anchors.bottom: parent.bottom;
     anchors.rightMargin: 50; anchors.bottomMargin: 50;
@@ -33,11 +32,31 @@ Rectangle {
     Pysakointihalli{
         x:150
         y:150
+        hallinNumero: 0
     }
 
     Pysakointihalli{
         x:250
         y:150
+        hallinNumero: 1
+    }
+
+    Pysakointihalli{
+        x:250
+        y:300
+        hallinNumero: 2
+    }
+
+    Pysakointihalli{
+        x:350
+        y:100
+        hallinNumero: 3
+    }
+
+    Pysakointihalli{
+        x:230
+        y:410
+        hallinNumero: 4
     }
 
 

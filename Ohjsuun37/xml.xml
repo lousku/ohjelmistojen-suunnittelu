@@ -7,7 +7,7 @@
       </supplierIdentification>
    </exchange>
    <payloadPublication xsi:type="GenericPublication" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <publicationTime>2016-12-07T12:53:05+02:00</publicationTime>
+      <publicationTime>2016-12-07T12:57:51+02:00</publicationTime>
       <publicationCreator>
          <country>fi</country>
          <nationalIdentifier>Finnpark</nationalIdentifier>
@@ -452,164 +452,164 @@
                <parkingFacilityReference id="FNPK.11" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.10" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancyTrend>decreasing</parkingFacilityOccupancyTrend>
+               <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.13" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.12" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.16" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.17" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>increasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.26" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.25" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.7" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.6" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.5" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.4" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.3" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.2" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.1" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.1" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.7" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.8" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>increasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.9" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
+               <parkingFacilityOccupancyTrend>decreasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.3" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.58" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>full</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.4" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.59" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.6" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.57" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>full</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancyTrend>increasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="TRE.48" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T12:53:04+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T12:57:50+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
          </parkingFacilityTableStatusPublication>
       </genericPublicationExtension>

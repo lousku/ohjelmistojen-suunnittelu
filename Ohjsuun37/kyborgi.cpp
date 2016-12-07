@@ -23,27 +23,27 @@ bool Kyborgi::onkoLiikkeessa()
     return annaPaamaara() != annaSijainti();
 }
 
+void Kyborgi::asetaQMLosa(QObject *objekti)
+{
+    QObject *banneri = objekti->parent()->parent()->findChild<QObject*>("topBanner");
+    QString tunniste = objekti->property("tunniste").toString();
+
+    palkki_ = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
+    palkki_->setProperty("maximumValue", annaElamataso());
+    palkki_->setProperty("reunanleveys", 4);
+
+    Toimija::asetaQMLosa(objekti);
+}
+
 void Kyborgi::paivitaTiedot()
 {
     Toimija::paivitaTiedot();
 
-    //muutettava jos elamataso muuttuu niin, ettei ala 100:sta - IH
-    double arvo = double(annaElamataso())/100;
-
-    QString tunniste = annaQMLosa()->property("tunniste").toString();
-    if (tunniste != ""){
-        QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
-        QObject *palkki = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
-
-        palkki->setProperty("value", arvo);
-        if (arvo == 0){
-            palkki->setProperty("reunanleveys", 0);
-
-            //TODO jotain jos halutaan siirtaa kuolleiden kyborgien palkit viimeiseki
-            //int kohta = palkki->property("paikka").toInt() + 3;
-            //palkki->setProperty("paikka", kohta);
-        }
+    palkki_->setProperty("value", annaElamataso());
+    if (annaElamataso() == 0){
+        palkki_->setProperty("reunanleveys", 0);
     }
+
 }
 
 

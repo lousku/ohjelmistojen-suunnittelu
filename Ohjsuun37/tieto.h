@@ -23,7 +23,7 @@ struct kentanTiedot {
     int vihollistenNopeus;
     int vihollistenTeho;
     int iskuetaisyys;
-    QList<QList<int>> sijainnit;
+    QList<QStringList> sijainnit;
 };
 
 class Tieto

@@ -22,11 +22,12 @@
         <file>graphics/vihollinen.png</file>
         <file>graphics/Ammus.png</file>
         <file>graphics/kauppa.png</file>
-        <file>ReunaAlue.qml</file>
         <file>graphics/kyborg_lime.png</file>
         <file>graphics/kyborg_magenta.png</file>
         <file>graphics/kyborg_royalblue.png</file>
         <file>xml.xml</file>
         <file>Aloitusnaytto.qml</file>
+        <file>kentat.txt</file>
+        <file>graphics/Kauppa2.0.png</file>
     </qresource>
 </RCC>

@@ -21,11 +21,13 @@ public:
 
 
     QTimer* alustaPelikello();
-    QList<QList<int>> alustaEsteet(int numero, QList<QObject*> &laatat);
+    QList<QStringList> alustaEsteet(int kentanNumero, QList<QObject*> &laatat);
 
     Laura* alustaLaura();
     QList<Kyborgi*> alustaKyborgit();
-    QList<Vihollinen*> lisaaViholliset();
+    QList<Vihollinen*> lisaaViholliset(int kentanNumero);
+
+    int annaLauranElamataso();
 
 private:
     QQuickView* nakyma_;

@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Rectangle {
-    color:"blue"
+
     Image {
         height: 10
         width:  10

@@ -24,7 +24,7 @@ public:
     QObject* annaQMLosa();
     Sijainti annaPaamaara();
     bool liikuta(Sijainti sijainti);
-    void asetaQMLosa(QObject *objekti);
+    virtual void asetaQMLosa(QObject *objekti);
     bool asetaSijainti(Sijainti sijainti);
     virtual void paivitaTiedot();
 

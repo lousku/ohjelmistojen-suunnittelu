@@ -7,7 +7,7 @@ Rectangle{
     width: 30
     height: 30
 
-    color: "white"
+    property int hallinNumero: 0
 
     Image {
         id: parkkihalliLogo
@@ -28,7 +28,7 @@ Rectangle{
             }
 
             //KUTSUMINEN TAPAHTUU TÄSSÄ -IH
-            logiikka.luoPeli();
+            logiikka.luoPeli(hallinNumero);
         }
     }
 }
