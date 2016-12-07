@@ -54,11 +54,10 @@ Item{
         }
 
         Text {
-            //x: 20
-            //y: 50
+
             id: hp
             text: qsTr("MAX HP
- 100 ")
+100 ")
             color: "red"
             font.pointSize: 20
             Layout.row: 4

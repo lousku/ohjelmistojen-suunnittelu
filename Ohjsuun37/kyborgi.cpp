@@ -30,7 +30,7 @@ void Kyborgi::asetaQMLosa(QObject *objekti)
 
     palkki_ = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>(tunniste);
     palkki_->setProperty("maximumValue", annaElamataso());
-    palkki_->setProperty("reunanleveys", 4);
+    palkki_->setProperty("reunanleveys", 4);  //reuna näkyviin
 
     Toimija::asetaQMLosa(objekti);
 }

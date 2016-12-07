@@ -4,7 +4,7 @@ import QtQuick.Controls.Styles 1.4  //jos halutaan muokata progress baria
 
 ProgressBar {
 
-    property string vari: "steelblue"
+    property string vari: "blue"
     property int reunanleveys: 4
     minimumValue: 0
     maximumValue: 1000

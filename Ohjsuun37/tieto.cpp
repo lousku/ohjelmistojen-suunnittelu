@@ -1,7 +1,7 @@
 #include "tieto.h"
 
 Tieto::Tieto():
-    pisteet_(0)
+    pisteet_(1000)
 {
     //luo lukija olion ja kutsuu lukufunktiota.
     lukija_ = new XmlLukija();
@@ -38,7 +38,7 @@ Tieto::Tieto():
     while(!in.atEnd()) {
         if (rivi == ""){
             //luodaan uus kentta
-            kentanTiedot lisattava;
+            kentanTiedot lisattava = kentanTiedot();
             lisattava.vihollistenElama = 100;
             lisattava.vihollistenNopeus = 1;
             lisattava.vihollistenTeho = 1;

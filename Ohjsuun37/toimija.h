@@ -28,18 +28,9 @@ public:
     bool asetaSijainti(Sijainti sijainti);
     virtual void paivitaTiedot();
 
-    //vaihto protected?, voiko edes mitään? -IH
-    bool ampumavalmis() const;
-    void asetaAmpumavalmis(bool ampumavalmis);
-
-public slots:
-    void asetaAmpumavalmiiksi();
-
-
 private:
     int teho_;
     int nopeus_;
-    bool ampumavalmis_;
     int elamataso_;
     Sijainti sijainti_;
     Sijainti paamaara_;

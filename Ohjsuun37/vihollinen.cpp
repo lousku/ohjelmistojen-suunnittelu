@@ -16,11 +16,6 @@ Vihollinen::Vihollinen(double x, double y, int elama, int nopeus, int teho, int 
 
 }
 
-Sijainti Vihollinen::laskePaamaara()
-{
-
-}
-
 int Vihollinen::annaLiikkeidenMaara()
 {
     return liikkeidenMaara_;

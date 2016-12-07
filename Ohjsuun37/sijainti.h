@@ -8,8 +8,6 @@ public:
     Sijainti();
     Sijainti(double x, double y);
 
-    void asetaX(double uusi);
-    void asetaY(double uusi);
     bool liikutaX(double siirtyma);
     bool liikutaY(double siirtyma);
     double annaX() const;

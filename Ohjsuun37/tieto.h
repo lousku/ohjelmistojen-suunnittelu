@@ -35,7 +35,7 @@ public:
 
     int annaPisteet() const;
 
-    QList<kyborginTiedot> annaKyborgienTiedot() const;
+    QList<kyborginTiedot> annaKyborgienTiedot()const;
 
     lauranTiedot annaLauranTiedot() const;
 

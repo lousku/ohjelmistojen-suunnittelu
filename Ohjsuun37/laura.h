@@ -4,10 +4,11 @@
 #include "toimija.h"
 #include "ammus.h"
 #include <QTimer>
+#include <QObject>
 
 class Laura : public Toimija
 {
-
+    Q_OBJECT
 public:
 
     virtual ~Laura(); //periytetyissä pitää olla virtuaaliset purkajat
@@ -23,15 +24,16 @@ public:
     double annaSuunta();
     bool asetaSuunta(double suunta);
 
-    int ampumatiheys() const;
-    void asetaAmpumatiheys(int ampumatiheys);
+    bool ampumavalmis() const;
 
+    public slots:
+        void asetaAmpumavalmiiksi();
 
 private:
     bool tuhottu_;
     double suunta_;
     QTimer* ampumaKello_;
-    bool ampumaValmis_;
+    bool ampumavalmis_;
     int ampumatiheys_;
     int ammustenKantama_;
 

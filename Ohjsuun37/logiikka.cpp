@@ -111,7 +111,6 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
     double etaisyys = toimija->annaSijainti().laskeEtaisyys(paamaara);
     if (etaisyys < toimija->annaNopeus()){
 
-        //huomiona sellainen, että voiko tänne edes joutua, miten paamaara asetettaisiin esteen paalle -IH
         if (not onkoEstetta(paamaara.annaX(), paamaara.annaY())){
             return toimija->liikuta(paamaara);
         }else{
@@ -482,9 +481,18 @@ void Logiikka::lopetaPeli(bool voitettu)
     pelikello_->stop();
 
     if (not voitettu) {
-        //TODO PELI LOPPU MITÄ NYT
+        QObject *mainView = nakyma_->rootObject();
+        mainView->setProperty("state", "HAVITTY");
+        QString teksti = mainView->property("lopputeksti").toString() + QString::number(parkkihalli_->annaPisteet());
+        mainView->setProperty("lopputeksti", teksti);
         return;
     }
+    //mainView->setProperty("state", "HAVITTY");
+
+    //TODO mitä näytetään odottaessa?
+    QThread::sleep(2);
+
+    //TODO muuten odottaa hetken kentän infojen kanssa ennen kuin siirtyy näkymään
 
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
@@ -516,7 +524,6 @@ void Logiikka::lopetaPeli(bool voitettu)
     gameWindow->setProperty("lauraLiikkuuAlas", false);
     gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
     gameWindow->setProperty("lauraLiikkuuOikealle", false);
-
 }
 
 void Logiikka::luoPeli(int numero)
@@ -557,12 +564,11 @@ void Logiikka::luoAmmus()
 
             //asetetaan paamaara ammukselle
             Sijainti paamaara(hiiriX_-10,hiiriY_-10);
-            qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-            qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
+            //qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+            //qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
             ammus->asetaPaamaara(paamaara);
 
             ammukset_.append(ammus);
-            laura_->asetaAmpumavalmis(false);
             laura_->ampuu(); //viestittää lauralle että ammuttiin, käynnisttää ampumakellon
 
      }
@@ -652,8 +658,8 @@ void Logiikka::suoritaTekoaly()
 
 }
 
-/* TODO selvitys apufunktiomahdollisuudesta
-void tyhjennaLista(&QList<Toimija*> lista){
+// TODO selvitys apufunktiomahdollisuudesta
+/*void tyhjennaLista(&QList<Toimija*> lista){
     for( int i = lista.size(); i > 0; --i ){
         Toimija* osa = lista.at(i);
         listaremoveAt(i);
