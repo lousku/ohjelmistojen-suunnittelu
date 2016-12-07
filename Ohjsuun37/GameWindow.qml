@@ -25,19 +25,19 @@ Rectangle {
             if(event.isAutoRepeat) return
             lauraLiikkuuYlos = true;
         }
-         if (event.key == Qt.Key_S){
+         if (event.key === Qt.Key_S){
             if(event.isAutoRepeat) return
             lauraLiikkuuAlas = true;
         }
-         if (event.key == Qt.Key_A){
+         if (event.key === Qt.Key_A){
             if(event.isAutoRepeat) return
             lauraLiikkuuVasemmalle = true;
         }
-         if (event.key == Qt.Key_D){
+         if (event.key === Qt.Key_D){
             if(event.isAutoRepeat) return
             lauraLiikkuuOikealle = true ;
         }
-         if (event.key == Qt.Key_Space){
+         if (event.key === Qt.Key_Space){
             logiikka.luoAmmus();
             console.log("ammu");
          }
@@ -45,10 +45,10 @@ Rectangle {
 
     Keys.onReleased: {
       if(event.isAutoRepeat) return
-      if (event.key == Qt.Key_W)lauraLiikkuuYlos = false;
-      if (event.key == Qt.Key_S)lauraLiikkuuAlas = false;
-      if (event.key == Qt.Key_A)lauraLiikkuuVasemmalle = false;
-      if (event.key == Qt.Key_D)lauraLiikkuuOikealle = false ;
+      if (event.key === Qt.Key_W)lauraLiikkuuYlos = false;
+      if (event.key === Qt.Key_S)lauraLiikkuuAlas = false;
+      if (event.key === Qt.Key_A)lauraLiikkuuVasemmalle = false;
+      if (event.key === Qt.Key_D)lauraLiikkuuOikealle = false ;
     }
 
     //property valietaan hiiren sijainti c++:lle

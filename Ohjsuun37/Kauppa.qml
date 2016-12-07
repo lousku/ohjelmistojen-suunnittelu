@@ -81,7 +81,7 @@ Rectangle {
             text: "Nopea lataus"
             onClicked: {
                 //kohde 0 = laura
-                kauppa.ammusTiheyttaLisaa();
+                kauppa.ammustiheyttaLisaa();
             }
         }
     }
@@ -97,7 +97,7 @@ Rectangle {
             width: 70
             text: "Tehoa"
             onClicked: {
-                kauppa.tehoaLisaa(0);
+                kauppa.tehoaLisaa(1);
             }
         }
         Button{
@@ -106,7 +106,7 @@ Rectangle {
             width: 70
             text: "nopeutta"
             onClicked: {
-                kauppa.nopeuttaLisaa(0);
+                kauppa.nopeuttaLisaa(1);
             }
         }
         Button{
@@ -115,7 +115,7 @@ Rectangle {
             width: 70
             text: "kantamaa"
             onClicked: {
-                kauppa.kantamaaLisaa(0);
+                kauppa.kantamaaLisaa(1);
             }
          }
         Button{
@@ -125,7 +125,7 @@ Rectangle {
             text: "elämää"
             onClicked: {
                 //kohde 0 = laura
-                kauppa.elamaaLisaa(0);
+                kauppa.elamaaLisaa(1);
             }
         }
     }
@@ -141,7 +141,7 @@ Rectangle {
             width: 70
             text: "Tehoa"
             onClicked: {
-                kauppa.tehoaLisaa(0);
+                kauppa.tehoaLisaa(2);
             }
         }
         Button{
@@ -150,7 +150,7 @@ Rectangle {
             width: 70
             text: "nopeutta"
             onClicked: {
-                kauppa.nopeuttaLisaa(0);
+                kauppa.nopeuttaLisaa(2);
             }
         }
         Button{
@@ -159,7 +159,7 @@ Rectangle {
             width: 70
             text: "kantamaa"
             onClicked: {
-                kauppa.kantamaaLisaa(0);
+                kauppa.kantamaaLisaa(2);
             }
          }
         Button{
@@ -169,7 +169,7 @@ Rectangle {
             text: "elämää"
             onClicked: {
                 //kohde 0 = laura
-                kauppa.elamaaLisaa(0);
+                kauppa.elamaaLisaa(2);
             }
         }
     }
@@ -185,7 +185,7 @@ Rectangle {
             width: 70
             text: "Tehoa"
             onClicked: {
-                kauppa.tehoaLisaa(0);
+                kauppa.tehoaLisaa(3);
             }
         }
         Button{
@@ -194,7 +194,7 @@ Rectangle {
             width: 70
             text: "nopeutta"
             onClicked: {
-                kauppa.nopeuttaLisaa(0);
+                kauppa.nopeuttaLisaa(3);
             }
         }
         Button{
@@ -203,7 +203,7 @@ Rectangle {
             width: 70
             text: "kantamaa"
             onClicked: {
-                kauppa.kantamaaLisaa(0);
+                kauppa.kantamaaLisaa(3);
             }
          }
         Button{
@@ -212,12 +212,23 @@ Rectangle {
             width: 50
             text: "elämää"
             onClicked: {
-                //kohde 0 = laura
-                kauppa.elamaaLisaa(0);
+                //TODO samaan tyyliin OPASTETEKSTIT
+                if(kauppa.elamaaLisaa(3)){
+                    kauppaTeksti.text = "Ostit kyborgille 3 elamää"
+                }else{
+                    kauppaTeksti.text = "Kyborgin 3 elämät täynnä"
+                }
+
             }
         }
     }
 
+    Text{
+        y: 450
+        id: kauppaTeksti
+        text: qsTr("ostit paskaa")
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
 
 
 }

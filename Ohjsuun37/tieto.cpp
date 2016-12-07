@@ -96,14 +96,8 @@ void Tieto::asetaNopeus(int kohde, int uusiArvo)
     if(kohde == 0 ){
         lauranTiedot_.nopeus = uusiArvo;
     }
-    if(kohde == 1 ){
-        kyborgienTiedot_[0].nopeus = uusiArvo;
-    }
-    if(kohde == 2){
-        kyborgienTiedot_[1].nopeus = uusiArvo;
-    }
-    if(kohde ==3){
-        kyborgienTiedot_[2].nopeus = uusiArvo;
+    else{
+        kyborgienTiedot_[kohde - 1].nopeus = uusiArvo;
     }
 }
 
@@ -113,14 +107,8 @@ void Tieto::asetaTeho(int kohde, int uusiArvo)
     if(kohde == 0 ){
         lauranTiedot_.teho = uusiArvo;
     }
-    if(kohde == 1 ){
-        kyborgienTiedot_[0].teho = uusiArvo;
-    }
-    if(kohde == 2){
-        kyborgienTiedot_[1].teho = uusiArvo;
-    }
-    if(kohde ==3){
-        kyborgienTiedot_[2].teho = uusiArvo;
+    else{
+        kyborgienTiedot_[kohde - 1].teho = uusiArvo;
     }
 }
 
@@ -131,14 +119,8 @@ void Tieto::asetaElama(int kohde, int uusiArvo)
     if(kohde == 0 ){
         lauranTiedot_.MaxElama = uusiArvo;
     }
-    if(kohde == 1 ){
-        kyborgienTiedot_[0].MaxElama = uusiArvo;
-    }
-    if(kohde == 2){
-        kyborgienTiedot_[1].MaxElama = uusiArvo;
-    }
-    if(kohde ==3){
-        kyborgienTiedot_[2].MaxElama = uusiArvo;
+    else{
+        kyborgienTiedot_[kohde - 1].MaxElama = uusiArvo;
     }
 }
 
@@ -147,18 +129,12 @@ void Tieto::asetaKantama(int kohde, int uusiArvo)
     if(kohde == 0 ){
         lauranTiedot_.kantama = uusiArvo;
     }
-    if(kohde == 1 ){
-        kyborgienTiedot_[0].iskuetaisyys = uusiArvo;
-    }
-    if(kohde == 2){
-        kyborgienTiedot_[1].iskuetaisyys = uusiArvo;
-    }
-    if(kohde ==3){
-        kyborgienTiedot_[2].iskuetaisyys = uusiArvo;
+    else{
+        kyborgienTiedot_[kohde - 1].iskuetaisyys = uusiArvo;
     }
 }
 
-void Tieto::asetaAmmusTiheys(int kohde, int uusiArvo)
+void Tieto::asetaAmmustiheys(int uusiArvo)
 {
     // kyborgeillekkin toteutus? -MS
     lauranTiedot_.ammustiheys = uusiArvo;

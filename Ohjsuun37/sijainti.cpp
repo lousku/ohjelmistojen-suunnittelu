@@ -3,8 +3,8 @@
 #include <QDebug>
 #include <QtMath>
 
-Sijainti::Sijainti():
-    paikkaX_(0), paikkaY_(0)
+Sijainti::Sijainti()
+    //paikkaX_(0), paikkaY_(0)
 {
 
 }
