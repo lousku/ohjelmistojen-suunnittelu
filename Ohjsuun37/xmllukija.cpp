@@ -36,7 +36,7 @@ void XmlLukija::paivitaXmltiedot()
     //"/Users/annimari/Documents/Git/Ohjsuun37/xml.xml"
     //"/Users/miika/37/Ohjsuun37/xml.xml"
 
-    QFile *xml = new QFile("/Users/annimari/Documents/Git/Ohjsuun37/xml.xml");
+    QFile *xml = new QFile("/Users/miika/37/Ohjsuun37/xml.xml");
     //QFile xml("qrc:xml.xml"); tämä vissiin turha -MS
 
     if( !xml->open(QIODevice::ReadOnly | QIODevice::Text )){
@@ -102,11 +102,8 @@ void XmlLukija::haePerustiedot(){
 
 QString XmlLukija::etsiHallinId(std::string halli)
 {
-}
-
-void XmlLukija::haeTrendi()
-{
-    qDebug() << "taalla";
+    QString hallinNimi = QString::fromStdString(halli);
+    QString id;
     if( lukija_->readNextStartElement() ){
         if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
             while( lukija_->readNextStartElement() ){
@@ -114,21 +111,29 @@ void XmlLukija::haeTrendi()
                     while( lukija_->readNextStartElement() ){
                         if( lukija_->name() == "genericPublicationExtension" ){
                             while( lukija_->readNextStartElement() ){
-                                if( lukija_->name() == "parkingFacilityTableStatusPublication" ){
+                                if( lukija_->name() == "parkingFacilityTablePublication" ){
                                     while( lukija_->readNextStartElement() ){
-                                        if( lukija_->name() == "parkingFacilityStatus" ){
+                                        if( lukija_->name() == "parkingFacilityTable" ){
                                             while( lukija_->readNextStartElement()) {
-                                                if (lukija_->name() == "parkingFacilityReference" and lukija_->attributes().value("id").toString()=="FNPK.12"){
-                                                    qDebug() << "id:"<< lukija_->attributes().value("id").toString();
-                                                    qDebug() << "rivilla" << lukija_->lineNumber();
+                                                if (lukija_->name() == "parkingFacility"){
+                                                    QString id = lukija_->attributes().value("id").toString();
+                                                    while( lukija_->readNextStartElement()) {
+                                                        if (lukija_->name() == "parkingFacilityName"){
+                                                            QString testattava = lukija_->readElementText();
+                                                            if (testattava == hallinNimi){
+                                                                qDebug() << "Oikea halli loytyi";
+                                                                return id;
+                                                            }
+                                                        }else{
+                                                            lukija_->skipCurrentElement();
+                                                        }
+                                                    }
                                                 }else{
-                                                    qDebug() << "skippaa referenssin rivilla" << lukija_->lineNumber();
                                                     lukija_->skipCurrentElement();
                                                 }
                                             }
                                         }else{
                                             lukija_->skipCurrentElement();
-                                            qDebug() << "skippaa statuksen rivilla" << lukija_->lineNumber();
                                         }
                                     }
                                 }else{
@@ -144,6 +149,48 @@ void XmlLukija::haeTrendi()
                 }else{
                     lukija_->skipCurrentElement();
                     //qDebug() << "skip 1";
+                }
+            }
+        }
+    }
+}
+
+void XmlLukija::haeTrendi()
+{
+    QString id = etsiHallinId("VR Tampere");
+    qDebug() << id;
+    qDebug() <<lukija_->lineNumber();
+    if( lukija_->readNextStartElement() ){
+        if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
+            while( lukija_->readNextStartElement() ){
+                if( lukija_->name() == "payloadPublication" ){
+                    while( lukija_->readNextStartElement() ){
+                        if( lukija_->name() == "genericPublicationExtension" ){
+                            while( lukija_->readNextStartElement() ){
+                                if( lukija_->name() == "parkingFacilityTableStatusPublication" ){
+                                    while( lukija_->readNextStartElement() ){
+                                        if( lukija_->name() == "parkingFacilityStatus" ){
+                                            while( lukija_->readNextStartElement()) {
+                                                if (lukija_->name() == "parkingFacilityReference" and lukija_->attributes().value("id").toString()==id){
+                                                    qDebug() << "loytaa oikein hallin id:n perusteella";
+                                                }else{
+                                                    lukija_->skipCurrentElement();
+                                                }
+                                            }
+                                        }else{
+                                            lukija_->skipCurrentElement();
+                                        }
+                                    }
+                                }else{
+                                     lukija_->skipCurrentElement();
+                                }
+                            }
+                        }else{
+                            lukija_->skipCurrentElement();
+                        }
+                    }
+                }else{
+                    lukija_->skipCurrentElement();
                 }
             }
         }

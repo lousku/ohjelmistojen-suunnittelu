@@ -11,14 +11,14 @@ Tieto::Tieto():
     //TODO esim tänne vakioiden käyttöä
 
     lauranTiedot_.ammustiheys = 1000;
-    lauranTiedot_.elama = 200;
+    lauranTiedot_.MaxElama = 200;
     lauranTiedot_.kantama = 100;
     lauranTiedot_.nopeus = 1;
     lauranTiedot_.teho = 100;
 
     for( int i=0; i < 3; ++i ){
         kyborginTiedot tieto;
-        tieto.elama = 100;
+        tieto.MaxElama = 100;
         tieto.nopeus = 3;
         tieto.teho = 10;
         tieto.iskuetaisyys = 10;
@@ -89,4 +89,20 @@ lauranTiedot Tieto::annaLauranTiedot() const
 kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
 {
     return kenttienTiedot_.at(kentanNumero);
+}
+
+
+
+
+
+void Tieto::setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot)
+{
+    kyborgienTiedot_ = kyborgienTiedot;
+}
+
+
+
+void Tieto::setLauranTiedot(const lauranTiedot &lauranTiedot)
+{
+    lauranTiedot_ = lauranTiedot;
 }
