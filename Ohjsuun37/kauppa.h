@@ -13,8 +13,14 @@ public:
     //kohde: 0=laura 1=kyborgi1 2= kyborgi2 3=kyborgi3
     //lisaa kohteen max elamia 10:lla
     Q_INVOKABLE void elamaaLisaa(int kohde);
-    Q_INVOKABLE void kantamaaLisaa();
-    Q_INVOKABLE void nopeuttaLisaa();
+    Q_INVOKABLE void kantamaaLisaa(int kohde);
+    Q_INVOKABLE void nopeuttaLisaa(int kohde);
+    Q_INVOKABLE void tehoaLisaa(int kohde);
+    //vain Lauralle -MS
+    Q_INVOKABLE void ammusTiheyttaLisaa();
+
+
+
 
     Kauppa();
     Kauppa(Tieto* tieto);

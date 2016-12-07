@@ -33,31 +33,94 @@ Rectangle {
 
     //lauran ostopainikkeet -MS
     Column{
-        spacing: 10
+        spacing: 5
         x:50
         y:250
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 70
-            text: "nopeutta"
+            text: "Tehoa"
             onClicked: {
-                kauppa.nopeuttaLisaa();
+                kauppa.tehoaLisaa(0);
             }
         }
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
+            width: 70
+            text: "nopeutta"
+            onClicked: {
+                kauppa.nopeuttaLisaa(0);
+            }
+        }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
             width: 70
             text: "kantamaa"
             onClicked: {
-                kauppa.kantamaaLisaa();
+                kauppa.kantamaaLisaa(0);
             }
          }
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
+            width: 50
+            text: "elämää"
+            onClicked: {
+                //kohde 0 = laura
+                kauppa.elamaaLisaa(0);
+            }
+        }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
+            width: 85
+            text: "Nopea lataus"
+            onClicked: {
+                //kohde 0 = laura
+                kauppa.ammusTiheyttaLisaa();
+            }
+        }
+    }
+    //Kyborgi1 ostopainikkeet -MS
+    Column{
+        spacing: 5
+        x:130
+        y:250
+        width: 80
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
+            width: 70
+            text: "Tehoa"
+            onClicked: {
+                kauppa.tehoaLisaa(0);
+            }
+        }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
+            width: 70
+            text: "nopeutta"
+            onClicked: {
+                kauppa.nopeuttaLisaa(0);
+            }
+        }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
+            width: 70
+            text: "kantamaa"
+            onClicked: {
+                kauppa.kantamaaLisaa(0);
+            }
+         }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
             width: 50
             text: "elämää"
             onClicked: {
@@ -66,105 +129,91 @@ Rectangle {
             }
         }
     }
-    //Kyborgi1 ostopainikkeet -MS
-    Column{
-        spacing: 10
-        x:130
-        y:250
-        width: 80
-        Button{
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
-            width: 70
-            text: "nopeutta"
-            onClicked: {
-                kauppa.nopeuttaLisaa();
-            }
-        }
-        Button{
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
-            width: 70
-            text: "Tehoa"
-            onClicked: {
-                kauppa.kantamaaLisaa();
-            }
-         }
-        Button{
-            anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
-            width: 50
-            text: "elämää"
-            onClicked: {
-                kauppa.elamaaLisaa();
-            }
-        }
-    }
     //kyborgi2 painikkeet
     Column{
-        spacing: 10
+        spacing: 5
         x:230
         y:250
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 70
-            text: "nopeutta"
+            text: "Tehoa"
             onClicked: {
-                kauppa.nopeuttaLisaa();
+                kauppa.tehoaLisaa(0);
             }
         }
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 70
-            text: "Tehoa"
+            text: "nopeutta"
             onClicked: {
-                kauppa.kantamaaLisaa();
+                kauppa.nopeuttaLisaa(0);
+            }
+        }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
+            width: 70
+            text: "kantamaa"
+            onClicked: {
+                kauppa.kantamaaLisaa(0);
             }
          }
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 50
             text: "elämää"
             onClicked: {
-                kauppa.elamaaLisaa();
+                //kohde 0 = laura
+                kauppa.elamaaLisaa(0);
             }
         }
     }
     //kyborgi3 painikkeet
     Column{
-        spacing: 10
+        spacing: 5
         x:320
         y:250
         width: 80
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 70
-            text: "nopeutta"
+            text: "Tehoa"
             onClicked: {
-                kauppa.nopeuttaLisaa();
+                kauppa.tehoaLisaa(0);
             }
         }
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 70
-            text: "Tehoa"
+            text: "nopeutta"
             onClicked: {
-                kauppa.kantamaaLisaa();
+                kauppa.nopeuttaLisaa(0);
+            }
+        }
+        Button{
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
+            width: 70
+            text: "kantamaa"
+            onClicked: {
+                kauppa.kantamaaLisaa(0);
             }
          }
         Button{
             anchors.horizontalCenter: parent.horizontalCenter
-            height: 30
+            height: 20
             width: 50
             text: "elämää"
             onClicked: {
-                kauppa.elamaaLisaa();
+                //kohde 0 = laura
+                kauppa.elamaaLisaa(0);
             }
         }
     }
