@@ -6,7 +6,7 @@ Item {
 
     //TODO jotain vähän fiksumpaa ulkoasua tänne
     Text {
-        x: 50
+        x: 20
         y: 50
         id: pisteet
         text: qsTr("Pisteitä: ")

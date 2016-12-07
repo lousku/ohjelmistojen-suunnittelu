@@ -15,6 +15,7 @@ public:
     Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama);
     bool onkoHengissa();
     virtual void paivitaTiedot();
+    virtual void asetaQMLosa(QObject* objekti);
     void ampuu();
 
     //myohemmin tahan lopetetaan peli! RATKAISTU -IH
@@ -25,6 +26,7 @@ public:
     int ampumatiheys() const;
     void asetaAmpumatiheys(int ampumatiheys);
 
+
 private:
     bool tuhottu_;
     double suunta_;
@@ -32,6 +34,8 @@ private:
     bool ampumaValmis_;
     int ampumatiheys_;
     int ammustenKantama_;
+
+    QObject* palkki_;
 
 };
 

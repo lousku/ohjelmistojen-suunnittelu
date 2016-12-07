@@ -26,11 +26,18 @@ bool Laura::onkoHengissa()
 void Laura::paivitaTiedot()
 {
     Toimija::paivitaTiedot();
+    palkki_->setProperty("value", annaElamataso());
 
-    QObject *banneri = annaQMLosa()->parent()->parent()->findChild<QObject*>("topBanner");
-    double arvo = double(annaElamataso())/100;
-    banneri->setProperty("lauranElama", arvo);
+}
 
+void Laura::asetaQMLosa(QObject *objekti)
+{
+    QObject *banneri = objekti->parent()->parent()->findChild<QObject*>("topBanner");
+
+    palkki_ = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>("lauranElamaBar");
+    palkki_->setProperty("maximumValue", annaElamataso());
+
+    Toimija::asetaQMLosa(objekti);
 }
 
 double Laura::annaSuunta()

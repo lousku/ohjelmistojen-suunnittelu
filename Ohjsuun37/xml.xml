@@ -7,7 +7,7 @@
       </supplierIdentification>
    </exchange>
    <payloadPublication xsi:type="GenericPublication" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-      <publicationTime>2016-12-07T13:01:19+02:00</publicationTime>
+      <publicationTime>2016-12-07T13:03:47+02:00</publicationTime>
       <publicationCreator>
          <country>fi</country>
          <nationalIdentifier>Finnpark</nationalIdentifier>
@@ -7998,47 +7998,47 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="JNS.41" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17471" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17476" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17475" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17474" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17473" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17479" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17478" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17477" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>37.1</parkingFacilityOccupancy>
@@ -8046,7 +8046,7 @@
                <parkingFacilityReference id="FNPK.11" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>89</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>151</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>372</totalParkingCapacityLongTermOverride>
@@ -8056,7 +8056,7 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.10" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>184.6</parkingFacilityOccupancy>
@@ -8064,7 +8064,7 @@
                <parkingFacilityReference id="FNPK.14" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>full</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>240</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>-110</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>90</totalParkingCapacityLongTermOverride>
@@ -8077,7 +8077,7 @@
                <parkingFacilityReference id="FNPK.13" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>93</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>207</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>7</totalParkingCapacityLongTermOverride>
@@ -8090,7 +8090,7 @@
                <parkingFacilityReference id="FNPK.12" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>124</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>166</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>210</totalParkingCapacityLongTermOverride>
@@ -8100,22 +8100,22 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113350" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113351" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17467" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17468" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>40.0</parkingFacilityOccupancy>
@@ -8123,7 +8123,7 @@
                <parkingFacilityReference id="FNPK.18" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>4</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>6</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>100</totalParkingCapacityLongTermOverride>
@@ -8133,7 +8133,7 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.22581" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>62.5</parkingFacilityOccupancy>
@@ -8141,7 +8141,7 @@
                <parkingFacilityReference id="FNPK.19" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>30</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>18</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>10</totalParkingCapacityLongTermOverride>
@@ -8154,7 +8154,7 @@
                <parkingFacilityReference id="FNPK.16" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>25</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>75</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>258</totalParkingCapacityLongTermOverride>
@@ -8167,7 +8167,7 @@
                <parkingFacilityReference id="FNPK.17" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>54</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>46</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>272</totalParkingCapacityLongTermOverride>
@@ -8180,7 +8180,7 @@
                <parkingFacilityReference id="FNPK.26" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>22</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>30</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>10</totalParkingCapacityLongTermOverride>
@@ -8193,7 +8193,7 @@
                <parkingFacilityReference id="FNPK.25" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>304</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>368</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>300</totalParkingCapacityLongTermOverride>
@@ -8201,14 +8201,14 @@
                <totalParkingCapacityShortTermOverride>672</totalParkingCapacityShortTermOverride>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>72.5</parkingFacilityOccupancy>
+               <parkingFacilityOccupancy>75.0</parkingFacilityOccupancy>
                <parkingFacilityOccupancyTrend>increasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="LHT.32" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>58</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>22</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>60</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>20</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>0</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>80</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>80</totalParkingCapacityShortTermOverride>
@@ -8219,7 +8219,7 @@
                <parkingFacilityReference id="LHT.34" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>0</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>5</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>96</totalParkingCapacityLongTermOverride>
@@ -8232,7 +8232,7 @@
                <parkingFacilityReference id="LHT.33" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>1</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>4</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>215</totalParkingCapacityLongTermOverride>
@@ -8240,14 +8240,14 @@
                <totalParkingCapacityShortTermOverride>5</totalParkingCapacityShortTermOverride>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>71.4</parkingFacilityOccupancy>
+               <parkingFacilityOccupancy>72.9</parkingFacilityOccupancy>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="LHT.36" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>145</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>58</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>148</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>55</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>280</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>483</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>203</totalParkingCapacityShortTermOverride>
@@ -8258,7 +8258,7 @@
                <parkingFacilityReference id="LHT.37" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>24</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>26</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>350</totalParkingCapacityLongTermOverride>
@@ -8268,70 +8268,70 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113385" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113384" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113383" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113382" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.112697" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.105036" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.28" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108059" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108056" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>24.5</parkingFacilityOccupancy>
-               <parkingFacilityOccupancyTrend>decreasing</parkingFacilityOccupancyTrend>
+               <parkingFacilityOccupancy>26.0</parkingFacilityOccupancy>
+               <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="LHT.22" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>49</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>151</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>52</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>148</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>350</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>550</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>200</totalParkingCapacityShortTermOverride>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>59.5</parkingFacilityOccupancy>
+               <parkingFacilityOccupancy>58.5</parkingFacilityOccupancy>
                <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="LHT.21" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>119</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>81</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>117</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>83</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>200</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>400</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>200</totalParkingCapacityShortTermOverride>
@@ -8339,57 +8339,57 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108054" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108053" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.105039" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.105041" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19218" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.7" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.6" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.105044" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.5" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.4" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.3" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>57.5</parkingFacilityOccupancy>
@@ -8397,7 +8397,7 @@
                <parkingFacilityReference id="JKL.21" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>187</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>138</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>135</totalParkingCapacityLongTermOverride>
@@ -8407,127 +8407,127 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.2" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108939" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.TAYS.1" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.107170" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115590" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115591" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115592" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115593" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115594" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115595" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115596" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15345" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.116510" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15625" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15628" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15629" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18239" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18238" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18237" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115587" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115586" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115589" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115588" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100523" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100428" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>99.0</parkingFacilityOccupancy>
@@ -8535,7 +8535,7 @@
                <parkingFacilityReference id="JKL.30" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>fullAtEntrance</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>196</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>2</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>225</totalParkingCapacityLongTermOverride>
@@ -8545,22 +8545,22 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100427" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100521" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20501" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20502" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>43.3</parkingFacilityOccupancy>
@@ -8568,7 +8568,7 @@
                <parkingFacilityReference id="FNPK.1" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>104</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>136</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>335</totalParkingCapacityLongTermOverride>
@@ -8578,32 +8578,32 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18300" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18301" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18302" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18303" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18304" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18305" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>61.0</parkingFacilityOccupancy>
@@ -8611,7 +8611,7 @@
                <parkingFacilityReference id="FNPK.7" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>183</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>117</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>160</totalParkingCapacityLongTermOverride>
@@ -8621,7 +8621,7 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20509" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>80.0</parkingFacilityOccupancy>
@@ -8629,7 +8629,7 @@
                <parkingFacilityReference id="FNPK.8" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>48</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>12</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>380</totalParkingCapacityLongTermOverride>
@@ -8639,7 +8639,7 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15634" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>85.0</parkingFacilityOccupancy>
@@ -8647,7 +8647,7 @@
                <parkingFacilityReference id="FNPK.9" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>153</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>27</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>190</totalParkingCapacityLongTermOverride>
@@ -8657,17 +8657,17 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15636" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>26.7</parkingFacilityOccupancy>
+               <parkingFacilityOccupancy>26.1</parkingFacilityOccupancy>
                <parkingFacilityOccupancyTrend>decreasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.3" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>48</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>132</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>47</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>133</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>229</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>409</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>180</totalParkingCapacityShortTermOverride>
@@ -8678,7 +8678,7 @@
                <parkingFacilityReference id="FNPK.58" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>full</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>394</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>1</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>10</totalParkingCapacityLongTermOverride>
@@ -8688,17 +8688,17 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15637" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>40.0</parkingFacilityOccupancy>
-               <parkingFacilityOccupancyTrend>stable</parkingFacilityOccupancyTrend>
+               <parkingFacilityOccupancy>38.8</parkingFacilityOccupancy>
+               <parkingFacilityOccupancyTrend>decreasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="FNPK.4" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>68</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>102</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>66</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>104</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>127</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>297</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>170</totalParkingCapacityShortTermOverride>
@@ -8706,17 +8706,17 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20506" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="FNPK.59" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15351" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>77.6</parkingFacilityOccupancy>
@@ -8724,7 +8724,7 @@
                <parkingFacilityReference id="FNPK.6" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>330</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>95</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>5</totalParkingCapacityLongTermOverride>
@@ -8737,7 +8737,7 @@
                <parkingFacilityReference id="FNPK.57" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>full</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>6</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>-6</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>120</totalParkingCapacityLongTermOverride>
@@ -8747,32 +8747,32 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15250" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18244" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100519" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18245" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.11115248" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15631" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>45.8</parkingFacilityOccupancy>
@@ -8780,7 +8780,7 @@
                <parkingFacilityReference id="JKL.48" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>213</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>252</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>20</totalParkingCapacityLongTermOverride>
@@ -8790,7 +8790,7 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18240" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>36.8</parkingFacilityOccupancy>
@@ -8798,7 +8798,7 @@
                <parkingFacilityReference id="JKL.47" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>136</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>234</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>170</totalParkingCapacityLongTermOverride>
@@ -8808,12 +8808,12 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115599" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18306" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>65.3</parkingFacilityOccupancy>
@@ -8821,7 +8821,7 @@
                <parkingFacilityReference id="JKL.46" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>111</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>59</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>150</totalParkingCapacityLongTermOverride>
@@ -8831,37 +8831,37 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18242" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115598" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115597" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18241" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108956" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20510" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20511" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>42.1</parkingFacilityOccupancy>
@@ -8869,7 +8869,7 @@
                <parkingFacilityReference id="JKL.61" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>24</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>33</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>63</totalParkingCapacityLongTermOverride>
@@ -8879,7 +8879,7 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20512" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>100.0</parkingFacilityOccupancy>
@@ -8887,7 +8887,7 @@
                <parkingFacilityReference id="JKL.62" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>full</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>61</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>0</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>2</totalParkingCapacityLongTermOverride>
@@ -8897,67 +8897,67 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20513" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20514" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15364" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20515" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15361" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20516" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20518" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15646" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15645" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15366" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15641" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15640" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.21655" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>60.3</parkingFacilityOccupancy>
@@ -8965,7 +8965,7 @@
                <parkingFacilityReference id="JKL.57" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>170</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>112</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>150</totalParkingCapacityLongTermOverride>
@@ -8978,7 +8978,7 @@
                <parkingFacilityReference id="JKL.56" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>279</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>56</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>150</totalParkingCapacityLongTermOverride>
@@ -8988,82 +8988,82 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115584" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115585" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115582" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115583" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115580" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115581" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.17480" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16617" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15652" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15651" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.21661" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18121" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.15653" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18127" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.111994" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18126" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>62.9</parkingFacilityOccupancy>
@@ -9071,7 +9071,7 @@
                <parkingFacilityReference id="JKL.64" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>183</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>108</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>230</totalParkingCapacityLongTermOverride>
@@ -9081,52 +9081,52 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18129" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115579" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18128" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115578" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.111990" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18122" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18125" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16852" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16850" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19150" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityOccupancy>5.5</parkingFacilityOccupancy>
@@ -9134,7 +9134,7 @@
                <parkingFacilityReference id="HML.47" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>11</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>189</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>163</totalParkingCapacityLongTermOverride>
@@ -9147,7 +9147,7 @@
                <parkingFacilityReference id="HML.46" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>22</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>58</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>267</totalParkingCapacityLongTermOverride>
@@ -9160,7 +9160,7 @@
                <parkingFacilityReference id="HML.45" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
                <totalNumberOfOccupiedParkingSpaces>15</totalNumberOfOccupiedParkingSpaces>
                <totalNumberOfVacantParkingSpaces>163</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>90</totalParkingCapacityLongTermOverride>
@@ -9170,387 +9170,387 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16858" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16859" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16856" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16854" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113405" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16864" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19148" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113400" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113403" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113404" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113401" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113402" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="KYS.28" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18295" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18294" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18296" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18291" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18290" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18292" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16865" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18299" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16866" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18298" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.16867" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20499" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20980" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18142" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18143" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20982" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20981" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20986" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20985" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20988" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20987" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20989" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20586" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20587" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18146" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18144" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18145" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.108895" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="KUO.5" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="KUO.8" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18130" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18131" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18132" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20979" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20978" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18138" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.20977" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18133" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18135" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18136" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109353" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109352" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109355" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109357" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109356" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109358" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19116" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113388" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19117" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19118" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113387" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19119" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113386" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109351" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19115" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113391" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113392" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18269" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113390" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113395" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113396" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18268" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
-               <parkingFacilityOccupancy>76.1</parkingFacilityOccupancy>
+               <parkingFacilityOccupancy>75.7</parkingFacilityOccupancy>
                <parkingFacilityOccupancyTrend>increasing</parkingFacilityOccupancyTrend>
                <parkingFacilityReference id="TRE.48" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>spacesAvailable</parkingFacilityStatus>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
-               <totalNumberOfOccupiedParkingSpaces>175</totalNumberOfOccupiedParkingSpaces>
-               <totalNumberOfVacantParkingSpaces>55</totalNumberOfVacantParkingSpaces>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
+               <totalNumberOfOccupiedParkingSpaces>174</totalNumberOfOccupiedParkingSpaces>
+               <totalNumberOfVacantParkingSpaces>56</totalNumberOfVacantParkingSpaces>
                <totalParkingCapacityLongTermOverride>20</totalParkingCapacityLongTermOverride>
                <totalParkingCapacityOverride>250</totalParkingCapacityOverride>
                <totalParkingCapacityShortTermOverride>230</totalParkingCapacityShortTermOverride>
@@ -9558,267 +9558,267 @@
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113393" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113394" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18266" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109349" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18261" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18262" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18260" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115600" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115602" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.115601" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113398" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113397" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.113399" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103094" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103093" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103096" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103095" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103098" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103097" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="KYS.60" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18257" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103099" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18252" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103092" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103091" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109335" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109334" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109336" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103089" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103088" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.103087" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18288" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109348" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.sch1" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109347" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.107647" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109346" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109345" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19227" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109344" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19121" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109343" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109342" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.sch2" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19120" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109341" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109340" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.19123" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100720" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.100721" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18271" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.18273" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
             <parkingFacilityStatus>
                <parkingFacilityReference id="TRE.S.109339" version="1.0" targetClass="ParkingFacility"/>
                <parkingFacilityStatus>open</parkingFacilityStatus>
-               <parkingFacilityStatusTime>2016-12-07T13:01:16+02:00</parkingFacilityStatusTime>
+               <parkingFacilityStatusTime>2016-12-07T13:03:45+02:00</parkingFacilityStatusTime>
             </parkingFacilityStatus>
          </parkingFacilityTableStatusPublication>
       </genericPublicationExtension>
