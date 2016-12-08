@@ -18,16 +18,20 @@ public:
     XmlLukija();
     ~XmlLukija();
 
-    bool lueXmlTiedosto();    
-    void haeTrendi();
-    bool onkoTaynna(std::string halli);
-    void haePerustiedot();
+    bool lueXmlTiedosto();
+
+    // Avataan kaikilla hyodynnettavilla tiedostoilla oleva sama alkupolku
+    bool avaaHyodynnettavatTaulukot();
+
     QString etsiHallinId(std::string halli);
+
+    int haeVaratutPaikat(std::string halli);
 
 public slots:
     void paivitaXmltiedot();
 
 private:
+    // tarvitaanko/ onko hyodyllinen taalla
     QXmlStreamReader *lukija_;
 
 };

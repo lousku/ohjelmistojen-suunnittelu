@@ -33,7 +33,7 @@ void haeAPIdata::replyFinished()
 
     //kirjoittaa vastauksen tiedostoon xml.xml
     //TÄHÄN VAADITAAN TARKKA XML TIEDOSTON POLKU!!!!
-    QString fileName = "/Users/miika/37/Ohjsuun37/xml.xml";
+    QString fileName = "/Users/annimari/Documents/Git/Ohjsuun37/xml.xml";
     //avaa tiedoston
     QFile file(fileName);
     file.open(QIODevice::ReadWrite);
