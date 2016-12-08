@@ -36,7 +36,7 @@ void XmlLukija::paivitaXmltiedot()
     //"/Users/annimari/Documents/Git/Ohjsuun37/xml.xml"
     //"/Users/miika/37/Ohjsuun37/xml.xml"
 
-    QFile *xml = new QFile("/Users/miika/37/Ohjsuun37/xml.xml");
+    QFile *xml = new QFile("xml.xml");
     //QFile xml("qrc:xml.xml"); tämä vissiin turha -MS
 
     if( !xml->open(QIODevice::ReadOnly | QIODevice::Text )){
