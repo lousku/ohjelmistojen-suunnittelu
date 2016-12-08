@@ -3,11 +3,19 @@
 
 
 //TODO:
-// Toisto pois: oma funktio alulle. Selvita miksi antoi erroria.
-// Hallin etsinta nimen perusteella.
-// Tietojen palauttaminen
-// Hallin nimi -> ajantasalla oleva id
-// xml-polku
+// Katso Miikan kanssa paivitykset netista, etta ovat vaan tarvittavissa kohdissa
+// sis. lueXmlTiedosto, paivitaXmltiedot ja haeApiData
+//
+// Miksi paivitaXmltiedot taytyy kutsua etsiHallinId ja haeVaratutPaikat sisalla uudestaan (muuten kaatuu)
+// vaikka lueXmlTiedot slotti johtaa paivitatietoihin?
+//
+// Paivitysajat: Nyt haeVaratutPaikat hakee tiedot liian aikasin ks. debugviestit
+//
+// Virhetarkastelu ja palautukset, jos id tai varatut paikat eivat loydy
+//
+// Rajapintafunktioita kutsuttu logiikan luo pelissa
+//
+// Yleinen xml-polku
 //-AH
 
 XmlLukija::XmlLukija()
@@ -45,8 +53,6 @@ void XmlLukija::paivitaXmltiedot()
     //QXmlStreamReader lukija(xml);
     lukija_= new QXmlStreamReader(xml);
 
-    haeVaratutPaikat("");
-
 }
 
 bool XmlLukija::avaaHyodynnettavatTaulukot()
@@ -71,9 +77,10 @@ bool XmlLukija::avaaHyodynnettavatTaulukot()
     return false;
 }
 
-QString XmlLukija::etsiHallinId(std::string halli)
+QString XmlLukija::etsiHallinId(QString halli)
 {
-    QString hallinNimi = QString::fromStdString(halli);
+    lueXmlTiedosto();
+    paivitaXmltiedot();
     QString id;
     if (avaaHyodynnettavatTaulukot()){
         while( lukija_->readNextStartElement() ){
@@ -86,8 +93,7 @@ QString XmlLukija::etsiHallinId(std::string halli)
                                 while( lukija_->readNextStartElement()) {
                                     if (lukija_->name() == "parkingFacilityName"){
                                         QString testattava = lukija_->readElementText();
-                                        if (testattava == hallinNimi){
-                                            qDebug() << "Oikea halli loytyi";
+                                        if (testattava == halli){
                                             return id;
                                         }
                                     }else{
@@ -109,10 +115,10 @@ QString XmlLukija::etsiHallinId(std::string halli)
     }
 }
 
-int XmlLukija::haeVaratutPaikat(std::__1::string halli)
+int XmlLukija::haeVaratutPaikat(QString id)
 {
+    paivitaXmltiedot();
     if (avaaHyodynnettavatTaulukot()){
-        QString id = "FNPK.12";
         bool idLoydetty=false;
         while( lukija_->readNextStartElement() ){
             if( lukija_->name() == "parkingFacilityTableStatusPublication" ){
@@ -124,7 +130,6 @@ int XmlLukija::haeVaratutPaikat(std::__1::string halli)
                                 lukija_->skipCurrentElement();
                             }else if(lukija_->name() == "totalNumberOfOccupiedParkingSpaces" and idLoydetty==true){
                                 int autolkm = lukija_->readElementText().toInt();
-                                qDebug() << "autoja" << autolkm;
                                 return autolkm;
                             }else{
                                 lukija_->skipCurrentElement();

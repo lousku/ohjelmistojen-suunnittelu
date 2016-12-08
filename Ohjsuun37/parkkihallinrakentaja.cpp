@@ -17,7 +17,7 @@ ParkkihallinRakentaja::ParkkihallinRakentaja()
 ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* view, Tieto* tieto):
     nakyma_(view), tieto_(tieto)
 {
-    tieto_ ->lueXmlTiedot();
+    //tieto_ ->lueXmlTiedot();
 
 }
 

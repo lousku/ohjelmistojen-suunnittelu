@@ -6,6 +6,7 @@ Tieto::Tieto():
     //luo lukija olion ja kutsuu lukufunktiota.
     lukija_ = new XmlLukija();
 
+
     //lukija_->lueXmlTiedosto();
 
     //TODO esim tänne vakioiden käyttöä

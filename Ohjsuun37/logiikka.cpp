@@ -555,9 +555,12 @@ void Logiikka::luoPeli(int numero)
 
     pelikello_->start();
 
-    // Tama sinne missa halutaan paivittaa parkkihallille uudet tiedot
+    // Tassa xml-lukijan rajapintafunktiot
+    // halli-id yhdistelman voisi tallentaa ja hakea sitten idlla varattuja paikkoja
     XmlLukija *lukija = new XmlLukija();
-    lukija->paivitaXmltiedot();
+    QString id = lukija->etsiHallinId("P-Tullintori");
+    qDebug() << "id: " << id;
+    qDebug() << "autoja parkissa: " <<lukija->haeVaratutPaikat(id);
 
 }
 
