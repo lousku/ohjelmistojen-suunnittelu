@@ -100,7 +100,6 @@ Item {
     PeliHavitty{
         id: peliHavittyTeksti
         anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
-        anchors.right: parent.right; anchors.bottom: parent.bottom
         visible: false
 
     }

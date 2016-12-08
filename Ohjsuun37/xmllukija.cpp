@@ -3,11 +3,19 @@
 
 
 //TODO:
-// Toisto pois: oma funktio alulle. Selvita miksi antoi erroria.
-// Hallin etsinta nimen perusteella.
-// Tietojen palauttaminen
-// Hallin nimi -> ajantasalla oleva id
-// xml-polku
+// Katso Miikan kanssa paivitykset netista, etta ovat vaan tarvittavissa kohdissa
+// sis. lueXmlTiedosto, paivitaXmltiedot ja haeApiData
+//
+// Miksi paivitaXmltiedot taytyy kutsua etsiHallinId ja haeVaratutPaikat sisalla uudestaan (muuten kaatuu)
+// vaikka lueXmlTiedot slotti johtaa paivitatietoihin?
+//
+// Paivitysajat: Nyt haeVaratutPaikat hakee tiedot liian aikasin ks. debugviestit
+//
+// Virhetarkastelu ja palautukset, jos id tai varatut paikat eivat loydy
+//
+// Rajapintafunktioita kutsuttu logiikan luo pelissa
+//
+// Yleinen xml-polku
 //-AH
 
 XmlLukija::XmlLukija()
@@ -37,210 +45,105 @@ void XmlLukija::paivitaXmltiedot()
     //"/Users/miika/37/Ohjsuun37/xml.xml"
 
     QFile *xml = new QFile("xml.xml");
-    //QFile xml("qrc:xml.xml"); tämä vissiin turha -MS
+
 
     if( !xml->open(QIODevice::ReadOnly | QIODevice::Text )){
         qDebug() << "Virhe xml-tiedoston lukemisessa" << xml->errorString();
     }
-
     //QXmlStreamReader lukija(xml);
     lukija_= new QXmlStreamReader(xml);
 
-    haeTrendi();
 }
-// saako supistettua?
-void XmlLukija::haePerustiedot(){
+
+bool XmlLukija::avaaHyodynnettavatTaulukot()
+{
     if( lukija_->readNextStartElement() ){
         if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
             while( lukija_->readNextStartElement() ){
                 if( lukija_->name() == "payloadPublication" ){
                     while( lukija_->readNextStartElement() ){
                         if( lukija_->name() == "genericPublicationExtension" ){
-                            while( lukija_->readNextStartElement() ){
-                                if( lukija_->name() == "parkingFacilityTablePublication" ){
-                                    while( lukija_->readNextStartElement() ){
-                                        if( lukija_->name() == "parkingFacilityTable" ){
-                                            while( lukija_->readNextStartElement()) {
-                                                if (lukija_->name() == "parkingFacility"){
-                                                    qDebug() << "id:"<< lukija_->attributes().value("id").toString();
-                                                    while( lukija_->readNextStartElement()) {
-                                                        if (lukija_->name() == "parkingFacilityName"){
-                                                            //qDebug() << "Halli: " << lukija_->readElementText();
-                                                        }else if( lukija_->name() == "totalParkingCapacity" ){
-                                                            //qDebug() << "Orkkeja mahtuu: "<< lukija_->readElementText();
-                                                        }
-                                                        else{
-                                                            lukija_->skipCurrentElement();
-                                                        }
-                                                    }
-                                                }else{
-                                                    lukija_->skipCurrentElement();
-                                                }
-                                            }
-                                        }else{
-                                            lukija_->skipCurrentElement();
-                                        }
-                                    }
-                                }else{
-                                     lukija_->skipCurrentElement();
-                                     //qDebug() << "skip 3";
-                                }
-                            }
-                        }else{
+                            return true;
+                        } else{
                             lukija_->skipCurrentElement();
-                            //qDebug() << "skip 2";
                         }
                     }
                 }else{
                     lukija_->skipCurrentElement();
-                    //qDebug() << "skip 1";
                 }
             }
         }
     }
+    return false;
 }
 
-QString XmlLukija::etsiHallinId(std::string halli)
+QString XmlLukija::etsiHallinId(QString halli)
 {
-    QString hallinNimi = QString::fromStdString(halli);
+    lueXmlTiedosto();
+    paivitaXmltiedot();
     QString id;
-    if( lukija_->readNextStartElement() ){
-        if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
-            while( lukija_->readNextStartElement() ){
-                if( lukija_->name() == "payloadPublication" ){
-                    while( lukija_->readNextStartElement() ){
-                        if( lukija_->name() == "genericPublicationExtension" ){
-                            while( lukija_->readNextStartElement() ){
-                                if( lukija_->name() == "parkingFacilityTablePublication" ){
-                                    while( lukija_->readNextStartElement() ){
-                                        if( lukija_->name() == "parkingFacilityTable" ){
-                                            while( lukija_->readNextStartElement()) {
-                                                if (lukija_->name() == "parkingFacility"){
-                                                    QString id = lukija_->attributes().value("id").toString();
-                                                    while( lukija_->readNextStartElement()) {
-                                                        if (lukija_->name() == "parkingFacilityName"){
-                                                            QString testattava = lukija_->readElementText();
-                                                            if (testattava == hallinNimi){
-                                                                qDebug() << "Oikea halli loytyi";
-                                                                return id;
-                                                            }
-                                                        }else{
-                                                            lukija_->skipCurrentElement();
-                                                        }
-                                                    }
-                                                }else{
-                                                    lukija_->skipCurrentElement();
-                                                }
-                                            }
-                                        }else{
-                                            lukija_->skipCurrentElement();
+    if (avaaHyodynnettavatTaulukot()){
+        while( lukija_->readNextStartElement() ){
+            if( lukija_->name() == "parkingFacilityTablePublication" ){
+                while( lukija_->readNextStartElement() ){
+                    if( lukija_->name() == "parkingFacilityTable" ){
+                        while( lukija_->readNextStartElement()) {
+                            if (lukija_->name() == "parkingFacility"){
+                                id = lukija_->attributes().value("id").toString();
+                                while( lukija_->readNextStartElement()) {
+                                    if (lukija_->name() == "parkingFacilityName"){
+                                        QString testattava = lukija_->readElementText();
+                                        if (testattava == halli){
+                                            return id;
                                         }
+                                    }else{
+                                        lukija_->skipCurrentElement();
                                     }
-                                }else{
-                                     lukija_->skipCurrentElement();
-                                     //qDebug() << "skip 3";
                                 }
+                            }else{
+                                lukija_->skipCurrentElement();
                             }
-                        }else{
-                            lukija_->skipCurrentElement();
-                            //qDebug() << "skip 2";
                         }
+                    }else{
+                        lukija_->skipCurrentElement();
                     }
-                }else{
-                    lukija_->skipCurrentElement();
-                    //qDebug() << "skip 1";
                 }
+            }else{
+                 lukija_->skipCurrentElement();
             }
         }
     }
 }
 
-void XmlLukija::haeTrendi()
+int XmlLukija::haeVaratutPaikat(QString id)
 {
-    QString id = etsiHallinId("VR Tampere");
-    qDebug() << id;
-    qDebug() <<lukija_->lineNumber();
-    if( lukija_->readNextStartElement() ){
-        if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
-            while( lukija_->readNextStartElement() ){
-                if( lukija_->name() == "payloadPublication" ){
-                    while( lukija_->readNextStartElement() ){
-                        if( lukija_->name() == "genericPublicationExtension" ){
-                            while( lukija_->readNextStartElement() ){
-                                if( lukija_->name() == "parkingFacilityTableStatusPublication" ){
-                                    while( lukija_->readNextStartElement() ){
-                                        if( lukija_->name() == "parkingFacilityStatus" ){
-                                            while( lukija_->readNextStartElement()) {
-                                                if (lukija_->name() == "parkingFacilityReference" and lukija_->attributes().value("id").toString()==id){
-                                                    qDebug() << "loytaa oikein hallin id:n perusteella";
-                                                }else{
-                                                    lukija_->skipCurrentElement();
-                                                }
-                                            }
-                                        }else{
-                                            lukija_->skipCurrentElement();
-                                        }
-                                    }
-                                }else{
-                                     lukija_->skipCurrentElement();
-                                }
+    paivitaXmltiedot();
+    if (avaaHyodynnettavatTaulukot()){
+        bool idLoydetty=false;
+        while( lukija_->readNextStartElement() ){
+            if( lukija_->name() == "parkingFacilityTableStatusPublication" ){
+                while( lukija_->readNextStartElement() ){
+                    if( lukija_->name() == "parkingFacilityStatus" ){
+                        while( lukija_->readNextStartElement()) {
+                            if (lukija_->name() == "parkingFacilityReference" and lukija_->attributes().value("id").toString()==id){
+                                idLoydetty=true;
+                                lukija_->skipCurrentElement();
+                            }else if(lukija_->name() == "totalNumberOfOccupiedParkingSpaces" and idLoydetty==true){
+                                int autolkm = lukija_->readElementText().toInt();
+                                return autolkm;
+                            }else{
+                                lukija_->skipCurrentElement();
                             }
-                        }else{
-                            lukija_->skipCurrentElement();
                         }
+                    }else{
+                        lukija_->skipCurrentElement();
                     }
-                }else{
-                    lukija_->skipCurrentElement();
                 }
+            }else{
+                 lukija_->skipCurrentElement();
             }
         }
     }
 }
-
-bool XmlLukija::onkoTaynna(std::string halli)
-{
-    if( lukija_->readNextStartElement() ){
-        if( lukija_->name() == "d2LogicaModel" ){ // Syvennyksittain
-            while( lukija_->readNextStartElement() ){
-                if( lukija_->name() == "payloadPublication" ){
-                    while( lukija_->readNextStartElement() ){
-                        if( lukija_->name() == "genericPublicationExtension" ){
-                            while( lukija_->readNextStartElement() ){
-                                if( lukija_->name() == "parkingFacilityTableStatusPublication" ){
-                                    while( lukija_->readNextStartElement() ){
-                                        if( lukija_->name() == "parkingFacilityStatus" ){
-                                            while( lukija_->readNextStartElement()) {
-                                                if (lukija_->name() == "parkingFacilityReference" and lukija_->attributes().value("id").toString()=="FNPK.12"){
-                                                    qDebug() << "id:"<< lukija_->attributes().value("id").toString();
-                                                    qDebug() << "rivilla" << lukija_->lineNumber();
-                                                }else{
-                                                    qDebug() << "skippaa referenssin rivilla" << lukija_->lineNumber();
-                                                    lukija_->skipCurrentElement();
-                                                }
-                                            }
-                                        }else{
-                                            lukija_->skipCurrentElement();
-                                            qDebug() << "skippaa statuksen rivilla" << lukija_->lineNumber();
-                                        }
-                                    }
-                                }else{
-                                     lukija_->skipCurrentElement();
-                                     //qDebug() << "skip 3";
-                                }
-                            }
-                        }else{
-                            lukija_->skipCurrentElement();
-                            //qDebug() << "skip 2";
-                        }
-                    }
-                }else{
-                    lukija_->skipCurrentElement();
-                    //qDebug() << "skip 1";
-                }
-            }
-        }
-    }
-}
-
 
 

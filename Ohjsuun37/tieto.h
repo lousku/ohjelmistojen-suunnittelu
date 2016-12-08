@@ -14,7 +14,7 @@ struct lauranTiedot {
     int MaxElama;
     int kantama;
     int nopeus;
-    int ammustiheys;    //ms eli mita pienempi, sita useammin voi ampua
+    int ammustiheys;    //millisekunteja ja mita pienempi, sita useammin voi ampua
     int teho;
 };
 
@@ -50,7 +50,7 @@ public:
 
     void asetaKantama(int kohde, int uusiArvo);
 
-    void asetaAmmusTiheys(int kohde, int uusiArvo);
+    void asetaAmmustiheys(int uusiArvo);
 
     void asetaPisteet(int Pisteet);
 

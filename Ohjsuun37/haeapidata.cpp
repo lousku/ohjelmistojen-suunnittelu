@@ -33,7 +33,9 @@ void haeAPIdata::replyFinished()
 
     //kirjoittaa vastauksen tiedostoon xml.xml
     //TÄHÄN VAADITAAN TARKKA XML TIEDOSTON POLKU!!!!
+
     QString fileName = "xml.xml";
+
     //avaa tiedoston
     QFile file(fileName);
     file.open(QIODevice::ReadWrite);
@@ -51,10 +53,4 @@ void haeAPIdata::replyFinished()
 
 
 }
-/*
-void haeAPIdata::parseXML(){
-    qDebug() << "Ready to parse" << endl;
-    QByteArray newData = vastaus_->readAll();
-    qDebug() << newData << endl;
-}
-*/
+
