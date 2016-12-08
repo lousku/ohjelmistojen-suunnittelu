@@ -21,10 +21,6 @@ ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* view, Tieto* tieto):
 
 }
 
-QQuickView *ParkkihallinRakentaja::annaNakyma()
-{
- return nakyma_;
-}
 
 QTimer* ParkkihallinRakentaja::alustaPelikello(){
     QTimer* pelikello = new QTimer();
@@ -147,7 +143,7 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
     return viholliset;
 }
 
-int ParkkihallinRakentaja::annaLauranElamataso()
+int ParkkihallinRakentaja::annaPisteet()
 {
-    return tieto_->annaLauranTiedot().MaxElama;
+    return tieto_->annaPisteet();
 }

@@ -10,7 +10,6 @@ class Kyborgi : public Tekoalylliset
 public:
     virtual ~Kyborgi();
     Kyborgi();
-    Kyborgi(double x, double y, int nopeus);
     Kyborgi(double x, double y,int elama, int nopeus, int teho, int iskuetaisyys);
     bool onkoLiikkeessa();
     virtual void asetaQMLosa(QObject* objekti);

@@ -2,10 +2,13 @@ import QtQuick 2.0
  import QtQuick.Controls 1.4
 
 Rectangle {
+    width: 500
+    height: 500
+
     anchors.left: parent.left; anchors.top: parent.top;
     anchors.right: parent.right; anchors.bottom: parent.bottom;
     anchors.rightMargin: 50; anchors.bottomMargin: 50;
-    anchors.leftMargin: 100; anchors.topMargin: 100;
+    anchors.leftMargin: 150; anchors.topMargin: 100;
 
     Image {
         id: karttaKuva

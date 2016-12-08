@@ -10,8 +10,8 @@ Toimija::~Toimija()
     delete QMLosa_;
 }
 
-Toimija::Toimija():
-    sijainti_(0,0), elamataso_(100), teho_(1), nopeus_(1), paamaara_(0,0)
+Toimija::Toimija()
+    //sijainti_(0,0), elamataso_(100), teho_(1), nopeus_(1), paamaara_(0,0)
 {
 
 }
@@ -116,7 +116,7 @@ void Toimija::paivitaTiedot()
 
 }
 
-void Toimija::asetaAmpumavalmiiksi()
+/*void Toimija::asetaAmpumavalmiiksi()
 {
     ampumavalmis_ = true;
     qDebug() << "Ampumavalmis";
@@ -131,7 +131,7 @@ bool Toimija::ampumavalmis() const
 void Toimija::asetaAmpumavalmis(bool ampumavalmis)
 {
     ampumavalmis_ = ampumavalmis;
-}
+}*/
 
 bool Toimija::asetaPaamaara(Sijainti sijainti)
 {

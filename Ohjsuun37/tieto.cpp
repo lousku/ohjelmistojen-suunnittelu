@@ -1,12 +1,12 @@
 #include "tieto.h"
 
 Tieto::Tieto():
-    pisteet_(0)
+    pisteet_(1000)
 {
     //luo lukija olion ja kutsuu lukufunktiota.
     lukija_ = new XmlLukija();
 
-    lukija_->lueXmlTiedosto();
+    //lukija_->lueXmlTiedosto();
 
     //TODO esim tänne vakioiden käyttöä
 
@@ -38,7 +38,7 @@ Tieto::Tieto():
     while(!in.atEnd()) {
         if (rivi == ""){
             //luodaan uus kentta
-            kentanTiedot lisattava;
+            kentanTiedot lisattava = kentanTiedot();
             lisattava.vihollistenElama = 100;
             lisattava.vihollistenNopeus = 1;
             lisattava.vihollistenTeho = 1;
@@ -91,18 +91,58 @@ kentanTiedot Tieto::annaKentantiedot(int kentanNumero)
     return kenttienTiedot_.at(kentanNumero);
 }
 
-
-
-
-
-void Tieto::setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot)
+void Tieto::asetaNopeus(int kohde, int uusiArvo)
 {
-    kyborgienTiedot_ = kyborgienTiedot;
+    if(kohde == 0 ){
+        lauranTiedot_.nopeus = uusiArvo;
+    }
+    else{
+        kyborgienTiedot_[kohde - 1].nopeus = uusiArvo;
+    }
 }
 
 
-
-void Tieto::setLauranTiedot(const lauranTiedot &lauranTiedot)
+void Tieto::asetaTeho(int kohde, int uusiArvo)
 {
-    lauranTiedot_ = lauranTiedot;
+    if(kohde == 0 ){
+        lauranTiedot_.teho = uusiArvo;
+    }
+    else{
+        kyborgienTiedot_[kohde - 1].teho = uusiArvo;
+    }
 }
+
+//kohde: 0=Laura, 1= kyborgi1, 2=kyborgi2, 3= kyborgi3
+void Tieto::asetaElama(int kohde, int uusiArvo)
+
+{
+    if(kohde == 0 ){
+        lauranTiedot_.MaxElama = uusiArvo;
+    }
+    else{
+        kyborgienTiedot_[kohde - 1].MaxElama = uusiArvo;
+    }
+}
+
+void Tieto::asetaKantama(int kohde, int uusiArvo)
+{
+    if(kohde == 0 ){
+        lauranTiedot_.kantama = uusiArvo;
+    }
+    else{
+        kyborgienTiedot_[kohde - 1].iskuetaisyys = uusiArvo;
+    }
+}
+
+void Tieto::asetaAmmustiheys(int uusiArvo)
+{
+    // kyborgeillekkin toteutus? -MS
+    lauranTiedot_.ammustiheys = uusiArvo;
+}
+
+void Tieto::asetaPisteet(int Pisteet)
+{
+    pisteet_ = Pisteet;
+}
+
+

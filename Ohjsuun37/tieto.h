@@ -14,7 +14,7 @@ struct lauranTiedot {
     int MaxElama;
     int kantama;
     int nopeus;
-    int ammustiheys;    //ms eli mita pienempi, sita useammin voi ampua
+    int ammustiheys;    //millisekunteja ja mita pienempi, sita useammin voi ampua
     int teho;
 };
 
@@ -35,20 +35,25 @@ public:
 
     int annaPisteet() const;
 
-    QList<kyborginTiedot> annaKyborgienTiedot() const;
+    QList<kyborginTiedot> annaKyborgienTiedot()const;
 
     lauranTiedot annaLauranTiedot() const;
 
     kentanTiedot annaKentantiedot(int kentanNumero);
 
 
-    void asetaNopeus(int kohde);
+    void asetaNopeus(int kohde, int uusiArvo);
 
-    void asetaTeho(int kohde);
+    void asetaTeho(int kohde, int uusiArvo);
 
-    void setKyborgienTiedot(const QList<kyborginTiedot> &kyborgienTiedot);
+    void asetaElama(int kohde, int uusiArvo);
 
-    void setLauranTiedot(const lauranTiedot &lauranTiedot);
+    void asetaKantama(int kohde, int uusiArvo);
+
+    void asetaAmmustiheys(int uusiArvo);
+
+    void asetaPisteet(int Pisteet);
+
 
 private:
 

@@ -111,7 +111,6 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
     double etaisyys = toimija->annaSijainti().laskeEtaisyys(paamaara);
     if (etaisyys < toimija->annaNopeus()){
 
-        //huomiona sellainen, että voiko tänne edes joutua, miten paamaara asetettaisiin esteen paalle -IH
         if (not onkoEstetta(paamaara.annaX(), paamaara.annaY())){
             return toimija->liikuta(paamaara);
         }else{
@@ -241,7 +240,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
                 lahinNakyva = nakyvatToimijat.at(0);
             }
             //jos useampi nakyvissa, etsitaan lahin
-            else if(nakyvatToimijat.size() > 1){
+            else {
                 double etaisyysLahimpaan = 1000;   //alustettu yli pelilaudan koon
 
                 for(int i = 0; i < nakyvatToimijat.size(); i++){
@@ -482,9 +481,18 @@ void Logiikka::lopetaPeli(bool voitettu)
     pelikello_->stop();
 
     if (not voitettu) {
-        //TODO PELI LOPPU MITÄ NYT
+        QObject *mainView = nakyma_->rootObject();
+        mainView->setProperty("state", "HAVITTY");
+        QString teksti = mainView->property("lopputeksti").toString() + QString::number(parkkihalli_->annaPisteet());
+        mainView->setProperty("lopputeksti", teksti);
         return;
     }
+    //mainView->setProperty("state", "HAVITTY");
+
+    //TODO mitä näytetään odottaessa?
+    QThread::sleep(2);
+
+    //TODO muuten odottaa hetken kentän infojen kanssa ennen kuin siirtyy näkymään
 
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
@@ -509,19 +517,26 @@ void Logiikka::lopetaPeli(bool voitettu)
         viholliset_.removeAt(i);
     }
 
-    //TODO alusta lauran liike yms nolliin
+    QObject *banneri = nakyma_->rootObject()->findChild<QObject*>("leftBanner");
+
+    for (int i = 1; i < 4; i++){
+        QString tunnus = "kyborgi" + QString::number(i);
+        QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunnus);
+
+        kuvake->setProperty("height", 60);
+        kuvake->setProperty("width", 60);
+    }
+
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
     gameWindow->setProperty("lauraLiikkuuYlos", false);
     gameWindow->setProperty("lauraLiikkuuAlas", false);
     gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
     gameWindow->setProperty("lauraLiikkuuOikealle", false);
-
 }
 
 void Logiikka::luoPeli(int numero)
 {
-    //TODO mistä kentan numero?
     esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);
 
 
@@ -539,6 +554,11 @@ void Logiikka::luoPeli(int numero)
     viholliset_ = parkkihalli_->lisaaViholliset(numero);
 
     pelikello_->start();
+
+    // Tama sinne missa halutaan paivittaa parkkihallille uudet tiedot
+    XmlLukija *lukija = new XmlLukija();
+    lukija->paivitaXmltiedot();
+
 }
 
 void Logiikka::luoAmmus()
@@ -557,12 +577,11 @@ void Logiikka::luoAmmus()
 
             //asetetaan paamaara ammukselle
             Sijainti paamaara(hiiriX_-10,hiiriY_-10);
-            qDebug() << "'PAM' sano sorsa ku pyssy laukes";
-            qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
+            //qDebug() << "'PAM' sano sorsa ku pyssy laukes";
+            //qDebug() << "Ammuksen paamaara: " << hiiriX_ <<", " << hiiriY_;
             ammus->asetaPaamaara(paamaara);
 
             ammukset_.append(ammus);
-            laura_->asetaAmpumavalmis(false);
             laura_->ampuu(); //viestittää lauralle että ammuttiin, käynnisttää ampumakellon
 
      }
@@ -573,6 +592,22 @@ void Logiikka::luoAmmus()
 
 void Logiikka::asetaKaskettava(QString tunniste)
 {
+    QObject *banneri = nakyma_->rootObject()->findChild<QObject*>("leftBanner");
+
+    //TODO minne nää?
+    for (int i = 1; i < 4; i++){
+        QString tunnus = "kyborgi" + QString::number(i);
+        QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunnus);
+
+        kuvake->setProperty("height", 60);
+        kuvake->setProperty("width", 60);
+    }
+
+    QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunniste);
+
+    kuvake->setProperty("height", 80);
+    kuvake->setProperty("width", 80);
+
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
@@ -652,8 +687,8 @@ void Logiikka::suoritaTekoaly()
 
 }
 
-/* TODO selvitys apufunktiomahdollisuudesta
-void tyhjennaLista(&QList<Toimija*> lista){
+// TODO selvitys apufunktiomahdollisuudesta
+/*void tyhjennaLista(&QList<Toimija*> lista){
     for( int i = lista.size(); i > 0; --i ){
         Toimija* osa = lista.at(i);
         listaremoveAt(i);

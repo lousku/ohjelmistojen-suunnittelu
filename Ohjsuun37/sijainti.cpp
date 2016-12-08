@@ -3,8 +3,8 @@
 #include <QDebug>
 #include <QtMath>
 
-Sijainti::Sijainti():
-    paikkaX_(0), paikkaY_(0)
+Sijainti::Sijainti()
+    //paikkaX_(0), paikkaY_(0)
 {
 
 }
@@ -13,16 +13,6 @@ Sijainti::Sijainti(double x, double y):
     paikkaX_(x), paikkaY_(y)
 {
 
-}
-
-void Sijainti::asetaX(double uusi)
-{
-    paikkaX_ = uusi;
-}
-
-void Sijainti::asetaY(double uusi)
-{
-    paikkaY_ = uusi;
 }
 
 //oletus, ettei tata kutsuta mikali siirtyma on 0!

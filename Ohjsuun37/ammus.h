@@ -7,6 +7,7 @@ class Ammus : public Tekoalylliset
 {
 public:
     virtual ~Ammus();
+    Ammus();
     Ammus(Sijainti, int teho);
     bool asetaSuunta(double suunta);
     void liikutaAmmusta();

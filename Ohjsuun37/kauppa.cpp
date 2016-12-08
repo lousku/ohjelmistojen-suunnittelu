@@ -1,40 +1,102 @@
 #include "kauppa.h"
 #include <QDebug>
 
-void Kauppa::elamaaLisaa(int kohde)
+//kohde: 0=Laura, 1=kyborgi1, 2= kyborgi2 3= kyborgi3
+bool Kauppa::elamaaLisaa(int kohde)
 {
-
     //lisataan lauralle max elamia
     if(kohde == 0){
-        lauranTiedot uudetTiedot = Tieto_->annaLauranTiedot();
-        // lisataan max elamia 10:lla
-        uudetTiedot.MaxElama =Tieto_->annaLauranTiedot().MaxElama +10 ;
+        int elama = Tieto_->annaLauranTiedot().MaxElama;
+        if (elama + 10 < 500){
+            Tieto_->asetaElama(kohde, elama +10);
+            return true;
+        }
+        return false;
     }
-    else if(kohde == 1){
-        QList<kyborginTiedot> uudetTiedot;
-        kyborginTiedot kyborgi;
-        kyborgi.MaxElama = Tieto_->annaKyborgienTiedot().at(0).MaxElama+10;
-        kyborgi.iskuetaisyys = 5;
-        kyborgi.nopeus = 5;
-        kyborgi.teho = 5;
-        uudetTiedot.append(kyborgi);
-        uudetTiedot.append((Tieto_->annaKyborgienTiedot().at(1) ));
-        uudetTiedot.append((Tieto_->annaKyborgienTiedot().at(2) ));
-
-        Tieto_->setKyborgienTiedot(uudetTiedot );
-        //lisataan 1-kyborgille max elamia 10:lla
+    else {
+        int elama = Tieto_->annaKyborgienTiedot().at(kohde-1).MaxElama;
+        if (elama + 10 < 400){   //TODO rajan valinta
+            Tieto_->asetaElama(kohde, elama + 10);
+            qDebug() << elama + 10;
+            return true;
+        }
+        return false;
     }
     //TODO loppujen kyborgien toteutus
 }
 
-void Kauppa::kantamaaLisaa()
-{
 
+bool Kauppa::kantamaaLisaa(int kohde)
+{   //kasvattaa lauran aseen kantamaa 10 pisteellä
+    if(kohde == 0){
+        int kantama =  Tieto_->annaLauranTiedot().kantama;
+        if (kantama + 10 < 300){
+            Tieto_->asetaKantama(kohde, kantama + 10);
+            return true;
+        }
+        return false;
+    }
+    //kasvattaa kyborgin iskuetäisyyttä kahdella pisteellä
+    else{
+        int iskuetaisyys = Tieto_->annaKyborgienTiedot().at(kohde -1).iskuetaisyys;
+        if (iskuetaisyys + 2 < 40){
+            Tieto_->asetaElama(kohde, iskuetaisyys + 2);
+            return true;
+        }
+        return false;
+    }
+}
+//kasvattaa kohteen tehoa yhdellä pisteellä
+bool Kauppa::tehoaLisaa(int kohde)
+{
+    if(kohde == 0){
+        int teho = Tieto_->annaLauranTiedot().teho;
+        if (teho + 1 < 20){
+            Tieto_->asetaTeho(kohde, teho + 1);
+            return true;
+        }
+        return false;
+    }
+    else{
+        int teho = Tieto_->annaKyborgienTiedot().at(kohde - 1).teho;
+        if (teho + 1 < 15){
+            Tieto_->asetaTeho(kohde, teho+1);
+            return true;
+        }
+        return false;
+    }
 }
 
-void Kauppa::nopeuttaLisaa()
+// mahdollistaa ampumisen 100ms aikaisemmin
+bool Kauppa::ammustiheyttaLisaa()
 {
+    int ammustiheys = Tieto_->annaLauranTiedot().ammustiheys-100;
+    if (ammustiheys - 100 > 0){
+        Tieto_->asetaAmmustiheys(ammustiheys - 100);
+        return true;
+    }
+    return false;
+}
 
+//lisaa kohteelle nopeutta yhden pisteen verran
+bool Kauppa::nopeuttaLisaa(int kohde)
+{
+    if(kohde == 0){
+        int nopeus = Tieto_->annaLauranTiedot().nopeus;
+        if (nopeus + 1 < 20){
+            Tieto_->asetaNopeus(kohde, nopeus + 1);
+            return true;
+        }
+        return false;
+    }
+    else{
+        int nopeus = Tieto_->annaKyborgienTiedot().at(kohde - 1).nopeus;
+        if (nopeus + 1 < 15){
+            Tieto_->asetaNopeus(kohde, nopeus + 1);
+            return true;
+        }
+        return false;
+    }
 }
 
 Kauppa::Kauppa()
