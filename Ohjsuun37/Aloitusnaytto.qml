@@ -12,8 +12,8 @@ Item {
         height: 50
         text: "Aloita peli"
         onClicked: {
-            if(parkkihalliId.state == "ALOITUS"){
-                parkkihalliId.state = "NORMAL";
+            if(paaNakyma.state == "ALOITUS"){
+                paaNakyma.state = "NORMAL";
             }
         }
     }

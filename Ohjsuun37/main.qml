@@ -2,7 +2,7 @@ import QtQuick 2.7
 import QtQuick.Window 2.2
 
 Item {
-    id: parkkihalliId    //TODO FIKSUMPI NIMI!!! -IH
+    id: paaNakyma
     width: 700
     height: 650
     state: "ALOITUS"
@@ -48,9 +48,10 @@ Item {
             PropertyChanges { target: gameWindow; visible:true}
             PropertyChanges { target: topBanner; visible: true}
 
-            //huomioidaan painallukset vain peliikkunassa -MS
             PropertyChanges { target: gameWindow; focus: true }
             PropertyChanges { target: leftBanner; aktiivinen: true }
+
+
 
         }
     ]

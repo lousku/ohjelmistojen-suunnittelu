@@ -24,7 +24,7 @@ SOURCES += main.cpp \
 
 RESOURCES += qml.qrc
 
-OTHER_FILES += xml.xml
+OTHER_FILES +=
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -34,8 +34,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES += \
-    xml.xml
+DISTFILES +=
 
 HEADERS += \
     toimija.h \

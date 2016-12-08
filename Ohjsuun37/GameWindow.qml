@@ -21,7 +21,7 @@ Rectangle {
 
     //TODO liikkuminen vinottain kahdella napilla
     Keys.onPressed: {
-        if (event.key == Qt.Key_W){
+        if (event.key === Qt.Key_W){
             if(event.isAutoRepeat) return
             lauraLiikkuuYlos = true;
         }

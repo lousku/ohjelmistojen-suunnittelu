@@ -1,9 +1,10 @@
 #include "kauppa.h"
 #include <QDebug>
 
+//TODO rajojen valinta
 //kohde: 0=Laura, 1=kyborgi1, 2= kyborgi2 3= kyborgi3
 bool Kauppa::elamaaLisaa(int kohde)
-{
+{   qDebug() << kohde;
     //lisataan lauralle max elamia
     if(kohde == 0){
         int elama = Tieto_->annaLauranTiedot().MaxElama;
@@ -15,9 +16,8 @@ bool Kauppa::elamaaLisaa(int kohde)
     }
     else {
         int elama = Tieto_->annaKyborgienTiedot().at(kohde-1).MaxElama;
-        if (elama + 10 < 400){   //TODO rajan valinta
+        if (elama + 10 < 400){
             Tieto_->asetaElama(kohde, elama + 10);
-            qDebug() << elama + 10;
             return true;
         }
         return false;

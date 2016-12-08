@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
     Tieto* tieto = new Tieto();
 
     Logiikka logiikka(view, tieto);
+    Kauppa kauppa(tieto);
 
     view->engine()->rootContext()->setContextProperty("logiikka", &(logiikka));
-    Kauppa kauppa(tieto);
     view->engine()->rootContext()->setContextProperty("kauppa", &(kauppa));
 
     return app.exec();

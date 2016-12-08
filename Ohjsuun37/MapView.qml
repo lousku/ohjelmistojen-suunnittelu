@@ -11,7 +11,6 @@ Rectangle {
     anchors.leftMargin: 150; anchors.topMargin: 100;
 
     Image {
-        id: karttaKuva
         source: "qrc:graphics/TampereMap"
         anchors.fill: parent
     }
@@ -22,16 +21,16 @@ Rectangle {
         width: 50
         text: "kauppa"
         onClicked: {
-            if(parkkihalliId.state == "NORMAL"){
-                parkkihalliId.state = "KAUPPA";
+            if(paaNakyma.state == "NORMAL"){
+                paaNakyma.state = "KAUPPA";
             }
             else{
-                parkkihalliId.state = "NORMAL";
+                paaNakyma.state = "NORMAL";
             }
 
         }
     }
-    //TODO näiden lisäys c++ puolelle
+    //TODO hallien sijoittelu oikeille paikoille!!
     Pysakointihalli{
         x:150
         y:150
@@ -61,6 +60,4 @@ Rectangle {
         y:410
         hallinNumero: 4
     }
-
-
 }

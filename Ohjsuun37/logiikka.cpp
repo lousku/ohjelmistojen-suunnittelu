@@ -554,14 +554,6 @@ void Logiikka::luoPeli(int numero)
     viholliset_ = parkkihalli_->lisaaViholliset(numero);
 
     pelikello_->start();
-
-    // Tassa xml-lukijan rajapintafunktiot
-    // halli-id yhdistelman voisi tallentaa ja hakea sitten idlla varattuja paikkoja
-    XmlLukija *lukija = new XmlLukija();
-    QString id = lukija->etsiHallinId("P-Tullintori");
-    qDebug() << "id: " << id;
-    qDebug() << "autoja parkissa: " <<lukija->haeVaratutPaikat(id);
-
 }
 
 void Logiikka::luoAmmus()
