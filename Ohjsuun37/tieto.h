@@ -15,7 +15,7 @@ struct lauranTiedot {
     int MaxElama;
     int kantama;
     int nopeus;
-    int ammustiheys;    //millisekunteja ja mita pienempi, sita useammin voi ampua
+    int ammustiheys;    //Millisekunteja. Mita pienempi, sita useammin voi ampua.
     int teho;
 };
 
@@ -47,7 +47,6 @@ public:
 
     lauranTiedot annaLauranTiedot() const;
 
-    //kentanTiedot annaKentantiedot(int kentanNumero);
     kentanTiedot annaKentantiedot(int kentanNumero) const;
 
     void asetaNopeus(int kohde, int uusiArvo);
@@ -77,7 +76,6 @@ private:
     QList<kyborginTiedot> kyborgienTiedot_;
     QList<kentanTiedot> kenttienTiedot_;
     XmlLukija *lukija_;
-    //paivitysaika johonki ylos?
 
     haeAPIdata* apiData_;
     QList<QObject*> Toimijalista_;

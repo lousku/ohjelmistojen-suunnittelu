@@ -30,7 +30,6 @@ private:
     // Avataan kaikilla hyodynnettavilla tiedostoilla oleva sama alkupolku
     bool avaaHyodynnettavatTaulukot();
 
-    // tarvitaanko/ onko hyodyllinen taalla
     QXmlStreamReader *lukija_;
     QFile *xml_;
 

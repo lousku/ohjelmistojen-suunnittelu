@@ -4,7 +4,6 @@
 #include <QtMath>
 
 Sijainti::Sijainti()
-    //paikkaX_(0), paikkaY_(0)
 {
 
 }
@@ -21,11 +20,9 @@ bool Sijainti::liikutaX(double siirtyma)
     //tata ei enaan pitaisi tosin tapahtua-IH
     if (paikkaX_ + siirtyma < 0){
         paikkaX_ = 0;
-        qDebug() << "koittaa liikkua yli, x 0, ei pitaisi tehda nain!";
         return false;
     }else if (paikkaX_ + siirtyma > 480){
         paikkaX_ = 480;
-        qDebug() << "koittaa liikkua yli, x 480, ei pitaisi tehda nain!";
         return false;
     }else{
         paikkaX_ += siirtyma;
@@ -37,11 +34,9 @@ bool Sijainti::liikutaY(double siirtyma)
 {
     if (paikkaY_ + siirtyma < 0){
         paikkaY_ = 0;
-        qDebug() << "koittaa liikkua yli, y 0, ei pitaisi tehda nain!";
         return false;
     }else if (paikkaY_ + siirtyma > 480){
         paikkaY_ = 480;
-        qDebug() << "koittaa liikkua yli, y 480, ei pitaisi tehda nain!";
         return false;
     }else{
         paikkaY_ += siirtyma;

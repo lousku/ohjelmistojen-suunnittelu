@@ -71,12 +71,6 @@ bool Kauppa::ammustiheyttaLisaa()
     int ammustiheys = Tieto_->annaLauranTiedot().ammustiheys;
     if (ammustiheys - 100 > 0){
         Tieto_->asetaAmmustiheys(ammustiheys - 100);
-
-
-        /*if (LauranTiedot != nullptr){
-            qDebug() << "jihuu";
-        }*/
-
         return true;
     }
     return false;

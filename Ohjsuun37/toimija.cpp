@@ -112,7 +112,7 @@ void Toimija::paivitaTiedot()
     QMLosa_->setProperty("x", sijainti_.annaX());
     QMLosa_->setProperty("y", sijainti_.annaY());
     //QML kayttaa asteita, c++ radiaaneja AH
-    QMLosa_->setProperty("text", elamataso_); //kaytan debug -MS
+    QMLosa_->setProperty("text", elamataso_);
 
 }
 

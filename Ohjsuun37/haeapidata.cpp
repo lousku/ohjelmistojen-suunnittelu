@@ -53,13 +53,11 @@ void haeAPIdata::replyFinished(QNetworkReply* reply)
     }
     //-1 palautuu errorin merkiksi -IH
     if (file.write(newData) == -1){
-        qDebug() << "vituiksmän";
+        // ei käytännössä pitäisi tulla koskaan
+        qDebug() << "tiedostoon ei pystytä kirjoittamaan";
     }
 
     if (file.commit()){
-        qDebug() << "valmis";
-    }else {
-        qDebug() << "nyyh";
     }
 }
 void haeAPIdata::errorOnReply(QNetworkReply::NetworkError e)

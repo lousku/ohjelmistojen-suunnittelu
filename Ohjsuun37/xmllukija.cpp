@@ -2,22 +2,6 @@
 #include <QObject>
 
 
-//TODO:
-// Katso Miikan kanssa paivitykset netista, etta ovat vaan tarvittavissa kohdissa
-// sis. lueXmlTiedosto, paivitaXmltiedot ja haeApiData
-//
-// Miksi paivitaXmltiedot taytyy kutsua etsiHallinId ja haeVaratutPaikat sisalla uudestaan (muuten kaatuu)
-// vaikka lueXmlTiedot slotti johtaa paivitatietoihin?
-//
-// Paivitysajat: Nyt haeVaratutPaikat hakee tiedot liian aikasin ks. debugviestit
-//
-// Virhetarkastelu ja palautukset, jos id tai varatut paikat eivat loydy
-//
-// Rajapintafunktioita kutsuttu logiikan luo pelissa
-//
-// Yleinen xml-polku
-//-AH
-
 XmlLukija::XmlLukija():
     lukija_(nullptr), xml_(nullptr)
 {

@@ -36,7 +36,6 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     //alustetaan Laura
     Laura* laura = new Laura(aloitusX_, aloitusY_.at(0), tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
 
-                                                  //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
     QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
@@ -44,7 +43,6 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     object->setParent(gameWindow);
     laura->asetaQMLosa(object);
 
-    //kokeilen lauran nopeutta, tätä pitää miettiä miten kehittyy -MS
     laura->asetaNopeus(2);
     return laura;
 }
