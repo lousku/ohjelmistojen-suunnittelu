@@ -1,6 +1,7 @@
 #ifndef TIETO_H
 #define TIETO_H
 #include <QList>
+#include <QQuickView>
 #include "xmllukija.h"
 
 struct kyborginTiedot {
@@ -34,17 +35,20 @@ class Tieto
 public:
     Tieto();
 
+    Tieto(QQuickView* view);
+
     void paivitaXmlTiedosto();
 
-    int haeVihollistenMaara(int kentanNumero);
+    int haeVihollistenMaara(int kentanNumero) const;
 
     int annaPisteet() const;
 
-    QList<kyborginTiedot> annaKyborgienTiedot()const;
+    QList<kyborginTiedot> annaKyborgienTiedot() const;
 
     lauranTiedot annaLauranTiedot() const;
 
-    kentanTiedot annaKentantiedot(int kentanNumero);
+    //kentanTiedot annaKentantiedot(int kentanNumero);
+    kentanTiedot annaKentantiedot(int kentanNumero) const;
 
     void asetaNopeus(int kohde, int uusiArvo);
 
@@ -60,6 +64,10 @@ public:
 
     void asetaPisteet(int Pisteet);
 
+    void asetaTekstit();
+
+    void maksaPisteilla();
+
 
 private:
 
@@ -72,6 +80,7 @@ private:
     //paivitysaika johonki ylos?
 
     haeAPIdata* apiData_;
+    QList<QObject*> Toimijalista_;
 
 };
 

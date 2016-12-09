@@ -53,9 +53,9 @@ Rectangle {
                 text: "Tehoa"
                 onClicked: {
                     if (kauppa.tehoaLisaa(index)){
-                        console.log(kyseessa + "lle ostettu tehoa")
+                        kauppaTeksti.text = kyseessa + "lle ostettu tehoa"
                     }else{
-                        console.log(kyseessa + "n teho on jo täynnä")
+                        kauppaTeksti.text = kyseessa + "n teho on jo täynnä"
                     }
                 }
             }
@@ -65,9 +65,9 @@ Rectangle {
                 text: "Nopeutta"
                 onClicked: {
                     if (kauppa.nopeuttaLisaa(index)){
-                        console.log(kyseessa + "lle ostettu nopeutta")
+                        kauppaTeksti.text = kyseessa + "lle ostettu nopeutta"
                     }else{
-                        console.log(kyseessa + "n on jo nopein mahdollinen")
+                        kauppaTeksti.text = kyseessa + "n on jo nopein mahdollinen"
                     }
                 }
             }
@@ -76,9 +76,9 @@ Rectangle {
                 text: "Kantamaa"
                 onClicked: {
                     if (kauppa.kantamaaLisaa(index)){
-                        console.log(kyseessa + "lle ostettu kantamaa")
+                        kauppaTeksti.text = kyseessa + "lle ostettu kantamaa"
                     }else{
-                        console.log(kyseessa + "n kantama on maksimissa")
+                        kauppaTeksti.text = kyseessa + "n kantama on maksimissa"
                     }
                 }
             }
@@ -93,18 +93,15 @@ Rectangle {
                     }
                 }
             }
-
         }
     }
-
-
 
     Button{
         x:55
         y:380
         height: 37
         width: 70
-        text: "Lataus\nnopeutta"
+        text: "Lataus-\nnopeutta"
         onClicked: {
             if (kauppa.ammustiheyttaLisaa()){
                 kauppaTeksti.text = "Lauralle ostettu nopeutta"
@@ -120,6 +117,4 @@ Rectangle {
         text: qsTr("")
         anchors.horizontalCenter: parent.horizontalCenter
     }
-
-
 }

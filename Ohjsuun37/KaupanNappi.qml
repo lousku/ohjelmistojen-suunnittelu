@@ -9,12 +9,11 @@ Button{
 
     function kenenNappi()
     {
-        var kyseessa = "Laura"
         if(tunniste != 0)
         {
-            kyseessa = "Kyborgi"+tunniste
+            return "Kyborgi"+tunniste
         }
-        return kyseessa
+        return "Laura"
     }
     anchors.horizontalCenter: parent.horizontalCenter
     height: 20

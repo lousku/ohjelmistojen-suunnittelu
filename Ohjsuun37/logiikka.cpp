@@ -486,7 +486,7 @@ void Logiikka::lopetaPeli(bool voitettu)
         return;
     }
     qDebug() << "pelin loputtua kentiä: " << pelatutKentat_;
-     if(pelatutKentat_ == 1){
+     if(pelatutKentat_ == 5){
          QObject *mainView = nakyma_->rootObject();
          mainView->setProperty("state", "VOITETTU");
         qDebug("voitit PELIN");
@@ -498,9 +498,7 @@ void Logiikka::lopetaPeli(bool voitettu)
     //laittaa xml paivityksen pyorimaan taustalle.
     parkkihalli_->paivitaTiedot();
 
-    //mainView->setProperty("state", "HAVITTY");
 
-    //TODO mitä näytetään odottaessa?
     QThread::sleep(2);
 
     //TODO muuten odottaa hetken kentän infojen kanssa ennen kuin siirtyy näkymään
