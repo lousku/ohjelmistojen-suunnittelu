@@ -57,7 +57,6 @@ bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
     if (kyborgi->onkoLiikkeessa()){
         if (not liikutaToimijaa(kyborgi)){
             kyborgi->asetaPaamaara(kyborgi->annaSijainti());
-            qDebug() << "jee";
         }
     }else{
         Toimija* kohde = iskuetaisyydella(kyborgi);
@@ -189,7 +188,6 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         {
 
             vihollinen->asetaLiikkeidenMaara(0);
-            qDebug() << "vapautettu    1.0";
         }
         else
         {
@@ -240,7 +238,6 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
             }
 
             vihollinen->asetaPaamaara(lahinNakyva->annaSijainti());
-            //qDebug() << "Vihu näkee siut!";
 
             liikutaToimijaa(vihollinen);
 
@@ -456,7 +453,6 @@ void Logiikka::lopetaPeli(bool voitettu)
         mainView->setProperty("lopputeksti", teksti);
         return;
     }
-    qDebug() << "pelin loputtua kentiä: " << pelatutKentat_;
      if(pelatutKentat_ == 5){
          QObject *mainView = nakyma_->rootObject();
          mainView->setProperty("state", "VOITETTU");
@@ -507,7 +503,6 @@ void Logiikka::luoPeli(int numero)
 {
     if(parkkihalli_->onkoPelattu(numero) == false ){
         pelatutKentat_++;
-        qDebug() << "LAPAISTYJAKENTTIA: " <<pelatutKentat_;
     }
 
     esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);

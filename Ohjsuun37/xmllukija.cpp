@@ -18,10 +18,12 @@ bool XmlLukija::paivitaXmltiedot()
 {
 
     delete xml_;
-    xml_ = new QFile("xml.xml");
+
+    QString path = QDir::currentPath();
+    path.append("/xml.xml");
+    xml_ = new QFile(path);
 
     if( !xml_->open(QIODevice::ReadOnly | QIODevice::Text )){
-        qDebug() << "Virhe xml-tiedoston lukemisessa" << xml_->errorString();
         return false;
     }
 
