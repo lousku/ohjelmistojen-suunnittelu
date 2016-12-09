@@ -22,7 +22,7 @@ bool Kauppa::elamaaLisaa(int kohde)
         }
         return false;
     }
-    //TODO loppujen kyborgien toteutus
+    pisteetChanged();
 }
 
 

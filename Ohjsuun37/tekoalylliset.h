@@ -10,7 +10,7 @@ public:
     virtual ~Tekoalylliset();
     Tekoalylliset();
     Tekoalylliset(double x, double y, int elama, int nopeus, int teho, int iskuetaisyys);
-    int annaIskuetaisyys();
+    int annaIskuetaisyys() const;
 private:
     int iskuetaisyys_;
 };

@@ -17,7 +17,6 @@ ParkkihallinRakentaja::ParkkihallinRakentaja()
 ParkkihallinRakentaja::ParkkihallinRakentaja(QQuickView* view, Tieto* tieto):
     nakyma_(view), tieto_(tieto)
 {
-    //tieto_ ->lueXmlTiedot();
 
 }
 
@@ -35,8 +34,7 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     lauranTiedot tiedot = tieto_->annaLauranTiedot();
 
     //alustetaan Laura
-    Laura* laura = new Laura(60,20, tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
-    //alustetaan Laura    //TODO onko sijainti 40,40 hyvä?
+    Laura* laura = new Laura(aloitusY_, aloitusX_.at(0), tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
 
                                                   //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
@@ -62,7 +60,7 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     for (int i = 1; i < 4; i++){
         //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
 
-        Kyborgi *kyborgi = new Kyborgi(i*100, i*60, tiedot[i-1].MaxElama, tiedot[i-1].nopeus,
+        Kyborgi *kyborgi = new Kyborgi(aloitusY_, aloitusX_.at(i), tiedot[i-1].MaxElama, tiedot[i-1].nopeus,
                             tiedot[i-1].teho, tiedot[i-1].iskuetaisyys);
 
         QQmlComponent component(nakyma_->engine(), QUrl("qrc:/Kyborgi.qml"));
@@ -118,17 +116,19 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
                                         //TODO kentanNUMERO jostain
     kentanTiedot tiedot = tieto_->annaKentantiedot(numero);
 
-    int vihollistenMaara = tieto_->haeVihollistenMaara(tiedot.kentanNimi_);
-
-    qDebug() << vihollistenMaara << " vihollista";
+    int vihollistenMaara = tieto_->haeVihollistenMaara(numero);
 
     QList<QStringList> esteet = tiedot.sijainnit;
+
+    int maara = 0;
 
     for( int i=0; i<esteet.count(); ++i )
     {
         for( int j=0; j<esteet[i].count(); ++j )
         {
+
             if (esteet[i][j] == "2"){
+                maara++;
                 Vihollinen *vihollinen = new  Vihollinen(j*20,i*20,tiedot.vihollistenElama,
                                tiedot.vihollistenNopeus, tiedot.vihollistenTeho, tiedot.iskuetaisyys);
 
@@ -138,11 +138,14 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
                 vihollinen->asetaQMLosa(object);
 
                 viholliset.append(vihollinen);
+
+                if (maara == vihollistenMaara){
+                    return viholliset;
+                }
             }
         }
+
     }
-    //Miikan toteutus loppuu, tässä toteutuksessa pitäisi lopulta välittää estematriisi tälle funktiolle -MS
-    //tähän tyyliin vois lopulta lauran ja kyborgitkin lisätä -MS
 
     return viholliset;
 }

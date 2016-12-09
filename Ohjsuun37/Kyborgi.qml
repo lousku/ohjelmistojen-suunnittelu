@@ -3,7 +3,6 @@ import QtQuick 2.0
 Item {
     width: 20
     height: 20
-    objectName: tunniste
 
     property bool painettavissa: true
     property alias text: teksti.text

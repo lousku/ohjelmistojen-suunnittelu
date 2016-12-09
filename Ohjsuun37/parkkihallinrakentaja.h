@@ -31,6 +31,9 @@ private:
     QQuickView* nakyma_;
     Tieto* tieto_;
 
+    int const aloitusY_  = 20;
+    QList<int> const aloitusX_ = {20, 60, 100, 140};
+
 };
 
 #endif // PARKKIHALLINRAKENTAJA_H

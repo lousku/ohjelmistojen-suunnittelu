@@ -31,5 +31,7 @@
         <file>graphics/Kauppa2.0.png</file>
         <file>PeliHavitty.qml</file>
         <file>KaupanNappi.qml</file>
+        <file>LauraTiedot.qml</file>
+        <file>Tiedot.qml</file>
     </qresource>
 </RCC>

@@ -9,7 +9,7 @@ public:
     virtual ~Vihollinen();
     Vihollinen();
     Vihollinen(double x, double y, int elama, int nopeus, int teho, int iskuetaisyys);
-    int annaLiikkeidenMaara();
+    int annaLiikkeidenMaara() const;
     void asetaLiikkeidenMaara(int maara);
 private:
     int liikkeidenMaara_;    //kaytetaan sijainnin paamaaran paivityksessa

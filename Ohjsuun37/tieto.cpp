@@ -16,14 +16,14 @@ Tieto::Tieto():
     lauranTiedot_.ammustiheys = 1000;
     lauranTiedot_.MaxElama = 200;
     lauranTiedot_.kantama = 100;
-    lauranTiedot_.nopeus = 1;
-    lauranTiedot_.teho = 100;
+    lauranTiedot_.nopeus = 2;
+    lauranTiedot_.teho = 20;
 
     for( int i=0; i < 3; ++i ){
         kyborginTiedot tieto;
         tieto.MaxElama = 100;
         tieto.nopeus = 3;
-        tieto.teho = 10;
+        tieto.teho = 3;
         tieto.iskuetaisyys = 10;
         kyborgienTiedot_.append(tieto);
     }
@@ -74,21 +74,36 @@ Tieto::Tieto():
 
 void Tieto::paivitaXmlTiedosto()
 {
-    //qDebug() << QDateTime::currentDateTime() << QFileInfo("xml.xml").created();
-
-    //qDebug() << QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime());
-
-    if ( QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime()) > 300){
+    //jos viimeisesta hausta eli siis tiedoston muokkauksesta on yli 10min haetaan data
+    if ( QFileInfo("xml.xml").lastModified().secsTo(QDateTime::currentDateTime()) > 600){
         apiData_ =  new haeAPIdata();
         apiData_->haeTiedot();
 
     }
 }
 
-int Tieto::haeVihollistenMaara(QString kentanNimi)
+int Tieto::haeVihollistenMaara(int kentanNumero)
 {
+    QString kentanNimi = kenttienTiedot_.at(kentanNumero).kentanNimi_;
+
     QString id = lukija_->etsiHallinId(kentanNimi);
-    return lukija_->haeVaratutPaikat(id);
+    if (id == "-1"){
+        //jos lukeminen epäonnistuu annetaan vaikeutuvassa määrin kyborgeja
+        return kentanNumero * 3 + 7;
+    }
+    int vihollisia = lukija_->haeVaratutPaikat(id);
+
+    if (vihollisia == -1){
+        return kentanNumero * 3 + 7;
+    }
+    //rajataan hieman vihollisten maaraa, hieman mielivaltaisesti,
+    //mutta ideana on painottaa keskialuetta. -IH
+    vihollisia = vihollisia % 25;
+
+    if (vihollisia < 10){
+        return vihollisia + 8;
+    }
+    return vihollisia;
 }
 
 int Tieto::annaPisteet() const

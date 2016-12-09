@@ -18,7 +18,7 @@ Tekoalylliset::Tekoalylliset(double x, double y, int elama, int nopeus, int teho
 }
 
 
-int Tekoalylliset::annaIskuetaisyys()
+int Tekoalylliset::annaIskuetaisyys() const
 {
     return iskuetaisyys_;
 }

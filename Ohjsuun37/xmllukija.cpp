@@ -30,15 +30,15 @@ XmlLukija::~XmlLukija()
     delete xml_;
 }
 
-void XmlLukija::paivitaXmltiedot()
+bool XmlLukija::paivitaXmltiedot()
 {
 
-    //delete xml_;
+    delete xml_;
     xml_ = new QFile("xml.xml");
 
     if( !xml_->open(QIODevice::ReadOnly | QIODevice::Text )){
         qDebug() << "Virhe xml-tiedoston lukemisessa" << xml_->errorString();
-        //TODO miten palaudutaan?!
+        return false;
     }
 
 
@@ -48,6 +48,7 @@ void XmlLukija::paivitaXmltiedot()
     }else{
         lukija_->setDevice(xml_);
     }
+    return true;
 }
 
 bool XmlLukija::avaaHyodynnettavatTaulukot()
@@ -74,7 +75,10 @@ bool XmlLukija::avaaHyodynnettavatTaulukot()
 
 QString XmlLukija::etsiHallinId(QString halli)
 {
-    paivitaXmltiedot();
+    if (!paivitaXmltiedot()){
+        return "-1";
+    }
+    return "-1";
     QString id;
     if (avaaHyodynnettavatTaulukot()){
         while( lukija_->readNextStartElement() ){
@@ -111,8 +115,9 @@ QString XmlLukija::etsiHallinId(QString halli)
 
 int XmlLukija::haeVaratutPaikat(QString id)
 {
-    paivitaXmltiedot();
-
+    if (!paivitaXmltiedot()){
+        return -1;
+    }
     if (avaaHyodynnettavatTaulukot()){
         bool idLoydetty=false;
         while( lukija_->readNextStartElement() ){

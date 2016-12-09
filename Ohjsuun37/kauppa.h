@@ -3,13 +3,15 @@
 
 #include "tieto.h"
 #include <QObject>
-#include "tieto.h"
 
 
 class Kauppa : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int pisteet READ pisteet WRITE setPisteet NOTIFY pisteetChanged)
+
 public:
+
     //kohde: 0=laura 1=kyborgi1 2= kyborgi2 3=kyborgi3
     //lisaa kohteen max elamia 10:lla
     Q_INVOKABLE bool elamaaLisaa(int kohde);
@@ -19,11 +21,26 @@ public:
     //vain Lauralle -MS
     Q_INVOKABLE bool ammustiheyttaLisaa();
 
+    void setPisteet(const int &a){
+        if (a != pisteet_){
+            pisteet_ = a;
+            emit pisteetChanged();
+        }
+    }
+
+    int pisteet() const {
+        return pisteet_;
+    }
 
     Kauppa();
     Kauppa(Tieto* tieto);
+
+signals:
+    void pisteetChanged();
+
 private:
-    Tieto* Tieto_    ;
+    Tieto* Tieto_;
+    int pisteet_;
 };
 
 #endif // KAUPPA_H

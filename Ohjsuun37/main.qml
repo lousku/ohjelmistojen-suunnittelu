@@ -17,6 +17,12 @@ Item {
         //verticalAlignment: Image.AlignTop
         anchors.fill: parent
     }
+    Text {
+        x: 40
+        y: 40
+        id: name
+        text: qsTr(kauppa.pisteet)
+    }
 
     states: [
         State {

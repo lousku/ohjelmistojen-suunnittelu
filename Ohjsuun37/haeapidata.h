@@ -6,7 +6,6 @@
 #include <QNetworkRequest>
 #include <QObject>
 #include <QNetworkReply>
-#include <QFile>
 #include <QTextStream>
 
 

@@ -6,6 +6,15 @@
 #include "tieto.h"
 #include "kauppa.h"
 
+
+#include <QQuickView>
+#include <QtQuick>  //!!!!!!TÄRKEÄ jotta rootcomponent loytyy
+#include <QQmlComponent>
+#include <QQmlProperty>
+#include <QQmlEngine>
+#include <QObject>
+//#include <QApplication>
+
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -19,8 +28,8 @@ int main(int argc, char *argv[])
     Logiikka logiikka(view, tieto);
     Kauppa kauppa(tieto);
 
-    view->engine()->rootContext()->setContextProperty("logiikka", &(logiikka));
-    view->engine()->rootContext()->setContextProperty("kauppa", &(kauppa));
+    view->engine()->rootContext()->setContextProperty("logiikka", &logiikka);
+    view->engine()->rootContext()->setContextProperty("kauppa", &kauppa);
 
     return app.exec();
 }

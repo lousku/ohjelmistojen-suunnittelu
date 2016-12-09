@@ -14,14 +14,15 @@ public:
     virtual ~Laura(); //periytetyissä pitää olla virtuaaliset purkajat
     Laura();
     Laura(double x, double y, int elama, int nopeus,int teho, int ampumatiheys, int kantama);
-    bool onkoHengissa();
+    bool onkoHengissa() const;
     virtual void paivitaTiedot();
     virtual void asetaQMLosa(QObject* objekti);
     void ampuu();
 
-    //myohemmin tahan lopetetaan peli! RATKAISTU -IH
+
     void tuhoa();
-    double annaSuunta();
+    double annaSuunta() const;
+    void asetaLahtoSijaintiiin();
     bool asetaSuunta(double suunta);
 
     bool ampumavalmis() const;
@@ -36,9 +37,10 @@ private:
     bool ampumavalmis_;
     int ampumatiheys_;
     int ammustenKantama_;
+    QObject* elamapalkki_;
 
-    QObject* palkki_;
-
+    int const lahtoX_ = 20;
+    int const lahtoY_ = 20;
 };
 
 #endif // LAURA_H

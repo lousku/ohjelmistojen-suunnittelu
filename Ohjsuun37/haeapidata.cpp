@@ -1,5 +1,5 @@
 #include "haeapidata.h"
-
+#include <QSaveFile>
 
 haeAPIdata::haeAPIdata()
 {
@@ -31,7 +31,7 @@ void haeAPIdata::replyFinished()
     //luo arrayn jonne lukee x määrän merkkejä
     QByteArray newData = vastaus_->read(800000);
 
-    QFile file("xml.xml");
+    QSaveFile file("xml.xml");
     file.open(QIODevice::ReadWrite);
     //jos ei aukea->virheviesti
     if(!file.isOpen()){

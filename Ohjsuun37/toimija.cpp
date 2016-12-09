@@ -72,7 +72,7 @@ void Toimija::asetaQMLosa(QObject *objekti)
     paivitaTiedot(); //paivitetaan myos oikea sijainti kartalle
 }
 
-Sijainti Toimija::annaSijainti()
+Sijainti Toimija::annaSijainti() const
 {
     return sijainti_;
 }
@@ -82,12 +82,12 @@ bool Toimija::asetaSijainti(Sijainti sijainti)
     sijainti_ = sijainti;
 }
 
-int Toimija::annaTeho()
+int Toimija::annaTeho() const
 {
     return teho_;
 }
 
-int Toimija::annaNopeus()
+int Toimija::annaNopeus() const
 {
     return nopeus_;
 }
@@ -97,12 +97,12 @@ void Toimija::asetaNopeus(int nopeus)
     nopeus_ = nopeus;
 }
 
-int Toimija::annaElamataso()
+int Toimija::annaElamataso() const
 {
     return elamataso_;
 }
 
-QObject *Toimija::annaQMLosa()
+QObject *Toimija::annaQMLosa() const
 {
     return QMLosa_;
 }
@@ -116,29 +116,12 @@ void Toimija::paivitaTiedot()
 
 }
 
-/*void Toimija::asetaAmpumavalmiiksi()
-{
-    ampumavalmis_ = true;
-    qDebug() << "Ampumavalmis";
-
-}
-
-bool Toimija::ampumavalmis() const
-{
-    return ampumavalmis_;
-}
-
-void Toimija::asetaAmpumavalmis(bool ampumavalmis)
-{
-    ampumavalmis_ = ampumavalmis;
-}*/
-
 bool Toimija::asetaPaamaara(Sijainti sijainti)
 {
     paamaara_ = sijainti;
 }
 
-Sijainti Toimija::annaPaamaara()
+Sijainti Toimija::annaPaamaara() const
 {
     return paamaara_;
 }

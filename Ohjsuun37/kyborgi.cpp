@@ -18,7 +18,7 @@ Kyborgi::Kyborgi(double x, double y, int elama, int nopeus, int teho, int iskuet
 
 }
 
-bool Kyborgi::onkoLiikkeessa()
+bool Kyborgi::onkoLiikkeessa() const
 {
     return annaPaamaara() != annaSijainti();
 }

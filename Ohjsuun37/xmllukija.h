@@ -22,8 +22,7 @@ public:
 
     int haeVaratutPaikat(QString id);
 
-public slots:
-    void paivitaXmltiedot();
+    bool paivitaXmltiedot();
 
 private:
 

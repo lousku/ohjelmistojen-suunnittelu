@@ -66,19 +66,19 @@ double Sijainti::laskeEtaisyys(Sijainti paamaara) const
     return etaisyys(uusiX, paikkaX_,uusiY,paikkaY_);
 }
 
-bool Sijainti::operator==(const Sijainti &sijainti)
+bool Sijainti::operator==(const Sijainti &sijainti) const
 {
     return (this->paikkaX_==sijainti.annaX() && this->paikkaY_ == sijainti.annaY());
 }
 
-bool Sijainti::operator !=(const Sijainti &sijainti)
+bool Sijainti::operator !=(const Sijainti &sijainti) const
 {
     return !operator ==(sijainti);
 }
 
 //palauttaa kulman 0-360 jossa suunna syotetty sijainti on itseen nähden
 // 0 -oikealla   180 - vasemmalla   270 - ylhäällä
-double Sijainti::missaSuunnassa(double X, double Y)
+double Sijainti::missaSuunnassa(double X, double Y) const
 {
     double etaisyysX = X - paikkaX_;
     double etaisyysY = Y - paikkaY_;

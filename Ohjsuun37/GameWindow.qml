@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
 
-    /*Image {
+    Image {
         height: 10
         width:  10
         id: esteKuva
@@ -11,7 +11,7 @@ Rectangle {
         horizontalAlignment: Image.AlignLeft
         verticalAlignment: Image.AlignTop
         anchors.fill: parent
-    }*/
+    }
 
 
     property bool lauraLiikkuuOikealle: false
@@ -39,7 +39,6 @@ Rectangle {
         }
          if (event.key === Qt.Key_Space){
             logiikka.luoAmmus();
-            console.log("ammu");
          }
        }
 

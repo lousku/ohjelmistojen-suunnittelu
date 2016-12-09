@@ -521,16 +521,6 @@ void Logiikka::lopetaPeli(bool voitettu)
         viholliset_.removeAt(i);
     }
 
-    QObject *banneri = nakyma_->rootObject()->findChild<QObject*>("leftBanner");
-
-    for (int i = 1; i < 4; i++){
-        QString tunnus = "kyborgi" + QString::number(i);
-        QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunnus);
-
-        kuvake->setProperty("height", 60);
-        kuvake->setProperty("width", 60);
-    }
-
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
 
     gameWindow->setProperty("lauraLiikkuuYlos", false);
@@ -549,7 +539,7 @@ void Logiikka::luoPeli(int numero)
         laura_ = parkkihalli_->alustaLaura();
     }else{
         //alustetaan laura takaisin lähtöpisteeseen
-        laura_->asetaSijainti(Sijainti(40,40));
+        laura_->asetaLahtoSijaintiiin();
 
         laura_->paivitaTiedot();
     }
@@ -591,28 +581,13 @@ void Logiikka::luoAmmus()
 
 void Logiikka::asetaKaskettava(QString tunniste)
 {
-    QObject *banneri = nakyma_->rootObject()->findChild<QObject*>("leftBanner");
-
-    //TODO minne nää?
-    for (int i = 1; i < 4; i++){
-        QString tunnus = "kyborgi" + QString::number(i);
-        QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunnus);
-
-        kuvake->setProperty("height", 60);
-        kuvake->setProperty("width", 60);
-    }
-
-    QObject *kuvake = banneri->findChild<QObject*>("sivuPalkkirivi")->findChild<QObject*>(tunniste);
-
-    kuvake->setProperty("height", 80);
-    kuvake->setProperty("width", 80);
 
     for (auto kyborgi: kyborgit_){
         if (kyborgi->annaQMLosa()->property("tunniste") == tunniste){
             kaskettava_ = kyborgi;
 
-            kyborgi->annaQMLosa()->setProperty("height", 23);
-            kyborgi->annaQMLosa()->setProperty("width", 23);
+            kyborgi->annaQMLosa()->setProperty("height", 25);
+            kyborgi->annaQMLosa()->setProperty("width", 25);
 
         }else{
             kyborgi->annaQMLosa()->setProperty("height", 20);

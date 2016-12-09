@@ -18,7 +18,7 @@ Laura::Laura(double x, double y, int elama, int nopeus,int teho, int ampumatihey
     ampumavalmis_ = true;
 }
 
-bool Laura::onkoHengissa()
+bool Laura::onkoHengissa() const
 {
     return !tuhottu_;
 }
@@ -26,7 +26,7 @@ bool Laura::onkoHengissa()
 void Laura::paivitaTiedot()
 {
     Toimija::paivitaTiedot();
-    palkki_->setProperty("value", annaElamataso());
+    elamapalkki_->setProperty("value", annaElamataso());
 
 }
 
@@ -34,15 +34,20 @@ void Laura::asetaQMLosa(QObject *objekti)
 {
     QObject *banneri = objekti->parent()->parent()->findChild<QObject*>("topBanner");
 
-    palkki_ = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>("lauranElamaBar");
-    palkki_->setProperty("maximumValue", annaElamataso());
+    elamapalkki_ = banneri->findChild<QObject*>("palkkirivi")->findChild<QObject*>("lauranElamaBar");
+    elamapalkki_->setProperty("maximumValue", annaElamataso());
 
     Toimija::asetaQMLosa(objekti);
 }
 
-double Laura::annaSuunta()
+double Laura::annaSuunta() const
 {
     return suunta_;
+}
+
+void Laura::asetaLahtoSijaintiiin()
+{
+    asetaSijainti(Sijainti(lahtoX_,lahtoY_));
 }
 
 bool Laura::asetaSuunta(double suunta)

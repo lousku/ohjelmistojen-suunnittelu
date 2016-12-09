@@ -16,7 +16,7 @@ Vihollinen::Vihollinen(double x, double y, int elama, int nopeus, int teho, int 
 
 }
 
-int Vihollinen::annaLiikkeidenMaara()
+int Vihollinen::annaLiikkeidenMaara() const
 {
     return liikkeidenMaara_;
 }

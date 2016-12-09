@@ -13,11 +13,11 @@ public:
     double annaX() const;
     double annaY() const;
     double laskeEtaisyys(Sijainti paamaara) const;
-    bool operator ==(const Sijainti &sijainti);
-    bool operator !=(const Sijainti &sijainti);
+    bool operator ==(const Sijainti &sijainti) const;
+    bool operator !=(const Sijainti &sijainti) const;
 
     //palauttaa kulman mihin suuntaa pitaa kaantya, etta nakee kohteen -IH
-    double missaSuunnassa(double X, double Y);
+    double missaSuunnassa(double X, double Y) const;
 
     static double etaisyys(double uusiX, double vanhaX,double uusiY, double vanhaY);
 
