@@ -52,7 +52,7 @@ Item {
             name: "PELI"
             //piilotetaan muut paitsi peliikkuna -MS
             PropertyChanges { target: gameWindow; visible: true}
-            PropertyChanges { target: topBanner; visible: true}
+            PropertyChanges { target: topBanner;  visible: true}
 
             PropertyChanges { target: gameWindow; focus: true }
             PropertyChanges { target: leftBanner; aktiivinen: true }
@@ -80,7 +80,7 @@ Item {
         id:topBanner
         objectName: "topBanner"
         anchors.left: leftBanner.right; anchors.top: parent.top; anchors.right: parent.right
-        visible:false
+        visible: false
     }
 
     GameWindow{
@@ -117,4 +117,26 @@ Item {
         anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
         visible: false
     }
+
+    property alias pisteet: pisteTeksti.text
+
+    Row{
+        x: 500
+        y: 610
+        z: 100
+        Text {
+            text: qsTr("Pisteita: ")
+            color: "white"
+            font.pointSize: 20
+        }
+
+        Text {
+            id: pisteTeksti
+            text: "0"
+            color: "white"
+            font.pointSize: 20
+        }
+    }
+
+
 }

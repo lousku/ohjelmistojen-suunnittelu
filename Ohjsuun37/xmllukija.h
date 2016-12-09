@@ -1,6 +1,6 @@
 #ifndef XMLLUKIJA_H
 #define XMLLUKIJA_H
-#include "haeapidata.h"
+#include "apidatanhakija.h"
 
 #include <QXmlStreamReader>
 #include <QFile>

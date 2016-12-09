@@ -2,15 +2,21 @@
 #include <QFileInfo>
 #include <QQuickItem>
 
+Tieto::~Tieto()
+{
+    delete apiData_;
+    delete lukija_;
+}
+
 Tieto::Tieto()
 {
 
 }
 
 Tieto::Tieto(QQuickView* view):
-    pisteet_(1000)
+    pisteet_(0)
 {
-    apiData_ =  new haeAPIdata();
+    apiData_ =  new APIdatanHakija();
     paivitaXmlTiedosto();
     lukija_ = new XmlLukija();
 
@@ -91,6 +97,7 @@ Tieto::Tieto(QQuickView* view):
 
     asetaTekstit();
 
+    pisteTeksti_ = view->rootObject();
 }
 
 void Tieto::paivitaXmlTiedosto()
@@ -156,6 +163,8 @@ void Tieto::asetaNopeus(int kohde, int uusiArvo)
     }
     QString arvo = "Nopeus: " + QString::number(uusiArvo);
     Toimijalista_[kohde]->setProperty("nopeus", arvo);
+    maksaPisteilla();
+
 }
 
 
@@ -169,6 +178,7 @@ void Tieto::asetaTeho(int kohde, int uusiArvo)
     }
     QString arvo = "Teho: " + QString::number(uusiArvo);
     Toimijalista_[kohde]->setProperty("teho", arvo);
+    maksaPisteilla();
 }
 
 //kohde: 0=Laura, 1= kyborgi1, 2=kyborgi2, 3= kyborgi3
@@ -183,6 +193,7 @@ void Tieto::asetaElama(int kohde, int uusiArvo)
     }
     QString arvo = "Elamä: " + QString::number(uusiArvo);
     Toimijalista_[kohde]->setProperty("elama", arvo);
+    maksaPisteilla();
 }
 
 void Tieto::asetaLapaistyksi(int kenttanro)
@@ -200,6 +211,7 @@ void Tieto::asetaKantama(int kohde, int uusiArvo)
     }
     QString arvo = "Kantama: " + QString::number(uusiArvo);
     Toimijalista_[kohde]->setProperty("kantama", arvo);
+    maksaPisteilla();
 }
 
 void Tieto::asetaAmmustiheys(int uusiArvo)
@@ -207,11 +219,13 @@ void Tieto::asetaAmmustiheys(int uusiArvo)
     lauranTiedot_.ammustiheys = uusiArvo;
     QString arvo = "Ammus-\ntiheys: " + QString::number(uusiArvo);
     Toimijalista_[0]->setProperty("ammustiheys", arvo);
+    maksaPisteilla();
 }
 
-void Tieto::asetaPisteet(int Pisteet)
+void Tieto::lisaaPisteita(int maara)
 {
-    pisteet_ = Pisteet;
+    pisteet_ += maara;
+    pisteTeksti_->setProperty("pisteet", pisteet_);
 }
 
 void Tieto::asetaTekstit()
@@ -245,15 +259,13 @@ void Tieto::asetaTekstit()
     Toimijalista_[0]->setProperty("teho", arvo);
 
     arvo = "Ammus-\ntiheyttä: " + QString::number(lauranTiedot_.ammustiheys);
-    Toimijalista_[0]->setProperty("teho", arvo);
-
-
+    Toimijalista_[0]->setProperty("ammustiheys", arvo);
 }
 
 void Tieto::maksaPisteilla()
 {
-    pisteet_ -= 16; //TODO vakioi tää
-    //TODO paivita pisteet ota eka talteen jne.
+    pisteet_ -= MAKSU_;
+    pisteTeksti_->setProperty("pisteet", pisteet_);
 }
 
 

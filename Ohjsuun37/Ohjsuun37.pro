@@ -20,7 +20,7 @@ SOURCES += main.cpp \
     tieto.cpp \
     kauppa.cpp \
     xmllukija.cpp \
-    haeapidata.cpp \
+    apidatanhakija.cpp
 
 RESOURCES += qml.qrc
 
@@ -49,5 +49,5 @@ HEADERS += \
     tieto.h \
     kauppa.h \
     xmllukija.h \
-    haeapidata.h
+    apidatanhakija.h
 

@@ -5,8 +5,8 @@
 #include <QtQuick>
 #include <QDebug>
 #include <iostream>
-#include <math.h>
-#include <QtMath>
+#include <math.h>    //fabs aka itseisarvo doublesta fmod jakojaannos doublesta
+#include <QtMath>    //selvisäisikö näistä toisella? täältä hakee cos ja sin  TODO tama selvitys
 
 void Logiikka::asetaKyborginPaamaara(double x, double y)
 {
@@ -37,8 +37,8 @@ Logiikka::Logiikka()
 
 Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
 {
-    nakyma_ = view;
-    pelatutKentat_ = 0;
+    nakyma_ = view; //parkkihalli_->annaNakyma();
+
     parkkihalli_ = new ParkkihallinRakentaja(nakyma_, tieto);
 
     pelikello_ = parkkihalli_->alustaPelikello();
@@ -57,6 +57,7 @@ bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
     if (kyborgi->onkoLiikkeessa()){
         if (not liikutaToimijaa(kyborgi)){
             kyborgi->asetaPaamaara(kyborgi->annaSijainti());
+            qDebug() << "jee";
         }
     }else{
         Toimija* kohde = iskuetaisyydella(kyborgi);
@@ -73,6 +74,9 @@ bool Logiikka::kaskytaKyborgia(Kyborgi *kyborgi)
                     }
                 }
             }
+        }else{
+            //kommentoin pois koska pelattavuus karsii sikana, kokeilkaa vaikka -IH
+            //liikutaToimijaaRandomisti(kyborgi);
         }
     }
 }
@@ -85,7 +89,8 @@ bool Logiikka::kaskytaVihollista(Vihollinen *vihollinen)
         if (vahingoitaToimijaa(kohde, (vihollinen)->annaTeho()) <= 0){
             if (laura_ == kohde){
                 laura_->tuhoa();
-                return true;
+                //delete kohde;
+                return true; //palautus ei perusteltu -IH
             }
             for (int i = 0 ; i < kyborgit_.size(); i ++){
                 if (kyborgit_.at(i) == kohde){
@@ -110,7 +115,7 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
         if (not onkoEstetta(paamaara.annaX(), paamaara.annaY())){
             return toimija->liikuta(paamaara);
         }else{
-            //yrittaa paasta esteen paalle?"
+            qDebug() << "yrittaa paasta esteen paalle?" ;
             //lopetetaan liike siihen.
             toimija->asetaPaamaara(toimija->annaSijainti());
             return false;
@@ -123,6 +128,11 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
 
         double siirtymaX = (paamaara.annaX() - nykyinenX)*suhde;
         double siirtymaY = (paamaara.annaY() - nykyinenY)*suhde;
+
+        //
+
+
+
 
         //se tapaus, jossa este ei tule tielle -IH
 
@@ -157,6 +167,8 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
                         matkaEsteeseenY = int(nykyinenX/20)*20 - nykyinenY;
                     }
 
+
+
                     //jos esteeseen on pienempi matka kuin nopeus
                     //liikutaan atkan verran, silloin ei estetta voi olla edessa -> liikutaan -IH
                     if (fabs(matkaEsteeseenX) < nopeus and fabs(matkaEsteeseenX) > 1){
@@ -174,12 +186,15 @@ bool Logiikka::liikutaToimijaa(Toimija* toimija)
             }
         }
     }
+    //taalla mihinkaan liikkuminen ei onnis, nollataan siis paamaara? - IH
+    //TODO SELVITYS, ETTA HAITTAAKO TAMA AMMUKSEN TOTEUTUSTA -IH
     toimija->asetaPaamaara(toimija->annaSijainti());
     return false;   //liikkuminen ei onnistunut -IH
 }
 
 bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
 {
+    //TODO vaihda liikkeidenMaara privateen? -IH Done -MS
    int liikkeet = vihollinen->annaLiikkeidenMaara();
 
     if (liikkeet > 0){
@@ -189,6 +204,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
         {
 
             vihollinen->asetaLiikkeidenMaara(0);
+            qDebug() << "vapautettu    1.0";
         }
         else
         {
@@ -239,6 +255,7 @@ bool Logiikka::liikutaVihollista(Vihollinen *vihollinen)
             }
 
             vihollinen->asetaPaamaara(lahinNakyva->annaSijainti());
+            //qDebug() << "Vihu näkee siut!";
 
             liikutaToimijaa(vihollinen);
 
@@ -301,6 +318,11 @@ void Logiikka::liikutaToimijaaRandomisti(Toimija *toimija)
         Sijainti uusi = Sijainti(uusiX, uusiY);
         if (not onkoValillaEstetta(toimija->annaSijainti(), uusi) ){
             toimija->asetaPaamaara(uusi);
+            break; //TODO vaihto continue?
+        }
+        else if (i > 10){
+            //debuq mielessä, kuinka usein nain kay, ei kuitenkaan pideta kauempaa tassa loopissa!
+            qDebug() << "ei meinaa loytya, minne menis";
             break;
         }
         i++;
@@ -315,6 +337,7 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
         for (auto it = kyborgit_.begin(); it != kyborgit_.end(); it++){
             double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
+                //qDebug() << "lähistöllä" << etaisyys;
                 return *it;
             }
         }
@@ -323,6 +346,7 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
         if (laura_->onkoHengissa()){
             double etaisyys = laura_->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
+                //qDebug() << "lähistöllä" << etaisyys;
                 return laura_;
             }
         }
@@ -332,17 +356,23 @@ Toimija* Logiikka::iskuetaisyydella(Tekoalylliset *toimija)
         for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
             double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
+                //qDebug() << "lähistöllä" << etaisyys;
                 return *it;
             }
         }
     }else if (dynamic_cast<Ammus*> (toimija) != 0){
         //kopa suoraan "kybori kohtaa vihollisen"-tapauksesta -MS
+        //qDebug() << "ammus osumaetaisyydella";
         for (auto it = viholliset_.begin(); it != viholliset_.end(); it++){
             double etaisyys = (*it)->annaSijainti().laskeEtaisyys(sijainti);
             if (etaisyys < toimija->annaIskuetaisyys()){
+                //qDebug() << "lähistöllä" << etaisyys;
                 return *it;
             }
         }
+    }
+    else{
+        qDebug() << "kutsuttu vaaralle?";
     }
     return nullptr;
 }
@@ -355,6 +385,7 @@ bool Logiikka::onkoEstetta(double x, double y)
     if (0 > x or x > 480 or 0 > y or y > 480){
         return true;
     }
+    //TODO mitka ehdot tahan kuuluu, onko rajat eri kuin 0-480 -IH
     if (esteet_[int((y+1)/20)][int((x+1)/20)] == "1"){
         return true;
     }else if (esteet_[int((y+1)/20)][int((x+19)/20)] == "1"){
@@ -416,6 +447,7 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
                 }
             }
         }
+        //TODO fiksumpi ammuksien poisto(alla toinen vastaava listan lapikaynti)
         for (int i = 0 ; i < ammukset_.size(); i ++){
             if (ammukset_.at(i) == ammus){
                 ammukset_.removeAt(i);
@@ -445,7 +477,7 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 //voitettu paremetria, ei viela kayteta -IH
 void Logiikka::lopetaPeli(bool voitettu)
 {
-
+    muistinVapautus();
     pelikello_->stop();
 
     if (not voitettu) {
@@ -455,24 +487,30 @@ void Logiikka::lopetaPeli(bool voitettu)
         mainView->setProperty("lopputeksti", teksti);
         return;
     }
-     if(pelatutKentat_ == 5){
-         QObject *mainView = nakyma_->rootObject();
-         mainView->setProperty("state", "VOITETTU");
-        qDebug("voitit PELIN");
-         QString teksti = mainView->property("voittoteksti").toString() + QString::number(parkkihalli_->annaPisteet());
-         mainView->setProperty("voittoteksti", teksti);
-         return;
 
-     }
     //laittaa xml paivityksen pyorimaan taustalle.
     parkkihalli_->paivitaTiedot();
 
+    //mainView->setProperty("state", "HAVITTY");
 
+    //TODO mitä näytetään odottaessa?
     QThread::sleep(2);
+
+    //TODO muuten odottaa hetken kentän infojen kanssa ennen kuin siirtyy näkymään
 
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
 
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+
+    gameWindow->setProperty("lauraLiikkuuYlos", false);
+    gameWindow->setProperty("lauraLiikkuuAlas", false);
+    gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
+    gameWindow->setProperty("lauraLiikkuuOikealle", false);
+}
+
+void Logiikka::muistinVapautus()
+{
     for (int i = klikattavatlaatat_.size() - 1; i >= 0; --i){
         delete klikattavatlaatat_.at(i);
         klikattavatlaatat_.removeAt(i);
@@ -492,22 +530,12 @@ void Logiikka::lopetaPeli(bool voitettu)
         delete viholliset_.at(i);
         viholliset_.removeAt(i);
     }
-
-    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-
-    gameWindow->setProperty("lauraLiikkuuYlos", false);
-    gameWindow->setProperty("lauraLiikkuuAlas", false);
-    gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
-    gameWindow->setProperty("lauraLiikkuuOikealle", false);
 }
 
 void Logiikka::luoPeli(int numero)
 {
-    if(parkkihalli_->onkoPelattu(numero) == false ){
-        pelatutKentat_++;
-    }
-
     esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);
+
 
     //laura alustetaan vain ensimmäisellä kerralla -IH
     if (laura_ == nullptr){
@@ -520,7 +548,6 @@ void Logiikka::luoPeli(int numero)
     kyborgit_ = parkkihalli_->alustaKyborgit();   
     viholliset_ = parkkihalli_->lisaaViholliset(numero);
 
-
     pelikello_->start();
 }
 
@@ -529,6 +556,7 @@ Logiikka::~Logiikka()
     delete parkkihalli_;
     delete pelikello_;
     delete laura_;
+    muistinVapautus();
 }
 
 void Logiikka::luoAmmus()
@@ -603,6 +631,7 @@ void Logiikka::suoritaTekoaly()
     if (Sijainti::etaisyys(uusiX, hiiriX_, uusiY, hiiriY_) > 20){
         // kutsu funktiolle, mika palauttaa kulman kahden sijainnin valilta
         //-10, koska siirretään vastaamaan lauran kulmasta riiputusta -IH
+        //kysykaa, jos ei oo selva!
         double kulma = laura_->annaSijainti().missaSuunnassa(uusiX - 10, uusiY - 10);
 
         hiiriX_ = uusiX;
@@ -634,5 +663,6 @@ void Logiikka::suoritaTekoaly()
     liikutaToimijaa(laura_);
 
 }
+
 
 

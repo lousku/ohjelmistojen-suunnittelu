@@ -9,6 +9,11 @@
 #include <QQmlProperty>
 
 
+ParkkihallinRakentaja::~ParkkihallinRakentaja()
+{
+    
+}
+
 ParkkihallinRakentaja::ParkkihallinRakentaja()
 {
 
@@ -36,6 +41,7 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     //alustetaan Laura
     Laura* laura = new Laura(aloitusX_, aloitusY_.at(0), tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
 
+                                                  //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
     QObject *object = component.create();
     QQmlProperty(object,"parent").write(QVariant::fromValue<QObject*>(gameWindow));
@@ -43,6 +49,7 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     object->setParent(gameWindow);
     laura->asetaQMLosa(object);
 
+    //kokeilen lauran nopeutta, tätä pitää miettiä miten kehittyy -MS
     laura->asetaNopeus(2);
     return laura;
 }
@@ -81,9 +88,7 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
 }
 
 QList<QStringList> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject*> &laatat)
-{   //asetetaan kenttä lapaistyksi-MS
-    tieto_->asetaLapaistyksi(numero);
-
+{   
     QList<QStringList> esteet = tieto_->annaKentantiedot(numero).sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
@@ -154,16 +159,6 @@ void ParkkihallinRakentaja::alustaLauraUuteenKenttaan(Laura *&laura)
     int parannettavaa = tieto_->annaLauranTiedot().MaxElama - laura->annaElamataso();
     laura->muutaElamatasoa(parannettavaa);
     laura->paivitaTiedot();
-}
-
-void ParkkihallinRakentaja::asetaPelatuksi(int kenttanro)
-{
-    tieto_->asetaLapaistyksi(kenttanro);
-}
-
-bool ParkkihallinRakentaja::onkoPelattu(int kenttanro)
-{
-    return tieto_->annaKentantiedot(kenttanro).lapaisty;
 }
 
 int ParkkihallinRakentaja::annaPisteet()

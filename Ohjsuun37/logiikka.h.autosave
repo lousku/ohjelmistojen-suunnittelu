@@ -38,6 +38,8 @@ public:
     bool onkoValillaEstetta(Sijainti sijainti1, Sijainti sijainti2);
     void kaskytaAmmusta(Ammus *ammus);
     void lopetaPeli(bool voitettu);
+    
+    void muistinVapautus();
 
 private:
     Laura* laura_;
@@ -48,8 +50,6 @@ private:
     QTimer* pelikello_;
     QQuickView* nakyma_;
     Kyborgi* kaskettava_;
-
-    int pelatutKentat_;
 
     QList<QStringList> esteet_;
     ParkkihallinRakentaja* parkkihalli_;

@@ -53,9 +53,9 @@ Rectangle {
                 text: "Tehoa"
                 onClicked: {
                     if (kauppa.tehoaLisaa(index)){
-                        kauppaTeksti.text = kyseessa + "lle ostettu tehoa"
+                        //kauppaTeksti.text = kyseessa + "lle ostettu tehoa"
                     }else{
-                        kauppaTeksti.text = kyseessa + "n teho on jo täynnä"
+                        //kauppaTeksti.text = kyseessa + "n teho on jo täynnä"
                     }
                 }
             }
@@ -65,9 +65,9 @@ Rectangle {
                 text: "Nopeutta"
                 onClicked: {
                     if (kauppa.nopeuttaLisaa(index)){
-                        kauppaTeksti.text = kyseessa + "lle ostettu nopeutta"
+                        //kauppaTeksti.text = kyseessa + "lle ostettu nopeutta"
                     }else{
-                        kauppaTeksti.text = kyseessa + "n on jo nopein mahdollinen"
+                        //kauppaTeksti.text = kyseessa + "n on jo nopein mahdollinen"
                     }
                 }
             }
@@ -76,9 +76,9 @@ Rectangle {
                 text: "Kantamaa"
                 onClicked: {
                     if (kauppa.kantamaaLisaa(index)){
-                        kauppaTeksti.text = kyseessa + "lle ostettu kantamaa"
+                        //kauppaTeksti.text = kyseessa + "lle ostettu kantamaa"
                     }else{
-                        kauppaTeksti.text = kyseessa + "n kantama on maksimissa"
+                        //kauppaTeksti.text = kyseessa + "n kantama on maksimissa"
                     }
                 }
             }
@@ -86,10 +86,13 @@ Rectangle {
                 tunniste: index
                 text: "Elämää"
                 onClicked: {
-                    if (kauppa.elamaaLisaa(index)){
+                    var paluuarvo = kauppa.elamaaLisaa(index);
+                    if (paluuarvo === 1){
                         kauppaTeksti.text = kyseessa + "lle ostettu lisää elamää"
-                    }else{
+                    }else if (paluuarvo === 0){
                         kauppaTeksti.text = kyseessa + "n elämötaso on jo maksimi"
+                    }else{
+                        kauppaTeksti.text = "Paalu ei riitä"
                     }
                 }
             }
@@ -104,9 +107,9 @@ Rectangle {
         text: "Lataus-\nnopeutta"
         onClicked: {
             if (kauppa.ammustiheyttaLisaa()){
-                kauppaTeksti.text = "Lauralle ostettu nopeutta"
+                //kauppaTeksti.text = "Lauralle ostettu nopeutta"
             }else{
-                kauppaTeksti.text = "Lauran nopeus on jo maksimissaan"
+                //kauppaTeksti.text = "Lauran nopeus on jo maksimissaan"
             }
         }
     }

@@ -1,12 +1,13 @@
-#include "haeapidata.h"
+#include "apidatanhakija.h"
 #include <QSaveFile>
 
 
-haeAPIdata::haeAPIdata()
+APIdatanHakija::~APIdatanHakija()
 {
+    
 }
 
-void haeAPIdata::haeTiedot()
+void APIdatanHakija::haeTiedot()
 {
     //luo HHTP pyynnin url osoitteella
     QNetworkRequest request(QString("http://parkingdata.finnpark.fi:8080/Datex2/ParkingFacilities"));
@@ -29,7 +30,7 @@ void haeAPIdata::haeTiedot()
     }
 }
 
-void haeAPIdata::replyFinished(QNetworkReply* reply)
+void APIdatanHakija::replyFinished(QNetworkReply* reply)
 {
     //luetaan tietoja
     QList<QByteArray> headerList = reply->rawHeaderList();
@@ -53,14 +54,16 @@ void haeAPIdata::replyFinished(QNetworkReply* reply)
     }
     //-1 palautuu errorin merkiksi -IH
     if (file.write(newData) == -1){
-        // ei käytännössä pitäisi tulla koskaan
-        qDebug() << "tiedostoon ei pystytä kirjoittamaan";
+        qDebug() << "vituiksmän";
     }
 
     if (file.commit()){
+        qDebug() << "valmis";
+    }else {
+        qDebug() << "nyyh";
     }
 }
-void haeAPIdata::errorOnReply(QNetworkReply::NetworkError e)
+void APIdatanHakija::errorOnReply(QNetworkReply::NetworkError e)
 {
     qDebug() << "virhe: " << e;
 }

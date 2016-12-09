@@ -32,7 +32,7 @@
         <file>PeliHavitty.qml</file>
         <file>KaupanNappi.qml</file>
         <file>LauraTiedot.qml</file>
-        <file>Tiedot.qml</file>
+        <file>KyborgiTiedot.qml</file>
         <file>PeliVoitettu.qml</file>
     </qresource>
 </RCC>
