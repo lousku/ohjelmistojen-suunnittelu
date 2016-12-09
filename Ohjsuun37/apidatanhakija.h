@@ -15,6 +15,7 @@ class APIdatanHakija : public QNetworkAccessManager  //onko tarvittava periytys?
     Q_OBJECT
 
 public:
+    ~APIdatanHakija();
     APIdatanHakija();
     void haeTiedot();
 public slots:

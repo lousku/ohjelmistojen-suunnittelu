@@ -58,6 +58,7 @@ Tieto::Tieto(QQuickView* view):
                 lisattava.vihollistenNopeus = 1;
                 lisattava.vihollistenTeho = 1;
                 lisattava.iskuetaisyys = 10;
+                lisattava.lapaisty = false;
                 lisattava.sijainnit;
                 while(!in.atEnd()) {
                     rivi = in.readLine();
@@ -195,6 +196,11 @@ void Tieto::asetaElama(int kohde, int uusiArvo)
     maksaPisteilla();
 }
 
+void Tieto::asetaLapaistyksi(int kenttanro)
+{
+    kenttienTiedot_[kenttanro].lapaisty = true;
+}
+
 void Tieto::asetaKantama(int kohde, int uusiArvo)
 {
     if(kohde == 0 ){
@@ -261,5 +267,7 @@ void Tieto::maksaPisteilla()
     pisteet_ -= MAKSU_;
     pisteTeksti_->setProperty("pisteet", pisteet_);
 }
+
+
 
 

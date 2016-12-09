@@ -25,6 +25,8 @@ struct kentanTiedot {
     int vihollistenNopeus;
     int vihollistenTeho;
     int iskuetaisyys;
+    bool lapaisty;
+    bool peliKaynnissa;
     QList<QStringList> sijainnit;
 };
 
@@ -43,6 +45,7 @@ public:
     void asetaNopeus(int kohde, int uusiArvo);
     void asetaTeho(int kohde, int uusiArvo);
     void asetaElama(int kohde, int uusiArvo);
+    void asetaLapaistyksi(int kenttanro);
     void asetaKantama(int kohde, int uusiArvo);
     void asetaAmmustiheys(int uusiArvo);
     void lisaaPisteita(int maara);

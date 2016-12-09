@@ -5,6 +5,7 @@
 class Sijainti
 {
 public:
+    ~Sijainti();
     Sijainti();
     Sijainti(double x, double y);
 

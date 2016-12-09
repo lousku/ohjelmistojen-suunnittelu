@@ -49,6 +49,8 @@ private:
     QQuickView* nakyma_;
     Kyborgi* kaskettava_;
 
+    int pelatutKentat_;
+
     QList<QStringList> esteet_;
     ParkkihallinRakentaja* parkkihalli_;
 

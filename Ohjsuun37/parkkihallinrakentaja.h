@@ -25,7 +25,8 @@ public:
     QList<Vihollinen*> lisaaViholliset(int kentanNumero);
 
     void alustaLauraUuteenKenttaan(Laura* &laura);
-
+    void asetaPelatuksi(int kenttanro);
+    bool onkoPelattu(int kenttanro);
     int annaPisteet();
     void ansaitsePisteita(int maara);
     void paivitaTiedot();

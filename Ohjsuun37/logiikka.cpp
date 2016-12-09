@@ -38,7 +38,7 @@ Logiikka::Logiikka()
 Logiikka::Logiikka(QQuickView* view, Tieto* tieto)
 {
     nakyma_ = view; //parkkihalli_->annaNakyma();
-
+    pelatutKentat_ = 0;
     parkkihalli_ = new ParkkihallinRakentaja(nakyma_, tieto);
 
     pelikello_ = parkkihalli_->alustaPelikello();
@@ -487,13 +487,20 @@ void Logiikka::lopetaPeli(bool voitettu)
         mainView->setProperty("lopputeksti", teksti);
         return;
     }
+    qDebug() << "pelin loputtua kentiä: " << pelatutKentat_;
+     if(pelatutKentat_ == 5){
+         QObject *mainView = nakyma_->rootObject();
+         mainView->setProperty("state", "VOITETTU");
+        qDebug("voitit PELIN");
+         QString teksti = mainView->property("voittoteksti").toString() + QString::number(parkkihalli_->annaPisteet());
+         mainView->setProperty("voittoteksti", teksti);
+         return;
 
+     }
     //laittaa xml paivityksen pyorimaan taustalle.
     parkkihalli_->paivitaTiedot();
 
-    //mainView->setProperty("state", "HAVITTY");
 
-    //TODO mitä näytetään odottaessa?
     QThread::sleep(2);
 
     //TODO muuten odottaa hetken kentän infojen kanssa ennen kuin siirtyy näkymään
@@ -531,8 +538,12 @@ void Logiikka::lopetaPeli(bool voitettu)
 
 void Logiikka::luoPeli(int numero)
 {
-    esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);
+    if(parkkihalli_->onkoPelattu(numero) == false ){
+        pelatutKentat_++;
+        qDebug() << "LAPAISTYJAKENTTIA: " <<pelatutKentat_;
+    }
 
+    esteet_ = parkkihalli_->alustaEsteet(numero, klikattavatlaatat_);
 
     //laura alustetaan vain ensimmäisellä kerralla -IH
     if (laura_ == nullptr){
@@ -544,6 +555,7 @@ void Logiikka::luoPeli(int numero)
 
     kyborgit_ = parkkihalli_->alustaKyborgit();   
     viholliset_ = parkkihalli_->lisaaViholliset(numero);
+
 
     pelikello_->start();
 }
@@ -600,6 +612,7 @@ void Logiikka::suoritaTekoaly()
 {
     //pelin lopetus tarkastelut -IH
     if (viholliset_.size() == 0){
+        //Miika laita tähän kentän läpäisy.
         lopetaPeli(true);
     }else if (not laura_->onkoHengissa()){
         lopetaPeli(false);

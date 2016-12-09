@@ -24,6 +24,7 @@ public:
     Q_INVOKABLE int ammustiheyttaLisaa();
 
 
+    ~Kauppa();
     Kauppa();
     Kauppa(Tieto* tieto);
 

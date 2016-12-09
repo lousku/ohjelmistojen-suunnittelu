@@ -83,7 +83,13 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
 }
 
 QList<QStringList> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject*> &laatat)
-{   
+{   //asetetaan kenttä lapaistyksi-MS
+    tieto_->asetaLapaistyksi(numero);
+
+    for (int i = 0; i <5; i++){
+        qDebug() << "lapaistu" << i << tieto_->annaKentantiedot(i).lapaisty;
+    }
+
     QList<QStringList> esteet = tieto_->annaKentantiedot(numero).sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
@@ -154,6 +160,16 @@ void ParkkihallinRakentaja::alustaLauraUuteenKenttaan(Laura *&laura)
     int parannettavaa = tieto_->annaLauranTiedot().MaxElama - laura->annaElamataso();
     laura->muutaElamatasoa(parannettavaa);
     laura->paivitaTiedot();
+}
+
+void ParkkihallinRakentaja::asetaPelatuksi(int kenttanro)
+{
+    tieto_->asetaLapaistyksi(kenttanro);
+}
+
+bool ParkkihallinRakentaja::onkoPelattu(int kenttanro)
+{
+    return tieto_->annaKentantiedot(kenttanro).lapaisty;
 }
 
 int ParkkihallinRakentaja::annaPisteet()
