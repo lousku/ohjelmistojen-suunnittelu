@@ -7,9 +7,14 @@ Tieto::Tieto():
     paivitaXmlTiedosto();
     lukija_ = new XmlLukija();
 
+<<<<<<< HEAD
     //QString id = lukija_->etsiHallinId("P-Tullintori");
     //qDebug() << "id: " << id;
     //qDebug() << "autoja parkissa: " << lukija_->haeVaratutPaikat(id);
+=======
+
+    lukija_->lueXmlTiedosto();
+>>>>>>> 4b18a5bee6d2b70ee4577decee3e63191606a5e4
 
     //TODO esim tänne vakioiden käyttöä
 

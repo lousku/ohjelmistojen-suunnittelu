@@ -18,7 +18,12 @@ public:
     XmlLukija();
     ~XmlLukija();
 
+<<<<<<< HEAD
     QString etsiHallinId(QString hallinNimi);
+=======
+    QString etsiHallinId(QString halli);
+    bool lueXmlTiedosto();
+>>>>>>> 4b18a5bee6d2b70ee4577decee3e63191606a5e4
 
     int haeVaratutPaikat(QString id);
 

@@ -41,7 +41,6 @@ bool XmlLukija::paivitaXmltiedot()
         return false;
     }
 
-
     //tällä vältetään useamman lukijan luonti ja roikkumaan jääminen.
     if (lukija_ == nullptr){
         lukija_ = new QXmlStreamReader(xml_);
