@@ -49,5 +49,5 @@ HEADERS += \
     tieto.h \
     kauppa.h \
     xmllukija.h \
-    haeapidata.h
+    apidatanhakija.h
 

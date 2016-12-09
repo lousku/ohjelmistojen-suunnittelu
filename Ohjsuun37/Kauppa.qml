@@ -86,10 +86,13 @@ Rectangle {
                 tunniste: index
                 text: "Elämää"
                 onClicked: {
-                    if (kauppa.elamaaLisaa(index)){
+                    var paluuarvo = kauppa.elamaaLisaa(index);
+                    if (paluuarvo === 1){
                         kauppaTeksti.text = kyseessa + "lle ostettu lisää elamää"
-                    }else{
+                    }else if (paluuarvo === 0){
                         kauppaTeksti.text = kyseessa + "n elämötaso on jo maksimi"
+                    }else{
+                        kauppaTeksti.text = "Paalu ei riitä"
                     }
                 }
             }

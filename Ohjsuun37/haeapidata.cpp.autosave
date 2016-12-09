@@ -2,8 +2,9 @@
 #include <QSaveFile>
 
 
-APIdatanHakija::APIdatanHakija()
+APIdatanHakija::~APIdatanHakija()
 {
+    
 }
 
 void APIdatanHakija::haeTiedot()

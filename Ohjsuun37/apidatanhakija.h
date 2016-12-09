@@ -10,12 +10,12 @@
 #include <QTextStream>
 
 
-class haeAPIdata : public QNetworkAccessManager  //onko tarvittava periytys?
+class APIdatanHakija : public QNetworkAccessManager  //onko tarvittava periytys?
 {
     Q_OBJECT
 
 public:
-    haeAPIdata();
+    APIdatanHakija();
     void haeTiedot();
 public slots:
     void replyFinished(QNetworkReply *reply);

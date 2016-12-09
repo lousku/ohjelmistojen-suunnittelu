@@ -31,42 +31,28 @@ struct kentanTiedot {
 class Tieto
 {
 public:
+   ~Tieto();
     Tieto();
-
     Tieto(QQuickView* view);
-
     void paivitaXmlTiedosto();
-
     int haeVihollistenMaara(int kentanNumero) const;
-
     int annaPisteet() const;
-
     QList<kyborginTiedot> annaKyborgienTiedot() const;
-
     lauranTiedot annaLauranTiedot() const;
-
     kentanTiedot annaKentantiedot(int kentanNumero) const;
-
     void asetaNopeus(int kohde, int uusiArvo);
-
     void asetaTeho(int kohde, int uusiArvo);
-
     void asetaElama(int kohde, int uusiArvo);
-
     void asetaKantama(int kohde, int uusiArvo);
-
     void asetaAmmustiheys(int uusiArvo);
-
-    void asetaPisteet(int Pisteet);
-
+    void lisaaPisteita(int maara);
     void asetaTekstit();
-
     void maksaPisteilla();
-
 
 private:
 
     int pisteet_;
+    int const MAKSU_ = 16;
 
     lauranTiedot lauranTiedot_;
     QList<kyborginTiedot> kyborgienTiedot_;
@@ -74,8 +60,9 @@ private:
     XmlLukija *lukija_;
     //paivitysaika johonki ylos?
 
-    haeAPIdata* apiData_;
+    APIdatanHakija* apiData_;
     QList<QObject*> Toimijalista_;
+    QObject* pisteTeksti_;
 
 };
 

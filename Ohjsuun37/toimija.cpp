@@ -6,12 +6,10 @@
 
 Toimija::~Toimija()
 {
-    //tama poistaa toimijan myos kartalta -IH
     delete QMLosa_;
 }
 
 Toimija::Toimija()
-    //sijainti_(0,0), elamataso_(100), teho_(1), nopeus_(1), paamaara_(0,0)
 {
 
 }

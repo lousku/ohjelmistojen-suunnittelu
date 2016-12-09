@@ -9,6 +9,11 @@
 #include <QQmlProperty>
 
 
+ParkkihallinRakentaja::~ParkkihallinRakentaja()
+{
+    
+}
+
 ParkkihallinRakentaja::ParkkihallinRakentaja()
 {
 

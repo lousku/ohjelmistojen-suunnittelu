@@ -17,21 +17,21 @@ Column {
 
     }
 
-    Tiedot{
+    KyborgiTiedot{
         tunniste: "kyborgi1"
         objectName: "kyborgin1Tiedot"
         kuvapolku: "qrc:graphics/kyborg_lime.png"
         painettavissa: aktiivinen
     }
 
-    Tiedot{
+    KyborgiTiedot{
         tunniste: "kyborgi2"
         objectName: "kyborgin2Tiedot"
         kuvapolku: "qrc:graphics/kyborg_magenta.png"
         painettavissa: aktiivinen
     }
 
-    Tiedot{
+    KyborgiTiedot{
         tunniste: "kyborgi3"
         objectName: "kyborgin3Tiedot"
         kuvapolku: "qrc:graphics/kyborg_royalblue.png"

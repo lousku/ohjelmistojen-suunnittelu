@@ -6,7 +6,6 @@ Text {
     color: "white"
     font.pointSize: 16
     font.bold: true
-    anchors.centerIn: parent.horizontalCenter
     anchors.topMargin: 150
     text: qsTr("
 Ulkoavaruudesta saapuneet virheät, autoja syövät hirviöt

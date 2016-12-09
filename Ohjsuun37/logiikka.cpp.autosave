@@ -477,7 +477,7 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 //voitettu paremetria, ei viela kayteta -IH
 void Logiikka::lopetaPeli(bool voitettu)
 {
-
+    muistinVapautus();
     pelikello_->stop();
 
     if (not voitettu) {
@@ -501,6 +501,16 @@ void Logiikka::lopetaPeli(bool voitettu)
     QObject *mainView = nakyma_->rootObject();
     mainView->setProperty("state", "NORMAL");
 
+    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
+
+    gameWindow->setProperty("lauraLiikkuuYlos", false);
+    gameWindow->setProperty("lauraLiikkuuAlas", false);
+    gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
+    gameWindow->setProperty("lauraLiikkuuOikealle", false);
+}
+
+void Logiikka::muistinVapautus()
+{
     for (int i = klikattavatlaatat_.size() - 1; i >= 0; --i){
         delete klikattavatlaatat_.at(i);
         klikattavatlaatat_.removeAt(i);
@@ -520,13 +530,6 @@ void Logiikka::lopetaPeli(bool voitettu)
         delete viholliset_.at(i);
         viholliset_.removeAt(i);
     }
-
-    QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-
-    gameWindow->setProperty("lauraLiikkuuYlos", false);
-    gameWindow->setProperty("lauraLiikkuuAlas", false);
-    gameWindow->setProperty("lauraLiikkuuVasemmalle", false);
-    gameWindow->setProperty("lauraLiikkuuOikealle", false);
 }
 
 void Logiikka::luoPeli(int numero)
@@ -553,6 +556,7 @@ Logiikka::~Logiikka()
     delete parkkihalli_;
     delete pelikello_;
     delete laura_;
+    muistinVapautus();
 }
 
 void Logiikka::luoAmmus()
