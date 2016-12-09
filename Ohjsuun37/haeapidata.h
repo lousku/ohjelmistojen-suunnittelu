@@ -7,9 +7,10 @@
 #include <QObject>
 #include <QNetworkReply>
 #include <QDir>
+#include <QTextStream>
 
 
-class haeAPIdata : public QObject  //onko tarvittava periytys?
+class haeAPIdata : public QNetworkAccessManager  //onko tarvittava periytys?
 {
     Q_OBJECT
 

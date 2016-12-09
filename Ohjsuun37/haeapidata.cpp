@@ -2,7 +2,8 @@
 #include <QSaveFile>
 
 
-haeAPIdata::haeAPIdata()
+haeAPIdata::haeAPIdata():
+    manager_()
 {
 
 
@@ -10,7 +11,6 @@ haeAPIdata::haeAPIdata()
 
 void haeAPIdata::haeTiedot()
 {
-
     //luo HHTP pyynnin url osoitteella
     QNetworkRequest request(QString("http://parkingdata.finnpark.fi:8080/Datex2/ParkingFacilities"));
 
@@ -27,14 +27,14 @@ void haeAPIdata::haeTiedot()
         //TODO vastaus_ turha?
         vastaus_ = manager_.get(request);
         connect(&manager_, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
-        connect(vastaus_, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(errorOnReply(QNetworkReply::NetworkError)));
+        //connect(vastaus_, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(errorOnReply(QNetworkReply::NetworkError)));
     }
     else{
         qDebug() << "nettiyhteydessä on vikaa, pysäköintihalleja ei voida päivittää";
     }
 
 
-    //connect(vastaus_, SIGNAL(finished()),this, SLOT(replyFinished()));
+    //connect(vastaus_, SIGNAL(finished()),this, SLOT(replyFinished()));*/
 
 }
 
@@ -49,7 +49,9 @@ void haeAPIdata::replyFinished(QNetworkReply* reply)
     //luo arrayn jonne lukee x määrän merkkejä
     QByteArray newData = reply->read(800000);
 
+    qDebug() << QDir::currentPath();
 
+    QSaveFile file("xml.xml");
     file.open(QIODevice::WriteOnly | QIODevice::Text);
 
     //kirjoittaa vastauksen tiedostoon xml.xml
@@ -76,9 +78,8 @@ void haeAPIdata::replyFinished(QNetworkReply* reply)
     }else {
         qDebug() << "nyyh";
     }
-
+}
 void haeAPIdata::errorOnReply(QNetworkReply::NetworkError e)
 {
     qDebug() << "virhe: " << e;
-
 }
