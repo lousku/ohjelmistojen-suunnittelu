@@ -461,10 +461,8 @@ void Logiikka::kaskytaAmmusta(Ammus *ammus)
 
         if(liikutaToimijaa(ammus) == false or ammus->annaElamataso() < 1 or
                             ammus->annaSijainti() == ammus->annaPaamaara()){
-            qDebug() <<"Ammus TUHOTTIIN";
                    for (int i = 0 ; i < ammukset_.size(); i ++){
                 if (ammukset_.at(i) == ammus){
-                    qDebug() << "POISTETTIIN LISTASTA";
                     ammukset_.removeAt(i);
                     delete ammus;
                     break;
@@ -539,9 +537,7 @@ void Logiikka::luoPeli(int numero)
         laura_ = parkkihalli_->alustaLaura();
     }else{
         //alustetaan laura takaisin lähtöpisteeseen
-        laura_->asetaLahtoSijaintiiin();
-
-        laura_->paivitaTiedot();
+        parkkihalli_->alustaLauraUuteenKenttaan(laura_);
     }
 
     kyborgit_ = parkkihalli_->alustaKyborgit();   

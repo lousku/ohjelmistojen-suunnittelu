@@ -6,10 +6,9 @@
 #include <QNetworkRequest>
 #include <QObject>
 #include <QNetworkReply>
-#include <QTextStream>
 
 
-class haeAPIdata : public QNetworkAccessManager   //onko tarvittava periytys?
+class haeAPIdata : public QObject  //onko tarvittava periytys?
 {
     Q_OBJECT
 

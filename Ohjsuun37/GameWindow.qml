@@ -1,25 +1,12 @@
 import QtQuick 2.0
 
-Rectangle {
-
-    Image {
-        height: 10
-        width:  10
-        id: esteKuva
-        source: "qrc:graphics/esteLaatta.png"
-        fillMode: Image.Tile
-        horizontalAlignment: Image.AlignLeft
-        verticalAlignment: Image.AlignTop
-        anchors.fill: parent
-    }
-
+Item {
 
     property bool lauraLiikkuuOikealle: false
     property bool lauraLiikkuuVasemmalle: false
     property bool lauraLiikkuuYlos: false
     property bool lauraLiikkuuAlas: false
 
-    //TODO liikkuminen vinottain kahdella napilla
     Keys.onPressed: {
         if (event.key === Qt.Key_W){
             if(event.isAutoRepeat) return

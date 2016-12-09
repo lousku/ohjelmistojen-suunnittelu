@@ -34,7 +34,7 @@ Laura* ParkkihallinRakentaja::alustaLaura(){
     lauranTiedot tiedot = tieto_->annaLauranTiedot();
 
     //alustetaan Laura
-    Laura* laura = new Laura(aloitusY_, aloitusX_.at(0), tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
+    Laura* laura = new Laura(aloitusX_, aloitusY_.at(0), tiedot.MaxElama, tiedot.nopeus,tiedot.teho, tiedot.ammustiheys, tiedot.kantama);
 
                                                   //miks QStringLiteral?? -IH
     QQmlComponent component(nakyma_->engine(), QUrl(QStringLiteral("qrc:/Laura.qml")));
@@ -60,7 +60,7 @@ QList<Kyborgi* > ParkkihallinRakentaja::alustaKyborgit(){
     for (int i = 1; i < 4; i++){
         //vaihdoin eri aloitussijainnit, tarkastelun helpoittamiseksi -IH
 
-        Kyborgi *kyborgi = new Kyborgi(aloitusY_, aloitusX_.at(i), tiedot[i-1].MaxElama, tiedot[i-1].nopeus,
+        Kyborgi *kyborgi = new Kyborgi(aloitusX_, aloitusY_.at(i), tiedot[i-1].MaxElama, tiedot[i-1].nopeus,
                             tiedot[i-1].teho, tiedot[i-1].iskuetaisyys);
 
         QQmlComponent component(nakyma_->engine(), QUrl("qrc:/Kyborgi.qml"));
@@ -109,11 +109,9 @@ QList<QStringList> ParkkihallinRakentaja::alustaEsteet(int numero, QList<QObject
 QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
 {
 
-
-    //siirretty alempaa -MS
     QList<Vihollinen *> viholliset;
     QObject *gameWindow = nakyma_->rootObject()->findChild<QObject*>("gameWindow");
-                                        //TODO kentanNUMERO jostain
+
     kentanTiedot tiedot = tieto_->annaKentantiedot(numero);
 
     int vihollistenMaara = tieto_->haeVihollistenMaara(numero);
@@ -148,6 +146,14 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
     }
 
     return viholliset;
+}
+
+void ParkkihallinRakentaja::alustaLauraUuteenKenttaan(Laura *&laura)
+{
+    laura->asetaSijainti(Sijainti(aloitusX_, aloitusY_.at(0)));
+    int parannettavaa = tieto_->annaLauranTiedot().MaxElama - laura->annaElamataso();
+    laura->muutaElamatasoa(parannettavaa);
+    laura->paivitaTiedot();
 }
 
 int ParkkihallinRakentaja::annaPisteet()

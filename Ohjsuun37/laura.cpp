@@ -45,11 +45,6 @@ double Laura::annaSuunta() const
     return suunta_;
 }
 
-void Laura::asetaLahtoSijaintiiin()
-{
-    asetaSijainti(Sijainti(lahtoX_,lahtoY_));
-}
-
 bool Laura::asetaSuunta(double suunta)
 {
     suunta_ = suunta;
@@ -58,7 +53,6 @@ bool Laura::asetaSuunta(double suunta)
 
 void Laura::ampuu()
 {
-   qDebug() << "ammuttu";
    ampumavalmis_ = false;
    QTimer::singleShot(ampumatiheys_, this, SLOT(asetaAmpumavalmiiksi()));
 }
@@ -72,8 +66,6 @@ void Laura::tuhoa()
 void Laura::asetaAmpumavalmiiksi()
 {
     ampumavalmis_ = true;
-    qDebug() << "Ampumavalmis";
-
 }
 
 bool Laura::ampumavalmis() const

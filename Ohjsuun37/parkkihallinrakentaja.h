@@ -24,6 +24,8 @@ public:
     QList<Kyborgi*> alustaKyborgit();
     QList<Vihollinen*> lisaaViholliset(int kentanNumero);
 
+    void alustaLauraUuteenKenttaan(Laura* &laura);
+
     int annaPisteet();
     void paivitaTiedot();
 
@@ -31,8 +33,8 @@ private:
     QQuickView* nakyma_;
     Tieto* tieto_;
 
-    int const aloitusY_  = 20;
-    QList<int> const aloitusX_ = {20, 60, 100, 140};
+    int const aloitusX_  = 20;
+    QList<int> const aloitusY_ = {20, 60, 100, 140};
 
 };
 

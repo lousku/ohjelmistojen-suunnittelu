@@ -1,6 +1,7 @@
 #include "haeapidata.h"
 #include <QSaveFile>
 
+
 haeAPIdata::haeAPIdata()
 {
 
@@ -31,21 +32,24 @@ void haeAPIdata::replyFinished()
     //luo arrayn jonne lukee x määrän merkkejä
     QByteArray newData = vastaus_->read(800000);
 
+
     QSaveFile file("xml.xml");
-    file.open(QIODevice::ReadWrite);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
     //jos ei aukea->virheviesti
     if(!file.isOpen()){
         qDebug() << "ei saatu avattua";
         return;
     }
-    //kirjoittaa tiedostoon http responsen sisällön
-    QTextStream outStream(&file);
-    qDebug() << "Kirjoitetaan requestin sisältö xml.xml tiedostoon";
-    outStream << QString(newData) << endl;
-    //muuttaa tiedoston koon responsen kokoiseksi(poistaa vanhan tekstin)
-    file.resize(file.pos());
-    qDebug() << "valmis";
+    //-1 palautuu errorin merkiksi -IH
+    if (file.write(newData) == -1){
+        qDebug() << "vituiksmän";
+    }
 
+    if (file.commit()){
+        qDebug() << "valmis";
+    }else {
+        qDebug() << "nyyh";
+    }
 
 
 }

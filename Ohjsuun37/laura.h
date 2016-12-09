@@ -22,7 +22,6 @@ public:
 
     void tuhoa();
     double annaSuunta() const;
-    void asetaLahtoSijaintiiin();
     bool asetaSuunta(double suunta);
 
     bool ampumavalmis() const;
@@ -39,8 +38,6 @@ private:
     int ammustenKantama_;
     QObject* elamapalkki_;
 
-    int const lahtoX_ = 20;
-    int const lahtoY_ = 20;
 };
 
 #endif // LAURA_H
