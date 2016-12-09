@@ -2,19 +2,15 @@
 #include <QFileInfo>
 
 Tieto::Tieto():
-    pisteet_(1000), apiData_(nullptr)
+    pisteet_(1000), apiData_()
 {
     paivitaXmlTiedosto();
     lukija_ = new XmlLukija();
 
-<<<<<<< HEAD
     //QString id = lukija_->etsiHallinId("P-Tullintori");
     //qDebug() << "id: " << id;
     //qDebug() << "autoja parkissa: " << lukija_->haeVaratutPaikat(id);
-=======
 
-    lukija_->lueXmlTiedosto();
->>>>>>> 4b18a5bee6d2b70ee4577decee3e63191606a5e4
 
     //TODO esim tänne vakioiden käyttöä
 
@@ -79,9 +75,12 @@ Tieto::Tieto():
 
 void Tieto::paivitaXmlTiedosto()
 {
+    //TODO tähän tarkastelu, että onko xml.xml tiedostoa olemassa, jos ei kutsutaan
+    //suoraan apiDataa hakemaan tiedot
+
+
     //jos viimeisesta hausta eli siis tiedoston muokkauksesta on yli 10min haetaan data
     if ( QFileInfo("xml.xml").lastModified().secsTo(QDateTime::currentDateTime()) > 600){
-        apiData_ =  new haeAPIdata();
         apiData_->haeTiedot();
 
     }
