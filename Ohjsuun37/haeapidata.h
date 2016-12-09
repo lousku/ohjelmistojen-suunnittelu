@@ -10,7 +10,7 @@
 #include <QTextStream>
 
 
-class haeAPIdata : public QNetworkAccessManager
+class haeAPIdata : public QNetworkAccessManager   //onko tarvittava periytys?
 {
     Q_OBJECT
 
@@ -19,7 +19,6 @@ public:
     void haeTiedot();
 public slots:
     void replyFinished();
-    void parseXML();
 private:
     QNetworkReply* vastaus_;
     QNetworkAccessManager manager_;

@@ -18,41 +18,43 @@
 // Yleinen xml-polku
 //-AH
 
-XmlLukija::XmlLukija()
+XmlLukija::XmlLukija():
+    lukija_(nullptr)
 {
 
 }
 
 XmlLukija::~XmlLukija()
 {
-
+    delete lukija_;
 }
 
 bool XmlLukija::lueXmlTiedosto()
 {
     //luodaan olio lähettämään http pyyntö ja päivittämään xml.xml tiedosto
-    haeAPIdata *ApiData = new haeAPIdata();
-    ApiData->haeTiedot();
+    //haeAPIdata *ApiData = new haeAPIdata();
+    //ApiData->haeTiedot();
 
-    QTimer::singleShot(3000, this, SLOT(paivitaXmltiedot()));
+    //QTimer::singleShot(3000, this, SLOT(paivitaXmltiedot()));
 
 }
 
 void XmlLukija::paivitaXmltiedot()
 {
-    //QFile xml("/Users/Ile/Git/Ohjsuun37/xml.xml");
-    //"/Users/annimari/Documents/Git/Ohjsuun37/xml.xml"
-    //"/Users/miika/37/Ohjsuun37/xml.xml"
 
-    QFile *xml = new QFile("/Users/annimari/Documents/Git/Ohjsuun37/xml.xml");
-    //QFile xml("qrc:xml.xml"); tämä vissiin turha -MS
+    QFile *xml = new QFile("xml.xml");
 
     if( !xml->open(QIODevice::ReadOnly | QIODevice::Text )){
         qDebug() << "Virhe xml-tiedoston lukemisessa" << xml->errorString();
+        //TODO miten palaudutaan?!
     }
-    //QXmlStreamReader lukija(xml);
-    lukija_= new QXmlStreamReader(xml);
 
+    //tällä vältetään useamman lukijan luonti ja roikkumaan jääminen.
+    if (lukija_ == nullptr){
+        lukija_= new QXmlStreamReader(xml);
+    }else{
+        lukija_->setDevice(xml);
+    }
 }
 
 bool XmlLukija::avaaHyodynnettavatTaulukot()
@@ -79,7 +81,6 @@ bool XmlLukija::avaaHyodynnettavatTaulukot()
 
 QString XmlLukija::etsiHallinId(QString halli)
 {
-    lueXmlTiedosto();
     paivitaXmltiedot();
     QString id;
     if (avaaHyodynnettavatTaulukot()){
@@ -144,6 +145,7 @@ int XmlLukija::haeVaratutPaikat(QString id)
             }
         }
     }
+    return -1;
 }
 
 

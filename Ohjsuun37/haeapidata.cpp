@@ -31,11 +31,7 @@ void haeAPIdata::replyFinished()
     //luo arrayn jonne lukee x määrän merkkejä
     QByteArray newData = vastaus_->read(800000);
 
-    //kirjoittaa vastauksen tiedostoon xml.xml
-    //TÄHÄN VAADITAAN TARKKA XML TIEDOSTON POLKU!!!!
-    QString fileName = "/Users/annimari/Documents/Git/Ohjsuun37/xml.xml";
-    //avaa tiedoston
-    QFile file(fileName);
+    QFile file("xml.xml");
     file.open(QIODevice::ReadWrite);
     //jos ei aukea->virheviesti
     if(!file.isOpen()){
@@ -48,13 +44,8 @@ void haeAPIdata::replyFinished()
     outStream << QString(newData) << endl;
     //muuttaa tiedoston koon responsen kokoiseksi(poistaa vanhan tekstin)
     file.resize(file.pos());
+    qDebug() << "valmis";
+
 
 
 }
-
-void haeAPIdata::parseXML(){
-    qDebug() << "Ready to parse" << endl;
-    QByteArray newData = vastaus_->readAll();
-    qDebug() << newData << endl;
-}
-

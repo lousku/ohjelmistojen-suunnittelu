@@ -19,6 +19,7 @@ struct lauranTiedot {
 };
 
 struct kentanTiedot {
+    QString kentanNimi_;
     int vihollistenElama;
     int vihollistenNopeus;
     int vihollistenTeho;
@@ -30,6 +31,8 @@ class Tieto
 {
 public:
     Tieto();
+
+    void paivitaXmlTiedosto();
 
     bool lueXmlTiedot();
 
@@ -64,6 +67,8 @@ private:
     QList<kentanTiedot> kenttienTiedot_;
     XmlLukija *lukija_;
     //paivitysaika johonki ylos?
+
+    haeAPIdata* apiData_;
 
 };
 

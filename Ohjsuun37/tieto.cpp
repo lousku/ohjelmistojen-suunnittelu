@@ -1,13 +1,19 @@
 #include "tieto.h"
+#include <QFileInfo>
 
 Tieto::Tieto():
-    pisteet_(1000)
+    pisteet_(1000), apiData_(nullptr)
 {
-    //luo lukija olion ja kutsuu lukufunktiota.
+
+    paivitaXmlTiedosto();
+
     lukija_ = new XmlLukija();
 
 
-    //lukija_->lueXmlTiedosto();
+
+    //QString id = lukija_->etsiHallinId("P-Tullintori");
+    //qDebug() << "id: " << id;
+    //qDebug() << "autoja parkissa: " <<lukija_->haeVaratutPaikat(id);
 
     //TODO esim tänne vakioiden käyttöä
 
@@ -28,9 +34,9 @@ Tieto::Tieto():
 
     QFile file(":/kentat.txt");
     if(!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "ei auennu";
+        //qDebug() << "ei auennu";
     }else{
-        qDebug() << "aukes";
+        //qDebug() << "aukes";
     }
 
     QTextStream in(&file);
@@ -38,8 +44,13 @@ Tieto::Tieto():
 
     while(!in.atEnd()) {
         if (rivi == ""){
+            rivi = in.readLine();
+        }
+        if (rivi.startsWith("Nimi:")){
             //luodaan uus kentta
             kentanTiedot lisattava = kentanTiedot();
+            lisattava.kentanNimi_ = rivi.mid(6);
+            qDebug() << rivi.mid(6);
             lisattava.vihollistenElama = 100;
             lisattava.vihollistenNopeus = 1;
             lisattava.vihollistenTeho = 1;
@@ -62,6 +73,18 @@ Tieto::Tieto():
     }
 
     file.close();
+}
+
+void Tieto::paivitaXmlTiedosto()
+{
+    qDebug() << QDateTime::currentDateTime() << QFileInfo("xml.xml").created();
+
+    qDebug() << QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime());
+
+    if ( QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime()) > 30){
+        apiData_ =  new haeAPIdata();
+        apiData_->haeTiedot();
+    }
 }
 
 bool Tieto::lueXmlTiedot(){
