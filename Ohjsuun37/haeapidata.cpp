@@ -2,11 +2,8 @@
 #include <QSaveFile>
 
 
-haeAPIdata::haeAPIdata():
-    manager_()
+haeAPIdata::haeAPIdata()
 {
-
-
 }
 
 void haeAPIdata::haeTiedot()
@@ -19,29 +16,22 @@ void haeAPIdata::haeTiedot()
     request.setRawHeader("Authorization", encoded.toLocal8Bit());
 
     //lähettää pyynnön ja tallentaa vastauksen
-    qDebug() << "lähetetään get request";
-    qDebug() <<"NETWORK" << manager_.networkAccessible();
 
     if(manager_.networkAccessible() == 1){
         //kun vastaus on valmis, ajaa reply finished slotin
         //TODO vastaus_ turha?
         vastaus_ = manager_.get(request);
         connect(&manager_, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
-        //connect(vastaus_, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(errorOnReply(QNetworkReply::NetworkError)));
+        connect(vastaus_, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(errorOnReply(QNetworkReply::NetworkError)));
     }
     else{
         qDebug() << "nettiyhteydessä on vikaa, pysäköintihalleja ei voida päivittää";
     }
-
-
-    //connect(vastaus_, SIGNAL(finished()),this, SLOT(replyFinished()));*/
-
 }
 
 void haeAPIdata::replyFinished(QNetworkReply* reply)
 {
-    qDebug() << "luetaan requestin tiedot";
-
+    //luetaan tietoja
     QList<QByteArray> headerList = reply->rawHeaderList();
     foreach(QByteArray head, headerList) {
         qDebug() << head << ":" << reply->rawHeader(head);
@@ -49,19 +39,12 @@ void haeAPIdata::replyFinished(QNetworkReply* reply)
     //luo arrayn jonne lukee x määrän merkkejä
     QByteArray newData = reply->read(800000);
 
-    qDebug() << QDir::currentPath();
-
-    QSaveFile file("xml.xml");
+    QString path = QDir::currentPath();
+    path.append("/xml.xml");
+    qDebug() << "tiedostopolku: " << path ;
+    QSaveFile file(path);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
 
-    //kirjoittaa vastauksen tiedostoon xml.xml
-    //TÄHÄN VAADITAAN TARKKA XML TIEDOSTON POLKU!!!!
-
-                                        /*QString fileName = "xml.xml";
-               OLIKO VIEREISET KOODIT     QString path = QDir::currentPath();
-               TARKEITA                         path.append("/xml.xml");
-                                                qDebug() << "tiedostopolku: " << path ;
-                                                QFile file(path);*/
 
     //jos ei aukea->virheviesti
     if(!file.isOpen()){

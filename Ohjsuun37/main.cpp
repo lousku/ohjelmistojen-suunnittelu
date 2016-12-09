@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     view->setSource(QUrl(QStringLiteral("qrc:/main.qml")));
     view->show();
 
-    Tieto* tieto = new Tieto();
+    Tieto* tieto = new Tieto(view);
 
     Logiikka logiikka(view, tieto);
     Kauppa kauppa(tieto);

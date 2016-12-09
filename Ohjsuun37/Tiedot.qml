@@ -5,6 +5,11 @@ Column {
     property alias tunniste: kyborgi.tunniste
     property alias painettavissa: kyborgi.painettavissa
 
+    property alias teho: teho.text
+    property alias nopeus: nopeus.text
+    property alias kantama: kantama.text
+    property alias elama: elama.text
+
     Kyborgi{
         id: kyborgi
         width: 60
@@ -13,22 +18,22 @@ Column {
     }
 
     Text {
-        text: qsTr("Teho")
+        id: teho
         color: "white"
         font.pointSize: 15
     }
     Text {
-        text: qsTr("Nopeus")
+        id: nopeus
         color: "white"
         font.pointSize: 15
     }
     Text {
-        text: qsTr("Kantama")
+        id: kantama
         color: "white"
         font.pointSize: 15
     }
     Text {
-        text: qsTr("Elämä")
+        id: elama
         color: "white"
         font.pointSize: 15
     }

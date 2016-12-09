@@ -54,7 +54,7 @@ private:
     double hiiriX_;
     double hiiriY_;
 
-public slots:
+private slots:
     void suoritaTekoaly();
 };
 

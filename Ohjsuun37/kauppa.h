@@ -3,12 +3,12 @@
 
 #include "tieto.h"
 #include <QObject>
+#include <QQuickView>
 
 
 class Kauppa : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int pisteet READ pisteet WRITE setPisteet NOTIFY pisteetChanged)
 
 public:
 
@@ -21,26 +21,12 @@ public:
     //vain Lauralle -MS
     Q_INVOKABLE bool ammustiheyttaLisaa();
 
-    void setPisteet(const int &a){
-        if (a != pisteet_){
-            pisteet_ = a;
-            emit pisteetChanged();
-        }
-    }
-
-    int pisteet() const {
-        return pisteet_;
-    }
 
     Kauppa();
     Kauppa(Tieto* tieto);
 
-signals:
-    void pisteetChanged();
-
 private:
-    Tieto* Tieto_;
-    int pisteet_;
+     Tieto* Tieto_;
 };
 
 #endif // KAUPPA_H
