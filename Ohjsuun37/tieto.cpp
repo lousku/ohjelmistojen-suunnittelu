@@ -7,7 +7,7 @@ Tieto::Tieto():
     lukija_ = new XmlLukija();
 
 
-    //lukija_->lueXmlTiedosto();
+    lukija_->lueXmlTiedosto();
 
     //TODO esim tänne vakioiden käyttöä
 

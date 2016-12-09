@@ -19,25 +19,45 @@ void haeAPIdata::haeTiedot()
 
     //lähettää pyynnön ja tallentaa vastauksen
     qDebug() << "lähetetään get request";
-    vastaus_ = manager_.get(request);
-    //kun vastaus on valmis, ajaa reply finished slotin
-    connect(vastaus_, SIGNAL(finished()),this, SLOT(replyFinished()));
+    qDebug() <<"NETWORK" << manager_.networkAccessible();
+
+    if(manager_.networkAccessible() == 1){
+        //kun vastaus on valmis, ajaa reply finished slotin
+        //TODO vastaus_ turha?
+        vastaus_ = manager_.get(request);
+        connect(&manager_, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+        connect(vastaus_, SIGNAL(error(QNetworkReply::NetworkError)),this, SLOT(errorOnReply(QNetworkReply::NetworkError)));
+    }
+    else{
+        qDebug() << "nettiyhteydessä on vikaa, pysäköintihalleja ei voida päivittää";
+    }
+
+
+    //connect(vastaus_, SIGNAL(finished()),this, SLOT(replyFinished()));
 
 }
 
-void haeAPIdata::replyFinished()
+void haeAPIdata::replyFinished(QNetworkReply* reply)
 {
     qDebug() << "luetaan requestin tiedot";
+
+    QList<QByteArray> headerList = reply->rawHeaderList();
+    foreach(QByteArray head, headerList) {
+        qDebug() << head << ":" << reply->rawHeader(head);
+    }
     //luo arrayn jonne lukee x määrän merkkejä
-    QByteArray newData = vastaus_->read(800000);
+    QByteArray newData = reply->read(800000);
 
     //kirjoittaa vastauksen tiedostoon xml.xml
     //TÄHÄN VAADITAAN TARKKA XML TIEDOSTON POLKU!!!!
 
     QString fileName = "xml.xml";
-
+    QString path = QDir::currentPath();
+            path.append("/xml.xml");
+            qDebug() << "tiedostopolku: " << path ;
+            QFile file(path);
     //avaa tiedoston
-    QFile file(fileName);
+    //QFile file(fileName);
     file.open(QIODevice::ReadWrite);
     //jos ei aukea->virheviesti
     if(!file.isOpen()){
@@ -52,5 +72,10 @@ void haeAPIdata::replyFinished()
     file.resize(file.pos());
 
 
+}
+
+void haeAPIdata::errorOnReply(QNetworkReply::NetworkError e)
+{
+    qDebug() << "virhe: " << e;
 }
 

@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QFile>
 #include <QTextStream>
+#include <QDir>
 
 
 class haeAPIdata : public QNetworkAccessManager
@@ -18,7 +19,8 @@ public:
     haeAPIdata();
     void haeTiedot();
 public slots:
-    void replyFinished();
+    void replyFinished(QNetworkReply *reply);
+    void errorOnReply(QNetworkReply::NetworkError e);
 private:
     QNetworkReply* vastaus_;
     QNetworkAccessManager manager_;

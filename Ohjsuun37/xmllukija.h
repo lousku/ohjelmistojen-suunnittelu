@@ -19,6 +19,7 @@ public:
     ~XmlLukija();
 
     QString etsiHallinId(QString halli);
+    bool lueXmlTiedosto();
 
     int haeVaratutPaikat(QString id);
 
@@ -27,7 +28,6 @@ public slots:
 
 private:
 
-    bool lueXmlTiedosto();
 
     // Avataan kaikilla hyodynnettavilla tiedostoilla oleva sama alkupolku
     bool avaaHyodynnettavatTaulukot();
