@@ -19,13 +19,4 @@ Button{
     anchors.horizontalCenter: parent.horizontalCenter
     height: 20
     width: 70
-
-    onClicked: {
-        if (kauppa.tehoaLisaa(tunniste)){
-            console.log(kyseessa+"n "+ostos+ " on kohta täynnä")
-        }else{
-            console.log(kyseessa+"n "+ostos+ " on jo täynnä")
-        }
-
-    }
 }

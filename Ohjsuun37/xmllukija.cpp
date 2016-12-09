@@ -19,7 +19,7 @@
 //-AH
 
 XmlLukija::XmlLukija():
-    lukija_(nullptr)
+    lukija_(nullptr), xml_(nullptr)
 {
 
 }
@@ -27,33 +27,26 @@ XmlLukija::XmlLukija():
 XmlLukija::~XmlLukija()
 {
     delete lukija_;
-}
-
-bool XmlLukija::lueXmlTiedosto()
-{
-    //luodaan olio lähettämään http pyyntö ja päivittämään xml.xml tiedosto
-    //haeAPIdata *ApiData = new haeAPIdata();
-    //ApiData->haeTiedot();
-
-    //QTimer::singleShot(3000, this, SLOT(paivitaXmltiedot()));
-
+    delete xml_;
 }
 
 void XmlLukija::paivitaXmltiedot()
 {
 
-    QFile *xml = new QFile("xml.xml");
+    //delete xml_;
+    xml_ = new QFile("xml.xml");
 
-    if( !xml->open(QIODevice::ReadOnly | QIODevice::Text )){
-        qDebug() << "Virhe xml-tiedoston lukemisessa" << xml->errorString();
+    if( !xml_->open(QIODevice::ReadOnly | QIODevice::Text )){
+        qDebug() << "Virhe xml-tiedoston lukemisessa" << xml_->errorString();
         //TODO miten palaudutaan?!
     }
 
+
     //tällä vältetään useamman lukijan luonti ja roikkumaan jääminen.
     if (lukija_ == nullptr){
-        lukija_= new QXmlStreamReader(xml);
+        lukija_ = new QXmlStreamReader(xml_);
     }else{
-        lukija_->setDevice(xml);
+        lukija_->setDevice(xml_);
     }
 }
 
@@ -119,6 +112,7 @@ QString XmlLukija::etsiHallinId(QString halli)
 int XmlLukija::haeVaratutPaikat(QString id)
 {
     paivitaXmltiedot();
+
     if (avaaHyodynnettavatTaulukot()){
         bool idLoydetty=false;
         while( lukija_->readNextStartElement() ){
@@ -145,7 +139,7 @@ int XmlLukija::haeVaratutPaikat(QString id)
             }
         }
     }
-    return -1;
+    return 0;
 }
 
 

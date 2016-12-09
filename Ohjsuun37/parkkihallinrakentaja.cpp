@@ -118,6 +118,10 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
                                         //TODO kentanNUMERO jostain
     kentanTiedot tiedot = tieto_->annaKentantiedot(numero);
 
+    int vihollistenMaara = tieto_->haeVihollistenMaara(tiedot.kentanNimi_);
+
+    qDebug() << vihollistenMaara << " vihollista";
+
     QList<QStringList> esteet = tiedot.sijainnit;
 
     for( int i=0; i<esteet.count(); ++i )
@@ -146,4 +150,9 @@ QList<Vihollinen*> ParkkihallinRakentaja::lisaaViholliset(int numero)
 int ParkkihallinRakentaja::annaPisteet()
 {
     return tieto_->annaPisteet();
+}
+
+void ParkkihallinRakentaja::paivitaTiedot()
+{
+    tieto_->paivitaXmlTiedosto();
 }

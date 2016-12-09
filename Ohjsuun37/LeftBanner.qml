@@ -5,15 +5,10 @@ import QtQuick.Layouts 1.3
 
 Item{
     width: 150
-    property bool sivuPalkkinakyvissa: true
     property bool aktiivinen: false
     visible: true
 
     GridLayout {
-        id: sivuPalkkirivi
-        objectName: "sivuPalkkirivi"
-
-        visible: sivuPalkkinakyvissa
         anchors.fill: parent
         anchors.leftMargin: 40
         anchors { horizontalCenter: parent.horizontalCenter }
@@ -28,32 +23,20 @@ Item{
             Layout.row: 0
         }
 
-        Kyborgi{
-            width: 60
-            height: 60
-            painettavissa: aktiivinen
-            tunniste: "kyborgi1"
-            kuvapolku: "qrc:graphics/kyborg_lime.png"
-            Layout.row: 1
+        Repeater{
+            model: ["lime", "magenta", "royalblue"]
+            Kyborgi{
+                width: 60
+                height: 60
+
+                property int nro: index + 1
+                painettavissa: aktiivinen
+                tunniste: "kyborgi" + nro
+                kuvapolku: "qrc:graphics/kyborg_" + modelData + ".png"
+                Layout.row: nro
+            }
         }
 
-        Kyborgi{
-            width: 60
-            height: 60
-            painettavissa: aktiivinen
-            tunniste: "kyborgi2"
-            kuvapolku: "qrc:graphics/kyborg_magenta.png"
-            Layout.row: 2
-        }
-
-        Kyborgi{
-            width: 60
-            height: 60
-            painettavissa: aktiivinen
-            tunniste: "kyborgi3"
-            kuvapolku: "qrc:graphics/kyborg_royalblue.png"
-            Layout.row: 3
-        }
 
         Text {
             id: hp

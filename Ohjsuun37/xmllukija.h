@@ -18,7 +18,7 @@ public:
     XmlLukija();
     ~XmlLukija();
 
-    QString etsiHallinId(QString halli);
+    QString etsiHallinId(QString hallinNimi);
 
     int haeVaratutPaikat(QString id);
 
@@ -27,13 +27,13 @@ public slots:
 
 private:
 
-    bool lueXmlTiedosto();
 
     // Avataan kaikilla hyodynnettavilla tiedostoilla oleva sama alkupolku
     bool avaaHyodynnettavatTaulukot();
 
     // tarvitaanko/ onko hyodyllinen taalla
     QXmlStreamReader *lukija_;
+    QFile *xml_;
 
 };
 

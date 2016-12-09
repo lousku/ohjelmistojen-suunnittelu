@@ -8,14 +8,16 @@ Rectangle {
     anchors.rightMargin: 50; anchors.bottomMargin: 50;
     anchors.leftMargin: 150; anchors.topMargin: 100;
 
+    property alias ostosTeksti: kauppaTeksti.text
+
     Image {
         id: kauppaKuva
         source: "qrc:graphics/Kauppa2.0.png"
         anchors.fill: parent
     }
     Button{
-        x:5
-        y:5
+        x:15
+        y:15
         height: 50
         width: 150
         text: "poistu kaupasta"
@@ -29,6 +31,15 @@ Rectangle {
         }
     }
 
+    Text {
+        x: 275
+        y: 15
+        id: pisteet
+        text: qsTr("Kymppitiistai, kaikki\nmaksaa 16 pistettä")
+        color: "white"
+        font.pointSize: 20
+    }
+
     Repeater{
         model: 4
         Column{
@@ -36,48 +47,55 @@ Rectangle {
             x:50 + index * 105
             y:280
             width: 80
-        Repeater{
-            model: ["fe","fef","vev","gegeg"]
-            KaupanNappi{
-                ostos: modelData
-                tunniste: index
 
+            KaupanNappi{
+                tunniste: index
+                text: "Tehoa"
+                onClicked: {
+                    if (kauppa.tehoaLisaa(index)){
+                        console.log(kyseessa + "lle ostettu tehoa")
+                    }else{
+                        console.log(kyseessa + "n teho on jo täynnä")
+                    }
+                }
             }
 
-        }
-
-
-            /*Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: 20
-                width: 70
+            KaupanNappi{
+                tunniste: index
                 text: "Nopeutta"
                 onClicked: {
-                    kauppa.nopeuttaLisaa(index);
+                    if (kauppa.nopeuttaLisaa(index)){
+                        console.log(kyseessa + "lle ostettu nopeutta")
+                    }else{
+                        console.log(kyseessa + "n on jo nopein mahdollinen")
+                    }
                 }
             }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: 20
-                width: 70
+            KaupanNappi{
+                tunniste: index
                 text: "Kantamaa"
                 onClicked: {
-                    kauppa.kantamaaLisaa(index);
+                    if (kauppa.kantamaaLisaa(index)){
+                        console.log(kyseessa + "lle ostettu kantamaa")
+                    }else{
+                        console.log(kyseessa + "n kantama on maksimissa")
+                    }
                 }
-             }
-            Button{
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: 20
-                width: 70
+            }
+            KaupanNappi{
+                tunniste: index
                 text: "Elämää"
                 onClicked: {
-                    kauppa.elamaaLisaa(index);
+                    if (kauppa.elamaaLisaa(index)){
+                        kauppaTeksti.text = kyseessa + "lle ostettu lisää elamää"
+                    }else{
+                        kauppaTeksti.text = kyseessa + "n elämötaso on jo maksimi"
+                    }
                 }
-            }*/
+            }
 
         }
     }
-
 
 
 
@@ -88,14 +106,18 @@ Rectangle {
         width: 70
         text: "Lataus\nnopeutta"
         onClicked: {
-            kauppa.ammustiheyttaLisaa();
+            if (kauppa.ammustiheyttaLisaa()){
+                kauppaTeksti.text = "Lauralle ostettu nopeutta"
+            }else{
+                kauppaTeksti.text = "Lauran nopeus on jo maksimissaan"
+            }
         }
     }
 
     Text{
         y: 450
         id: kauppaTeksti
-        text: qsTr("ostit paskaa")
+        text: qsTr("")
         anchors.horizontalCenter: parent.horizontalCenter
     }
 

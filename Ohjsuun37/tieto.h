@@ -34,7 +34,7 @@ public:
 
     void paivitaXmlTiedosto();
 
-    bool lueXmlTiedot();
+    int haeVihollistenMaara(QString kentanNimi);
 
     int annaPisteet() const;
 

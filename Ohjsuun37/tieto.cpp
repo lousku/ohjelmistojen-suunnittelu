@@ -4,16 +4,12 @@
 Tieto::Tieto():
     pisteet_(1000), apiData_(nullptr)
 {
-
     paivitaXmlTiedosto();
-
     lukija_ = new XmlLukija();
-
-
 
     //QString id = lukija_->etsiHallinId("P-Tullintori");
     //qDebug() << "id: " << id;
-    //qDebug() << "autoja parkissa: " <<lukija_->haeVaratutPaikat(id);
+    //qDebug() << "autoja parkissa: " << lukija_->haeVaratutPaikat(id);
 
     //TODO esim tänne vakioiden käyttöä
 
@@ -37,62 +33,62 @@ Tieto::Tieto():
         //qDebug() << "ei auennu";
     }else{
         //qDebug() << "aukes";
-    }
+        QTextStream in(&file);
+        QString rivi = in.readLine();
 
-    QTextStream in(&file);
-    QString rivi = in.readLine();
-
-    while(!in.atEnd()) {
-        if (rivi == ""){
-            rivi = in.readLine();
-        }
-        if (rivi.startsWith("Nimi:")){
-            //luodaan uus kentta
-            kentanTiedot lisattava = kentanTiedot();
-            lisattava.kentanNimi_ = rivi.mid(6);
-            qDebug() << rivi.mid(6);
-            lisattava.vihollistenElama = 100;
-            lisattava.vihollistenNopeus = 1;
-            lisattava.vihollistenTeho = 1;
-            lisattava.iskuetaisyys = 10;
-            lisattava.sijainnit;
-            while(!in.atEnd()) {
+        while(!in.atEnd()) {
+            if (rivi == ""){
                 rivi = in.readLine();
-                if (rivi == ""){
-                    break;
-                }
-                QStringList sijaintiRivi = rivi.split(", ");
-                lisattava.sijainnit.append(sijaintiRivi);
             }
-            kenttienTiedot_.append(lisattava);
+            if (rivi.startsWith("Nimi:")){
+                //luodaan uus kentta
+                kentanTiedot lisattava = kentanTiedot();
+                lisattava.kentanNimi_ = rivi.mid(6);
+                //qDebug() << lukija_->etsiHallinId(rivi.mid(6));
+                lisattava.vihollistenElama = 100;
+                lisattava.vihollistenNopeus = 1;
+                lisattava.vihollistenTeho = 1;
+                lisattava.iskuetaisyys = 10;
+                lisattava.sijainnit;
+                while(!in.atEnd()) {
+                    rivi = in.readLine();
+                    if (rivi == ""){
+                        break;
+                    }
+                    QStringList sijaintiRivi = rivi.split(", ");
+                    lisattava.sijainnit.append(sijaintiRivi);
+                }
+                kenttienTiedot_.append(lisattava);
+            }
+            //else haara mahdollistaa sen, etta kentta tiedoston alussa voi olla teksia
+            else{
+                rivi = in.readLine();
+            }
         }
-        //else haara mahdollistaa sen, etta kentta tiedoston alussa voi olla teksia
-        else{
-            rivi = in.readLine();
-        }
+
+        file.close();
     }
 
-    file.close();
+
 }
 
 void Tieto::paivitaXmlTiedosto()
 {
-    qDebug() << QDateTime::currentDateTime() << QFileInfo("xml.xml").created();
+    //qDebug() << QDateTime::currentDateTime() << QFileInfo("xml.xml").created();
 
-    qDebug() << QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime());
+    //qDebug() << QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime());
 
-    if ( QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime()) > 30){
+    if ( QFileInfo("xml.xml").created().secsTo(QDateTime::currentDateTime()) > 300){
         apiData_ =  new haeAPIdata();
         apiData_->haeTiedot();
+
     }
 }
 
-bool Tieto::lueXmlTiedot(){
-    //TODO tämän tulisi päivittää kentänTiedot listaa
-    //if (paivitysaika < 2min){return true;}
-
-
-    return true;
+int Tieto::haeVihollistenMaara(QString kentanNimi)
+{
+    QString id = lukija_->etsiHallinId(kentanNimi);
+    return lukija_->haeVaratutPaikat(id);
 }
 
 int Tieto::annaPisteet() const

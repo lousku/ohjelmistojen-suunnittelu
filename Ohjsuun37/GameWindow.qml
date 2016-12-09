@@ -2,7 +2,7 @@ import QtQuick 2.0
 
 Rectangle {
 
-    Image {
+    /*Image {
         height: 10
         width:  10
         id: esteKuva
@@ -11,7 +11,7 @@ Rectangle {
         horizontalAlignment: Image.AlignLeft
         verticalAlignment: Image.AlignTop
         anchors.fill: parent
-    }
+    }*/
 
 
     property bool lauraLiikkuuOikealle: false
@@ -51,7 +51,7 @@ Rectangle {
       if (event.key === Qt.Key_D)lauraLiikkuuOikealle = false ;
     }
 
-    //property valietaan hiiren sijainti c++:lle
+    //propertyt, milla valitetaan hiiren sijainti c++:lle
     property double hiiriX: 0
     property double hiiriY: 0
 

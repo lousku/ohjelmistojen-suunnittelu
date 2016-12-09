@@ -487,6 +487,10 @@ void Logiikka::lopetaPeli(bool voitettu)
         mainView->setProperty("lopputeksti", teksti);
         return;
     }
+
+    //laittaa xml paivityksen pyorimaan taustalle.
+    parkkihalli_->paivitaTiedot();
+
     //mainView->setProperty("state", "HAVITTY");
 
     //TODO mitä näytetään odottaessa?

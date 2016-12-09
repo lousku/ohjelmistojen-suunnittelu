@@ -25,6 +25,7 @@ public:
     QList<Vihollinen*> lisaaViholliset(int kentanNumero);
 
     int annaPisteet();
+    void paivitaTiedot();
 
 private:
     QQuickView* nakyma_;

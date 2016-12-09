@@ -5,7 +5,6 @@ Rectangle{
     id: esteeton
     width: 20
     height: 20
-    color: "white"
 
     Image {
         id: lattiaKuva

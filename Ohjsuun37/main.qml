@@ -13,8 +13,8 @@ Item {
         id: esteKuva
         source: "qrc:graphics/esteLaatta.png"
         fillMode: Image.Tile
-        horizontalAlignment: Image.AlignLeft
-        verticalAlignment: Image.AlignTop
+        //horizontalAlignment: Image.AlignLeft  //onko turhia?
+        //verticalAlignment: Image.AlignTop
         anchors.fill: parent
     }
 
@@ -23,29 +23,31 @@ Item {
             name: "ALOITUS"
             //piilotetaan muut paitsi karttaikkuna -MS
             PropertyChanges { target: aloitusnaytto; visible: true}
-            PropertyChanges { target: leftBanner; sivuPalkkinakyvissa: false}
+            PropertyChanges { target: leftBanner; visible: false}
 
         },
         State {
             name: "NORMAL"
             //piilotetaan muut paitsi karttaikkuna -MS
-            PropertyChanges { target: mapWindow; visible:true}
+            PropertyChanges { target: mapWindow; visible: true}
 
         },
         State {
             name: "HAVITTY"
-            PropertyChanges { target: peliHavittyTeksti; visible:true }
+            PropertyChanges { target: peliHavittyTeksti; visible: true }
         },
         State {
             name: "KAUPPA"
             //piilotetaan muut paitsi kauppaikkuna -MS
-            PropertyChanges { target: kauppaIkkuna; visible:true}
+            PropertyChanges { target: kauppaIkkuna; visible: true}
+            PropertyChanges { target: kauppaIkkuna; ostosTeksti: "" }
+
 
         },
         State {
             name: "PELI"
             //piilotetaan muut paitsi peliikkuna -MS
-            PropertyChanges { target: gameWindow; visible:true}
+            PropertyChanges { target: gameWindow; visible: true}
             PropertyChanges { target: topBanner; visible: true}
 
             PropertyChanges { target: gameWindow; focus: true }
