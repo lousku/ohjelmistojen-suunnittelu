@@ -51,6 +51,7 @@ Tieto::Tieto():
                 lisattava.vihollistenNopeus = 1;
                 lisattava.vihollistenTeho = 1;
                 lisattava.iskuetaisyys = 10;
+                lisattava.lapaisty = false;
                 lisattava.sijainnit;
                 while(!in.atEnd()) {
                     rivi = in.readLine();
@@ -166,6 +167,11 @@ void Tieto::asetaElama(int kohde, int uusiArvo)
     }
 }
 
+void Tieto::asetaLapaistyksi(int kenttanro)
+{
+    kenttienTiedot_[kenttanro].lapaisty = true;
+}
+
 void Tieto::asetaKantama(int kohde, int uusiArvo)
 {
     if(kohde == 0 ){
@@ -186,5 +192,7 @@ void Tieto::asetaPisteet(int Pisteet)
 {
     pisteet_ = Pisteet;
 }
+
+
 
 

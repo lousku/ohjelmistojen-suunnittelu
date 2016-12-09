@@ -1,8 +1,6 @@
 import QtQuick 2.0
 
 Text {
-    //property alias name: text
-    id: tekstiKentta
     color: "white"
     font.pointSize: 16
     font.bold: true

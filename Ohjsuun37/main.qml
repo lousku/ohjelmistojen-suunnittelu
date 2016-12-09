@@ -43,6 +43,10 @@ Item {
             PropertyChanges { target: peliHavittyTeksti; visible: true }
         },
         State {
+            name: "VOITETTU"
+            PropertyChanges { target: peliVoitettuTeksti; visible: true }
+        },
+        State {
             name: "KAUPPA"
             //piilotetaan muut paitsi kauppaikkuna -MS
             PropertyChanges { target: kauppaIkkuna; visible: true}
@@ -110,6 +114,13 @@ Item {
         id: peliHavittyTeksti
         anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
         visible: false
+    }
 
+    property alias voittoteksti: peliVoitettuTeksti.text
+
+    PeliVoitettu{
+        id: peliVoitettuTeksti
+        anchors.left: leftBanner.right; anchors.top: topBanner.bottom;
+        visible: false
     }
 }
